@@ -22,6 +22,7 @@ typedef SwagSong =
 	var arrowSkin:String;
 	var splashSkin:String;
 	var validScore:Bool;
+	var mania:Int;
 }
 
 class Song
@@ -33,6 +34,7 @@ class Song
 	public var arrowSkin:String;
 	public var splashSkin:String;
 	public var speed:Float = 1;
+	public var mania:Int = 3;
 
 	public var player1:String = 'bf';
 	public var player2:String = 'dad';

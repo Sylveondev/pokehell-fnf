@@ -43,6 +43,8 @@ class MainMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
+		
+
 		camGame = new FlxCamera();
 		camAchievement = new FlxCamera();
 		camAchievement.bgColor.alpha = 0;
@@ -129,6 +131,10 @@ class MainMenuState extends MusicBeatState
 		#end
 
 		super.create();
+
+		#if CHARTING
+		FlxG.switchState(new ChartingState());
+		#end
 	}
 
 	#if ACHIEVEMENTS_ALLOWED
@@ -150,6 +156,7 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
+		
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 5.6, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 
