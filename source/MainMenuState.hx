@@ -43,7 +43,10 @@ class MainMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
-		
+		/*
+		for (i in 0...ClientPrefs.keyBinds[0][0].length) {
+			ClientPrefs.reloadControls(i);
+		}*/
 
 		camGame = new FlxCamera();
 		camAchievement = new FlxCamera();

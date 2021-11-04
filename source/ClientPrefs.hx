@@ -199,7 +199,7 @@ class ClientPrefs {
 		}
 
 		var save:FlxSave = new FlxSave();
-		save.bind('controls', 'ninjamuffin99');
+		save.bind('extrakeys', 'tposejank');
 		if(save != null && save.data.customControls != null) {
 			reloadControls(save.data.customControls);
 		}
