@@ -15,7 +15,7 @@ class ClientPrefs {
 	public static var globalAntialiasing:Bool = true;
 	public static var noteSplashes:Bool = true;
 	public static var lowQuality:Bool = false;
-	public static var framerate:Int = 60;
+	public static var framerate:Int = 120;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
@@ -37,10 +37,28 @@ class ClientPrefs {
 		W, UP,				//UI Up
 		D, RIGHT,			//UI Right
 
-		R, NONE,			//Reset
+		NONE, NONE,			//Reset
 		SPACE, ENTER,		//Accept
 		BACKSPACE, ESCAPE,	//Back
-		ENTER, ESCAPE		//Pause
+		ENTER, ESCAPE,		//Pause
+
+		S, NONE,
+		D, NONE,
+		F, NONE,
+		SPACE, NONE,
+		J, LEFT,
+		K, DOWN,
+		L, RIGHT,
+
+		A, NONE,
+		S, NONE,
+		D, NONE,
+		F, NONE,
+		SPACE, NONE,
+		H, NONE,
+		J, NONE,
+		K, NONE,
+		L, NONE
 	];
 	//Every key has two binds, these binds are defined on defaultKeys! If you want your control to be changeable, you have to add it on ControlsSubState (inside OptionsState)'s list
 	public static var keyBinds:Array<Dynamic> = [
@@ -58,7 +76,25 @@ class ClientPrefs {
 		[Control.RESET, 'Reset'],
 		[Control.ACCEPT, 'Accept'],
 		[Control.BACK, 'Back'],
-		[Control.PAUSE, 'Pause']
+		[Control.PAUSE, 'Pause'],
+
+		[Control.A1, 'Left 1'],
+		[Control.A2, 'Up  '],
+		[Control.A3, 'Right 1'],
+		[Control.A4, 'Center'],
+		[Control.A5, 'Left 2'],
+		[Control.A6, 'Down  '],
+		[Control.A7, 'Right 2'],
+
+		[Control.B1, 'Left 1 '],
+		[Control.B2, 'Down 1'],
+		[Control.B3, 'Up 1'],
+		[Control.B4, 'Right 1 '],
+		[Control.B5, 'Center '],
+		[Control.B6, 'Left 2 '],
+		[Control.B7, 'Down 2'],
+		[Control.B8, 'Up 2'],
+		[Control.B9, 'Right 2 ']
 	];
 	public static var lastControls:Array<FlxKey> = defaultKeys.copy();
 
@@ -92,7 +128,7 @@ class ClientPrefs {
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();
-		save.bind('controls', 'ninjamuffin99'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff
+		save.bind('controls', 'shaggymod'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff
 		save.data.customControls = lastControls;
 		save.flush();
 		FlxG.log.add("Settings saved!");
@@ -166,6 +202,22 @@ class ClientPrefs {
 		save.bind('controls', 'ninjamuffin99');
 		if(save != null && save.data.customControls != null) {
 			reloadControls(save.data.customControls);
+		}
+
+		if (FlxG.save.data.language == null) FlxG.save.data.languaje = 0;
+
+		FlxG.updateFramerate = framerate;
+		FlxG.drawFramerate = framerate;
+
+		FlxG.save.data.noteSkin = [0, 0, 0, 0];
+		if (FlxG.save.data.s_FirstBoot == null)
+		{
+			trace('yasss');
+			reloadControls(defaultKeys);
+			FlxG.save.data.s_keyWarning = true;
+			FlxG.save.data.s_FirstBoot = false;
+			FlxG.save.flush();
+			saveSettings();
 		}
 	}
 

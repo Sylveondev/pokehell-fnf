@@ -34,7 +34,7 @@ class Note extends FlxSprite
 
 	public static var scales:Array<Float> = [0.85, 0.8, 0.75, 0.7, 0.66, 0.6, 0.55, 0.50, 0.46];
 	public static var swidths:Array<Float> = [210, 190, 170, 160, 150, 120, 110, 95, 90];
-	public static var posRest:Array<Int> = [0, 0, 0, 0, 15, 35, 50, 60, 70];
+	public static var posRest:Array<Int> = [0, 0, 0, 0, 25, 35, 50, 60, 70];
 
 	public static var swagWidth:Float = 0.7;
 	public static var PURP_NOTE:Int = 0;

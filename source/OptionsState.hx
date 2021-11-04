@@ -399,12 +399,11 @@ class ControlsSubstate extends MusicBeatSubstate {
 	private static var defaultKey:String = 'Reset to Default Keys';
 
 	var optionShit:Array<String> = [
-		'NOTES',
+		'4 KEY',
 		ClientPrefs.keyBinds[0][1],
 		ClientPrefs.keyBinds[1][1],
 		ClientPrefs.keyBinds[2][1],
 		ClientPrefs.keyBinds[3][1],
-		'',
 		'UI',
 		ClientPrefs.keyBinds[4][1],
 		ClientPrefs.keyBinds[5][1],
@@ -415,6 +414,24 @@ class ControlsSubstate extends MusicBeatSubstate {
 		ClientPrefs.keyBinds[9][1],
 		ClientPrefs.keyBinds[10][1],
 		ClientPrefs.keyBinds[11][1],
+		'6 OR 7 KEY',
+		ClientPrefs.keyBinds[12][1],
+		ClientPrefs.keyBinds[13][1],
+		ClientPrefs.keyBinds[14][1],
+		ClientPrefs.keyBinds[15][1],
+		ClientPrefs.keyBinds[16][1],
+		ClientPrefs.keyBinds[17][1],
+		ClientPrefs.keyBinds[18][1],
+		'9 KEY',
+		ClientPrefs.keyBinds[19][1],
+		ClientPrefs.keyBinds[20][1],
+		ClientPrefs.keyBinds[21][1],
+		ClientPrefs.keyBinds[22][1],
+		ClientPrefs.keyBinds[23][1],
+		ClientPrefs.keyBinds[24][1],
+		ClientPrefs.keyBinds[25][1],
+		ClientPrefs.keyBinds[26][1],
+		ClientPrefs.keyBinds[27][1],
 		'',
 		defaultKey];
 

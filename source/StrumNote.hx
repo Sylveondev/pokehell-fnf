@@ -32,7 +32,12 @@ class StrumNote extends FlxSprite
 
 	public function playAnim(anim:String, ?force:Bool = false) {
 		animation.play(anim, force);
-		centerOffsets();
+		updateHitbox();
+		offset.x = frameWidth / 2;
+		offset.y = frameHeight / 2;
+
+		offset.x -= 156 * Note.scales[PlayState.SONG.mania] / 2;
+		offset.y -= 156 * Note.scales[PlayState.SONG.mania] / 2;
 		if(animation.curAnim.name == 'static') {
 			colorSwap.hue = 0;
 			colorSwap.saturation = 0;
@@ -41,11 +46,6 @@ class StrumNote extends FlxSprite
 			colorSwap.hue = ClientPrefs.arrowHSV[noteData % 4][0] / 360;
 			colorSwap.saturation = ClientPrefs.arrowHSV[noteData % 4][1] / 100;
 			colorSwap.brightness = ClientPrefs.arrowHSV[noteData % 4][2] / 100;
-
-			if(animation.curAnim.name == 'confirm' && !PlayState.curStage.startsWith('school')) {
-				offset.x -= 13;
-				offset.y -= 13;
-			}
 		}
 	}
 }

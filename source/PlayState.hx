@@ -1355,11 +1355,11 @@ class PlayState extends MusicBeatState
 			{
 				if(songNotes[1] > -1) { //Real notes
 					var daStrumTime:Float = songNotes[0];
-					var daNoteData:Int = Std.int(songNotes[1] % Main.ammo[mania]);
+					var daNoteData:Int = Std.int(songNotes[1] % Main.ammo[SONG.mania]);
 
 					var gottaHitNote:Bool = section.mustHitSection;
 
-					if (songNotes[1] > 3)
+					if (songNotes[1] > Main.ammo[mania] - 1)
 					{
 						gottaHitNote = !section.mustHitSection;
 					}
@@ -1523,12 +1523,16 @@ class PlayState extends MusicBeatState
 						babyArrow.setGraphicSize(Std.int(babyArrow.width * Note.scales[mania]));
 	
 						babyArrow.x += Note.swidths[mania] * Note.swagWidth * Math.abs(i);
+						//if (mania == 0 || mania == 1) babyArrow.x += 200;
+						//if (mania == 2) babyArrow.x += 100;
 						
 						var dirName = Main.gfxDir[Main.gfxHud[mania][i]];
 						var pressName = Main.gfxLetter[Main.gfxIndex[mania][i]];
 						babyArrow.animation.addByPrefix('static', 'arrow' + dirName);
 						babyArrow.animation.addByPrefix('pressed', pressName + ' press', 24, false);
 						babyArrow.animation.addByPrefix('confirm', pressName + ' confirm', 24, false);
+						//4: 10
+
 				}
 	
 				babyArrow.updateHitbox();
@@ -2123,17 +2127,8 @@ class PlayState extends MusicBeatState
 						}
 
 						var animToPlay:String = '';
-						switch (Math.abs(daNote.noteData))
-						{
-							case 0:
-								animToPlay = 'singLEFT';
-							case 1:
-								animToPlay = 'singDOWN';
-							case 2:
-								animToPlay = 'singUP';
-							case 3:
-								animToPlay = 'singRIGHT';
-						}
+						animToPlay = 'sing' + Main.charDir[Main.gfxHud[mania][Std.int(Math.abs(daNote.noteData))]];
+			
 						dad.playAnim(animToPlay + altAnim, true);
 					}
 
@@ -2146,7 +2141,7 @@ class PlayState extends MusicBeatState
 					if(daNote.isSustainNote && !daNote.animation.curAnim.name.endsWith('end')) {
 						time += 0.15;
 					}
-					StrumPlayAnim(true, Std.int(Math.abs(daNote.noteData)) % 4, time);
+					StrumPlayAnim(true, Std.int(Math.abs(daNote.noteData)) % Main.ammo[mania], time);
 					daNote.ignoreNote = true;
 
 					if (!daNote.isSustainNote)
@@ -3327,7 +3322,7 @@ class PlayState extends MusicBeatState
 					if(note.isSustainNote && !note.animation.curAnim.name.endsWith('end')) {
 						time += 0.15;
 					}
-					StrumPlayAnim(false, Std.int(Math.abs(note.noteData)) % 4, time);
+					StrumPlayAnim(false, Std.int(Math.abs(note.noteData)) % Main.ammo[mania], time);
 				} else {
 					playerStrums.forEach(function(spr:StrumNote)
 					{
