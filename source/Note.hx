@@ -42,11 +42,14 @@ class Note extends FlxSprite
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
 
+	public static var isPixel:Bool;
+
 	private function set_noteType(value:Int):Int {
+		/*
 		if(noteData > -1 && noteType != value) {
 			switch(value) {
 				case 3: //Hurt note
-					reloadNote('HURT');
+					reloadNote();
 					colorSwap.hue = 0;
 					colorSwap.saturation = 0;
 					colorSwap.brightness = 0;
@@ -56,12 +59,11 @@ class Note extends FlxSprite
 					colorSwap.saturation = ClientPrefs.arrowHSV[noteData % 4][1] / 100;
 					colorSwap.brightness = ClientPrefs.arrowHSV[noteData % 4][2] / 100;
 			}
-			noteType = value;
-		}
+		}*/
+		noteType = value;
 		return value;
 	}
 
-	var isPixel:Bool = false;
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false)
 	{
 		super();
@@ -84,18 +86,19 @@ class Note extends FlxSprite
 		this.noteData = noteData;
 
 		var daStage:String = PlayState.curStage;
-		var skin:String = 'NOTE_assets';
 
 		switch (daStage) {
 			case 'school' | 'schoolEvil':
-				skin = 'PIXEL_NOTE_assets';
-				antialiasing = false;
+				isPixel = true;
 			default:
-				skin = 'NOTE_assets';
-				antialiasing = ClientPrefs.globalAntialiasing;
+				isPixel = false;
 		}
 
-		frames = Paths.getSparrowAtlas('NOTE_assets');
+		if (isPixel)
+			frames = Paths.getSparrowAtlas('PIXEL_NOTE_assets');
+		else
+			frames = Paths.getSparrowAtlas('NOTE_assets');
+
 		loadNoteAnims();
 		antialiasing = ClientPrefs.globalAntialiasing;
 
@@ -144,29 +147,22 @@ class Note extends FlxSprite
 			}
 		}
 
-		if(!isPixel && noteData > -1) reloadNote();
+		if(noteData > -1) reloadNote();
 	}
 
-	function reloadNote(?prefix:String = '', ?suffix:String = '') {
-		var skin:String = 'NOTE_assets';
+	function reloadNote() {
+		var skin:String;
 
 		var animName:String = null;
 		if(animation.curAnim != null) {
 			animName = animation.curAnim.name;
 		}
 
-		switch (PlayState.curStage) {
-			case 'school' | 'schoolEvil':
-				skin = 'PIXEL_NOTE_assets';
-				antialiasing = false;
-			default:
-				skin = 'NOTE_assets';
-				antialiasing = ClientPrefs.globalAntialiasing;
-		}
+		if (isPixel)
+			frames = Paths.getSparrowAtlas('PIXEL_NOTE_assets');
+		else
+			frames = Paths.getSparrowAtlas('NOTE_assets');
 
-		var blahblah:String = skin;
-
-		frames = Paths.getSparrowAtlas(blahblah);
 		loadNoteAnims();
 		animation.play(animName, true);
 
@@ -195,16 +191,20 @@ class Note extends FlxSprite
 		else
 			setGraphicSize(Std.int(ogW * scales[PlayState.SONG.mania]), Std.int(ogH * scales[0]));
 
-		if (isSustainNote && PlayState.curStage == 'school' || PlayState.curStage == 'schoolEvil') {
+		if (isSustainNote && isPixel) {
 			switch (PlayState.SONG.mania) {
 				case 0:
-					x -= 30;
-				case 1 | 2:
-					x -= 20;
-				case 3 | 4 | 5 | 6 | 7:
 					x -= 10;
+				case 1:
+					x -= 12;
+				case 2 | 4:
+					x -= 14;
+				case 3 | 6 | 7:
+					x -= 13;
+				case 5:
+					x -= 15;
 				case 8:
-					x -= 50;
+					x -= 7;
 				
 			}
 		}
