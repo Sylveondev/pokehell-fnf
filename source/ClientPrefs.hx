@@ -199,7 +199,7 @@ class ClientPrefs {
 		}
 
 		var save:FlxSave = new FlxSave();
-		save.bind('extrakeys', 'tposejank');
+		save.bind('controls', 'shaggymod');
 		if(save != null && save.data.customControls != null) {
 			reloadControls(save.data.customControls);
 		}
