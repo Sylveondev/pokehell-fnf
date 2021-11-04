@@ -742,10 +742,10 @@ class PlayState extends MusicBeatState
 		add(strumLineNotes);
 		add(grpNoteSplashes);
 
-		/*
+		
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
-		splash.alpha = 0.0;*/
+		splash.alpha = 0.0;
 
 		opponentStrums = new FlxTypedGroup<StrumNote>();
 		playerStrums = new FlxTypedGroup<StrumNote>();
@@ -3323,15 +3323,15 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.noteSplashes && note != null) {
 			var strum:StrumNote = playerStrums.members[note.noteData];
 			if(strum != null) {
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note.noteType);
+				spawnNoteSplash(strum.x, strum.y, note.noteData);
 			}
 		}*/
 	}
 
-	public function spawnNoteSplash(x:Float, y:Float, data:Int, type:Int) {
+	public function spawnNoteSplash(x:Float, y:Float, data:Int) {
 		/*
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x, y, data, type);
+		splash.setupNoteSplash(x, y, data);
 		grpNoteSplashes.add(splash);*/
 	}
 

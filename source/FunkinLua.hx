@@ -581,8 +581,8 @@ class FunkinLua {
 			}
 			return FlxG.mouse.getScreenPosition(cam).y;
 		});
-		Lua_helper.add_callback(lua, "spawnNoteSplashes", function(x:Float, y:Float, data:Int = 0, type:Int = 0) {
-			lePlayState.spawnNoteSplash(x, y, data, type);
+		Lua_helper.add_callback(lua, "spawnNoteSplashes", function(x:Float, y:Float, data:Int = 0) {
+			lePlayState.spawnNoteSplash(x, y, data);
 		});
 		Lua_helper.add_callback(lua, "characterPlayAnim", function(character:String, anim:String, ?forced:Bool = false) {
 			switch(character.toLowerCase()) {
