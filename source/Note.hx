@@ -84,33 +84,20 @@ class Note extends FlxSprite
 		this.noteData = noteData;
 
 		var daStage:String = PlayState.curStage;
+		var skin:String = 'NOTE_assets';
 
-		switch (daStage)
-		{
+		switch (daStage) {
 			case 'school' | 'schoolEvil':
-				if (isSustainNote)
-				{
-					loadGraphic(Paths.image('weeb/pixelUI/NOTE_assetsENDS'));
-					width = width / 4;
-					height = height / 2;
-					loadGraphic(Paths.image('weeb/pixelUI/NOTE_assetsENDS'), true, Math.floor(width), Math.floor(height));
-				} else {
-					loadGraphic(Paths.image('weeb/pixelUI/NOTE_assets'));
-					width = width / 4;
-					height = height / 5;
-					loadGraphic(Paths.image('weeb/pixelUI/NOTE_assets'), true, Math.floor(width), Math.floor(height));
-				}
-				loadPixelNoteAnims();
-
-				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
-				updateHitbox();
-				isPixel = true;
-
+				skin = 'PIXEL_NOTE_assets';
+				antialiasing = false;
 			default:
-				frames = Paths.getSparrowAtlas('NOTE_assets');
-				loadNoteAnims();
+				skin = 'NOTE_assets';
 				antialiasing = ClientPrefs.globalAntialiasing;
 		}
+
+		frames = Paths.getSparrowAtlas('NOTE_assets');
+		loadNoteAnims();
+		antialiasing = ClientPrefs.globalAntialiasing;
 
 		if(noteData > -1) {
 			/*
@@ -161,34 +148,26 @@ class Note extends FlxSprite
 	}
 
 	function reloadNote(?prefix:String = '', ?suffix:String = '') {
-		var skin:String = PlayState.SONG.arrowSkin;
-		if(skin == null || skin.length < 1) {
-			skin = 'NOTE_assets';
-		}
+		var skin:String = 'NOTE_assets';
 
 		var animName:String = null;
 		if(animation.curAnim != null) {
 			animName = animation.curAnim.name;
 		}
 
-		var blahblah:String = prefix + skin + suffix;
-		if(isPixel) {
-			if(isSustainNote) {
-				loadGraphic(Paths.image('weeb/pixelUI/' + blahblah + 'ENDS'));
-				width = width / 4;
-				height = height / 2;
-				loadGraphic(Paths.image('weeb/pixelUI/' + blahblah + 'ENDS'), true, Math.floor(width), Math.floor(height));
-			} else {
-				loadGraphic(Paths.image('weeb/pixelUI/' + blahblah));
-				width = width / 4;
-				height = height / 5;
-				loadGraphic(Paths.image('weeb/pixelUI/' + blahblah), true, Math.floor(width), Math.floor(height));
-			}
-			loadPixelNoteAnims();
-		} else {
-			frames = Paths.getSparrowAtlas(blahblah);
-			loadNoteAnims();
+		switch (PlayState.curStage) {
+			case 'school' | 'schoolEvil':
+				skin = 'PIXEL_NOTE_assets';
+				antialiasing = false;
+			default:
+				skin = 'NOTE_assets';
+				antialiasing = ClientPrefs.globalAntialiasing;
 		}
+
+		var blahblah:String = skin;
+
+		frames = Paths.getSparrowAtlas(blahblah);
+		loadNoteAnims();
 		animation.play(animName, true);
 
 		if(inEditor) {
@@ -215,6 +194,20 @@ class Note extends FlxSprite
 			setGraphicSize(Std.int(ogW * scales[PlayState.SONG.mania]));
 		else
 			setGraphicSize(Std.int(ogW * scales[PlayState.SONG.mania]), Std.int(ogH * scales[0]));
+
+		if (isSustainNote && PlayState.curStage == 'school' || PlayState.curStage == 'schoolEvil') {
+			switch (PlayState.SONG.mania) {
+				case 0:
+					x -= 30;
+				case 1 | 2:
+					x -= 20;
+				case 3 | 4 | 5 | 6 | 7:
+					x -= 10;
+				case 8:
+					x -= 50;
+				
+			}
+		}
 
 		updateHitbox();
 	}

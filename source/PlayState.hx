@@ -1469,71 +1469,32 @@ class PlayState extends MusicBeatState
 				// FlxG.log.add(i);
 				var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i);
 	
-				switch (curStage)
-				{
+				var skin:String = 'NOTE_assets';
+				
+				switch (curStage) {
 					case 'school' | 'schoolEvil':
-						babyArrow.loadGraphic(Paths.image('weeb/pixelUI/NOTE_assets'));
-						babyArrow.width = babyArrow.width / 4;
-						babyArrow.height = babyArrow.height / 5;
-						babyArrow.loadGraphic(Paths.image('weeb/pixelUI/NOTE_assets'), true, Math.floor(babyArrow.width), Math.floor(babyArrow.height));
-						babyArrow.animation.add('green', [6]);
-						babyArrow.animation.add('red', [7]);
-						babyArrow.animation.add('blue', [5]);
-						babyArrow.animation.add('purplel', [4]);
-	
-						babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
-						babyArrow.updateHitbox();
+						skin = 'PIXEL_NOTE_assets';
 						babyArrow.antialiasing = false;
-	
-						switch (Math.abs(i))
-						{
-							case 0:
-								babyArrow.x += Note.swagWidth * 0;
-								babyArrow.animation.add('static', [0]);
-								babyArrow.animation.add('pressed', [4, 8], 12, false);
-								babyArrow.animation.add('confirm', [12, 16], 24, false);
-							case 1:
-								babyArrow.x += Note.swagWidth * 1;
-								babyArrow.animation.add('static', [1]);
-								babyArrow.animation.add('pressed', [5, 9], 12, false);
-								babyArrow.animation.add('confirm', [13, 17], 24, false);
-							case 2:
-								babyArrow.x += Note.swagWidth * 2;
-								babyArrow.animation.add('static', [2]);
-								babyArrow.animation.add('pressed', [6, 10], 12, false);
-								babyArrow.animation.add('confirm', [14, 18], 12, false);
-							default:
-								babyArrow.x += Note.swagWidth * 3;
-								babyArrow.animation.add('static', [3]);
-								babyArrow.animation.add('pressed', [7, 11], 12, false);
-								babyArrow.animation.add('confirm', [15, 19], 24, false);
-						}
-	
 					default:
-						var skin:String = 'NOTE_assets';
-						if(SONG.arrowSkin != null && SONG.arrowSkin.length > 1) skin = SONG.arrowSkin;
-	
-						babyArrow.frames = Paths.getSparrowAtlas(skin);
-						babyArrow.animation.addByPrefix('green', 'arrowUP');
-						babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
-						babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
-						babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
-	
+						skin = 'NOTE_assets';
 						babyArrow.antialiasing = ClientPrefs.globalAntialiasing;
-						babyArrow.setGraphicSize(Std.int(babyArrow.width * Note.scales[mania]));
-	
-						babyArrow.x += Note.swidths[mania] * Note.swagWidth * Math.abs(i);
-						//if (mania == 0 || mania == 1) babyArrow.x += 200;
-						//if (mania == 2) babyArrow.x += 100;
-						
-						var dirName = Main.gfxDir[Main.gfxHud[mania][i]];
-						var pressName = Main.gfxLetter[Main.gfxIndex[mania][i]];
-						babyArrow.animation.addByPrefix('static', 'arrow' + dirName);
-						babyArrow.animation.addByPrefix('pressed', pressName + ' press', 24, false);
-						babyArrow.animation.addByPrefix('confirm', pressName + ' confirm', 24, false);
-						//4: 10
-
 				}
+	
+				babyArrow.frames = Paths.getSparrowAtlas(skin);
+				babyArrow.animation.addByPrefix('green', 'arrowUP');
+				babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
+				babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
+				babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
+	
+				babyArrow.setGraphicSize(Std.int(babyArrow.width * Note.scales[mania]));
+	
+				babyArrow.x += Note.swidths[mania] * Note.swagWidth * Math.abs(i);
+						
+				var dirName = Main.gfxDir[Main.gfxHud[mania][i]];
+				var pressName = Main.gfxLetter[Main.gfxIndex[mania][i]];
+				babyArrow.animation.addByPrefix('static', 'arrow' + dirName);
+				babyArrow.animation.addByPrefix('pressed', pressName + ' press', 24, false);
+				babyArrow.animation.addByPrefix('confirm', pressName + ' confirm', 24, false);
 	
 				babyArrow.updateHitbox();
 				babyArrow.scrollFactor.set();
