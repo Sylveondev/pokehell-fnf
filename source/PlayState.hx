@@ -2678,16 +2678,7 @@ class PlayState extends MusicBeatState
 				players = Std.parseInt(value2);
 				var maniaChange:Int = 3;
 				maniaChange = Std.parseInt(value1);
-				switch (players) {
-					case 0:
-						changeMania(maniaChange, 0);
-					case 1:
-						changeMania(maniaChange, 1);
-					case 2:
-						changeMania(maniaChange, 0);
-						changeMania(maniaChange, 1);
-						changeMania(0, 2);
-				}
+				changeMania(maniaChange, players);
 				trace('PLAYER' + players);
 				trace('MANIA ' + maniaChange);
 
@@ -4155,13 +4146,24 @@ class PlayState extends MusicBeatState
 
 	function changeMania(value:Int, player = 0)
 		{
-			playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
-			opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
-			playerStrums.clear();
-			opponentStrums.clear();
-			mania = value;
-			generateStaticArrows(0, true);
-			generateStaticArrows(1, true);
+			if (player == 0) {
+				opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+				opponentStrums.clear();
+				generateStaticArrows(0, true);
+			} else if (player == 1) {
+				playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+				playerStrums.clear();
+				mania = value;
+				generateStaticArrows(1, true);
+			} else if (player == 2) {
+				opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+				opponentStrums.clear();
+				generateStaticArrows(0, true);
+				playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+				playerStrums.clear();
+				mania = value;
+				generateStaticArrows(1, true);
+			}
 		}
 
 	#if ACHIEVEMENTS_ALLOWED
