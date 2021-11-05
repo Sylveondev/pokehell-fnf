@@ -78,7 +78,7 @@ class ChartingState extends MusicBeatState
 		['Alt Idle Animation', "Sets a speciied suffix after the idle animation name.\nYou can use this to trigger 'idle-alt' if you set\nValue 2 to -alt\n\nValue 1: Character to set (Dad, BF or GF)\nValue 2: New suffix (Leave it blank to disable)"],
 		['Screen Shake', "Value 1: Camera shake\nValue 2: HUD shake\n\nEvery value works as the following example: \"1, 0.05\".\nThe first number (1) is the duration.\nThe second number (0.05) is the intensity."],
 		['Change Character', "Value 1: Character to change (Dad, BF, GF)\nValue 2: New character's name"],
-		['Change Mania', "Value 1: The value to change the mania\nValue 2: The character to change the mania\n\nList of supported:\n0: Opponent\n1: Boyfriend\n2: Both"]
+		['Change Mania', "Value 1: The value to change the mania\n\nLimitations:\n- Changing to a higher mania will not let you place \nnotes past the ammount of keys you're changing from.\nHowever, using a higher mania then changing to a lower\nvalue will let you do so."]
 	];
 
 	var _file:FileReference;

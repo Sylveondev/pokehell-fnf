@@ -4154,24 +4154,13 @@ class PlayState extends MusicBeatState
 
 	function changeMania(value:Int, player = 0)
 		{
-			if (player == 0) {
-				opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
-				opponentStrums.clear();
-				generateStaticArrows(0, true);
-			} else if (player == 1) {
-				playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
-				playerStrums.clear();
-				mania = value;
-				generateStaticArrows(1, true);
-			} else if (player == 2) {
-				opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
-				opponentStrums.clear();
-				generateStaticArrows(0, true);
-				playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
-				playerStrums.clear();
-				mania = value;
-				generateStaticArrows(1, true);
-			}
+			opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+			opponentStrums.clear();
+			generateStaticArrows(0, true);
+			playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+			playerStrums.clear();
+			mania = value;
+			generateStaticArrows(1, true);
 		}
 
 	#if ACHIEVEMENTS_ALLOWED
