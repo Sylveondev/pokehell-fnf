@@ -58,6 +58,10 @@ class Note extends FlxSprite
 	public var offsetAngle:Float = 0;
 	public var multAlpha:Float = 1;
 
+	public static var p1Sc:Float;
+	public static var p2Sc:Float;
+	public static var Sc:Float;
+
 	public var copyX:Bool = true;
 	public var copyY:Bool = true;
 	public var copyAngle:Bool = true;
@@ -118,6 +122,13 @@ class Note extends FlxSprite
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false)
 	{
 		super();
+
+		if (PlayState.SONG.mania != 3)
+			{
+				Sc = scales[PlayState.SONG.mania];
+			}
+			p1Sc = Sc;
+			p1Sc = Sc;
 
 		var mania:Int = PlayState.SONG.mania;
 

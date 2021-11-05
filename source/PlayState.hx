@@ -117,6 +117,8 @@ class PlayState extends MusicBeatState
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 
+	var newManiaVal:Int;
+
 	public static var mania:Int = 3;
 
 	public var vocals:FlxSound;
@@ -2663,6 +2665,21 @@ class PlayState extends MusicBeatState
 			case 'Kill Henchmen':
 				killHenchmen();
 
+			case 'Change Mania':
+				var players:Int = 2;
+				players = Std.parseInt(value2);
+				var maniaChange:Int = 3;
+				maniaChange = Std.parseInt(value1);
+				switch (players) {
+					case 0:
+						changeMania(maniaChange, 0);
+					case 1:
+						changeMania(maniaChange, 1);
+					case 2:
+						changeMania(maniaChange, 0);
+						changeMania(maniaChange, 1);
+				}
+
 			case 'Add Camera Zoom':
 				if(ClientPrefs.camZooms && FlxG.camera.zoom < 1.35) {
 					var camZoom:Float = Std.parseFloat(value1);
@@ -4123,6 +4140,38 @@ class PlayState extends MusicBeatState
 			setOnLuas('ratingName', ratingString);
 		}
 	}
+
+	function changeMania(value:Int, player = 1)
+		{
+			if (SONG.mania == 2) {
+				var strumGroup:FlxTypedGroup<StrumNote> = playerStrums;
+				var scale:Float = 1;
+				if (player == 1)
+				{
+					newManiaVal = value;
+					Note.p1Sc = Note.scales[value];
+					scale = Note.p1Sc;
+					strumGroup = playerStrums;
+				}
+				else if (player == 2)
+				{
+					Note.p2Sc = Note.scales[value];
+					scale = Note.p2Sc;
+					strumGroup = opponentStrums;
+				}
+				else
+					trace('player is incorrect: ' + player +'\nshould be 0 (opponent) or 1 (player)');
+		
+				strumGroup.forEach(function(spr:StrumNote)
+				{
+					spr.playAnim('static', true);
+					spr.setGraphicSize(Std.int(spr.width * scale));
+					spr.centerOffsets();
+	
+					spr.movePos(spr, value, player);
+				});	
+			}
+		}
 
 	#if ACHIEVEMENTS_ALLOWED
 	private function checkForAchievement(achievesToCheck:Array<String>):String {
