@@ -2208,9 +2208,27 @@ class PlayState extends MusicBeatState
 				strumAngle += daNote.offsetAngle;
 				strumAlpha *= daNote.multAlpha;
 				var center:Float = strumY + Note.swagWidth / 2;
+				var add:Float = 0;
+
+				switch (SONG.mania) {
+					case 0:
+						add = 60;
+					case 1:
+						add = 45;
+					case 2:
+						add = 40;
+					case 3:
+						add = 30;
+					case 4 | 5 | 6:
+						add = 32;
+					case 7:
+						add = 28;
+					case 8:
+						add = 20;
+				}
 
 				if(daNote.copyX) {
-					daNote.x = strumX;
+					daNote.x = strumX + (daNote.isSustainNote ? add : 0);
 				}
 				if(daNote.copyAngle) {
 					daNote.angle = strumAngle;
