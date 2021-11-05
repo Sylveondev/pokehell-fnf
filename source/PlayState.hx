@@ -1658,7 +1658,7 @@ class PlayState extends MusicBeatState
 
 	private function generateStaticArrows(player:Int):Void
 		{
-			for (i in 0...Main.ammo[SONG.mania])
+			for (i in 0...Main.ammo[mania])
 			{
 				// FlxG.log.add(i);
 				var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i);
@@ -4152,36 +4152,13 @@ class PlayState extends MusicBeatState
 
 	function changeMania(value:Int, player = 0)
 		{
-				if (mania == 8) {
-					var strumGroup:FlxTypedGroup<StrumNote> = playerStrums;
-	
-					var scale:Float = 1;
-					if (player == 0)
-					{
-						Note.p1Scale = Note.swidths[value] * Note.scales[value];
-						strumGroup = opponentStrums;
-					}
-					else if (player == 1)
-					{
-						Note.p2Scale = Note.swidths[value] * Note.scales[value];
-						strumGroup = playerStrums;
-						mania = value;	//controls are constantly adjusted in keyshit function so running this would ajust them to corresponding key
-					}
-					else if (player == 2)
-					{
-						mania = value;
-					}
-	
-					if (player != 2) {
-						strumGroup.forEach(function(spr:StrumNote)
-							{
-								spr.playAnim('static', true);
-								spr.setGraphicSize(Std.int(Note.swidths[value] * Note.scales[value]));
-								spr.centerOffsets();
-								spr.movePos(spr, value, player);
-							});
-					}
-			}
+			playerStrums.forEach(function(spr:StrumNote) { remove(spr); });
+			opponentStrums.forEach(function(spr:StrumNote) { remove(spr); });
+			playerStrums.clear();
+			opponentStrums.clear();
+			mania = value;
+			generateStaticArrows(0);
+			generateStaticArrows(1);
 		}
 
 	#if ACHIEVEMENTS_ALLOWED
