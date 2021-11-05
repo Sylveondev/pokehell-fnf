@@ -40,6 +40,7 @@ class FreeplayState extends MusicBeatState
 	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
+	var trackedAssets:Array<Dynamic> = [];
 
 	var bg:FlxSprite;
 	var intendedColor:Int;
@@ -291,7 +292,11 @@ class FreeplayState extends MusicBeatState
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
+			unloadAssets();
+			if (FlxG.sound.music != null)
+				FlxG.sound.music.stop();
 			LoadingState.loadAndSwitchState(new PlayState());
+
 
 			FlxG.sound.music.volume = 0;
 					
@@ -398,6 +403,19 @@ class FreeplayState extends MusicBeatState
 		diffText.x = Std.int(scoreBG.x + (scoreBG.width / 2));
 		diffText.x -= diffText.width / 2;
 	}
+	override function add(Object:flixel.FlxBasic):flixel.FlxBasic
+		{
+			trackedAssets.insert(trackedAssets.length, Object);
+			return super.add(Object);
+		}
+	
+		function unloadAssets():Void
+		{
+			for (asset in trackedAssets)
+			{
+				remove(asset);
+			}
+		}
 }
 
 class SongMetadata

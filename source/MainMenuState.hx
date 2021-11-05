@@ -35,6 +35,7 @@ class MainMenuState extends MusicBeatState
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
+	var trackedAssets:Array<Dynamic> = [];
 	var camFollowPos:FlxObject;
 
 	override function create()
@@ -208,6 +209,8 @@ class MainMenuState extends MusicBeatState
 							{
 								var daChoice:String = optionShit[curSelected];
 
+								unloadAssets();
+
 								switch (daChoice)
 								{
 									case 'story_mode':
@@ -268,4 +271,17 @@ class MainMenuState extends MusicBeatState
 			}
 		});
 	}
+	override function add(Object:flixel.FlxBasic):flixel.FlxBasic
+		{
+			trackedAssets.insert(trackedAssets.length, Object);
+			return super.add(Object);
+		}
+	
+		function unloadAssets():Void
+		{
+			for (asset in trackedAssets)
+			{
+				remove(asset);
+			}
+		}
 }

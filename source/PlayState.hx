@@ -171,6 +171,7 @@ class PlayState extends MusicBeatState
 	var botplaySine:Float = 0;
 	var botplayTxt:FlxText;
 
+	var trackedAssets:Array<FlxBasic> = [];
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
 	public var camHUD:FlxCamera;
@@ -180,7 +181,7 @@ class PlayState extends MusicBeatState
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
-
+	
 	var halloweenBG:BGSprite;
 	var halloweenWhite:BGSprite;
 
@@ -281,6 +282,7 @@ class PlayState extends MusicBeatState
 		FlxCamera.defaultCameras = [camGame];
 		CustomFadeTransition.nextCamera = camOther;
 		//FlxG.cameras.setDefaultDrawTarget(camGame, true);
+		
 
 		persistentUpdate = true;
 		persistentDraw = true;
@@ -2462,6 +2464,8 @@ class PlayState extends MusicBeatState
 				vocals.stop();
 				FlxG.sound.music.stop();
 
+				unloadAssets();
+
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y, camFollowPos.x, camFollowPos.y, this));
 				for (tween in modchartTweens) {
 					tween.active = true;
@@ -3011,6 +3015,7 @@ class PlayState extends MusicBeatState
 					if(FlxTransitionableState.skipNextTransIn) {
 						CustomFadeTransition.nextCamera = null;
 					}
+					unloadAssets();
 					MusicBeatState.switchState(new StoryMenuState());
 
 					// if ()
@@ -3061,11 +3066,13 @@ class PlayState extends MusicBeatState
 						new FlxTimer().start(1.5, function(tmr:FlxTimer) {
 							cancelFadeTween();
 							//resetSpriteCache = true;
+							unloadAssets();
 							LoadingState.loadAndSwitchState(new PlayState());
 						});
 					} else {
 						cancelFadeTween();
 						//resetSpriteCache = true;
+						unloadAssets();
 						LoadingState.loadAndSwitchState(new PlayState());
 					}
 				}
@@ -3074,6 +3081,7 @@ class PlayState extends MusicBeatState
 			{
 				trace('WENT BACK TO FREEPLAY??');
 				cancelFadeTween();
+				unloadAssets();
 				CustomFadeTransition.nextCamera = camOther;
 				if(FlxTransitionableState.skipNextTransIn) {
 					CustomFadeTransition.nextCamera = null;
@@ -4241,6 +4249,20 @@ class PlayState extends MusicBeatState
 		return null;
 	}
 	#end
+
+	override function add(Object:FlxBasic):FlxBasic
+		{
+			trackedAssets.insert(trackedAssets.length, Object);
+			return super.add(Object);
+		}
+	
+		function unloadAssets():Void
+		{
+			for (asset in trackedAssets)
+			{
+				remove(asset);
+			}
+		}
 
 	var curLight:Int = 0;
 	var curLightEvent:Int = 0;
