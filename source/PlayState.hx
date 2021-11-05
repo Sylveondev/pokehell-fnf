@@ -230,6 +230,8 @@ class PlayState extends MusicBeatState
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
 
+	public static var changedMania:Bool = false;
+
 	public var inCutscene:Bool = false;
 	var songLength:Float = 0;
 
@@ -2205,6 +2207,8 @@ class PlayState extends MusicBeatState
 					strumAlpha = opponentStrums.members[daNote.noteData].alpha;
 				}
 
+				
+
 				strumX += daNote.offsetX;
 				strumY += daNote.offsetY;
 				strumAngle += daNote.offsetAngle;
@@ -2232,6 +2236,7 @@ class PlayState extends MusicBeatState
 				if(daNote.copyX) {
 					daNote.x = strumX + (daNote.isSustainNote ? add : 0);
 				}
+
 				if(daNote.isSustainNote) {
 					daNote.alpha = 0.6;
 				}
@@ -2678,6 +2683,7 @@ class PlayState extends MusicBeatState
 					case 2:
 						changeMania(maniaChange, 0);
 						changeMania(maniaChange, 1);
+						changeMania(0, 2);
 				}
 				trace('PLAYER' + players);
 				trace('MANIA ' + maniaChange);
@@ -4146,34 +4152,35 @@ class PlayState extends MusicBeatState
 
 	function changeMania(value:Int, player = 0)
 		{
-			if (mania == 3) {
-				var strumGroup:FlxTypedGroup<StrumNote> = playerStrums;
-				var scale:Float = 1;
-				if (player == 0)
-				{
-					newManiaVal = value;
-					Note.p1Sc = Note.scales[value];
-					scale = Note.p1Sc;
-					strumGroup = playerStrums;
-				}
-				else if (player == 1)
-				{
-					Note.p2Sc = Note.scales[value];
-					scale = Note.p2Sc;
-					strumGroup = opponentStrums;
-				}
-				else if (player > 1)
-					trace('player is incorrect: ' + player +'\nshould be 0 (opponent) or 1 (player)');
-		
-				strumGroup.forEach(function(spr:StrumNote)
-				{
-					spr.playAnim('static', true);
-					spr.setGraphicSize(Std.int(spr.width * scale));
-					spr.centerOffsets();
+				if (mania == 8) {
+					var strumGroup:FlxTypedGroup<StrumNote> = playerStrums;
 	
-					spr.movePos(spr, value, player);
-				});	
-				mania = value;
+					var scale:Float = 1;
+					if (player == 0)
+					{
+						Note.p1Scale = Note.swidths[value] * Note.scales[value];
+						strumGroup = opponentStrums;
+					}
+					else if (player == 1)
+					{
+						Note.p2Scale = Note.swidths[value] * Note.scales[value];
+						strumGroup = playerStrums;
+						mania = value;	//controls are constantly adjusted in keyshit function so running this would ajust them to corresponding key
+					}
+					else if (player == 2)
+					{
+						mania = value;
+					}
+	
+					if (player != 2) {
+						strumGroup.forEach(function(spr:StrumNote)
+							{
+								spr.playAnim('static', true);
+								spr.setGraphicSize(Std.int(Note.swidths[value] * Note.scales[value]));
+								spr.centerOffsets();
+								spr.movePos(spr, value, player);
+							});
+					}
 			}
 		}
 

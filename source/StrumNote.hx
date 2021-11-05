@@ -42,7 +42,7 @@ class StrumNote extends FlxSprite
 				resetAnim = 0;
 			}
 		}
-
+		//trace(width);
 		super.update(elapsed);
 	}
 
@@ -73,18 +73,18 @@ class StrumNote extends FlxSprite
 			
 			if (maniaSwitchPositions[value][spr.ID] == "NONE")
 			{
-				spr.alpha = 0.6;
-			}            
+				trace(maniaSwitchPositions[value][spr.ID]);
+				spr.alpha = 0;
+			}
 			else
 			{
-				spr.x += Note.swidths[value] * maniaSwitchPositions[value][spr.ID];
+				spr.x += spr.width * Note.scales[value] * maniaSwitchPositions[value][spr.ID];
 			}
 				
 			spr.x += 50;
 			spr.x += ((FlxG.width / 2) * player);
 			spr.x -= Note.posRest[value];
-	
+			
 			defaultX = spr.x;
-			trace(spr.x);
 		}
 }

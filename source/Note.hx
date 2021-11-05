@@ -32,6 +32,9 @@ class Note extends FlxSprite
 	public var eventVal1:String = '';
 	public var eventVal2:String = '';
 
+	public static var p1Scale:Float;
+	public static var p2Scale:Float;
+	public static var defWidth:Float;
 	public var colorSwap:ColorSwap;
 	public var inEditor:Bool = false;
 	private var earlyHitMult:Float = 0.5;
@@ -43,7 +46,7 @@ class Note extends FlxSprite
 	public static var RED_NOTE:Int = 3;
 
 	public static var scales:Array<Float> = [0.85, 0.8, 0.75, 0.7, 0.66, 0.6, 0.55, 0.50, 0.46];
-	public static var swidths:Array<Float> = [210, 190, 170, 160, 150, 120, 110, 95, 90];
+	public static var swidths:Array<Float> = [141, 124, 116, 108, 102, 93, 85, 77, 71];
 	public static var posRest:Array<Int> = [0, 0, 0, 0, 25, 35, 50, 60, 70];
 
 	// Lua shit
@@ -57,10 +60,6 @@ class Note extends FlxSprite
 	public var offsetY:Float = 0;
 	public var offsetAngle:Float = 0;
 	public var multAlpha:Float = 1;
-
-	public static var p1Sc:Float;
-	public static var p2Sc:Float;
-	public static var Sc:Float;
 
 	public var copyX:Bool = true;
 	public var copyY:Bool = true;
@@ -122,13 +121,6 @@ class Note extends FlxSprite
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false)
 	{
 		super();
-
-		if (PlayState.SONG.mania != 3)
-			{
-				Sc = scales[PlayState.SONG.mania];
-			}
-			p1Sc = Sc;
-			p1Sc = Sc;
 
 		var mania:Int = PlayState.SONG.mania;
 
@@ -211,6 +203,8 @@ class Note extends FlxSprite
 					// prevNote.setGraphicSize();
 				}
 			}
+
+			defWidth = width;
 	}
 
 	function reloadNote() {
@@ -233,6 +227,8 @@ class Note extends FlxSprite
 			setGraphicSize(ChartingState.GRID_SIZE, ChartingState.GRID_SIZE);
 			updateHitbox();
 		}
+
+		defWidth = width;
 	}
 
 	function loadNoteAnims() {
@@ -253,7 +249,7 @@ class Note extends FlxSprite
 			setGraphicSize(Std.int(ogW * scales[PlayState.SONG.mania]));
 		else
 			setGraphicSize(Std.int(ogW * scales[PlayState.SONG.mania]), Std.int(ogH * scales[0]));
-
+		defWidth = width;
 		updateHitbox();
 	}
 
@@ -299,7 +295,7 @@ class Note extends FlxSprite
 				if (strumTime <= Conductor.songPosition)
 					wasGoodHit = true;
 			}
-	
+			
 			if (tooLate)
 			{
 				if (alpha > 0.3)
