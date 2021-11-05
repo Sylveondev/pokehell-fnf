@@ -1656,7 +1656,7 @@ class PlayState extends MusicBeatState
 		return FlxSort.byValues(FlxSort.ASCENDING, Obj1[0] - earlyTime1, Obj2[0] - earlyTime2);
 	}
 
-	private function generateStaticArrows(player:Int):Void
+	private function generateStaticArrows(player:Int, isChangingMania:Bool = false):Void
 		{
 			for (i in 0...Main.ammo[mania])
 			{
@@ -1714,6 +1714,9 @@ class PlayState extends MusicBeatState
 				babyArrow.playAnim('static');
 				babyArrow.x += 50;
 				babyArrow.x += ((FlxG.width / 2) * player);
+				if (isChangingMania) {
+					babyArrow.x -= 115;
+				}
 				babyArrow.x -= Note.posRest[SONG.mania];
 
 				if (SONG.mania == 8 || SONG.mania == 7 || SONG.mania == 6)
@@ -4152,13 +4155,13 @@ class PlayState extends MusicBeatState
 
 	function changeMania(value:Int, player = 0)
 		{
-			playerStrums.forEach(function(spr:StrumNote) { spr.alpha = 0; });
-			opponentStrums.forEach(function(spr:StrumNote) { spr.alpha = 0; });
+			playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+			opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
 			playerStrums.clear();
 			opponentStrums.clear();
 			mania = value;
-			generateStaticArrows(0);
-			generateStaticArrows(1);
+			generateStaticArrows(0, true);
+			generateStaticArrows(1, true);
 		}
 
 	#if ACHIEVEMENTS_ALLOWED
