@@ -12,6 +12,7 @@ import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import flixel.FlxState;
+import flixel.FlxBasic;
 
 class MusicBeatState extends FlxUIState
 {
@@ -26,19 +27,29 @@ class MusicBeatState extends FlxUIState
 		return PlayerSettings.player1.controls;
 
 	override function create() {
-		#if MODS_ALLOWED
-		if(!ClientPrefs.imagesPersist) {
-			Paths.customImagesLoaded.clear();
-		}
-		#end
+		var skip:Bool = FlxTransitionableState.skipNextTransOut;
 		super.create();
 
 		// Custom made Trans out
-		if(!FlxTransitionableState.skipNextTransOut) {
+		if(!skip) {
 			openSubState(new CustomFadeTransition(1, true));
 		}
 		FlxTransitionableState.skipNextTransOut = false;
 	}
+	
+	#if (VIDEOS_ALLOWED && windows)
+	override public function onFocus():Void
+	{
+		FlxVideo.onFocus();
+		super.onFocus();
+	}
+	
+	override public function onFocusLost():Void
+	{
+		FlxVideo.onFocusLost();
+		super.onFocusLost();
+	}
+	#end
 
 	override function update(elapsed:Float)
 	{
