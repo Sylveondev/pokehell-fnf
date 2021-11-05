@@ -2230,6 +2230,9 @@ class PlayState extends MusicBeatState
 				if(daNote.copyX) {
 					daNote.x = strumX + (daNote.isSustainNote ? add : 0);
 				}
+				if(daNote.isSustainNote) {
+					daNote.alpha = 0.6;
+				}
 				if(daNote.copyAngle) {
 					daNote.angle = strumAngle;
 				}
