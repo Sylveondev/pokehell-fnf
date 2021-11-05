@@ -2679,6 +2679,9 @@ class PlayState extends MusicBeatState
 						changeMania(maniaChange, 0);
 						changeMania(maniaChange, 1);
 				}
+				trace('PLAYER' + players);
+				trace('MANIA ' + maniaChange);
+
 
 			case 'Add Camera Zoom':
 				if(ClientPrefs.camZooms && FlxG.camera.zoom < 1.35) {
@@ -4141,25 +4144,25 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function changeMania(value:Int, player = 1)
+	function changeMania(value:Int, player = 0)
 		{
-			if (SONG.mania == 2) {
+			if (mania == 3) {
 				var strumGroup:FlxTypedGroup<StrumNote> = playerStrums;
 				var scale:Float = 1;
-				if (player == 1)
+				if (player == 0)
 				{
 					newManiaVal = value;
 					Note.p1Sc = Note.scales[value];
 					scale = Note.p1Sc;
 					strumGroup = playerStrums;
 				}
-				else if (player == 2)
+				else if (player == 1)
 				{
 					Note.p2Sc = Note.scales[value];
 					scale = Note.p2Sc;
 					strumGroup = opponentStrums;
 				}
-				else
+				else if (player > 1)
 					trace('player is incorrect: ' + player +'\nshould be 0 (opponent) or 1 (player)');
 		
 				strumGroup.forEach(function(spr:StrumNote)
@@ -4170,6 +4173,7 @@ class PlayState extends MusicBeatState
 	
 					spr.movePos(spr, value, player);
 				});	
+				mania = value;
 			}
 		}
 

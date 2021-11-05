@@ -73,11 +73,11 @@ class StrumNote extends FlxSprite
 			
 			if (maniaSwitchPositions[value][spr.ID] == "NONE")
 			{
-				spr.alpha = 0;
+				spr.alpha = 0.6;
 			}            
 			else
 			{
-				spr.x += spr.width * maniaSwitchPositions[value][spr.ID];
+				spr.x += Note.swidths[value] * maniaSwitchPositions[value][spr.ID];
 			}
 				
 			spr.x += 50;
@@ -85,5 +85,6 @@ class StrumNote extends FlxSprite
 			spr.x -= Note.posRest[value];
 	
 			defaultX = spr.x;
+			trace(spr.x);
 		}
 }
