@@ -4152,8 +4152,8 @@ class PlayState extends MusicBeatState
 
 	function changeMania(value:Int, player = 0)
 		{
-			playerStrums.forEach(function(spr:StrumNote) { remove(spr); });
-			opponentStrums.forEach(function(spr:StrumNote) { remove(spr); });
+			playerStrums.forEach(function(spr:StrumNote) { spr.alpha = 0; });
+			opponentStrums.forEach(function(spr:StrumNote) { spr.alpha = 0; });
 			playerStrums.clear();
 			opponentStrums.clear();
 			mania = value;
