@@ -1658,7 +1658,7 @@ class PlayState extends MusicBeatState
 		return FlxSort.byValues(FlxSort.ASCENDING, Obj1[0] - earlyTime1, Obj2[0] - earlyTime2);
 	}
 
-	private function generateStaticArrows(player:Int):Void
+	private function generateStaticArrows(player:Int, isChangingMania:Bool = false):Void
 		{
 			for (i in 0...Main.ammo[mania])
 			{
@@ -1716,6 +1716,9 @@ class PlayState extends MusicBeatState
 				babyArrow.playAnim('static');
 				babyArrow.x += 50;
 				babyArrow.x += ((FlxG.width / 2) * player);
+				if (isChangingMania) {
+					babyArrow.x -= 115;
+				}
 				babyArrow.x -= Note.posRest[SONG.mania];
 
 				if (SONG.mania == 8 || SONG.mania == 7 || SONG.mania == 6)
@@ -2679,16 +2682,7 @@ class PlayState extends MusicBeatState
 				players = Std.parseInt(value2);
 				var maniaChange:Int = 3;
 				maniaChange = Std.parseInt(value1);
-				switch (players) {
-					case 0:
-						changeMania(maniaChange, 0);
-					case 1:
-						changeMania(maniaChange, 1);
-					case 2:
-						changeMania(maniaChange, 0);
-						changeMania(maniaChange, 1);
-						changeMania(0, 2);
-				}
+				changeMania(maniaChange, players);
 				trace('PLAYER' + players);
 				trace('MANIA ' + maniaChange);
 
@@ -4160,13 +4154,24 @@ class PlayState extends MusicBeatState
 
 	function changeMania(value:Int, player = 0)
 		{
-			playerStrums.forEach(function(spr:StrumNote) { spr.alpha = 0; });
-			opponentStrums.forEach(function(spr:StrumNote) { spr.alpha = 0; });
-			playerStrums.clear();
-			opponentStrums.clear();
-			mania = value;
-			generateStaticArrows(0);
-			generateStaticArrows(1);
+			if (player == 0) {
+				opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+				opponentStrums.clear();
+				generateStaticArrows(0, true);
+			} else if (player == 1) {
+				playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+				playerStrums.clear();
+				mania = value;
+				generateStaticArrows(1, true);
+			} else if (player == 2) {
+				opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+				opponentStrums.clear();
+				generateStaticArrows(0, true);
+				playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+				playerStrums.clear();
+				mania = value;
+				generateStaticArrows(1, true);
+			}
 		}
 
 	#if ACHIEVEMENTS_ALLOWED

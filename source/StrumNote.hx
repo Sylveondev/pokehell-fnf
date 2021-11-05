@@ -12,18 +12,6 @@ class StrumNote extends FlxSprite
 	public var resetAnim:Float = 0;
 	private var noteData:Int = 0;
 
-	public static var maniaSwitchPositions:Array<Dynamic> = [
-		["NONE", "NONE", "NONE", "NONE", 0, "NONE", "NONE", "NONE", "NONE"],
-        [0, "NONE", "NONE", 1, "NONE", "NONE", "NONE", "NONE", "NONE"],
-        [0, "NONE", "NONE", 2, 1, "NONE", "NONE", "NONE", "NONE"],
-        [0, 1, 2, 3, "NONE", "NONE", "NONE", "NONE", "NONE"],
-        [0, 4, 1, 2, "NONE", 3, "NONE", "NONE", 5],
-        [0, 1, 2, 3, 4, 5, 6, 7, 8],
-        [0, 1, 3, 4, 2, "NONE", "NONE", "NONE", "NONE"],
-        [0, 5, 1, 2, 3, 4, "NONE", "NONE", 6],
-        [0, 1, 2, 3, "NONE", 4, 5, 6, 7]
-    ];
-
 	public var defaultY:Float;
 	public var defaultX:Float;
 
@@ -64,27 +52,4 @@ class StrumNote extends FlxSprite
 			colorSwap.brightness = ClientPrefs.arrowHSV[noteData % 4][2] / 100;
 		}
 	}
-
-	public function movePos(spr:FlxSprite, value:Int, player:Int):Void 
-		{
-			spr.x = ClientPrefs.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X;
-			
-			spr.alpha = 1;
-			
-			if (maniaSwitchPositions[value][spr.ID] == "NONE")
-			{
-				trace(maniaSwitchPositions[value][spr.ID]);
-				spr.alpha = 0;
-			}
-			else
-			{
-				spr.x += spr.width * Note.scales[value] * maniaSwitchPositions[value][spr.ID];
-			}
-				
-			spr.x += 50;
-			spr.x += ((FlxG.width / 2) * player);
-			spr.x -= Note.posRest[value];
-			
-			defaultX = spr.x;
-		}
 }

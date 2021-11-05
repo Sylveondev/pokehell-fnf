@@ -39,6 +39,9 @@ class Note extends FlxSprite
 	public var inEditor:Bool = false;
 	private var earlyHitMult:Float = 0.5;
 
+	var ogW:Float;
+	var ogH:Float;
+
 	public static var swagWidth:Float = 160 * 0.7;
 	public static var PURP_NOTE:Int = 0;
 	public static var GREEN_NOTE:Int = 2;
@@ -95,7 +98,7 @@ class Note extends FlxSprite
 			switch(value) {
 				case 'Hurt Note':
 					ignoreNote = mustPress;
-					reloadNote('HURT');
+					reloadNote();
 					noteSplashTexture = 'HURTnoteSplashes';
 					colorSwap.hue = 0;
 					colorSwap.saturation = 0;
@@ -243,8 +246,8 @@ class Note extends FlxSprite
 			}
 		}
 
-		var ogW = width;
-		var ogH = height;
+		ogW = width;
+		ogH = height;
 		if (!isSustainNote)
 			setGraphicSize(Std.int(ogW * scales[PlayState.SONG.mania]));
 		else
@@ -300,6 +303,15 @@ class Note extends FlxSprite
 			{
 				if (alpha > 0.3)
 					alpha = 0.3;
+			}
+
+			if (!inEditor) {
+				ogW = width;
+				ogH = height;
+				if (!isSustainNote)
+					setGraphicSize(Std.int(ogW * scales[PlayState.mania] * 1.5));
+				else
+					setGraphicSize(Std.int(ogW * scales[PlayState.mania] * 1.5), Std.int(ogH * scales[0] * 1.5));
 			}
 		}
 	}
