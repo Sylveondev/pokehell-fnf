@@ -226,6 +226,28 @@ class PlayState extends MusicBeatState
 	public static var seenCutscene:Bool = false;
 	public static var deathCounter:Int = 0;
 
+	//week 7 related stuff
+	var tankRolling:FlxSprite;
+	var tankClouds:FlxSprite;
+	var tankSky:FlxSprite;
+	var tankmout:FlxSprite;
+	var tankmouwt:FlxSprite;
+	var tancuk:FlxSprite;
+	var smokeLeft:FlxSprite;
+	var smokeRight:FlxSprite;
+	var tanjcuk:FlxSprite;
+	var tankmouthh:FlxSprite;
+	var tankbop0:FlxSprite;
+	var tank1:FlxSprite;
+	var tank2:FlxSprite;
+	var tank3:FlxSprite;
+	var tank4:FlxSprite;
+	var tank5:FlxSprite;
+	var tankSpeed:Float = FlxG.random.float(5, 7);
+    var tankAngle:Float = FlxG.random.float(-90, 45);
+	var tankX:Int = 400;
+	//end (wow thats a lot)
+
 	public var defaultCamZoom:Float = 1.05;
 
 	// how big to stretch the pixel art assets
@@ -331,6 +353,8 @@ class PlayState extends MusicBeatState
 					curStage = 'school';
 				case 'thorns':
 					curStage = 'schoolEvil';
+				case 'ugh' | 'guns' | 'stress':
+					curStage = 'tank';
 				default:
 					curStage = 'stage';
 			}
@@ -635,6 +659,139 @@ class PlayState extends MusicBeatState
 					bg.antialiasing = false;
 					add(bg);
 				}
+
+				case 'tank':
+					defaultCamZoom = 0.9;
+				
+					tankSky = new FlxSprite(-400, -400).loadGraphic(Paths.image('tankSky', 'week7'));
+					tankSky.antialiasing = true;
+					tankSky.scrollFactor.set(0, 0);
+					tankSky.setGraphicSize(Std.int(tankSky.width * 2.7));
+					tankSky.active = false;
+					add(tankSky);
+				
+				
+					tankClouds = new FlxSprite(-700, -100).loadGraphic(Paths.image('tankClouds', 'week7'));
+					tankClouds.antialiasing = true;
+					tankClouds.scrollFactor.set(0.1, 0.1);
+					tankClouds.active = true;
+					tankClouds.velocity.x = FlxG.random.float(5, 15);
+					add(tankClouds);
+				
+					tankmout = new FlxSprite(-300, -20).loadGraphic(Paths.image('tankMountains', 'week7'));
+					tankmout.antialiasing = true;
+					tankmout.scrollFactor.set(0.2, 0.2);
+					tankmout.setGraphicSize(Std.int(tankmout.width * 1.1));
+					tankmout.active = false;
+					tankmout.updateHitbox();
+					add(tankmout);
+				
+					tankmouwt = new FlxSprite(-200, 0).loadGraphic(Paths.image('tankBuildings', 'week7'));
+					tankmouwt.antialiasing = true;
+					tankmouwt.scrollFactor.set(0.3, 0.3);
+					tankmouwt.setGraphicSize(Std.int(tankmouwt.width * 1.1));
+					tankmouwt.active = false;
+					add(tankmouwt);
+				
+					tancuk = new FlxSprite(-200, 0).loadGraphic(Paths.image('tankRuins', 'week7'));
+					tancuk.antialiasing = true;
+					tancuk.scrollFactor.set(0.35, 0.36);
+					tancuk.setGraphicSize(Std.int(tancuk.width * 1.1));
+					tancuk.active = false;
+					add(tancuk);
+				
+					smokeLeft = new FlxSprite(-200, -100).loadGraphic(Paths.image('smokeLeft', 'week7'));
+					smokeLeft.frames = Paths.getSparrowAtlas('smokeLeft', 'week7');
+					smokeLeft.animation.addByPrefix('idle', 'SmokeBlurLeft', 24, true);
+					smokeLeft.animation.play('idle');
+					smokeLeft.scrollFactor.set (0.4, 0.4);
+					smokeLeft.antialiasing = true;
+					add(smokeLeft);
+				
+					smokeRight = new FlxSprite(1100, -100).loadGraphic(Paths.image('smokeRight', 'week7'));
+					smokeRight.frames = Paths.getSparrowAtlas('smokeRight', 'week7');
+					smokeRight.animation.addByPrefix('idle', 'SmokeRight', 24, true);
+					smokeRight.animation.play('idle');
+					smokeRight.scrollFactor.set (0.4, 0.4);
+					smokeRight.antialiasing = true;
+					add(smokeRight);
+						
+
+					tanjcuk = new FlxSprite(100, 50);
+					tanjcuk.frames = Paths.getSparrowAtlas('tankWatchtower', 'week7');
+					tanjcuk.animation.addByPrefix('dancey', 'watchtower gradient color instance ', 24, false);
+					tanjcuk.animation.play('dancey');
+					tanjcuk.antialiasing = true;
+					tanjcuk.scrollFactor.set(0.5, 0.5);
+					tanjcuk.setGraphicSize(Std.int(tanjcuk.width * 1.2));
+					tanjcuk.antialiasing = true;
+					add(tanjcuk);
+				
+					tankRolling = new FlxSprite(300,300);
+					tankRolling.frames = Paths.getSparrowAtlas('tankRolling', 'week7');
+					tankRolling.animation.addByPrefix('idle', 'BG tank w lighting instance ', 24, true);
+					tankRolling.scrollFactor.set(0.5, 0.5);
+					tankRolling.antialiasing = true;
+					tankRolling.animation.play('idle');
+					add(tankRolling);
+
+					//tankmanRun = new FlxTypedGroup<TankmenRunners>();
+					//add(tankmanRun);
+				
+					tankmouthh = new FlxSprite(-420, -150).loadGraphic(Paths.image('tankGround', 'week7'));
+					tankmouthh.antialiasing = true;
+					tankmouthh.setGraphicSize(Std.int(tankmouthh.width * 1.15));
+					tankmouthh.active = false;
+					tankmouthh.updateHitbox();
+					add(tankmouthh);
+					
+					tankbop0 = new FlxSprite(-500, 650);
+					tankbop0.frames = Paths.getSparrowAtlas('tank0', 'week7');
+					tankbop0.animation.addByPrefix('danceya', 'fg tankhead far right instance', 24, false);
+					tankbop0.animation.play('danceya');
+					tankbop0.antialiasing = true;
+					add(tankbop0); 
+					
+					
+					tank1 = new FlxSprite(-300, 750);
+					tank1.frames = Paths.getSparrowAtlas('tank1', 'week7');
+					tank1.animation.addByPrefix('dietz', 'fg tankhead 5 instance ', 24, false);
+					tank1.animation.play('detz');
+					tank1.scrollFactor.set(2, 0.2);
+					tank1.antialiasing = true;
+					add(tank1);
+					
+					tank2 = new FlxSprite(450, 940);
+					tank2.frames = Paths.getSparrowAtlas('tank2', 'week7');
+					tank2.animation.addByPrefix('idle', 'foreground man 3 instance ', 24, false);
+					tank2.animation.play('idle');
+					tank2.scrollFactor.set(1.5, 1.5);
+					tank2.antialiasing = true;
+					add(tank2);
+					
+					tank4 = new FlxSprite(1300, 900);
+					tank4.frames = Paths.getSparrowAtlas('tank4', 'week7');
+					tank4.animation.addByPrefix('idle', 'fg tankman bobbin 3 instance ', 24, false);
+					tank4.animation.play('idle');
+					tank4.scrollFactor.set(1.5, 1.5);
+					tank4.antialiasing = true;
+					add(tank4);
+				
+					tank5 = new FlxSprite(1620, 700);
+					tank5.frames = Paths.getSparrowAtlas('tank5', 'week7');
+					tank5.animation.addByPrefix('idle', 'fg tankhead far right instance ', 24, false);
+					tank5.animation.play('idle');
+					tank5.scrollFactor.set(1.5, 1.5);
+					tank5.antialiasing = true;
+					add(tank5);
+					
+					tank3 = new FlxSprite(1300, 1200);
+					tank3.frames = Paths.getSparrowAtlas('tank3', 'week7');
+					tank3.animation.addByPrefix('idle', 'fg tankhead 4 instance ', 24, false);
+					tank3.animation.play('idle');
+					tank3.scrollFactor.set(1.5, 1.5);
+					tank3.antialiasing = true;
+					add(tank3);
 		}
 
 		if(isPixelStage) {
@@ -1991,6 +2148,8 @@ class PlayState extends MusicBeatState
 						heyTimer = 0;
 					}
 				}
+			case 'tank':
+				moveTank();
 		}
 
 		if(!inCutscene) {
@@ -3772,6 +3931,14 @@ class PlayState extends MusicBeatState
 		fastCarCanDrive = true;
 	}
 
+	function moveTank()
+        {
+                tankAngle += FlxG.elapsed * tankSpeed;
+                tankRolling.angle = tankAngle - 90 + 15;
+                tankRolling.x = tankX + 1500 * Math.cos(Math.PI / 180 * (1 * tankAngle + 180));
+                tankRolling.y = 1300 + 1100 * Math.sin(Math.PI / 180 * (1 * tankAngle + 180));
+        }
+
 	var carTimer:FlxTimer;
 	function fastCarDrive()
 	{
@@ -3969,6 +4136,18 @@ class PlayState extends MusicBeatState
 		if(lastBeatHit >= curBeat) {
 			trace('BEAT HIT: ' + curBeat + ', LAST HIT: ' + lastBeatHit);
 			return;
+		}
+		
+		if (curStage == 'tank') {
+			if (curBeat % 2 == 0) {
+				tanjcuk.animation.play('dancey');
+				tankbop0.animation.play('danceya');
+				tank1.animation.play('dietz');
+				tank2.animation.play('idle');
+				tank3.animation.play('idle');
+				tank4.animation.play('idle');
+				tank5.animation.play('idle');
+			}
 		}
 
 		if (generatedMusic)

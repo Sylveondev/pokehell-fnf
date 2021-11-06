@@ -118,6 +118,8 @@ class ChartingState extends MusicBeatState
 	var gridBG:FlxSprite;
 	var gridMult:Int = 2;
 
+	var diff:Int = 1;
+
 	var _song:SwagSong;
 	/*
 	 * WILL BE THE CURRENT / LAST PLACED NOTE
@@ -424,17 +426,13 @@ class ChartingState extends MusicBeatState
 				updateGrid();
 			});
 
-		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 70, 1, 1, 1, 339, 1);
+		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 80, 1, 1, 1, 339, 1);
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
 
 		var stepperSpeed:FlxUINumericStepper = new FlxUINumericStepper(10, stepperBPM.y + 35, 0.1, 1, 0.1, 10, 1);
 		stepperSpeed.value = _song.speed;
 		stepperSpeed.name = 'song_speed';
-
-		var stepperMania:FlxUINumericStepper = new FlxUINumericStepper(100, stepperSpeed.y, 1, 3, 0, 8, 1);
-		stepperMania.value = _song.mania;
-		stepperMania.name = 'mania';
 
 		#if MODS_ALLOWED
 		var directories:Array<String> = [Paths.mods('characters/'), Paths.mods(Paths.currentModDirectory + '/characters/'), Paths.getPreloadPath('characters/')];
@@ -537,6 +535,14 @@ class ChartingState extends MusicBeatState
 		if(skin == null) skin = '';
 		noteSkinInputText = new FlxUIInputText(player2DropDown.x, player2DropDown.y + 50, 150, skin, 8);
 		blockPressWhileTypingOn.push(noteSkinInputText);
+
+		var stepperDiffLoader:FlxUINumericStepper = new FlxUINumericStepper(100, stepperBPM.y, 1, 3, 0, 2, 1);
+		stepperDiffLoader.value = diff;
+		stepperDiffLoader.name = 'difficulty';
+
+		var stepperMania:FlxUINumericStepper = new FlxUINumericStepper(100, stepperSpeed.y, 1, 3, 0, 8, 1);
+		stepperMania.value = _song.mania;
+		stepperMania.name = 'mania';
 	
 		noteSplashesInputText = new FlxUIInputText(noteSkinInputText.x, noteSkinInputText.y + 35, 150, _song.splashSkin, 8);
 		blockPressWhileTypingOn.push(noteSplashesInputText);
@@ -565,12 +571,14 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(reloadNotesButton);
 		tab_group_song.add(noteSkinInputText);
 		tab_group_song.add(noteSplashesInputText);
+		tab_group_song.add(stepperDiffLoader);
 		tab_group_song.add(new FlxText(stepperBPM.x, stepperBPM.y - 15, 0, 'Song BPM:'));
 		tab_group_song.add(new FlxText(stepperSpeed.x, stepperSpeed.y - 15, 0, 'Song Speed:'));
 		tab_group_song.add(new FlxText(stepperMania.x, stepperMania.y - 15, 0, 'Mania:'));
 		tab_group_song.add(new FlxText(player2DropDown.x, player2DropDown.y - 15, 0, 'Opponent:'));
 		tab_group_song.add(new FlxText(player3DropDown.x, player3DropDown.y - 15, 0, 'Girlfriend:'));
 		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 15, 0, 'Boyfriend:'));
+		tab_group_song.add(new FlxText(stepperDiffLoader.x, stepperDiffLoader.y - 15, 0, 'Difficulty:'));
 		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 15, 0, 'Stage:'));
 		tab_group_song.add(new FlxText(noteSkinInputText.x, noteSkinInputText.y - 15, 0, 'Note Texture:'));
 		tab_group_song.add(new FlxText(noteSplashesInputText.x, noteSplashesInputText.y - 15, 0, 'Note Splashes Texture:'));
@@ -1048,6 +1056,10 @@ class ChartingState extends MusicBeatState
 				_song.mania = Std.int(nums.value);
 				reloadGridLayer();
 			}
+			else if (wname == 'difficulty')
+			{
+				diff = Std.int(nums.value);
+			}
 			else if (wname == 'note_susLength')
 			{
 				if(curSelectedNote != null && curSelectedNote[1] > -1) {
@@ -1394,7 +1406,9 @@ class ChartingState extends MusicBeatState
 		"\nSection: " + curSection +
 		"\n\nBeat: " + curBeat +
 		"\n\nStep: " + curStep +
-		"\n\nKeys: " + Main.ammo[_song.mania];
+		"\n\nKeys: " + Main.ammo[_song.mania] +
+		"\n" + CoolUtil.difficultyStuff[diff][1] +
+		"\n" + CoolUtil.difficultyStuff[diff][0];
 
 		var playedSound:Array<Bool> = [false, false, false, false]; //Prevents earrape GF ahegao sounds
 		curRenderedNotes.forEachAlive(function(note:Note) {
@@ -2060,7 +2074,7 @@ class ChartingState extends MusicBeatState
 
 	function loadJson(song:String):Void
 	{
-		PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
+		PlayState.SONG = Song.loadFromJson(song.toLowerCase() + CoolUtil.difficultyStuff[diff][1], song.toLowerCase());
 		MusicBeatState.resetState();
 	}
 
