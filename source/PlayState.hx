@@ -227,6 +227,7 @@ class PlayState extends MusicBeatState
 	public static var deathCounter:Int = 0;
 
 	//week 7 related stuff
+	var tankmanRun:FlxTypedGroup<ShotTankmen>;
 	var tankRolling:FlxSprite;
 	var tankClouds:FlxSprite;
 	var tankSky:FlxSprite;
@@ -661,6 +662,7 @@ class PlayState extends MusicBeatState
 				}
 
 				case 'tank':
+					GameOverSubstate.characterName = 'bf-holding-gf-dead';
 					defaultCamZoom = 0.9;
 				
 					tankSky = new FlxSprite(-400, -400).loadGraphic(Paths.image('tankSky', 'week7'));
@@ -734,9 +736,6 @@ class PlayState extends MusicBeatState
 					tankRolling.antialiasing = true;
 					tankRolling.animation.play('idle');
 					add(tankRolling);
-
-					//tankmanRun = new FlxTypedGroup<TankmenRunners>();
-					//add(tankmanRun);
 				
 					tankmouthh = new FlxSprite(-420, -150).loadGraphic(Paths.image('tankGround', 'week7'));
 					tankmouthh.antialiasing = true;
@@ -744,6 +743,9 @@ class PlayState extends MusicBeatState
 					tankmouthh.active = false;
 					tankmouthh.updateHitbox();
 					add(tankmouthh);
+
+					tankmanRun = new FlxTypedGroup<ShotTankmen>();
+					add(tankmanRun);
 					
 					tankbop0 = new FlxSprite(-500, 650);
 					tankbop0.frames = Paths.getSparrowAtlas('tank0', 'week7');
@@ -884,6 +886,10 @@ class PlayState extends MusicBeatState
 		startCharacterPos(gf);
 		gf.scrollFactor.set(0.95, 0.95);
 		gfGroup.add(gf);
+
+		if (gfVersion == 'pico-speaker') {
+			gf.x -= 100;
+		}
 
 		dad = new Character(0, 0, SONG.player2);
 		startCharacterPos(dad, true);
@@ -1175,7 +1181,9 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-
+				case 'ugh' | 'guns' | 'stress':
+					var leSong:String = SONG.song.toLowerCase();
+					startVideo(leSong + 'Cutscene');
 				default:
 					startCountdown();
 			}
@@ -1799,6 +1807,8 @@ class PlayState extends MusicBeatState
 		switch(event[2]) {
 			case 'Kill Henchmen': //Better timing so that the kill sound matches the beat intended
 				return 280; //Plays 280ms before the actual position
+			case 'Spawn Tankmen':
+				return 1500;	//1500 ms is what the timer is set to i guess
 		}
 		return 0;
 	}
@@ -2882,6 +2892,26 @@ class PlayState extends MusicBeatState
 				}
 				char.playAnim(value1, true);
 				char.specialAnim = true;
+
+			case 'Pico Speaker Shoot':
+				var shootInt:Int = 1;
+				shootInt = FlxG.random.int(1,4);
+				gf.playAnim('shoot' + shootInt, true);
+				gf.specialAnim = true;
+				trace('shoot' + shootInt);
+
+			case 'Spawn Tankmen':
+				if (FlxG.random.bool(65)) {	//pico isnt in genocide mode
+					if (FlxG.random.bool(50)) {
+						var tempTankman:ShotTankmen = new ShotTankmen(gf.x + 3400, gf.y + 80, true);
+						tankmanRun.add(tempTankman);
+					} else {
+						var tempTankman:ShotTankmen = new ShotTankmen(gf.x - 3400, gf.y + 80, false);
+						tankmanRun.add(tempTankman);
+					}
+				} else {
+					trace('tankmen didnt spawn *vine boom* *vine boom*');
+				}
 
 			case 'Camera Follow Pos':
 				var val1:Float = Std.parseFloat(value1);

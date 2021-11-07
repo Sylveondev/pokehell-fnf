@@ -305,6 +305,7 @@ class Note extends FlxSprite
 					alpha = 0.3;
 			}
 
+			/*
 			if (!inEditor) {
 				ogW = width;
 				ogH = height;
@@ -312,6 +313,6 @@ class Note extends FlxSprite
 					setGraphicSize(Std.int(ogW * scales[PlayState.mania] * 1.5));
 				else
 					setGraphicSize(Std.int(ogW * scales[PlayState.mania] * 1.5), Std.int(ogH * scales[0] * 1.5));
-			}
+			}*/
 		}
 	}
