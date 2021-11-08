@@ -63,6 +63,9 @@ class ChartingState extends MusicBeatState
 	private var noteTypeIntMap:Map<Int, String> = new Map<Int, String>();
 	private var noteTypeMap:Map<String, Null<Int>> = new Map<String, Null<Int>>();
 
+	private var maniaCamZoom:Array<Float> = [1, 1, 1, 1, 1, 1, 0.9, 0.8, 0.7];
+	private var bgScales:Array<Float> = [1, 1, 1, 1, 1, 1, 1.2, 1.3, 1.4];
+
 	var eventStuff:Array<Dynamic> =
 	[
 		['', "Nothing. Yep, that's right."],
@@ -121,6 +124,8 @@ class ChartingState extends MusicBeatState
 	var gridMult:Int = 2;
 
 	var diff:Int = 1;
+
+	var bg:FlxSprite;
 
 	var _song:SwagSong;
 	/*
@@ -181,7 +186,7 @@ class ChartingState extends MusicBeatState
 		DiscordClient.changePresence("Chart Editor", StringTools.replace(PlayState.SONG.song, '-', ' '));
 		#end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.scrollFactor.set();
 		bg.color = 0xFF222222;
 		add(bg);
@@ -1507,7 +1512,8 @@ class ChartingState extends MusicBeatState
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE + GRID_SIZE * Main.ammo[_song.mania] * 2, Std.int(GRID_SIZE * 32 * curZoom));
 		gridLayer.add(gridBG);
 
-		trace('zoom' + zoomList[curZoom]);
+		FlxG.camera.zoom = maniaCamZoom[_song.mania];
+		bg.scale.set(bgScales[_song.mania], bgScales[_song.mania]);
 
 		#if desktop
 		if(waveformEnabled != null) {
