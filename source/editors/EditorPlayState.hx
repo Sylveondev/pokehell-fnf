@@ -32,6 +32,7 @@ class EditorPlayState extends MusicBeatState
 
 	public var notes:FlxTypedGroup<Note>;
 	public var unspawnNotes:Array<Note> = [];
+	public static var daMania:Int = 3;
 
 	var generatedMusic:Bool = false;
 	var vocals:FlxSound;
@@ -193,11 +194,11 @@ class EditorPlayState extends MusicBeatState
 				if(songNotes[1] > -1) { //Real notes
 					var daStrumTime:Float = songNotes[0];
 					if(daStrumTime >= startPos) {
-						var daNoteData:Int = Std.int(songNotes[1] % 4);
+						var daNoteData:Int = Std.int(songNotes[1] % Main.ammo[daMania]);
 
 						var gottaHitNote:Bool = section.mustHitSection;
 
-						if (songNotes[1] > 3)
+						if (songNotes[1] > Main.ammo[daMania] - 1)
 						{
 							gottaHitNote = !section.mustHitSection;
 						}
@@ -492,25 +493,102 @@ class EditorPlayState extends MusicBeatState
 	}
 
 	function keyShit() {
-		// HOLDING
-		var up = controls.NOTE_UP;
-		var right = controls.NOTE_RIGHT;
-		var down = controls.NOTE_DOWN;
-		var left = controls.NOTE_LEFT;
+		var oneHold = [controls.B5];
+		var onePress = [controls.B5_P];
+		var oneRelease = [controls.B5_R];
 
-		var upP = controls.NOTE_UP_P;
-		var rightP = controls.NOTE_RIGHT_P;
-		var downP = controls.NOTE_DOWN_P;
-		var leftP = controls.NOTE_LEFT_P;
+		var twoHold = [controls.NOTE_LEFT, controls.NOTE_RIGHT];
+		var twoPress = [controls.NOTE_LEFT_P, controls.NOTE_RIGHT_P];
+		var twoRelease = [controls.NOTE_LEFT_R, controls.NOTE_LEFT_R];
 
-		var upR = controls.NOTE_UP_R;
-		var rightR = controls.NOTE_RIGHT_R;
-		var downR = controls.NOTE_DOWN_R;
-		var leftR = controls.NOTE_LEFT_R;
+		var threeHold = [controls.A3, controls.A4, controls.A5];
+		var threePress = [controls.A3_P, controls.A4_P, controls.A5_P];
+		var threeRelease = [controls.A3_R, controls.A4_R, controls.A5_R];
 
-		var controlArray:Array<Bool> = [leftP, downP, upP, rightP];
-		var controlReleaseArray:Array<Bool> = [leftR, downR, upR, rightR];
-		var controlHoldArray:Array<Bool> = [left, down, up, right];
+		var fourHold = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.NOTE_UP, controls.NOTE_RIGHT];
+		var fourPress = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
+		var fourRelease = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
+
+		var fiveHold = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.B5, controls.NOTE_UP, controls.NOTE_RIGHT];
+		var fivePress = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.B5_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
+		var fiveRelease = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.B5_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
+
+		var sixHold = [controls.A1, controls.A2, controls.A3, controls.A5, controls.A6, controls.A7];
+		var sixPress = [controls.A1_P, controls.A2_P, controls.A3_P, controls.A5_P, controls.A6_P, controls.A7_P];
+		var sixRelease = [controls.A1_R, controls.A2_R, controls.A3_R, controls.A5_R, controls.A6_R, controls.A7_R];
+
+		var sevenHold = [controls.A1, controls.A2, controls.A3, controls.A4, controls.A5, controls.A6, controls.A7];
+		var sevenPress = [controls.A1_P, controls.A2_P, controls.A3_P, controls.A4_P, controls.A5_P, controls.A6_P, controls.A7_P];
+		var sevenRelease = [controls.A1_R, controls.A2_R, controls.A3_R, controls.A4_R, controls.A5_R, controls.A6_R, controls.A7_R];
+
+		var eightHold = [controls.B1, controls.B2, controls.B3, controls.B4, controls.B6, controls.B7, controls.B8, controls.B9];
+		var eightPress = [controls.B1_P, controls.B2_P, controls.B3_P, controls.B4_P, controls.B6_P, controls.B7_P, controls.B8_P, controls.B9_P];
+		var eightRelease = [controls.B1_R, controls.B2_R, controls.B3_R, controls.B4_R, controls.B6_R, controls.B7_R, controls.B8_R, controls.B9_R];
+
+		var nineHold = [controls.B1, controls.B2, controls.B3, controls.B4, controls.B5, controls.B6, controls.B7, controls.B8, controls.B9];
+		var ninePress = [controls.B1_P, controls.B2_P, controls.B3_P, controls.B4_P, controls.B5_P, controls.B6_P, controls.B7_P, controls.B8_P, controls.B9_P];
+		var nineRelease = [controls.B1_R, controls.B2_R, controls.B3_R, controls.B4_R, controls.B5_R, controls.B6_R, controls.B7_R, controls.B8_R, controls.B9_R];
+
+		var controlArray:Array<Bool> = fourPress;
+		var controlReleaseArray:Array<Bool> = fourRelease;
+		var controlHoldArray:Array<Bool> = fourHold;
+
+		switch (daMania)
+		{
+			case 0:
+				controlArray = onePress;
+				controlReleaseArray = oneRelease;
+				controlHoldArray = oneHold;
+			case 1:
+				controlArray = twoPress;
+				controlReleaseArray = twoRelease;
+				controlHoldArray = twoHold;
+			case 2:
+				controlArray = threePress;
+				controlReleaseArray = threeRelease;
+				controlHoldArray = threeHold;
+			case 3:
+				controlArray = fourPress;
+				controlReleaseArray = fourRelease;
+				controlHoldArray = fourHold;
+			case 4:
+				controlArray = fivePress;
+				controlReleaseArray = fiveRelease;
+				controlHoldArray = fiveHold;
+			case 5:
+				controlArray = sixPress;
+				controlReleaseArray = sixRelease;
+				controlHoldArray = sixHold;
+			case 6:
+				controlArray = sevenPress;
+				controlReleaseArray = sevenRelease;
+				controlHoldArray = sevenHold;
+			case 7:
+				controlArray = eightPress;
+				controlReleaseArray = eightRelease;
+				controlHoldArray = eightHold;
+			case 8:
+				controlArray = ninePress;
+				controlReleaseArray = nineRelease;
+				controlHoldArray = nineHold;
+		}
+
+		var anyH = false;
+		var anyP = false;
+		var anyR = false;
+		for (i in 0...controlArray.length)
+		{
+			if (controlHoldArray[i])
+				anyH = true;
+			if (controlArray[i])
+				anyP = true;
+			if (controlReleaseArray[i])
+				anyR = true;
+		}
+
+		for (i in 0...controlArray.length) {
+			FlxG.watch.addQuick('key ' + i + ' pressed = ', controlArray[i]);
+		}
 
 		// FlxG.watch.addQuick('asdfa', upP);
 		if (generatedMusic)
@@ -691,7 +769,7 @@ class EditorPlayState extends MusicBeatState
 
 		if(daRating == 'sick' && !note.noteSplashDisabled)
 		{
-			spawnNoteSplashOnNote(note);
+			//spawnNoteSplashOnNote(note);
 		}
 		//songScore += score;
 
@@ -817,28 +895,70 @@ class EditorPlayState extends MusicBeatState
 		});
 	}
 
-	private function generateStaticArrows(player:Int):Void
-	{
-		for (i in 0...4)
+	private function generateStaticArrows(player:Int, isChangingMania:Bool = false):Void
 		{
-			// FlxG.log.add(i);
-			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X, strumLine.y, i);
-			babyArrow.alpha = 0;
-			FlxTween.tween(babyArrow, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
-
-			if (player == 1)
+			for (i in 0...Main.ammo[daMania])
 			{
-				playerStrums.add(babyArrow);
-			}
-			else
-			{
-				opponentStrums.add(babyArrow);
-			}
+				// FlxG.log.add(i);
+				var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X, strumLine.y, i);
+	
+				var skin:String = 'NOTE_assets';
+	
+				babyArrow.frames = Paths.getSparrowAtlas(skin);
+				babyArrow.animation.addByPrefix('green', 'arrowUP');
+				babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
+				babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
+				babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
+	
+				babyArrow.setGraphicSize(Std.int(babyArrow.width * Note.scales[daMania]));
+	
+				babyArrow.x += babyArrow.width * Note.scales[daMania] * i;
+						
+				var dirName = Main.gfxDir[Main.gfxHud[daMania][i]];
+				var pressName = Main.gfxLetter[Main.gfxIndex[daMania][i]];
+				babyArrow.animation.addByPrefix('static', 'arrow' + dirName);
+				babyArrow.animation.addByPrefix('pressed', pressName + ' press', 24, false);
+				babyArrow.animation.addByPrefix('confirm', pressName + ' confirm', 24, false);
+	
+				babyArrow.updateHitbox();
+				babyArrow.scrollFactor.set();
+	
+				//if (!isStoryMode)
+				//{
+				babyArrow.y -= 10;
+				babyArrow.alpha = 0;
+				FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
+				//}
+	
+				babyArrow.ID = i;
+	
+				if (player == 1)
+				{
+					playerStrums.add(babyArrow);
+				}
+				else
+				{
+					opponentStrums.add(babyArrow);
+				}
+	
+				babyArrow.playAnim('static');
+				babyArrow.x += 50;
+				babyArrow.x += ((FlxG.width / 2) * player);
+				if (isChangingMania) {
+					babyArrow.x -= 115;
+				}
+				babyArrow.x -= Note.posRest[daMania];
 
-			strumLineNotes.add(babyArrow);
-			//babyArrow.postAddedToGroup();
+				if (daMania == 8 || daMania == 7 || daMania == 6)
+					babyArrow.x -= 25;
+				//else
+					//babyArrow.x += 25;
+	
+				strumLineNotes.add(babyArrow);
+
+				trace('BABYARROW X = ' + babyArrow.x + ' | PLAYER ' + player);
+			}
 		}
-	}
 
 
 	// For Opponent's notes glow

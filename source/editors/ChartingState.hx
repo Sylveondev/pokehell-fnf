@@ -1255,6 +1255,7 @@ class ChartingState extends MusicBeatState
 			if (FlxG.keys.justPressed.ESCAPE)
 			{
 				autosaveSong();
+				EditorPlayState.daMania = _song.mania;
 				LoadingState.loadAndSwitchState(new editors.EditorPlayState(sectionStartTime()));
 			}
 			if (FlxG.keys.justPressed.ENTER)
@@ -1263,6 +1264,7 @@ class ChartingState extends MusicBeatState
 				FlxG.mouse.visible = false;
 				PlayState.SONG = _song;
 				FlxG.sound.music.stop();
+				EditorPlayState.daMania = _song.mania;
 				if(vocals != null) vocals.stop();
 
 				//if(_song.stage == null) _song.stage = stageDropDown.selectedLabel;

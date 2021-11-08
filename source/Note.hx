@@ -81,43 +81,30 @@ class Note extends FlxSprite
 	var daValueToAdd:Float;
 	private function set_texture(value:String):String {
 		if(texture != value) {
-			reloadNote();
+			reloadNote(value);
 		}
 		texture = value;
 		return value;
 	}
 
 	private function set_noteType(value:String):String {
-		/*
-		noteSplashTexture = PlayState.SONG.splashSkin;
-		colorSwap.hue = ClientPrefs.arrowHSV[noteData % 4][0] / 360;
-		colorSwap.saturation = ClientPrefs.arrowHSV[noteData % 4][1] / 100;
-		colorSwap.brightness = ClientPrefs.arrowHSV[noteData % 4][2] / 100;
-
 		if(noteData > -1 && noteType != value) {
 			switch(value) {
 				case 'Hurt Note':
 					ignoreNote = mustPress;
-					reloadNote();
-					noteSplashTexture = 'HURTnoteSplashes';
-					colorSwap.hue = 0;
-					colorSwap.saturation = 0;
-					colorSwap.brightness = 0;
-					if(isSustainNote) {
+					reloadNote('HURTNOTE_assets');
+
+					if(isSustainNote)
 						missHealth = 0.1;
-					} else {
+					else
 						missHealth = 0.3;
-					}
+
 					hitCausesMiss = true;
 				case 'No Animation':
 					noAnimation = true;
 			}
-			
+			noteType = value;
 		}
-		noteSplashHue = colorSwap.hue;
-		noteSplashSat = colorSwap.saturation;
-		noteSplashBrt = colorSwap.brightness;*/
-		noteType = value;
 		return value;
 	}
 
@@ -210,18 +197,20 @@ class Note extends FlxSprite
 			defWidth = width;
 	}
 
-	function reloadNote() {
-		var skin:String;
-
+	function reloadNote(texture:String = null) {
 		var animName:String = null;
 		if(animation.curAnim != null) {
 			animName = animation.curAnim.name;
 		}
 
-		if (isPixel)
-			frames = Paths.getSparrowAtlas('PIXEL_NOTE_assets');
-		else
-			frames = Paths.getSparrowAtlas('NOTE_assets');
+		if (texture == null) {
+			if (isPixel)
+				frames = Paths.getSparrowAtlas('PIXEL_NOTE_assets');
+			else
+				frames = Paths.getSparrowAtlas('NOTE_assets');
+		} else {
+			frames = Paths.getSparrowAtlas(texture);
+		}
 
 		loadNoteAnims();
 		animation.play(animName, true);

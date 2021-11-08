@@ -87,6 +87,7 @@ class FunkinLua {
 		set('stepCrochet', Conductor.stepCrochet);
 		set('songLength', FlxG.sound.music.length);
 		set('songName', PlayState.SONG.song);
+		set('mania', PlayState.SONG.mania);	//here ya go bois
 		set('startedCountdown', false);
 
 		set('isStoryMode', PlayState.isStoryMode);
@@ -119,7 +120,7 @@ class FunkinLua {
 		set('mustHitSection', false);
 		set('botPlay', PlayState.cpuControlled);
 
-		for (i in 0...4) {
+		for (i in 0...Main.ammo[PlayState.SONG.mania]) {
 			set('defaultPlayerStrumX' + i, 0);
 			set('defaultPlayerStrumY' + i, 0);
 			set('defaultOpponentStrumX' + i, 0);

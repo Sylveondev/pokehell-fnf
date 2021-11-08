@@ -2903,10 +2903,10 @@ class PlayState extends MusicBeatState
 			case 'Spawn Tankmen':
 				if (FlxG.random.bool(65)) {	//pico isnt in genocide mode
 					if (FlxG.random.bool(50)) {
-						var tempTankman:ShotTankmen = new ShotTankmen(gf.x + 3400, gf.y + 80, true);
+						var tempTankman:ShotTankmen = new ShotTankmen(gf.x + (((14 * ClientPrefs.framerate) * 2) + 300), gf.y + 80, true);
 						tankmanRun.add(tempTankman);
 					} else {
-						var tempTankman:ShotTankmen = new ShotTankmen(gf.x - 3400, gf.y + 80, false);
+						var tempTankman:ShotTankmen = new ShotTankmen(gf.x - (((14 * ClientPrefs.framerate) * 2) + 300), gf.y + 80, false);
 						tankmanRun.add(tempTankman);
 					}
 				} else {
@@ -3526,7 +3526,7 @@ class PlayState extends MusicBeatState
 			var nineHold = [controls.B1, controls.B2, controls.B3, controls.B4, controls.B5, controls.B6, controls.B7, controls.B8, controls.B9];
 			var ninePress = [controls.B1_P, controls.B2_P, controls.B3_P, controls.B4_P, controls.B5_P, controls.B6_P, controls.B7_P, controls.B8_P, controls.B9_P];
 			var nineRelease = [controls.B1_R, controls.B2_R, controls.B3_R, controls.B4_R, controls.B5_R, controls.B6_R, controls.B7_R, controls.B8_R, controls.B9_R];
-	
+
 			var controlArray:Array<Bool> = fourPress;
 			var controlReleaseArray:Array<Bool> = fourRelease;
 			var controlHoldArray:Array<Bool> = fourHold;
@@ -3583,162 +3583,101 @@ class PlayState extends MusicBeatState
 				if (controlReleaseArray[i])
 					anyR = true;
 			}
+
+			for (i in 0...controlArray.length) {
+				FlxG.watch.addQuick('key ' + i + ' pressed = ', controlArray[i]);
+			}
 	
 			// FlxG.watch.addQuick('asdfa', upP);
-			if (!boyfriend.stunned && generatedMusic)
-			{
-				if(anyH && !endingSong) {
-					notes.forEachAlive(function(daNote:Note) {
-						if(daNote.isSustainNote && controlHoldArray[daNote.noteData] && daNote.canBeHit && daNote.mustPress) {
+			if (!boyfriend.stunned && generatedMusic)		//turned back onto this - tposejank
+				{	//might enable thropies again (why the fuck do i say it like the old ps3 times wow)
+					// rewritten inputs???
+					notes.forEachAlive(function(daNote:Note)
+					{
+						// hold note functions
+						if (daNote.isSustainNote && controlHoldArray[daNote.noteData] && daNote.canBeHit 
+						&& daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit) {
 							goodNoteHit(daNote);
 						}
 					});
-					
-					#if ACHIEVEMENTS_ALLOWED
-					var achieve:Int = checkForAchievement([11]);
-					if(achieve > -1) {
-						startAchievement(achieve);
-					}
-					#end
-				} else if(boyfriend.holdTimer > Conductor.stepCrochet * 0.001 * boyfriend.singDuration && boyfriend.animation.curAnim.name.startsWith('sing')
-				&& !boyfriend.animation.curAnim.name.endsWith('miss')) {
-					boyfriend.dance();
-				}
-	
-				if(anyP && !endingSong) {
-					if(!ClientPrefs.ghostTapping)
-						boyfriend.holdTimer = 0;
-	
-					var canMiss:Bool = !ClientPrefs.ghostTapping;
-	
-					var notesHitArray:Array<Note> = [];
-					var notesDatas:Array<Int> = [];
-					var dupeNotes:Array<Note> = [];
-					notes.forEachAlive(function(daNote:Note) {
-						if (!daNote.isSustainNote && daNote.canBeHit && daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit) {
-							if (notesDatas.indexOf(daNote.noteData) != -1) {
-								for (i in 0...notesHitArray.length) {
-									var prevNote = notesHitArray[i];
-									if (prevNote.noteData == daNote.noteData && Math.abs(daNote.strumTime - prevNote.strumTime) < 10) {
-										dupeNotes.push(daNote);
-									} else if (prevNote.noteData == daNote.noteData && daNote.strumTime < prevNote.strumTime) {
-										notesHitArray.remove(prevNote);
-										notesHitArray.push(daNote);
+		
+					if ((controlHoldArray.contains(true) || controlArray.contains(true)) && !endingSong) {
+						var canMiss:Bool = !ClientPrefs.ghostTapping;
+						if (controlArray.contains(true)) {
+							for (i in 0...controlArray.length) {
+								// heavily based on my own code LOL if it aint broke dont fix it
+								var pressNotes:Array<Note> = [];
+								var notesDatas:Array<Int> = [];
+								var notesStopped:Bool = false;
+		
+								var sortedNotesList:Array<Note> = [];
+								notes.forEachAlive(function(daNote:Note)
+								{
+									if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate 
+									&& !daNote.wasGoodHit && daNote.noteData == i) {
+										sortedNotesList.push(daNote);
+										notesDatas.push(daNote.noteData);
+										canMiss = true;
+									}
+								});
+								sortedNotesList.sort((a, b) -> Std.int(a.strumTime - b.strumTime));
+		
+								if (sortedNotesList.length > 0) {
+									for (epicNote in sortedNotesList)
+									{
+										for (doubleNote in pressNotes) {
+											if (Math.abs(doubleNote.strumTime - epicNote.strumTime) < 10) {
+												doubleNote.kill();
+												notes.remove(doubleNote, true);
+												doubleNote.destroy();
+											} else
+												notesStopped = true;
+										}
+											
+										// eee jack detection before was not super good
+										if (controlArray[epicNote.noteData] && !notesStopped) {
+											goodNoteHit(epicNote);
+											pressNotes.push(epicNote);
+										}
+		
 									}
 								}
-							} else {
-								notesHitArray.push(daNote);
-								notesDatas.push(daNote.noteData);
-							}
-							canMiss = true;
-						}
-					});
-	
-					for (i in 0...dupeNotes.length) {
-						var daNote = dupeNotes[i];
-						daNote.kill();
-						notes.remove(daNote, true);
-						daNote.destroy();
-					}
-					notesHitArray.sort(sortByShit);
-	
-					var alreadyHit:Array<Int> = new Array<Int>();
-					/*
-					if (perfectMode)
-						goodNoteHit(notesHitArray[0]);
-					else */if (notesHitArray.length > 0) {
-						for (i in 0...controlArray.length) {
-							if(controlArray[i] && notesDatas.indexOf(i) == -1) {
-								/*if(canMiss) {
-									noteMiss(i);
-									callOnLuas('noteMissPress', [i]);
-									break;
-								}*/ 
-								// fuck ur anti mash
+								else if (canMiss) 
+									ghostMiss(controlArray[i], i, true);
+		
+								// I dunno what you need this for but here you go
+								//									- Shubs
+		
+								// Shubs, this is for the "Just the Two of Us" achievement lol
+								//									- Shadow Mario
+								if (!keysPressed[i] && controlArray[i]) 
+									keysPressed[i] = true;
 							}
 						}
-						for (i in 0...notesHitArray.length) {
-							var daNote = notesHitArray[i];
-							if(controlArray[daNote.noteData] && !alreadyHit.contains(daNote.noteData)) {
-								alreadyHit.push(daNote.noteData);
-								goodNoteHit(daNote);
-								if(ClientPrefs.ghostTapping)
-									boyfriend.holdTimer = 0;
-							}
+		
+						#if ACHIEVEMENTS_ALLOWED
+						var achieve:String = checkForAchievement(['oversinging']);
+						if (achieve != null) {
+							startAchievement(achieve);
 						}
-					} else if(canMiss) {
-						badNoteHit();
+						#end
+					} else if (boyfriend.holdTimer > Conductor.stepCrochet * 0.001 * boyfriend.singDuration && boyfriend.animation.curAnim.name.startsWith('sing')
+					&& !boyfriend.animation.curAnim.name.endsWith('miss'))
+						boyfriend.dance();
+				}
+		
+				playerStrums.forEach(function(spr:StrumNote)
+				{
+					if(controlArray[spr.ID] && spr.animation.curAnim.name != 'confirm') {
+						spr.playAnim('pressed');
+						spr.resetAnim = 0;
 					}
-	
-					for (i in 0...keysPressed.length) {
-						if(!keysPressed[i] && controlArray[i]) keysPressed[i] = true;
+					if(controlReleaseArray[spr.ID]) {
+						spr.playAnim('static');
+						spr.resetAnim = 0;
 					}
-				}
+				});
 			}
-	
-			playerStrums.forEach(function(spr:StrumNote)
-			{
-				if(controlArray[spr.ID] && spr.animation.curAnim.name != 'confirm') {
-					spr.playAnim('pressed');
-					spr.resetAnim = 0;
-				}
-				if(controlReleaseArray[spr.ID]) {
-					spr.playAnim('static');
-					spr.resetAnim = 0;
-				}
-			});
-		}
-
-		function badNoteHit():Void {
-			var sP = [
-				controls.A1_P,
-				controls.A2_P,
-				controls.A3_P,
-				controls.A5_P,
-				controls.A6_P,
-				controls.A7_P
-			];
-	
-			var vP = [
-				controls.A1_P,
-				controls.A2_P,
-				controls.A3_P,
-				controls.A4_P,
-				controls.A5_P,
-				controls.A6_P,
-				controls.A7_P
-			];
-	
-			var nP = [
-				controls.B1_P,
-				controls.B2_P,
-				controls.B3_P,
-				controls.B4_P,
-				controls.B5_P,
-				controls.B6_P,
-				controls.B7_P,
-				controls.B8_P,
-				controls.B9_P
-			];
-	
-			var controlArray:Array<Bool> = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
-	
-			switch (mania)
-			{
-				case 1:
-					controlArray = sP;
-				case 2:
-					controlArray = vP;
-				case 3:
-					controlArray = nP;
-			}
-			for (i in 0...controlArray.length) {
-				if(controlArray[i]) {
-					noteMiss(i);
-					//callOnLuas('noteMissPress', [i]);
-				}
-			}
-		}
 
 	function ghostMiss(statement:Bool = false, direction:Int = 0, ?ghostMiss:Bool = false) {
 		if (statement) {
@@ -3752,7 +3691,7 @@ class PlayState extends MusicBeatState
 			if (!boyfriend.stunned)
 			{
 				health -= 0.04;
-				if (combo > 5 && gf.animOffsets.exists('sad'))
+				if (combo > 5 && gf.animOffsets.exists('sad'))		//pico never sad when bf miss so fuck yea
 				{
 					gf.playAnim('sad');
 				}
@@ -3816,9 +3755,10 @@ class PlayState extends MusicBeatState
 		{
 			if (!note.wasGoodHit)
 			{
+				if(cpuControlled && (note.ignoreNote || note.hitCausesMiss)) return;	//fuck you you cant press this note dumbass
+
 				switch(note.noteType) {
 					case 'Hurt Note': //Hurt note
-						if(cpuControlled) return;
 	
 						if(!boyfriend.stunned)
 						{
@@ -3828,8 +3768,7 @@ class PlayState extends MusicBeatState
 								--songMisses;
 								RecalculateRating();
 								if(!note.isSustainNote) {
-									health -= 0.26; //0.26 + 0.04 = -0.3 (-15%) of HP if you hit a hurt note
-									//spawnNoteSplashOnNote(note);
+									health -= 0.26;
 								}
 								else health -= 0.06; //0.06 + 0.04 = -0.1 (-5%) of HP if you hit a hurt sustain note
 		
@@ -3855,32 +3794,31 @@ class PlayState extends MusicBeatState
 				if (!note.isSustainNote)
 				{
 					popUpScore(note);
-					combo += 1;
+					if (combo < 9999) combo += 1;	//who the fuck put 9999+ notes
+				}
+
+				if (!note.noAnimation) {
+					if(note.noteType == 'Hey!') {
+						boyfriend.playAnim('hey', true);
+						boyfriend.specialAnim = true;
+						boyfriend.heyTimer = 0.6;
+		
+						gf.playAnim('cheer', true);
+						gf.specialAnim = true;
+						gf.heyTimer = 0.6;
+					} else {
+						var daAlt = '';
+						if(note.noteType == 'Alt Animation') daAlt = '-alt';
+						var animToPlay:String = '';
+						animToPlay = 'sing' + Main.charDir[Main.gfxHud[mania][Std.int(Math.abs(note.noteData))]];
+						boyfriend.playAnim(animToPlay + daAlt, true);
+					}
 				}
 	
 				if (note.noteData >= 0)
 					health += 0.023;
 				else
 					health += 0.004;
-	
-				if(note.noteType == 'Hey!') {
-					boyfriend.playAnim('hey', true);
-					boyfriend.specialAnim = true;
-					boyfriend.heyTimer = 0.6;
-	
-					gf.playAnim('cheer', true);
-					gf.specialAnim = true;
-					gf.heyTimer = 0.6;
-				} else {
-					var daAlt = '';
-					if(note.noteType == 'Alt Animation') daAlt = '-alt';
-	
-					var animToPlay:String = '';
-	
-					animToPlay = 'sing' + Main.charDir[Main.gfxHud[mania][Std.int(Math.abs(note.noteData))]];
-		
-					boyfriend.playAnim(animToPlay + daAlt, true);
-				}
 	
 				if(cpuControlled) {
 					var time:Float = 0.15;
@@ -3923,32 +3861,11 @@ class PlayState extends MusicBeatState
 		}
 
 	function spawnNoteSplashOnNote(note:Note) {
-		/*
-		if(ClientPrefs.noteSplashes && note != null) {
-			var strum:StrumNote = playerStrums.members[note.noteData];
-			if(strum != null) {
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
-			}
-		}*/
+		trace('amonger');
 	}
 
 	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		/*var skin:String = 'noteSplashes';
-		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
-		
-		var hue:Float = ClientPrefs.arrowHSV[data % 4][0] / 360;
-		var sat:Float = ClientPrefs.arrowHSV[data % 4][1] / 100;
-		var brt:Float = ClientPrefs.arrowHSV[data % 4][2] / 100;
-		if(note != null) {
-			skin = note.noteSplashTexture;
-			hue = note.noteSplashHue;
-			sat = note.noteSplashSat;
-			brt = note.noteSplashBrt;
-		}
-
-		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x, y, data, skin, hue, sat, brt);
-		grpNoteSplashes.add(splash);*/
+		trace('amonger');
 	}
 
 	var fastCarCanDrive:Bool = true;

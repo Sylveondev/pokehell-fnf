@@ -77,9 +77,15 @@ class CharacterEditorState extends MusicBeatState
 	var cameraFollowPointer:FlxSprite;
 	var healthBarBG:FlxSprite;
 
+	var bgSong:FlxUIInputText;
+	var reloadBgSong:FlxButton;
+	var songPlaying:String;
+
+
 	override function create()
 	{
-		//FlxG.sound.playMusic(Paths.music('breakfast'), 0.5);
+		FlxG.sound.playMusic(Paths.music('breakfast'), 0.5);	//whoever did this youre a piece of shit.
+		songPlaying = 'breakfast';
 
 		camEditor = new FlxCamera();
 		camHUD = new FlxCamera();
@@ -117,6 +123,18 @@ class CharacterEditorState extends MusicBeatState
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
 		healthBarBG.cameras = [camHUD];
+
+		bgSong = new FlxUIInputText(640, 10, 70, songPlaying, 8);
+		add(bgSong);
+		bgSong.cameras = [camHUD];
+
+		reloadBgSong = new FlxButton(bgSong.x, bgSong.y + 15, "Reload BG Song", function()
+			{
+				songPlaying = bgSong.text;
+				reloadSong(bgSong.text);
+			});
+		add(reloadBgSong);
+		reloadBgSong.cameras = [camHUD];
 
 		leHealthIcon = new HealthIcon(char.healthIcon, false);
 		leHealthIcon.y = FlxG.height - 150;
@@ -1155,5 +1173,9 @@ class CharacterEditorState extends MusicBeatState
 
 		var text:String = prefix + Clipboard.text.replace('\n', '');
 		return text;
+	}
+
+	function reloadSong(song:String) {
+		FlxG.sound.playMusic(Paths.music(song));
 	}
 }
