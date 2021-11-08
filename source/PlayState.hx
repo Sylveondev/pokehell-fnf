@@ -4284,7 +4284,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function changeMania(value:Int, player = 0)
+	public function changeMania(value:Int, player = 0)
 		{
 			opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
 			opponentStrums.clear();
@@ -4384,9 +4384,11 @@ class PlayState extends MusicBeatState
 	
 		function unloadAssets():Void
 		{
-			for (asset in trackedAssets)
-			{
-				remove(asset);
+			if (ClientPrefs.optimization) {
+				for (asset in trackedAssets)
+					{
+						remove(asset);
+					}
 			}
 		}
 

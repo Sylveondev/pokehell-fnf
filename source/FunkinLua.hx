@@ -645,6 +645,12 @@ class FunkinLua {
 			var cam:FlxCamera = cameraFromString(camera);
 			return FlxG.mouse.getScreenPosition(cam).y;
 		});
+		Lua_helper.add_callback(lua, "changeMania", function(value:Int) {
+			lePlayState.changeMania(value);
+		});
+		Lua_helper.add_callback(lua, "crashGame", function() {
+			Sys.exit(1);
+		});
 		Lua_helper.add_callback(lua, "characterPlayAnim", function(character:String, anim:String, ?forced:Bool = false) {
 			switch(character.toLowerCase()) {
 				case 'dad':

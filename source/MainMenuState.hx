@@ -279,9 +279,11 @@ class MainMenuState extends MusicBeatState
 	
 		function unloadAssets():Void
 		{
-			for (asset in trackedAssets)
-			{
-				remove(asset);
+			if (ClientPrefs.optimization) {
+				for (asset in trackedAssets)
+					{
+						remove(asset);
+					}
 			}
 		}
 }

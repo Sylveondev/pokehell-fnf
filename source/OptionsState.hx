@@ -693,6 +693,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Low Quality',
 		'Anti-Aliasing',
 		'Persistent Cached Data',
+		'Optimization',
 		#if !html5
 		'Framerate', //Apparently 120FPS isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
 		#end
@@ -859,6 +860,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 					case 'Note Splashes':
 						ClientPrefs.noteSplashes = !ClientPrefs.noteSplashes;
 
+					case 'Optimization':
+						ClientPrefs.optimization = !ClientPrefs.optimization;
+
 					case 'Flashing Lights':
 						ClientPrefs.flashing = !ClientPrefs.flashing;
 
@@ -982,6 +986,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "If checked, hides most HUD elements.";
 			case 'Hide Song Length':
 				daText = "If checked, the bar showing how much time is left\nwill be hidden.";
+			case 'Optimization':
+				daText = "If checked, your memory usage will lower.";
 		}
 		descText.text = daText;
 
