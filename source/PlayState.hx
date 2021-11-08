@@ -976,10 +976,10 @@ class PlayState extends MusicBeatState
 		add(strumLineNotes);
 		add(grpNoteSplashes);
 
-		/*
+		
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
-		splash.alpha = 0.0;*/
+		splash.alpha = 0.0;
 
 		opponentStrums = new FlxTypedGroup<StrumNote>();
 		playerStrums = new FlxTypedGroup<StrumNote>();
@@ -1722,6 +1722,8 @@ class PlayState extends MusicBeatState
 					swagNote.noteType = songNotes[3];
 					if(!Std.isOfType(songNotes[3], String)) swagNote.noteType = editors.ChartingState.noteTypeList[songNotes[3]]; //Backward compatibility + compatibility with Week 7 charts
 					swagNote.scrollFactor.set();
+
+					trace(daNoteData);
 
 					var susLength:Float = swagNote.sustainLength;
 
@@ -2489,17 +2491,7 @@ class PlayState extends MusicBeatState
 						}
 
 						var animToPlay:String = '';
-						switch (Math.abs(daNote.noteData))
-						{
-							case 0:
-								animToPlay = 'singLEFT';
-							case 1:
-								animToPlay = 'singDOWN';
-							case 2:
-								animToPlay = 'singUP';
-							case 3:
-								animToPlay = 'singRIGHT';
-						}
+						animToPlay = 'sing' + Main.charDir[Main.gfxHud[mania][Std.int(Math.abs(daNote.noteData))]];
 						if(daNote.noteType == 'GF Sing') {
 							gf.playAnim(animToPlay + altAnim, true);
 							gf.holdTimer = 0;
@@ -2516,7 +2508,7 @@ class PlayState extends MusicBeatState
 					if(daNote.isSustainNote && !daNote.animation.curAnim.name.endsWith('end')) {
 						time += 0.15;
 					}
-					StrumPlayAnim(true, Std.int(Math.abs(daNote.noteData)) % 4, time);
+					StrumPlayAnim(true, Std.int(Math.abs(daNote.noteData)) % Main.ammo[mania], time);
 					daNote.hitByOpponent = true;
 
 					callOnLuas('opponentNoteHit', [notes.members.indexOf(daNote), Math.abs(daNote.noteData), daNote.noteType, daNote.isSustainNote]);
@@ -3345,10 +3337,12 @@ class PlayState extends MusicBeatState
 			score = 200;
 		}
 
-		if(daRating == 'sick' && !note.noteSplashDisabled)
+		if(daRating == 'sick')
 		{
-			//spawnNoteSplashOnNote(note);
+			spawnNoteSplashOnNote(note);
 		}
+
+		trace(daRating);
 
 		if(!practiceMode && !cpuControlled) {
 			songScore += score;
@@ -3753,6 +3747,11 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 		{
+
+			if (!note.isSustainNote) {
+				spawnNoteSplashOnNote(note);
+			}
+			
 			if (!note.wasGoodHit)
 			{
 				if(cpuControlled && (note.ignoreNote || note.hitCausesMiss)) return;	//fuck you you cant press this note dumbass
@@ -3861,11 +3860,18 @@ class PlayState extends MusicBeatState
 		}
 
 	function spawnNoteSplashOnNote(note:Note) {
-		trace('amonger');
+		if(ClientPrefs.noteSplashes && note != null) {
+			var strum:StrumNote = playerStrums.members[note.noteData];
+			if(strum != null) {
+				spawnNoteSplash(strum.x, strum.y, note.noteData);
+			}
+		}
 	}
 
-	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		trace('amonger');
+	public function spawnNoteSplash(x:Float, y:Float, data:Int) {
+		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
+		splash.setupNoteSplash(x, y, data);
+		grpNoteSplashes.add(splash);
 	}
 
 	var fastCarCanDrive:Bool = true;
