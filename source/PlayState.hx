@@ -3751,7 +3751,7 @@ class PlayState extends MusicBeatState
 			if (!note.isSustainNote) {
 				spawnNoteSplashOnNote(note);
 			}
-			
+
 			if (!note.wasGoodHit)
 			{
 				if(cpuControlled && (note.ignoreNote || note.hitCausesMiss)) return;	//fuck you you cant press this note dumbass
@@ -3870,7 +3870,7 @@ class PlayState extends MusicBeatState
 
 	public function spawnNoteSplash(x:Float, y:Float, data:Int) {
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x, y, data);
+		splash.setupNoteSplash(x, y, data, false);
 		grpNoteSplashes.add(splash);
 	}
 

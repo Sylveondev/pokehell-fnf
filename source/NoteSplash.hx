@@ -1,5 +1,6 @@
 package;
 
+import editors.EditorPlayState;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -19,19 +20,23 @@ class NoteSplash extends FlxSprite
 
 	var mania:Int;
 
-	public function new(x:Float = 0, y:Float = 0, noteData:Int = 0) {
+	public function new(x:Float = 0, y:Float = 0, noteData:Int = 0, inTester:Bool = false) {
 		super(x, y);
 
 		ogW = width;
 		ogH = height;
 
-		mania = PlayState.SONG.mania;
+		if (inTester) {
+			mania = EditorPlayState.daMania;
+		} else {
+			mania = PlayState.SONG.mania;
+		}
 
-		setupNoteSplash(x, y, noteData);
+		setupNoteSplash(x, y, noteData, inTester);
 		antialiasing = ClientPrefs.globalAntialiasing;
 	}
 
-	public function setupNoteSplash(x:Float, y:Float, noteData:Int = 0) {
+	public function setupNoteSplash(x:Float, y:Float, noteData:Int = 0, inTester:Bool = false) {
 		frames = Paths.getSparrowAtlas('noteSplashes');
 		for (i in 0...9) {
 			animation.addByPrefix(Main.gfxLetter[i], 'note splash ' + Main.gfxLetter[i], 24, false);
@@ -42,7 +47,11 @@ class NoteSplash extends FlxSprite
 		ogW = width;
 		ogH = height;
 
-		mania = PlayState.SONG.mania;
+		if (inTester) {
+			mania = EditorPlayState.daMania;
+		} else {
+			mania = PlayState.SONG.mania;
+		}
 
 		setGraphicSize(Std.int(ogW * scales[PlayState.SONG.mania]), Std.int(ogH * scales[PlayState.SONG.mania]));
 

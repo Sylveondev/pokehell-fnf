@@ -85,7 +85,7 @@ class EditorPlayState extends MusicBeatState
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
 		add(grpNoteSplashes);
 
-		var splash:NoteSplash = new NoteSplash(100, 100, 0);
+		var splash:NoteSplash = new NoteSplash(100, 100, 0, true);
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.0;
 		
@@ -667,17 +667,16 @@ class EditorPlayState extends MusicBeatState
 	var combo:Int = 0;
 	function goodNoteHit(note:Note):Void
 	{
+		if (!note.isSustainNote) {
+			spawnNoteSplashOnNote(note);
+		}
+
 		if (!note.wasGoodHit)
 		{
 			switch(note.noteType) {
 				case 'Hurt Note': //Hurt note
 					noteMiss(note.noteData);
 					--songMisses;
-					if(!note.isSustainNote) {
-						if(!note.noteSplashDisabled) {
-							spawnNoteSplashOnNote(note);
-						}
-					}
 
 					note.wasGoodHit = true;
 					vocals.volume = 0;
@@ -767,9 +766,9 @@ class EditorPlayState extends MusicBeatState
 			//score = 200;
 		}
 
-		if(daRating == 'sick' && !note.noteSplashDisabled)
+		if(daRating == 'sick')
 		{
-			//spawnNoteSplashOnNote(note);
+			spawnNoteSplashOnNote(note);
 		}
 		//songScore += score;
 
@@ -982,29 +981,15 @@ class EditorPlayState extends MusicBeatState
 		if(ClientPrefs.noteSplashes && note != null) {
 			var strum:StrumNote = playerStrums.members[note.noteData];
 			if(strum != null) {
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
+				spawnNoteSplash(strum.x, strum.y, note.noteData);
 			}
 		}
 	}
 
-	function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		/*
-		var skin:String = 'noteSplashes';
-		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
-		
-		var hue:Float = ClientPrefs.arrowHSV[data % 4][0] / 360;
-		var sat:Float = ClientPrefs.arrowHSV[data % 4][1] / 100;
-		var brt:Float = ClientPrefs.arrowHSV[data % 4][2] / 100;
-		if(note != null) {
-			skin = note.noteSplashTexture;
-			hue = note.noteSplashHue;
-			sat = note.noteSplashSat;
-			brt = note.noteSplashBrt;
-		}
-
+	function spawnNoteSplash(x:Float, y:Float, data:Int) {
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x, y, data, skin, hue, sat, brt);
-		grpNoteSplashes.add(splash);*/
+		splash.setupNoteSplash(x, y, data, true);
+		grpNoteSplashes.add(splash);
 	}
 	
 	override function destroy() {
