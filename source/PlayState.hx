@@ -1723,7 +1723,7 @@ class PlayState extends MusicBeatState
 					if(!Std.isOfType(songNotes[3], String)) swagNote.noteType = editors.ChartingState.noteTypeList[songNotes[3]]; //Backward compatibility + compatibility with Week 7 charts
 					swagNote.scrollFactor.set();
 
-					trace(daNoteData);
+					//trace(daNoteData);
 
 					var susLength:Float = swagNote.sustainLength;
 
@@ -2420,7 +2420,8 @@ class PlayState extends MusicBeatState
 					daNote.angle = strumAngle;
 				}
 				if(daNote.copyAlpha) {
-					daNote.alpha = strumAlpha;
+					if (!daNote.isSustainNote)
+						daNote.alpha = strumAlpha;
 				}
 				if(daNote.copyY) {
 					if (ClientPrefs.downScroll) {
@@ -2471,8 +2472,11 @@ class PlayState extends MusicBeatState
 					}
 				}
 
-				if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote)
+				if (!daNote.mustPress && (daNote.ignoreNote || daNote.hitCausesMiss) && !daNote.hitByOpponent) {
+					//trace('this note BAD\n' + daNote.noteType + '\nanalysis: \nhit cause miss: ' + daNote.hitCausesMiss + '\nignore da note: ' + daNote.ignoreNote + '\nnote will NOT BE PRESSED!');
+				} else if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote)
 				{
+					//trace('this note GOOD!');
 					if (Paths.formatToSongPath(SONG.song) != 'tutorial')
 						camZooming = true;
 
@@ -2540,7 +2544,7 @@ class PlayState extends MusicBeatState
 				if (doKill)
 				{
 					if (daNote.mustPress && !cpuControlled &&!daNote.ignoreNote && !endingSong && (daNote.tooLate || !daNote.wasGoodHit)) {
-						noteMiss(0);
+						noteMiss(daNote.noteData, daNote.noteType);
 					}
 
 					daNote.active = false;
@@ -2890,7 +2894,7 @@ class PlayState extends MusicBeatState
 				shootInt = FlxG.random.int(1,4);
 				gf.playAnim('shoot' + shootInt, true);
 				gf.specialAnim = true;
-				trace('shoot' + shootInt);
+				//trace('shoot' + shootInt);
 
 			case 'Spawn Tankmen':
 				if (FlxG.random.bool(65)) {	//pico isnt in genocide mode
@@ -2902,7 +2906,7 @@ class PlayState extends MusicBeatState
 						tankmanRun.add(tempTankman);
 					}
 				} else {
-					trace('tankmen didnt spawn *vine boom* *vine boom*');
+					//trace('tankmen didnt spawn *vine boom* *vine boom*');
 				}
 
 			case 'Camera Follow Pos':
@@ -3680,7 +3684,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function noteMiss(direction:Int = 1):Void
+	function noteMiss(noteData:Int, noteType:String):Void
 		{
 			if (!boyfriend.stunned)
 			{
@@ -3705,8 +3709,19 @@ class PlayState extends MusicBeatState
 				{
 					boyfriend.stunned = false;
 				});*/
-				boyfriend.playAnim('sing' + Main.charDir[Main.gfxHud[mania][direction]] + 'miss', true);
+
 				vocals.volume = 0;
+				
+				if (noteType == 'GF Sing') {
+					gf.playAnim('sing' + Main.charDir[Main.gfxHud[mania][noteData]] + 'miss', true);
+				} else {
+					var daAlt = '';
+
+					if (SONG.notes[Math.floor(curStep / 16)].altAnim || noteType == 'Alt Animation') {	//bf can play alt notes too without having plagiarize the chart
+						daAlt = '-alt';
+					}
+					boyfriend.playAnim('sing' + Main.charDir[Main.gfxHud[mania][noteData]] + 'miss' + daAlt, true);
+				}
 			}
 		}
 
@@ -3747,21 +3762,19 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 		{
-
-			if (!note.isSustainNote) {
-				spawnNoteSplashOnNote(note);
-			}
-
 			if (!note.wasGoodHit)
 			{
 				if(cpuControlled && (note.ignoreNote || note.hitCausesMiss)) return;	//fuck you you cant press this note dumbass
+				if (!note.isSustainNote && (!note.ignoreNote || !note.hitCausesMiss)) {
+					spawnNoteSplashOnNote(note);
+				}
 
 				switch(note.noteType) {
 					case 'Hurt Note': //Hurt note
 	
 						if(!boyfriend.stunned)
 						{
-							noteMiss(note.noteData);
+							noteMiss(note.noteData, note.noteType);
 							if(!endingSong)
 							{
 								--songMisses;
@@ -3796,15 +3809,21 @@ class PlayState extends MusicBeatState
 					if (combo < 9999) combo += 1;	//who the fuck put 9999+ notes
 				}
 
+				/**
+				 * Im really stupid ngl
+				 */
 				if (!note.noAnimation) {
-					if(note.noteType == 'Hey!') {
+					if (note.noteType == 'Hey!') {
 						boyfriend.playAnim('hey', true);
 						boyfriend.specialAnim = true;
 						boyfriend.heyTimer = 0.6;
-		
+			
 						gf.playAnim('cheer', true);
 						gf.specialAnim = true;
 						gf.heyTimer = 0.6;
+					}
+					else if (note.noteType == 'GF Sing') {
+						gf.playAnim('sing' + Main.charDir[Main.gfxHud[mania][note.noteData]], true);
 					} else {
 						var daAlt = '';
 						if(note.noteType == 'Alt Animation') daAlt = '-alt';
