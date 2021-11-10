@@ -1856,7 +1856,7 @@ class PlayState extends MusicBeatState
 				babyArrow.x += babyArrow.width * Note.scales[mania] * i;
 						
 				var dirName = Main.gfxDir[Main.gfxHud[mania][i]];
-				var pressName = Main.gfxLetter[Main.gfxIndex[mania][i]];
+				var pressName = ClientPrefs.noteOrder[Main.gfxIndex[mania][i]];
 				babyArrow.animation.addByPrefix('static', 'arrow' + dirName);
 				babyArrow.animation.addByPrefix('pressed', pressName + ' press', 24, false);
 				babyArrow.animation.addByPrefix('confirm', pressName + ' confirm', 24, false);
