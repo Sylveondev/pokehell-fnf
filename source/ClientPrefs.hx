@@ -21,7 +21,20 @@ class ClientPrefs {
 	public static var camZooms:Bool = true;
 	public static var hideHud:Bool = false;
 	public static var noteOffset:Int = 0;
-	public static var arrowHSV:Array<Array<Int>> = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
+	public static var arrowHSV:Array<Array<Int>> = [
+	[1, 1, 1], 
+	[1, 1, 1], 
+	[1, 1, 1], 
+	[1, 1, 1],
+	[1, 1, 1], 
+	[1, 1, 1], 
+	[1, 1, 1], 
+	[1, 1, 1],
+	[1, 1, 1],
+	[1, 1, 1]
+	];
+	public static var noteOrder:Array<String> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+	public static var noteOption:Array<String> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 	public static var imagesPersist:Bool = false;
 	public static var ghostTapping:Bool = true;
 	public static var hideTime:Bool = false;
@@ -114,6 +127,7 @@ class ClientPrefs {
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.arrowHSV = arrowHSV;
+		FlxG.save.data.noteOrder = noteOrder;
 		FlxG.save.data.imagesPersist = imagesPersist;
 		FlxG.save.data.ghostTapping = ghostTapping;
 		FlxG.save.data.hideTime = hideTime;
@@ -206,7 +220,9 @@ class ClientPrefs {
 		if(FlxG.save.data.optimization != null) {
 			optimization = FlxG.save.data.optimization;
 		}
-
+		if (FlxG.save.data.noteOrder != null) {
+			noteOrder = FlxG.save.data.noteOrder;
+		}
 		var save:FlxSave = new FlxSave();
 		save.bind('controls', 'shaggymod');
 		if(save != null && save.data.customControls != null) {

@@ -87,7 +87,6 @@ class FunkinLua {
 		set('stepCrochet', Conductor.stepCrochet);
 		set('songLength', FlxG.sound.music.length);
 		set('songName', PlayState.SONG.song);
-		set('mania', PlayState.SONG.mania);	//here ya go bois
 		set('startedCountdown', false);
 
 		set('isStoryMode', PlayState.isStoryMode);
@@ -107,6 +106,7 @@ class FunkinLua {
 		// PlayState cringe ass nae nae bullcrap
 		set('curBeat', 0);
 		set('curStep', 0);
+		set('mania', 0);
 
 		set('score', 0);
 		set('misses', 0);
@@ -146,6 +146,7 @@ class FunkinLua {
 		set('flashingLights', ClientPrefs.flashing);
 		set('noteOffset', ClientPrefs.noteOffset);
 		set('lowQuality', ClientPrefs.lowQuality);
+		set('optimization', ClientPrefs.optimization);
 
 		//stuff 4 noobz like you B)
 		Lua_helper.add_callback(lua, "getProperty", function(variable:String) {
@@ -646,7 +647,11 @@ class FunkinLua {
 			return FlxG.mouse.getScreenPosition(cam).y;
 		});
 		Lua_helper.add_callback(lua, "changeMania", function(value:Int) {
-			lePlayState.changeMania(value);
+			if (value < 9) {
+				lePlayState.changeMania(value);
+			} else {
+				luaTrace('New mania value is over 9 or is equal to 9', true, false);
+			}
 		});
 		Lua_helper.add_callback(lua, "crashGame", function() {
 			Sys.exit(1);

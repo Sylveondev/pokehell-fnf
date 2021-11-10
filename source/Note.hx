@@ -159,7 +159,7 @@ class Note extends FlxSprite
 
 			x += swidths[mania] * swagWidth * (noteData % Main.ammo[mania]);
 			if(!isSustainNote) { //Doing this 'if' check to fix the warnings on Senpai songs
-				animation.play(Main.gfxLetter[Main.gfxIndex[mania][noteData]]);
+				animation.play(ClientPrefs.noteOrder[Main.gfxIndex[mania][noteData]]);
 			}
 
 			if (isSustainNote)
@@ -175,7 +175,7 @@ class Note extends FlxSprite
 	
 				//x += width / 2;
 	
-				animation.play(Main.gfxLetter[Main.gfxIndex[mania][noteData]] + ' tail');
+				animation.play(ClientPrefs.noteOrder[Main.gfxIndex[mania][noteData]] + ' tail');
 	
 				updateHitbox();
 	
@@ -186,7 +186,7 @@ class Note extends FlxSprite
 	
 				if (prevNote.isSustainNote)
 				{
-					prevNote.animation.play(Main.gfxLetter[Main.gfxIndex[mania][noteData]] + ' hold');
+					prevNote.animation.play(ClientPrefs.noteOrder[Main.gfxIndex[mania][noteData]] + ' hold');
 	
 					prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * PlayState.SONG.speed;
 					prevNote.updateHitbox();

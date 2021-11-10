@@ -2559,6 +2559,7 @@ class PlayState extends MusicBeatState
 		checkEventNote();
 
 		if (!inCutscene) {
+			setOnLuas('mania', mania);	//bullshit
 			if(!cpuControlled) {
 				keyShit();
 			} else if(boyfriend.holdTimer > Conductor.stepCrochet * 0.001 * boyfriend.singDuration && boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss')) {
@@ -4305,13 +4306,16 @@ class PlayState extends MusicBeatState
 
 	public function changeMania(value:Int, player = 0)
 		{
-			opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
-			opponentStrums.clear();
-			generateStaticArrows(0, true);
-			playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
-			playerStrums.clear();
-			mania = value;
-			generateStaticArrows(1, true);
+			if (value < 9) {
+				opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+				opponentStrums.clear();
+				generateStaticArrows(0, true);
+				playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+				playerStrums.clear();
+				mania = value;
+				generateStaticArrows(1, true);
+				callOnLuas('onChangeMania', [value]);
+			}
 		}
 
 	#if ACHIEVEMENTS_ALLOWED
