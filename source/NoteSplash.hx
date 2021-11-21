@@ -55,7 +55,7 @@ class NoteSplash extends FlxSprite
 
 		setGraphicSize(Std.int(ogW * scales[PlayState.SONG.mania]), Std.int(ogH * scales[PlayState.SONG.mania]));
 
-		animation.play(Main.gfxLetter[Main.gfxIndex[mania][noteData]]);
+		animation.play(ClientPrefs.noteOrder[Main.gfxIndex[mania][noteData]]);
 
 		switch (mania) {
 			case 0: setPosition(x - swidths[mania] + 50, y - swidths[mania] + 50);

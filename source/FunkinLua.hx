@@ -926,6 +926,17 @@ class FunkinLua {
 			}
 			#end
 		});
+		Lua_helper.add_callback(lua, "startMidSongVideo", function(videoFile:String) {
+			#if VIDEOS_ALLOWED
+			if(FileSystem.exists(Paths.modsVideo(videoFile))) {
+				lePlayState.startMidSongVideo(videoFile);
+			} else {
+				luaTrace('Video file not found: ' + videoFile);
+			}
+			#else
+			luaTrace('videos disabled');
+			#end
+		});
 		
 		Lua_helper.add_callback(lua, "playMusic", function(sound:String, volume:Float = 1, loop:Bool = false) {
 			FlxG.sound.playMusic(Paths.music(sound), volume, loop);

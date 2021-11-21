@@ -289,6 +289,9 @@ class PlayState extends MusicBeatState
 
 		mania = SONG.mania;
 
+		if (mania < 0)
+			mania = 3;
+
 		practiceMode = false;
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
@@ -662,7 +665,6 @@ class PlayState extends MusicBeatState
 				}
 
 				case 'tank':
-					GameOverSubstate.characterName = 'bf-holding-gf-dead';
 					defaultCamZoom = 0.9;
 				
 					tankSky = new FlxSprite(-400, -400).loadGraphic(Paths.image('tankSky', 'week7'));
@@ -672,13 +674,14 @@ class PlayState extends MusicBeatState
 					tankSky.active = false;
 					add(tankSky);
 				
-				
-					tankClouds = new FlxSprite(-700, -100).loadGraphic(Paths.image('tankClouds', 'week7'));
-					tankClouds.antialiasing = true;
-					tankClouds.scrollFactor.set(0.1, 0.1);
-					tankClouds.active = true;
-					tankClouds.velocity.x = FlxG.random.float(5, 15);
-					add(tankClouds);
+					if (!ClientPrefs.lowQuality) {
+						tankClouds = new FlxSprite(-700, -100).loadGraphic(Paths.image('tankClouds', 'week7'));
+						tankClouds.antialiasing = true;
+						tankClouds.scrollFactor.set(0.1, 0.1);
+						tankClouds.active = true;
+						tankClouds.velocity.x = FlxG.random.float(5, 15);
+						add(tankClouds);
+					}
 				
 					tankmout = new FlxSprite(-300, -20).loadGraphic(Paths.image('tankMountains', 'week7'));
 					tankmout.antialiasing = true;
@@ -695,29 +698,32 @@ class PlayState extends MusicBeatState
 					tankmouwt.active = false;
 					add(tankmouwt);
 				
-					tancuk = new FlxSprite(-200, 0).loadGraphic(Paths.image('tankRuins', 'week7'));
-					tancuk.antialiasing = true;
-					tancuk.scrollFactor.set(0.35, 0.36);
-					tancuk.setGraphicSize(Std.int(tancuk.width * 1.1));
-					tancuk.active = false;
-					add(tancuk);
+					if (!ClientPrefs.lowQuality) {
+						tancuk = new FlxSprite(-200, 0).loadGraphic(Paths.image('tankRuins', 'week7'));
+						tancuk.antialiasing = true;
+						tancuk.scrollFactor.set(0.35, 0.36);
+						tancuk.setGraphicSize(Std.int(tancuk.width * 1.1));
+						tancuk.active = false;
+						add(tancuk);
+					}
 				
-					smokeLeft = new FlxSprite(-200, -100).loadGraphic(Paths.image('smokeLeft', 'week7'));
-					smokeLeft.frames = Paths.getSparrowAtlas('smokeLeft', 'week7');
-					smokeLeft.animation.addByPrefix('idle', 'SmokeBlurLeft', 24, true);
-					smokeLeft.animation.play('idle');
-					smokeLeft.scrollFactor.set (0.4, 0.4);
-					smokeLeft.antialiasing = true;
-					add(smokeLeft);
-				
-					smokeRight = new FlxSprite(1100, -100).loadGraphic(Paths.image('smokeRight', 'week7'));
-					smokeRight.frames = Paths.getSparrowAtlas('smokeRight', 'week7');
-					smokeRight.animation.addByPrefix('idle', 'SmokeRight', 24, true);
-					smokeRight.animation.play('idle');
-					smokeRight.scrollFactor.set (0.4, 0.4);
-					smokeRight.antialiasing = true;
-					add(smokeRight);
-						
+					if (!ClientPrefs.lowQuality) {
+						smokeLeft = new FlxSprite(-200, -100).loadGraphic(Paths.image('smokeLeft', 'week7'));
+						smokeLeft.frames = Paths.getSparrowAtlas('smokeLeft', 'week7');
+						smokeLeft.animation.addByPrefix('idle', 'SmokeBlurLeft', 24, true);
+						smokeLeft.animation.play('idle');
+						smokeLeft.scrollFactor.set (0.4, 0.4);
+						smokeLeft.antialiasing = true;
+						add(smokeLeft);
+					
+						smokeRight = new FlxSprite(1100, -100).loadGraphic(Paths.image('smokeRight', 'week7'));
+						smokeRight.frames = Paths.getSparrowAtlas('smokeRight', 'week7');
+						smokeRight.animation.addByPrefix('idle', 'SmokeRight', 24, true);
+						smokeRight.animation.play('idle');
+						smokeRight.scrollFactor.set (0.4, 0.4);
+						smokeRight.antialiasing = true;
+						add(smokeRight);
+					}
 
 					tanjcuk = new FlxSprite(100, 50);
 					tanjcuk.frames = Paths.getSparrowAtlas('tankWatchtower', 'week7');
@@ -745,7 +751,8 @@ class PlayState extends MusicBeatState
 					add(tankmouthh);
 
 					tankmanRun = new FlxTypedGroup<ShotTankmen>();
-					add(tankmanRun);
+					if (!ClientPrefs.lowQuality)
+						add(tankmanRun);
 					
 					tankbop0 = new FlxSprite(-500, 650);
 					tankbop0.frames = Paths.getSparrowAtlas('tank0', 'week7');
@@ -1183,6 +1190,8 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'ugh' | 'guns' | 'stress':
 					var leSong:String = SONG.song.toLowerCase();
+					if (leSong == 'stress')
+						GameOverSubstate.characterName = 'bf-holding-gf-dead';
 					startVideo(leSong + 'Cutscene');
 				default:
 					startCountdown();
@@ -1208,6 +1217,9 @@ class PlayState extends MusicBeatState
 		
 		
 		super.create();
+
+		if (SONG.song.toLowerCase() == 'stress')
+			GameOverSubstate.characterName = 'bf-holding-gf-dead';
 	}
 
 	public function addTextToDebug(text:String) {
@@ -1314,6 +1326,37 @@ class PlayState extends MusicBeatState
 		} else {
 			startCountdown();
 		}
+	}
+
+	public function startMidSongVideo(name:String):Void {
+		#if VIDEOS_ALLOWED
+		var foundFile:Bool = false;
+		var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
+		#if sys
+		if(FileSystem.exists(fileName)) {
+			foundFile = true;
+		}
+		#end
+
+		if(!foundFile) {
+			fileName = Paths.video(name);
+			#if sys
+			if(FileSystem.exists(fileName)) {
+			#else
+			if(OpenFlAssets.exists(fileName)) {
+			#end
+				foundFile = true;
+			}
+		}
+
+		if(foundFile) {
+			(new FlxVideo(fileName)).finishCallback = function() {
+				trace('video finished');
+			}
+			return;
+		} else
+			trace('video not found');
+		#end
 	}
 
 	var dialogueCount:Int = 0;
@@ -3347,7 +3390,7 @@ class PlayState extends MusicBeatState
 			spawnNoteSplashOnNote(note);
 		}
 
-		trace(daRating);
+		//trace(daRating);
 
 		if(!practiceMode && !cpuControlled) {
 			songScore += score;
