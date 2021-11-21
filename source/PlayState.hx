@@ -3766,6 +3766,7 @@ class PlayState extends MusicBeatState
 					}
 					boyfriend.playAnim('sing' + Main.charDir[Main.gfxHud[mania][noteData]] + 'miss' + daAlt, true);
 				}
+				callOnLuas('noteMiss', [notes.members.indexOf(daNote), daNote.noteData, daNote.noteType, daNote.isSustainNote]);
 			}
 		}
 
