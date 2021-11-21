@@ -2587,7 +2587,7 @@ class PlayState extends MusicBeatState
 				if (doKill)
 				{
 					if (daNote.mustPress && !cpuControlled &&!daNote.ignoreNote && !endingSong && (daNote.tooLate || !daNote.wasGoodHit)) {
-						noteMiss(daNote.noteData, daNote.noteType);
+						noteMiss(daNote);
 					}
 
 					daNote.active = false;
@@ -3728,7 +3728,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function noteMiss(noteData:Int, noteType:String):Void
+	function noteMiss(daNote:Note):Void
 		{
 			if (!boyfriend.stunned)
 			{
@@ -3756,15 +3756,15 @@ class PlayState extends MusicBeatState
 
 				vocals.volume = 0;
 				
-				if (noteType == 'GF Sing') {
-					gf.playAnim('sing' + Main.charDir[Main.gfxHud[mania][noteData]] + 'miss', true);
+				if (daNote.noteType == 'GF Sing') {
+					gf.playAnim('sing' + Main.charDir[Main.gfxHud[mania][daNote.noteData]] + 'miss', true);
 				} else {
 					var daAlt = '';
 
-					if (SONG.notes[Math.floor(curStep / 16)].altAnim || noteType == 'Alt Animation') {	//bf can play alt notes too without having plagiarize the chart
+					if (SONG.notes[Math.floor(curStep / 16)].altAnim || daNote.noteType == 'Alt Animation') {	//bf can play alt notes too without having plagiarize the chart
 						daAlt = '-alt';
 					}
-					boyfriend.playAnim('sing' + Main.charDir[Main.gfxHud[mania][noteData]] + 'miss' + daAlt, true);
+					boyfriend.playAnim('sing' + Main.charDir[Main.gfxHud[mania][daNote.noteData]] + 'miss' + daAlt, true);
 				}
 				callOnLuas('noteMiss', [notes.members.indexOf(daNote), daNote.noteData, daNote.noteType, daNote.isSustainNote]);
 			}
@@ -3819,7 +3819,7 @@ class PlayState extends MusicBeatState
 	
 						if(!boyfriend.stunned)
 						{
-							noteMiss(note.noteData, note.noteType);
+							noteMiss(note);
 							if(!endingSong)
 							{
 								--songMisses;
