@@ -1,21 +1,18 @@
 name: Publish Release
-on: 
+
+on:
   push:
-    branches: 
-      - master
     tags:
-      - v*
+      - 'v*'
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      if: github.actor != 'dependabot[bot]'
+    - uses: actions/checkout@master
     - name: Create a Release
-      if: github.actor != 'dependabot[bot]'
       uses: elgohr/Github-Release-Action@master
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        args: ${{ github.sha }}
-# it wont funkin work?
+        args: MyReleaseMessage
