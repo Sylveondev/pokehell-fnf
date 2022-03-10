@@ -12,7 +12,9 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
+#if sys
 import sys.FileSystem;
+#end
 import lime.utils.Assets;
 
 using StringTools;
