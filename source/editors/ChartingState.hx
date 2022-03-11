@@ -1288,15 +1288,14 @@ class ChartingState extends MusicBeatState
 				}
 			}
 
-			/*
-			if(FlxG.keys.justPressed.Z && curZoom > 0) {
+			FlxG.keys.justPressed.Z && curZoom > 0) {
 				--curZoom;
 				updateZoom();
 			}
 			if(FlxG.keys.justPressed.X && curZoom < zoomList.length-1) {
 				curZoom++;
 				updateZoom();
-			}*/
+			}
 
 			if (FlxG.keys.justPressed.TAB)
 			{
