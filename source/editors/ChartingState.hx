@@ -1288,7 +1288,7 @@ class ChartingState extends MusicBeatState
 				}
 			}
 
-			if (FlxG.keys.justPressed.Z && curZoom > 0) {
+			if(FlxG.keys.justPressed.Z && curZoom > 0) {
 				--curZoom;
 				updateZoom();
 			}
