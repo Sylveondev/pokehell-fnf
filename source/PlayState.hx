@@ -250,6 +250,8 @@ class PlayState extends MusicBeatState
 	//end (wow thats a lot)
 
 	public var defaultCamZoom:Float = 1.05;
+	public var defaultHudZoom:Float = 1;
+
 
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
@@ -3078,6 +3080,26 @@ class PlayState extends MusicBeatState
 			
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
+			case 'Set Default Camera Zoom':
+				if (value1){
+					defaultCamZoom = value1;
+				}else{
+					switch (curStage){
+						case 'tank':
+							defaultCamZoom = 0.9;
+						default:
+							defaultCamZoom = stageData.defaultZoom;
+					}
+				}
+
+				if(!camZooming) { //Just a way for preventing it to be permanently zoomed until Skid & Pump hits a note
+					FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 0.5);
+					FlxTween.tween(camHUD, {zoom: defaultHudZoom}, 0.5);
+				}
+			case 'Flash camera':
+				var flashduration = value1 || 1
+				FlxG.camera.flash(FlxColor.WHITE, flashduration);
+				camHUD.flash(FlxColor.WHITE, flashduration);
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
@@ -4055,7 +4077,7 @@ class PlayState extends MusicBeatState
 
 			if(!camZooming) { //Just a way for preventing it to be permanently zoomed until Skid & Pump hits a note
 				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 0.5);
-				FlxTween.tween(camHUD, {zoom: 1}, 0.5);
+				FlxTween.tween(camHUD, {zoom: defaultHudZoom}, 0.5);
 			}
 		}
 
