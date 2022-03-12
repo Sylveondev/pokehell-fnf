@@ -343,6 +343,8 @@ class PlayState extends MusicBeatState
 		if(PlayState.SONG.stage == null || PlayState.SONG.stage.length < 1) {
 			switch (songName)
 			{
+				case 'smoking':
+					curStage = 'ally';
 				case 'spookeez' | 'south' | 'monster':
 					curStage = 'spooky';
 				case 'pico' | 'blammed' | 'philly' | 'philly-nice':
@@ -417,6 +419,10 @@ class PlayState extends MusicBeatState
 					stageCurtains.updateHitbox();
 					add(stageCurtains);
 				}
+			
+			case 'ally': //Week 1: Vaporeon
+				var bg:BGSprite = new BGSprite('ally', -600, -200, 0.9, 0.9);
+				add(bg);
 
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
