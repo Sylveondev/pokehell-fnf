@@ -8,7 +8,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		},
 		{
@@ -19,7 +19,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		},
 		{
@@ -30,7 +30,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		},
 		{
@@ -41,7 +41,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		},
 		{
@@ -52,7 +52,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		},
 		{
@@ -63,7 +63,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		},
 		{
@@ -74,7 +74,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		},
 		{
@@ -85,7 +85,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		},
 		{
@@ -96,7 +96,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		},
 		{
@@ -107,7 +107,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		},
 		{
@@ -118,7 +118,7 @@
 			"indices": [],
 			"offsets": [
 				0,
-				0
+				-5
 			]
 		}
 	],
@@ -132,7 +132,7 @@
 	],
 	"camera_position": [
 		0,
-		0
+		40
 	],
 	"flip_x": false,
 	"no_antialiasing": false,
