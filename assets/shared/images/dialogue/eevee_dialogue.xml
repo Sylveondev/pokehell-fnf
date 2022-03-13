@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="eevee_dialogue.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="confused0000" x="4" y="4" width="402" height="407" pivotX="-66.25" pivotY="-60.45"/>
+	<SubTexture name="confused0001" x="4" y="4" width="402" height="407"/>
+    <SubTexture name="happy0000" x="423" y="4" width="396" height="407" pivotX="-72.35" pivotY="-60.45"/>
+	<SubTexture name="happy0001" x="423" y="4" width="396" height="407"/>
+    <SubTexture name="normal0000" x="831" y="4" width="414" height="412" pivotX="-60.5" pivotY="-55.1"/>
+	<SubTexture name="normal0001" x="831" y="4" width="414" height="412"/>
+	<SubTexture name="upset0000" x="1235" y="4" width="414" height="412" pivotX="-60.5" pivotY="-55.1"/>
+	<SubTexture name="upset0001" x="1235" y="4" width="414" height="412"/>
+	<SubTexture name="sobbing0000" x="1631" y="4" width="414" height="412" pivotX="-60.5" pivotY="-55.1"/>
+	<SubTexture name="sobbing0001" x="1631" y="4" width="414" height="412"/>
+	<SubTexture name="cheer0000" x="2056" y="4" width="414" height="412" pivotX="-60.5" pivotY="-55.1"/>
+	<SubTexture name="cheer0001" x="2056" y="4" width="414" height="412"/>
+	
+
+</TextureAtlas>

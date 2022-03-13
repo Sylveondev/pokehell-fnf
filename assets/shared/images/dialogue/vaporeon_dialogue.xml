@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="vaporeon_dialogue.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="normal0000" x="4" y="4" width="402" height="407" pivotX="-66.25" pivotY="-60.45"/>
+	<SubTexture name="normal0001" x="4" y="4" width="402" height="407"/>
+    <SubTexture name="left0000" x="423" y="4" width="402" height="407" pivotX="-66.25" pivotY="-60.45"/>
+	<SubTexture name="left0001" x="423" y="4" width="402" height="407"/>
+    <SubTexture name="sigh0000" x="831" y="4" width="402" height="407" pivotX="-66.25" pivotY="-60.45"/>
+	<SubTexture name="sigh0001" x="831" y="4" width="402" height="407"/>
+	<SubTexture name="shook0000" x="1235" y="4" width="402" height="407" pivotX="-66.25" pivotY="-60.45"/>
+	<SubTexture name="shook0001" x="1235" y="4" width="402" height="407"/>
+	<SubTexture name="pain0000" x="1631" y="4" width="402" height="407" pivotX="-66.25" pivotY="-60.45"/>
+	<SubTexture name="pain0001" x="1631" y="4" width="402" height="407"/>
+	<SubTexture name="baked0000" x="2056" y="4" width="402" height="407" pivotX="-66.25" pivotY="-60.45"/>
+	<SubTexture name="baked0001" x="2056" y="4" width="402" height="407"/>
+	<SubTexture name="sobbing0000" x="2483" y="4" width="402" height="407" pivotX="-66.25" pivotY="-60.45"/>
+	<SubTexture name="sobbing0001" x="2483" y="4" width="402" height="407"/>
+	
+</TextureAtlas>

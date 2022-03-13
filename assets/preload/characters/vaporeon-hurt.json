@@ -54,75 +54,9 @@
 				0,
 				-20
 			]
-		},
-		{
-			"anim": "singLEFTmiss",
-			"name": "leftMiss",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				-20
-			]
-		},
-		{
-			"anim": "singDOWNmiss",
-			"name": "downMiss",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				-20
-			]
-		},
-		{
-			"anim": "singUPmiss",
-			"name": "upMiss",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				-20
-			]
-		},
-		{
-			"anim": "singRIGHTmiss",
-			"name": "rightMiss",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				-20
-			]
-		},
-		{
-			"anim": "hey",
-			"name": "hey",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				-20
-			]
-		},
-		{
-			"anim": "scared",
-			"name": "scared",
-			"fps": 24,
-			"loop": true,
-			"indices": [],
-			"offsets": [
-				0,
-				-20
-			]
 		}
 	],
-	"image": "characters/vaporeon",
+	"image": "characters/vaporeon2",
 	"scale": 1.0499999999999998,
 	"sing_duration": 4,
 	"healthicon": "vaporeon",
