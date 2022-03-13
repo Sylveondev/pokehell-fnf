@@ -382,6 +382,7 @@ class PlayState extends MusicBeatState
 		}
 
 		defaultCamZoom = stageData.defaultZoom;
+		defaultHudZoom = 1;
 		isPixelStage = stageData.isPixelStage;
 		BF_X = stageData.boyfriend[0];
 		BF_Y = stageData.boyfriend[1];
@@ -1043,6 +1044,7 @@ class PlayState extends MusicBeatState
 		FlxG.camera.follow(camFollowPos, LOCKON, 1);
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
+		camHUD.zoom = 1;
 		FlxG.camera.focusOn(camFollow);
 
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
@@ -2366,7 +2368,7 @@ class PlayState extends MusicBeatState
 		if (camZooming)
 		{
 			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
-			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
+			camHUD.zoom = FlxMath.lerp(defaultHudZoom, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
 		}
 
 		FlxG.watch.addQuick("beatShit", curBeat);
@@ -3080,7 +3082,7 @@ class PlayState extends MusicBeatState
 			
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
-			case 'Set Default Camera Zoom':
+			case 'Default Camera Zoom':
 				if (value1 != null){
 					defaultCamZoom = Std.parseFloat(value1);
 				}else{
@@ -3105,8 +3107,17 @@ class PlayState extends MusicBeatState
 				}
 
 				if(!camZooming) { //Just a way for preventing it to be permanently zoomed until Skid & Pump hits a note
-					FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 0.5);
-					FlxTween.tween(camHUD, {zoom: defaultHudZoom}, 0.5);
+					FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, Std.parseInt(value2)||0.5);
+				}
+			case 'Default CamHUD Zoom':
+				if (value1 != null){
+					defaultHudZoom = Std.parseFloat(value1);
+				}else{
+					defaultHudZoom = 1;
+				}
+
+				if(!camZooming) { //Just a way for preventing it to be permanently zoomed until Skid & Pump hits a note
+					FlxTween.tween(CamHUD, {zoom: defaultHudZoom}, Std.parseInt(value2)||0.5);
 				}
 			case 'Flash camera':
 				var flashduration = Std.parseInt(value1);

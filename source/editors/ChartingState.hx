@@ -84,7 +84,8 @@ class ChartingState extends MusicBeatState
 		['Change Mania', "Value 1: The value to change the mania\n\nLimitations:\n- Changing to a higher mania will not let you place \nnotes past the ammount of keys you're changing from.\nHowever, using a higher mania then changing to a lower\nvalue will let you do so."],
 		['Pico Speaker Shoot', "Pico shoots (random value)"], 
 		['Spawn Tankmen', "Spawns tankmen (1500ms early)"],
-		['Set Default Camera Zoom', "Sets the default camera zoom.It's\nlike \"Add Camera Zoom\" but it doesn't zoom back.\nValue 1: Camera Zoom (Default: Based on map)\nValue 2: Hud Zoom (Default: 1)"],
+		['Default Camera Zoom', "Sets the default camera zoom.It's\nlike \"Add Camera Zoom\" but it doesn't zoom back.\nValue 1: Camera Zoom (Default: Based on map)\nValue 2: Tween Duration (Default: 0.5)"],
+		['Default CamHUD Zoom', "Sets the default hud zoom.It's\nlike \"Add Camera Zoom\" but it doesn't zoom back.\nValue 1: HUD Zoom (Default: 1)\nValue 2: Tween Duration (Default: 0.5)"],
 		['Flash camera', "Flashes the camera white\nValue 1: Duration (Default: 1)"]
 	];
 
