@@ -3097,7 +3097,7 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(camHUD, {zoom: defaultHudZoom}, 0.5);
 				}
 			case 'Flash camera':
-				var flashduration = value1 || 1
+				var flashduration = value1 || 1;
 				FlxG.camera.flash(FlxColor.WHITE, flashduration);
 				camHUD.flash(FlxColor.WHITE, flashduration);
 		}
