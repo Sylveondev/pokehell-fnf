@@ -3083,6 +3083,8 @@ class PlayState extends MusicBeatState
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
 			case 'Default Camera Zoom':
+				if (value2 != null) { var duration:Int = Std.parseInt(value2); }
+				else { var duration:Int = 0.5; }
 				if (value1 != null){
 					defaultCamZoom = Std.parseFloat(value1);
 				}else{
@@ -3107,9 +3109,11 @@ class PlayState extends MusicBeatState
 				}
 
 				if(!camZooming) { //Just a way for preventing it to be permanently zoomed until Skid & Pump hits a note
-					FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, Std.parseInt(value2)||0.5);
+					FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, duration);
 				}
 			case 'Default CamHUD Zoom':
+				if (value2 != null) { var duration:Int = Std.parseInt(value2); }
+				else { var duration:Int = 0.5; }
 				if (value1 != null){
 					defaultHudZoom = Std.parseFloat(value1);
 				}else{
@@ -3117,7 +3121,7 @@ class PlayState extends MusicBeatState
 				}
 
 				if(!camZooming) { //Just a way for preventing it to be permanently zoomed until Skid & Pump hits a note
-					FlxTween.tween(CamHUD, {zoom: defaultHudZoom}, Std.parseInt(value2)||0.5);
+					FlxTween.tween(CamHUD, {zoom: defaultHudZoom}, duration);
 				}
 			case 'Flash camera':
 				var flashduration = Std.parseInt(value1);
