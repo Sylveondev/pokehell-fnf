@@ -3121,7 +3121,7 @@ class PlayState extends MusicBeatState
 				}
 
 				if(!camZooming) { //Just a way for preventing it to be permanently zoomed until Skid & Pump hits a note
-					FlxTween.tween(CamHUD.zoom, {zoom: defaultHudZoom}, duration);
+					FlxTween.tween(camHUD.zoom, {zoom: defaultHudZoom}, duration);
 				}
 			case 'Flash camera':
 				var flashduration = Std.parseInt(value1);
