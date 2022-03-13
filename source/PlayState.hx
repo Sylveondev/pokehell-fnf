@@ -423,7 +423,7 @@ class PlayState extends MusicBeatState
 				}
 			
 			case 'ally': //Week 1: Vaporeon
-				var bg:BGSprite = new BGSprite('ally', -600, -200, 0.7, 0.7);
+				var bg:BGSprite = new BGSprite('ally', -600, -200, 1, 1);
 				add(bg);
 
 			case 'spooky': //Week 2
