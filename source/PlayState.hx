@@ -3083,8 +3083,8 @@ class PlayState extends MusicBeatState
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
 			case 'Default Camera Zoom':
-				if (value2 != null) { var duration:Int = Std.parseInt(value2); }
-				else { var duration:Int = 0.5; }
+				var duration:Float = 0.5;
+				if (value2 != null) { duration = Std.parseFloat(value2); }
 				if (value1 != null){
 					defaultCamZoom = Std.parseFloat(value1);
 				}else{
@@ -3112,8 +3112,8 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, duration);
 				}
 			case 'Default CamHUD Zoom':
-				if (value2 != null) { var duration:Int = Std.parseInt(value2); }
-				else { var duration:Int = 0.5; }
+				var duration:Float = 0.5;
+				if (value2 != null) { duration = Std.parseFloat(value2); }
 				if (value1 != null){
 					defaultHudZoom = Std.parseFloat(value1);
 				}else{
