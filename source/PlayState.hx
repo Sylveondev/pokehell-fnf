@@ -3081,13 +3081,25 @@ class PlayState extends MusicBeatState
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
 			case 'Set Default Camera Zoom':
-				if (value1){
-					defaultCamZoom = value1;
+				if (value1 != null){
+					defaultCamZoom = Std.parseFloat(value1);
 				}else{
 					switch (curStage){
 						case 'tank':
 							defaultCamZoom = 0.9;
 						default:
+							var stageData:StageFile = StageData.getStageFile(curStage);
+							if(stageData == null) { //Stage couldn't be found, create a dummy stage for preventing a crash
+								stageData = {
+									directory: "",
+									defaultZoom: 0.9,
+									isPixelStage: false,
+								
+									boyfriend: [770, 100],
+									girlfriend: [400, 130],
+									opponent: [100, 100]
+								};
+							}
 							defaultCamZoom = stageData.defaultZoom;
 					}
 				}
@@ -3097,7 +3109,7 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(camHUD, {zoom: defaultHudZoom}, 0.5);
 				}
 			case 'Flash camera':
-				var flashduration = value1 || 1;
+				var flashduration = Std.parseInt(value1);
 				FlxG.camera.flash(FlxColor.WHITE, flashduration);
 				camHUD.flash(FlxColor.WHITE, flashduration);
 		}
