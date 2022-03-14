@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["Rock", "jolteon", [34, 51, 68]],
-		["Electric", "jolteon", [34, 51, 68]],
-		["Metal", "jolteon", [34, 51, 68]]
+		["Rock", "jolteon", [254, 254, 97]],
+		["Electric", "jolteon", [254, 254, 97]],
+		["Metal", "jolteon", [254, 254, 97]]
 	],
 
 	"weekCharacters": [

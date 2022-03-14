@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["violent", "sylveon", [120, 120, 120]],
-		["hell", "sylveon", [120, 120, 120]],
-		["finale", "sylveon", [120, 120, 120]]
+		["violent", "sylveon", [255, 134, 255]],
+		["hell", "sylveon", [255, 134, 255]],
+		["finale", "sylveon", [255, 134, 255]]
 	],
 
 	"weekCharacters": [

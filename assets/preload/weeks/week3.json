@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["Sinful", "flareon", [148, 22, 83]],
-		["Flaming", "flareon", [148, 22, 83]],
-		["Burned", "flareon", [148, 22, 83]]
+		["Sinful", "flareon", [255, 75, 0]],
+		["Flaming", "flareon", [255, 75, 0]],
+		["Burned", "flareon", [255, 75, 0]]
 	],
 
 	"weekCharacters": [

@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["Nervous", "umbreon", [252, 150, 215]],
-		["Caution", "umbreon", [252, 150, 215]],
-		["Danger", "umbreon", [252, 150, 215]]
+		["Nervous", "umbreon", [73, 73, 73]],
+		["Caution", "umbreon", [73, 73, 73]],
+		["Danger", "umbreon", [73, 73, 73]]
 	],
 	
 	"weekCharacters": [

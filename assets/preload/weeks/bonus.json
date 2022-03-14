@@ -1,6 +1,7 @@
 {
 	"songs": [
-		["Frien", "sillyvon", [165, 0, 77]]
+		["Friend", "sillyvon", [255, 134, 255]],
+		["vomit", "sillyvon", [255, 134, 255]]
 	],
 
 	"weekCharacters": [

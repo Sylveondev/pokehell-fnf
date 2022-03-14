@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["Bounty", "espeon", [160, 209, 255]],
-		["Stealth", "espeon", [160, 209, 255]],
-		["Caught", "espeon", [160, 209, 255]]
+		["Bounty", "espeon", [206, 89, 206]],
+		["Stealth", "espeon", [206, 89, 206]],
+		["Caught", "espeon", [206, 89, 206]]
 	],
 
 	"weekCharacters": [

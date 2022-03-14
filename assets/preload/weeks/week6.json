@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["Cold", "glaceon", [255, 120, 191]],
-		["Solid", "glaceon", [255, 120, 191]],
-		["Frozen", "glaceon", [255, 120, 191]]
+		["Cold", "glaceon", [157, 157, 221]],
+		["Solid", "glaceon", [157, 157, 221]],
+		["Frozen", "glaceon", [157, 157, 221]]
 	],
 
 	"weekCharacters": [
