@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["Spookeez", "spooky", [34, 51, 68]],
-		["South", "spooky", [34, 51, 68]],
-		["Monster", "monster", [34, 51, 68]]
+		["Rock", "jolteon", [34, 51, 68]],
+		["Electric", "jolteon", [34, 51, 68]],
+		["Metal", "jolteon", [34, 51, 68]]
 	],
 
 	"weekCharacters": [

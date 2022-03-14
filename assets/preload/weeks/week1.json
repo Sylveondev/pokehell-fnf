@@ -1,10 +1,7 @@
 {
 	"songs": [
 		["Smoking", "vaporeon", [52, 105, 129]],
-		["Headache", "vaporeon", [52, 105, 129]],
-		["Bopeebo", "dad", [146, 113, 253]],
-		["Fresh", "dad", [146, 113, 253]],
-		["Dad Battle", "dad", [146, 113, 253]]
+		["Headache", "vaporeon", [52, 105, 129]]
 	],
 
 	"weekCharacters": [
