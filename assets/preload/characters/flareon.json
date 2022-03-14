@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"anim": "idle",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				-20
+			]
+		},
+		{
+			"anim": "singDOWN",
+			"name": "down0",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				-20
+			]
+		},
+		{
+			"anim": "singLEFT",
+			"name": "left0",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				-20
+			]
+		},
+		{
+			"anim": "singUP",
+			"name": "up0",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				-20
+			]
+		},
+		{
+			"anim": "singRIGHT",
+			"name": "right0",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				-20
+			]
+		}
+	],
+	"image": "characters/flareon",
+	"scale": 1.0499999999999998,
+	"sing_duration": 4,
+	"healthicon": "flareon",
+	"position": [
+		60,
+		50
+	],
+	"camera_position": [
+		10,
+		-20
+	],
+	"flip_x": false,
+	"no_antialiasing": false,
+	"healthbar_colors": [
+		207,
+		78,
+		0
+	]
+}

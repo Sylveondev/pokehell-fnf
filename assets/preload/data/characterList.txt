@@ -21,3 +21,5 @@ bf-pixel-opponent
 pico-player
 vaporeon
 vaporeon-hurt
+jolteon
+flareon
