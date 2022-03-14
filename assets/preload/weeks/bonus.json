@@ -1,6 +1,6 @@
 {
 	"songs": [
-		["Tutorial", "bf", [165, 0, 77]]
+		["Frien", "sillyvon", [165, 0, 77]]
 	],
 
 	"weekCharacters": [
@@ -10,11 +10,11 @@
 	],
 	"weekBackground": "stage",
 
-	"storyName": "The story beginning",
+	"storyName": "What is this shit",
 	"weekBefore": "tutorial",
-	"weekName": "Tutorial",
-	"startUnlocked": true,
+	"weekName": "week 7",
+	"startUnlocked": false,
 
-	"hideStoryMode": false,
+	"hideStoryMode": true,
 	"hideFreeplay": false
 }

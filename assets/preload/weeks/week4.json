@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["Satin Panties", "mom", [252, 150, 215]],
-		["High", "mom", [252, 150, 215]],
-		["Milf", "mom", [252, 150, 215]]
+		["Nervous", "umbreon", [252, 150, 215]],
+		["Caution", "umbreon", [252, 150, 215]],
+		["Danger", "umbreon", [252, 150, 215]]
 	],
 	
 	"weekCharacters": [
@@ -12,10 +12,10 @@
 	],
 	"weekBackground": "limo",
 
-	"storyName": "MOMMY MUST MURDER",
+	"storyName": "Scared silly",
 	"weekBefore": "week3",
 	"weekName": "Week 4",
-	"startUnlocked": true,
+	"startUnlocked": false,
 
 	"hideStoryMode": false,
 	"hideFreeplay": false

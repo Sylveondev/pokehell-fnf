@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["Senpai", "senpai-pixel", [255, 120, 191]],
-		["Roses", "senpai-pixel", [255, 120, 191]],
-		["Thorns", "spirit-pixel", [255, 120, 191]]
+		["Cold", "glaceon", [255, 120, 191]],
+		["Solid", "glaceon", [255, 120, 191]],
+		["Frozen", "glaceon", [255, 120, 191]]
 	],
 
 	"weekCharacters": [
@@ -12,10 +12,10 @@
 	],
 	"weekBackground": "school",
 
-	"storyName": "hating simulator ft. moawling",
+	"storyName": "Glaceon's freezer",
 	"weekBefore": "week5",
 	"weekName": "Week 6",
-	"startUnlocked": true,
+	"startUnlocked": false,
 
 	"hideStoryMode": false,
 	"hideFreeplay": false
