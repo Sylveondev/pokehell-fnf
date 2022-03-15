@@ -8,4 +8,5 @@ school
 schoolEvil
 tank
 ally
+stage2
 hell
