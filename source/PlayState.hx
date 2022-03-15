@@ -3091,7 +3091,7 @@ class PlayState extends MusicBeatState
 			case 'Default Camera Zoom':
 				var duration:Float = 0.5;
 				if (value2 != null) { duration = Std.parseFloat(value2); }
-				if (isNaN(duration)) duration = 0.5;
+				if (Math.isNaN(duration)) duration = 0.5;
 				if (value1 != null){
 					defaultCamZoom = Std.parseFloat(value1);
 				}else{
@@ -3121,7 +3121,7 @@ class PlayState extends MusicBeatState
 			case 'Default CamHUD Zoom':
 				var duration:Float = 0.5;
 				if (value2 != null) { duration = Std.parseFloat(value2); }
-				if (isNaN(duration)) duration = 0.5;
+				if (Math.isNaN(duration)) duration = 0.5;
 				if (value1 != null){
 					defaultHudZoom = Std.parseFloat(value1);
 				}else{
