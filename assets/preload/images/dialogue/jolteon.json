@@ -1,0 +1,37 @@
+{
+	"position": [
+		0,
+		50
+	],
+	"dialogue_pos": "left",
+	"scale": 1.25,
+	"image": "jolteon_dialogue",
+	"animations": [
+		{
+			"anim": "normal",
+			"loop_name": "normal",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_name": "normal",
+			"idle_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"anim": "happy",
+			"loop_name": "happy",
+			"loop_offsets": [
+				-10,
+				0
+			],
+			"idle_name": "happy",
+			"idle_offsets": [
+				-10,
+				0
+			]
+		}
+	]
+}
