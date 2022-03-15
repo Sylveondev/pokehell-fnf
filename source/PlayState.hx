@@ -427,6 +427,10 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('ally', -600, -200, 1, 1);
 				add(bg);
 
+			case 'hell': //Week 3: Flareon
+				var bg:BGSprite = new BGSprite('hell', -600, -200, 1, 1);
+				add(bg);
+
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
 					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
