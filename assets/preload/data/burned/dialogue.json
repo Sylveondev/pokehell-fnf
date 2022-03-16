@@ -1,0 +1,109 @@
+{
+	"dialogue": [
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "You are foolish!",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "Putting your life in danger just for three songs!",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "Idiots like you don't deserve to be in what's left of the world of pokemon!",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "You think you're some hot shit? Well guess what buddy!",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "I have one trick up my sleeve, and it'll make the rest of your week a living hell for you!",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "You know what?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "Congratulations, you're life is cut short.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "talk",
+			"text": "Youmad?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "gf",
+			"expression": "confused",
+			"text": "Ahshit,lookslikemylifeisindangeragain.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "talk",
+			"text": "Don'tworry,Girlfriend.Icantakehimonforyou.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "Hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaaha!",
+			"boxState": "angry",
+			"speed": 0.03000000000000001
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "You'reforgettingrule4029081ofthefnfmoddingguide.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "Thefinalsongsarealwaysovercharted.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "sobbing",
+			"text": "Nooooooooooooooooooooooooo!!!!",
+			"boxState": "normal",
+			"speed": 0.04000000000000001
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "It's over. You lose.",
+			"boxState": "normal",
+			"speed": 0.05
+		}
+	]
+}

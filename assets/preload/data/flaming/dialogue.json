@@ -1,0 +1,38 @@
+{
+	"dialogue": [
+		{
+			"portrait": "eevee",
+			"expression": "excited",
+			"text": "Few, that was a challange!",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "..............",
+			"boxState": "normal",
+			"speed": 0.3000000000000002
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "You better leave before all hell breaks loose.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "excited",
+			"text": "Nice try. You still got two more songs to go!",
+			"boxState": "normal",
+			"speed": 0.05
+		},{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "..............",
+			"boxState": "normal",
+			"speed": 0.3000000000000002
+		}
+	]
+}
