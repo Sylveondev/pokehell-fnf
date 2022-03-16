@@ -73,11 +73,11 @@
 	"healthicon": "sillyvon",
 	"position": [
 		0,
-		350
+		400
 	],
 	"camera_position": [
 		0,
-		0
+		150
 	],
 	"flip_x": false,
 	"no_antialiasing": false,
