@@ -17,6 +17,6 @@
 	"weekName": "week 7",
 	"startUnlocked": false,
 
-	"hideStoryMode": true,
+	"hideStoryMode": false,
 	"hideFreeplay": false
 }
