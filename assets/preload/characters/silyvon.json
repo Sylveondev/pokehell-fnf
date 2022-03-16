@@ -76,8 +76,8 @@
 		400
 	],
 	"camera_position": [
-		0,
-		-150
+		-20,
+		-240
 	],
 	"flip_x": false,
 	"no_antialiasing": false,
