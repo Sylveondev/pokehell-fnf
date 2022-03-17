@@ -12,7 +12,7 @@
 			]
 		},
 		{
-			"anim": "singLeft",
+			"anim": "singLEFT",
 			"name": "left",
 			"fps": 24,
 			"loop": false,
@@ -23,7 +23,7 @@
 			]
 		},
 		{
-			"anim": "singRight",
+			"anim": "singRIGHT",
 			"name": "right",
 			"fps": 24,
 			"loop": false,
@@ -34,7 +34,7 @@
 			]
 		},
 		{
-			"anim": "singDown",
+			"anim": "singDOWN",
 			"name": "down",
 			"fps": 24,
 			"loop": false,
@@ -45,7 +45,7 @@
 			]
 		},
 		{
-			"anim": "singUp",
+			"anim": "singUP",
 			"name": "up",
 			"fps": 24,
 			"loop": false,
@@ -59,7 +59,7 @@
 			"anim": "cold",
 			"name": "cold",
 			"fps": 24,
-			"loop": true,
+			"loop": false,
 			"indices": [],
 			"offsets": [
 				-90,
@@ -77,7 +77,7 @@
 	],
 	"camera_position": [
 		-40,
-		-200
+		-320
 	],
 	"flip_x": false,
 	"no_antialiasing": false,

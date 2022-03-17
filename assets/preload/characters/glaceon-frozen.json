@@ -10,6 +10,50 @@
 				-90,
 				-200
 			]
+		},
+		{
+			"anim": "singLEFT",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singRIGHT",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singUP",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singDOWN",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
 		}
 	],
 	"image": "characters/glaceon2",
@@ -22,7 +66,7 @@
 	],
 	"camera_position": [
 		-40,
-		-200
+		-320
 	],
 	"flip_x": false,
 	"no_antialiasing": false,

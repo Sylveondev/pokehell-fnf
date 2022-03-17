@@ -38,11 +38,8 @@
 	<SubTexture name="right0005" x="411" y="425" width="203" height="210" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
     
     <SubTexture name="cold0000" x="616" y="425" width="203" height="210" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
-	<SubTexture name="cold0001" x="616" y="425" width="203" height="210" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
-	<SubTexture name="cold0002" x="821" y="425" width="203" height="210" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
-	<SubTexture name="cold0003" x="821" y="425" width="203" height="210" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
-	<SubTexture name="cold0004" x="1026" y="425" width="203" height="210" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
-	<SubTexture name="cold0005" x="1026" y="425" width="203" height="210" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
+	<SubTexture name="cold0001" x="821" y="425" width="203" height="210" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
+	<SubTexture name="cold0002" x="1026" y="425" width="203" height="210" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
     
 
 </TextureAtlas>
