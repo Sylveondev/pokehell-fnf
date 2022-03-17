@@ -1,0 +1,34 @@
+{
+	"animations": [
+		{
+			"anim": "idle",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		}
+	],
+	"image": "characters/glaceon2",
+	"scale": 1.5000000000000004,
+	"sing_duration": 4,
+	"healthicon": "glaceon",
+	"position": [
+		0,
+		350
+	],
+	"camera_position": [
+		-40,
+		-200
+	],
+	"flip_x": false,
+	"no_antialiasing": false,
+	"healthbar_colors": [
+		157,
+		157,
+		221
+	]
+}

@@ -10,4 +10,5 @@ tank
 ally
 stage2
 hell
+icecave
 house

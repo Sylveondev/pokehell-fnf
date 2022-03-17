@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"anim": "idle",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singLeft",
+			"name": "left",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singRight",
+			"name": "right",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singDown",
+			"name": "down",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singUp",
+			"name": "up",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "cold",
+			"name": "cold",
+			"fps": 24,
+			"loop": true,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		}
+	],
+	"image": "characters/glaceon",
+	"scale": 1.6000000000000005,
+	"sing_duration": 4,
+	"healthicon": "glaceon",
+	"position": [
+		0,
+		350
+	],
+	"camera_position": [
+		-40,
+		-200
+	],
+	"flip_x": false,
+	"no_antialiasing": false,
+	"healthbar_colors": [
+		157,
+		157,
+		221
+	]
+}
