@@ -41,7 +41,7 @@ class OptionsState extends MusicBeatState
 		#end
 
 		menuBG = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		manuBG.color = 0xE40000;
+		menuBG.color = 0xE40000;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
