@@ -15,7 +15,7 @@
 	"storyName": "Rock concert",
 	"weekBefore": "week1",
 	"weekName": "Week 2",
-	"startUnlocked": false,
+	"startUnlocked": true,
 
 	"hideStoryMode": false,
 	"hideFreeplay": false

@@ -15,7 +15,7 @@
 	"storyName": "Stealing simulator",
 	"weekBefore": "week4",
 	"weekName": "Week 5",
-	"startUnlocked": false,
+	"startUnlocked": true,
 
 	"hideStoryMode": false,
 	"hideFreeplay": false

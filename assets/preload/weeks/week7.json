@@ -15,7 +15,7 @@
 	"storyName": "Your demise",
 	"weekBefore": "week6",
 	"weekName": "Week 7",
-	"startUnlocked": false,
+	"startUnlocked": true,
 
 	"hideStoryMode": false,
 	"hideFreeplay": false

@@ -15,7 +15,7 @@
 	"storyName": "Hell",
 	"weekBefore": "week2",
 	"weekName": "Week 3",
-	"startUnlocked": false,
+	"startUnlocked": true,
 
 	"hideStoryMode": false,
 	"hideFreeplay": false
