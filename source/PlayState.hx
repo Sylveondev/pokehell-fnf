@@ -435,6 +435,10 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('hell', -600, -200, 1, 1);
 				add(bg);
 
+			case 'icecave': //Week 6: Glaceon
+				var bg:BGSprite = new BGSprite('icecave', -600, -200, 1, 1);
+				add(bg);
+
 			case 'house': //Week 7: Sylveon
 				var bg:BGSprite = new BGSprite('house', -600, -200, 1, 1);
 				add(bg);

@@ -23,4 +23,6 @@ vaporeon
 vaporeon-hurt
 jolteon
 flareon
+glaceon
+glaceon-frozen
 silyvon
