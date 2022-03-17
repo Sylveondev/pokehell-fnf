@@ -9,7 +9,7 @@
 		"bf",
 		"gf"
 	],
-	"weekBackground": "",
+	"weekBackground": "stage",
 
 	"storyName": "In the allyway",
 	"weekBefore": "tutorial",

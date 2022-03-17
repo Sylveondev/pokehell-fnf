@@ -10,7 +10,7 @@
 		"bf",
 		"gf"
 	],
-	"weekBackground": "",
+	"weekBackground": "stage",
 
 	"storyName": "What is this shit",
 	"weekBefore": "tutorial",

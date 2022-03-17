@@ -10,7 +10,7 @@
 		"bf",
 		"gf"
 	],
-	"weekBackground": "",
+	"weekBackground": "stage",
 
 	"storyName": "Rock concert",
 	"weekBefore": "week1",
