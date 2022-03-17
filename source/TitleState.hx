@@ -145,6 +145,7 @@ class TitleState extends MusicBeatState
 		#end
 	}
 
+	var background:FlxSprite;
 	var logoBl:FlxSprite;
 	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
@@ -201,6 +202,10 @@ class TitleState extends MusicBeatState
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
+		var bgImg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('TitleBG'));
+		bgImg.screenCenter();
+		bgImg.antialiasing = ClientPrefs.globalAntialiasing;
+
 		swagShader = new ColorSwap();
 		if(!FlxG.save.data.psykaEasterEgg || !easterEggEnabled) {
 			gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
@@ -216,6 +221,7 @@ class TitleState extends MusicBeatState
 			gfDance.animation.addByIndices('danceRight', 'psykaDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		}
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
+		add(bgImg);
 		add(gfDance);
 		gfDance.shader = swagShader.shader;
 		add(logoBl);
@@ -521,6 +527,16 @@ class TitleState extends MusicBeatState
 		if (!skippedIntro)
 		{
 			remove(logoSpr);
+
+			logoBl.angle = -4;
+
+			new FlxTimer().start(0.01, function(tmr:FlxTimer)
+			{
+				if (logoBl.angle == -4)
+					FlxTween.angle(logoBl, logoBl.angle, 4, 4, {ease: FlxEase.quartInOut});
+				if (logoBl.angle == 4)
+					FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quartInOut});
+			}, 0);
 
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
