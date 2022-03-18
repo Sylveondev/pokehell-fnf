@@ -12,3 +12,4 @@ stage2
 hell
 icecave
 house
+blank
