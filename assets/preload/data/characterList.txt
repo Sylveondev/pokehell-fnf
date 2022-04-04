@@ -29,3 +29,4 @@ glaceon
 glaceon-frozen
 sylveon
 silyvon
+potassium

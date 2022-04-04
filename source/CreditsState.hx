@@ -64,6 +64,11 @@ class CreditsState extends MusicBeatState
 		
 		#end
 		var pisspoop = [ //Name - Icon name - Description - Link - BG Color
+		['Mod makers'],
+		['SylveonDev',		'sylveondev',		'Owner of Pokehell.',					'https://www.youtube.com/channel/UC8wo8sY38N-wyZDtit2psjg',	'0xFF9EFD'],
+		['Spongey',		'spongey',		'Graphics and programming.',					'https://twitter.com/spongebob7989b',	'0xEDB96F'],
+		['Discord',		'discord',		'Made a chat platform with voice and text and stuff.',					'https://discord.com/',	'0xFFFFFF'],
+		[''],
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	'0xFFFFDD33'],
 		['RiverOaken',			'riveroaken',		'Main Artist/Animator of Psych Engine',				'https://twitter.com/river_oaken',		'0xFFC30085'],
@@ -80,7 +85,9 @@ class CreditsState extends MusicBeatState
 		['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",				'https://twitter.com/ninja_muffin99',	'0xFFF73838'],
 		['PhantomArcade',		'phantomarcade',	"Animator of Friday Night Funkin'",					'https://twitter.com/PhantomArcade3K',	'0xFFFFBB1B'],
 		['evilsk8r',			'evilsk8r',			"Artist of Friday Night Funkin'",					'https://twitter.com/evilsk8r',			'0xFF53E52C'],
-		['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",					'https://twitter.com/kawaisprite',		'0xFF6475F3']
+		['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",					'https://twitter.com/kawaisprite',		'0xFF6475F3'],
+		[''],
+		['Look in the shared folder of the assets folder for cool people']
 	];
 		
 		

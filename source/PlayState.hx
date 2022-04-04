@@ -439,8 +439,12 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('icecave', -600, -200, 1, 1);
 				add(bg);
 
-			case 'house': //Week 7: Sylveon
+			case 'house': //Unused stage for Week 7: Sylveon
 				var bg:BGSprite = new BGSprite('house', -600, -200, 1, 1);
+				add(bg);
+
+			case 'mountains': //Week 8: Potassium
+				var bg:BGSprite = new BGSprite('mountains', -600, -200, 1, 1);
 				add(bg);
 
 			case 'spooky': //Week 2
@@ -925,7 +929,12 @@ class PlayState extends MusicBeatState
 
 		dad = new Character(0, 0, SONG.player2);
 		startCharacterPos(dad, true);
-		dadGroup.add(dad);
+		if (curSong == "drugged"){
+			dad.alpha = 0;
+		}else{
+			dadGroup.add(dad);
+		}
+		
 
 		boyfriend = new Boyfriend(0, 0, SONG.player1);
 		startCharacterPos(boyfriend);
@@ -1094,6 +1103,9 @@ class PlayState extends MusicBeatState
 		iconP2 = new HealthIcon(dad.healthIcon, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		iconP2.visible = !ClientPrefs.hideHud;
+		if (curSong == 'drugged'){
+				iconP2.alpha = 0;
+		}
 		add(iconP2);
 		reloadHealthBarColors();
 
@@ -1214,7 +1226,7 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-				case 'tutorial' | 'smoking' | 'headache'|'sinful'|'flaming'|'burned':
+				case 'tutorial' | 'smoking' | 'headache'|'sinful'|'flaming'|'burned'|'drugged'|'hypergalcemia'|'banana':
 					startDialogue(dialogueJson);
 				case 'ugh' | 'guns' | 'stress':
 					var leSong:String = SONG.song.toLowerCase();
@@ -4229,7 +4241,17 @@ class PlayState extends MusicBeatState
 			trace('BEAT HIT: ' + curBeat + ', LAST HIT: ' + lastBeatHit);
 			return;
 		}
-		
+
+		#if !LUA_ALLOWED || !sys
+		if (curSong == 'drugged') {
+			if (curBeat == 32) {
+				dadGroup.add(dad);
+				dad.alpha = 1;
+				iconP2.alpha = 1;
+			}
+		}
+		#end
+
 		if (curStage == 'tank') {
 			if (curBeat % 2 == 0) {
 				tanjcuk.animation.play('dancey');

@@ -1,0 +1,74 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "potassium",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I've been defeated :skull:"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Welp, that takes care of that problem."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Now we have to fix you being a dick to me for trying to enjoy life."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oh fuck you Glaceon, you literally would've died if I didn't defrost you."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "That's literally the only nice thing you did you me since I fell from the ceiling of the cave and got born."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "confused",
+			"text": "Wait I thought you all came from eggs?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "We did, I just made a joke.."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "potassium",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Bruh shut up, I will make your life hell before I get broken down."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oh boy, better brace yourself, it's getting real."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Skill issue ig."
+		}
+	]
+}

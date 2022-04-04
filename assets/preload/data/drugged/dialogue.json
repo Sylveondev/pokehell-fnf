@@ -1,0 +1,151 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Sup bois."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Ayo bf look at this cute thing."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "excited",
+			"text": "Hi B-"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "potassium",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Aye bitches Ima kill yall."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Wha.....?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "God dammit, who brought potassium cyanide into this place?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "confused",
+			"text": "Not me, I don't know how to."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "..."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "angry",
+			"expression": "talk",
+			"text": "Glaceon... I can't belive you did that, you're gonna kill us all!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I did it for the comedic factor lol"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Bruh"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "So how do we dispose it?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Well you have to beat it's three poorly charted and spammy songs that I tought it."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Dude, are you fucking kidding me rn? You seriously tought it joke songs?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "This isn't funkin' Dave and Bambi my guy.."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "excited",
+			"text": "I'll take care of it don't worry."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I hope"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "potassium",
+			"boxState": "angry",
+			"expression": "talk",
+			"text": "Pffft. Hahahahaha oh my god bruh you can't be serious! Lol lmao :skull:"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "potassium",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "You can't win, it's literally impossible :joy: :joy: :skull: :skull:"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Roll the song"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hopefully he doesn't die of hypergylcemia."
+		}
+	]
+}
