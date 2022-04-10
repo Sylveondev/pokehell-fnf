@@ -4242,15 +4242,7 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		#if !LUA_ALLOWED || !sys
-		if (curSong == 'drugged') {
-			if (curBeat == 32) {
-				dadGroup.add(dad);
-				dad.alpha = 1;
-				iconP2.alpha = 1;
-			}
-		}
-		#end
+		
 
 		if (curStage == 'tank') {
 			if (curBeat % 2 == 0) {
