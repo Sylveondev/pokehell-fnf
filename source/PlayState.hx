@@ -1255,7 +1255,17 @@ class PlayState extends MusicBeatState
 		
 		callOnLuas('onCreatePost', []);
 		
-		
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, 
+			#if debug
+				SONG.song  + " - Pokehell Dev Version"
+			#else
+				SONG.song
+			#end
+		, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+
 		super.create();
 
 		if (SONG.song.toLowerCase() == 'stress')
@@ -2388,7 +2398,7 @@ class PlayState extends MusicBeatState
 					var secondsTotal:Int = Math.floor((songLength - curTime) / 1000);
 					if(secondsTotal < 0) secondsTotal = 0;
 
-					timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
+					timeTxt.text = SONG.song + " - " + FlxStringUtil.formatTime(secondsTotal, false);
 				}
 			}
 
