@@ -1,5 +1,6 @@
 package;
 
+import flash.system.System;
 import Controls.Control;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -19,7 +20,7 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Toggle Practice Mode', 'Botplay', 'Exit to menu'];
+	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Toggle Practice Mode', 'Botplay', 'Exit to menu'];
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
@@ -163,17 +164,37 @@ class PauseSubState extends MusicBeatSubstate
 					menuItems = difficultyChoices;
 					regenMenu();
 				case 'Toggle Practice Mode':
+				#if debug
 					PlayState.practiceMode = !PlayState.practiceMode;
 					PlayState.usedPractice = true;
 					practiceText.visible = PlayState.practiceMode;
+				#else
+						var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('cheater'));
+						bg.screenCenter();
+						add(bg);
+						FlxG.sound.play(Paths.sound('pain'), 1);
+
+						var timer = new haxe.Timer(1000); // 1000ms delay
+						timer.run = function() { System.exit(0); }
+				#end
 				case "Restart Song":
 					CustomFadeTransition.nextCamera = transCamera;
 					MusicBeatState.resetState();
 					FlxG.sound.music.volume = 0;
 				case 'Botplay':
+					#if debug
 					PlayState.cpuControlled = !PlayState.cpuControlled;
 					PlayState.usedPractice = true;
 					botplayText.visible = PlayState.cpuControlled;
+					#else
+						var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('cheater'));
+						bg.screenCenter();
+						add(bg);
+						FlxG.sound.play(Paths.sound('pain'), 1);
+
+						var timer = new haxe.Timer(1000); // 1000ms delay
+						timer.run = function() { System.exit(0); }
+					#end
 				case "Exit to menu":
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;

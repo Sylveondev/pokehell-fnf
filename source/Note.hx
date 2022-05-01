@@ -100,6 +100,12 @@ class Note extends FlxSprite
 						missHealth = 0.3;
 
 					hitCausesMiss = true;
+				case 'Heal Note':
+					reloadNote('HEALNOTE_assets');
+				case 'Kill Note':
+					reloadNote('KILLNOTE_assets');
+				case 'AntiMiss Note':
+					reloadNote('ANTIMISSNOTE_assets');
 				case 'No Animation':
 					noAnimation = true;
 			}

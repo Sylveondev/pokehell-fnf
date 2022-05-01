@@ -18,7 +18,7 @@
 			"loop": false,
 			"indices": [],
 			"offsets": [
-				2,
+				20,
 				0
 			]
 		},
@@ -54,6 +54,17 @@
 				0,
 				0
 			]
+		},
+		{
+			"anim": "finger",
+			"name": "finger",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				0
+			]
 		}
 	],
 	"image": "characters/sylveon",
@@ -62,7 +73,7 @@
 	"healthicon": "sylveon",
 	"position": [
 		0,
-		280
+		400
 	],
 	"camera_position": [
 		-20,

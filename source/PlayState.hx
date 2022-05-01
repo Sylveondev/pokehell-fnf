@@ -58,6 +58,7 @@ using StringTools;
 
 class PlayState extends MusicBeatState
 {
+	public var iconrot = 1;
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
@@ -119,7 +120,7 @@ class PlayState extends MusicBeatState
 
 	var newManiaVal:Int;
 
-	public static var mania:Int = 3;
+	public static var mania:Null<Int> = 3;
 
 	public var vocals:FlxSound;
 
@@ -260,6 +261,7 @@ class PlayState extends MusicBeatState
 
 	public var inCutscene:Bool = false;
 	var songLength:Float = 0;
+	var kadeEngineWatermark:FlxText;
 
 	#if desktop
 	// Discord RPC variables
@@ -289,10 +291,22 @@ class PlayState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
-		mania = SONG.mania;
+		trace('Loaded song. Mania: '+SONG.mania);
 
-		if (mania < 0)
+		mania = SONG.mania;
+		
+
+		if (mania < 0 || mania == null)
 			mania = 3;
+
+		trace('Mania is '+mania);
+
+		iconrot = 1;
+
+		rotCam = false;
+		camera.angle = 0;
+		
+		swayNotes = false;
 
 		practiceMode = false;
 		// var gameCam:FlxCamera = FlxG.camera;
@@ -301,6 +315,9 @@ class PlayState extends MusicBeatState
 		camOther = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
 		camOther.bgColor.alpha = 0;
+
+		rotCamHud = false;
+		camHUD.angle = 0;
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
@@ -1095,6 +1112,28 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 		healthBarBG.sprTracker = healthBar;
 
+		//Ripped straight from Kade Engine, fight me over it
+		
+		#if debug
+		kadeEngineWatermark = new FlxText(4, healthBarBG.y
+			+ 50, 0,
+			SONG.song
+			+ " - Pokehell Dev version (PE "+MainMenuState.psychEngineVersion+")", 16);
+		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		kadeEngineWatermark.scrollFactor.set();
+		kadeEngineWatermark.cameras = [camHUD];
+		add(kadeEngineWatermark);
+		#else
+		kadeEngineWatermark = new FlxText(4, healthBarBG.y
+			+ 50, 0,
+			SONG.song
+			+ " - Pokehell " + MainMenuState.pokehellVersion+" (PE "+MainMenuState.psychEngineVersion+")", 16);
+		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		kadeEngineWatermark.scrollFactor.set();
+		kadeEngineWatermark.cameras = [camHUD];
+		add(kadeEngineWatermark);
+		#end
+
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		iconP1.visible = !ClientPrefs.hideHud;
@@ -1254,6 +1293,7 @@ class PlayState extends MusicBeatState
 		
 		
 		callOnLuas('onCreatePost', []);
+		
 		
 		
 		super.create();
@@ -2124,6 +2164,21 @@ class PlayState extends MusicBeatState
 	var canPause:Bool = true;
 	var limoSpeed:Float = 0;
 
+	public static var rotCam = false;
+	var rotCamSpd:Float = 1;
+	var rotCamRange:Float = 10;
+	var rotCamInd = 0;
+
+	public static var rotCamHud = false;
+	var rotCamHudSpd:Float = 1;
+	var rotCamHudRange:Float = 10;
+	var rotCamHudInd = 0;
+				
+	public static var swayNotes = false;
+	var swayNotesSpd:Float = 1;
+	var swayNotesRange:Float = 10;
+	var swayNotesInd = 0;
+
 	override public function update(elapsed:Float)
 	{
 		/*if (FlxG.keys.justPressed.NINE)
@@ -2247,6 +2302,36 @@ class PlayState extends MusicBeatState
 				moveTank();
 		}
 
+		if (rotCam)
+		{
+			rotCamInd ++;
+			camera.angle = Math.sin(rotCamInd / 100 * rotCamSpd) * rotCamRange;
+		}
+		else
+		{
+			rotCamInd = 0;
+		}
+
+		if (rotCamHud)
+		{
+			rotCamHudInd ++;
+			camHUD.angle = Math.sin(rotCamHudInd / 100 * rotCamHudSpd) * rotCamHudRange;
+		}
+		else
+		{
+			rotCamHudInd = 0;
+		}
+		
+		if (swayNotes)
+		{
+			swayNotesInd ++;
+			camHUD.x = Math.sin(swayNotesInd / 100 * swayNotesSpd) * swayNotesRange;
+		}
+		else
+		{
+			swayNotesInd = 0;
+		}
+
 		if(!inCutscene) {
 			var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed, 0, 1);
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
@@ -2321,11 +2406,15 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
-		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
-		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+
+		//iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+		//iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+		
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
+
+		
 
 		var iconOffset:Int = 26;
 
@@ -2388,7 +2477,7 @@ class PlayState extends MusicBeatState
 					var secondsTotal:Int = Math.floor((songLength - curTime) / 1000);
 					if(secondsTotal < 0) secondsTotal = 0;
 
-					timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
+					timeTxt.text = SONG.song + " - " + FlxStringUtil.formatTime(secondsTotal, false);
 				}
 			}
 
@@ -3159,6 +3248,31 @@ class PlayState extends MusicBeatState
 				var flashduration = Std.parseInt(value1);
 				FlxG.camera.flash(FlxColor.WHITE, flashduration);
 				camHUD.flash(FlxColor.WHITE, flashduration);
+			case 'Do Camera rotate':
+				//Some Shaggy mod code because I have no fkin' idea what I'm doing :skull
+				rotCam = true;
+				rotCamSpd = Std.parseFloat(value1);
+				rotCamRange = Std.parseFloat(value2);
+			case 'Stop Camera rotate':
+				rotCam = false;
+				camera.angle = 0;
+			case 'Do CamHud rotate':
+				//Some Shaggy mod code because I have no fkin' idea what I'm doing :skull
+				rotCamHud = true;
+				rotCamHudSpd = Std.parseFloat(value1);
+				rotCamHudRange = Std.parseFloat(value2);
+			case 'Stop CamHud rotate':
+				rotCamHud = false;
+				camHUD.angle = 0;
+			case 'Do note move':
+				swayNotes = true;
+				swayNotesSpd = Std.parseFloat(value1);
+				swayNotesRange = Std.parseFloat(value2);
+			case 'Stop note move':
+				swayNotes = false;
+				camHUD.x = 0;
+			case 'Flip CamHud':
+				camHUD.angle = camHUD.angle + 180;
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
@@ -3845,6 +3959,8 @@ class PlayState extends MusicBeatState
 				
 				if (daNote.noteType == 'GF Sing') {
 					gf.playAnim('sing' + Main.charDir[Main.gfxHud[mania][daNote.noteData]] + 'miss', true);
+				} else if (daNote.noteType == 'AntiMiss Note') {
+					health = 0;
 				} else {
 					var daAlt = '';
 
@@ -3902,6 +4018,23 @@ class PlayState extends MusicBeatState
 				}
 
 				switch(note.noteType) {
+					case 'Heal Note':
+						if(!boyfriend.stunned)
+						{
+							health = 100;
+							note.wasGoodHit = true;
+						}
+					case 'Kill Note':
+						if(!boyfriend.stunned)
+						{
+							health = 0;
+							note.wasGoodHit = true;
+						}
+					case 'AntiMiss Note':
+						if (!boyfriend.stunned)
+						{
+							note.wasGoodHit = true;
+						}
 					case 'Hurt Note': //Hurt note
 	
 						if(!boyfriend.stunned)
@@ -4295,8 +4428,13 @@ class PlayState extends MusicBeatState
 			camHUD.zoom += 0.03;
 		}
 
-		iconP1.setGraphicSize(Std.int(iconP1.width + 30));
-		iconP2.setGraphicSize(Std.int(iconP2.width + 30));
+		//iconP1.setGraphicSize(Std.int(iconP1.width + 30));
+		//iconP2.setGraphicSize(Std.int(iconP2.width + 30));
+		
+		iconrot = iconrot * -1;
+
+		FlxTween.angle(iconP1, (32 * iconrot), 0, 1, {ease: FlxEase.quartOut});
+		FlxTween.angle(iconP2, -(32 * iconrot), 0, 1, {ease: FlxEase.quartOut});
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();

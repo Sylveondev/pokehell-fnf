@@ -27,6 +27,8 @@ class CreditsState extends MusicBeatState
 	private var iconArray:Array<AttachedSprite> = [];
 	private var creditsStuff:Array<Dynamic> = [];
 
+	var rotCamHudInd:Int = 0;
+
 	var bg:FlxSprite;
 	var descText:FlxText;
 	var intendedColor:Int;
@@ -64,10 +66,10 @@ class CreditsState extends MusicBeatState
 		
 		#end
 		var pisspoop = [ //Name - Icon name - Description - Link - BG Color
-		['Mod makers'],
-		['SylveonDev',		'sylveondev',		'Owner of Pokehell.',					'https://www.youtube.com/channel/UC8wo8sY38N-wyZDtit2psjg',	'0xFF9EFD'],
-		['Spongey',		'spongey',		'Graphics and programming.',					'https://twitter.com/spongebob7989b',	'0xEDB96F'],
-		['Discord',		'discord',		'Made a chat platform with voice and text and stuff.',					'https://discord.com/',	'0xFFFFFF'],
+		['Pokehell Devs'],
+		['SylveonDev',		'sylveondev',		'Owner of Pokehell.',					'https://www.youtube.com/channel/UC8wo8sY38N-wyZDtit2psjg',	'0xFFFF9EFD'],
+		['Spongey',		'spongey',		'Graphics and programming.',					'https://twitter.com/spongebob7989b',	'0xFFEDB96F'],
+		['Discord',		'discord',		'Made a chat platform with voice and text and stuff.',					'https://discord.com/',	'0xFFFFFFFF'],
 		[''],
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	'0xFFFFDD33'],
@@ -134,6 +136,10 @@ class CreditsState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		rotCamHudInd ++;
+		for (i in 0...iconArray.length) {
+			iconArray[i].angle = Math.sin(rotCamHudInd / 100 * 1) * 5;
+		}
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
