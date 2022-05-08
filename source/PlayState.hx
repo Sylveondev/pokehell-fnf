@@ -152,6 +152,12 @@ class PlayState extends MusicBeatState
 	public var gfSpeed:Int = 1;
 	public var health:Float = 1;
 	public var combo:Int = 0;
+	public var highestcombo:Int = 0;
+
+	public var sicks:Int = 0;
+	public var goods:Int = 0;
+	public var bads:Int = 0;
+	public var shits:Int = 0;
 
 	private var healthBarBG:AttachedSprite;
 	public var healthBar:FlxBar;
@@ -262,6 +268,7 @@ class PlayState extends MusicBeatState
 	public var inCutscene:Bool = false;
 	var songLength:Float = 0;
 	var kadeEngineWatermark:FlxText;
+	var scoretable:FlxText;
 
 	#if desktop
 	// Discord RPC variables
@@ -1133,6 +1140,24 @@ class PlayState extends MusicBeatState
 		kadeEngineWatermark.cameras = [camHUD];
 		add(kadeEngineWatermark);
 		#end
+
+		scoretable = new FlxText(4, FlxG.height / 2, 0,
+			'Song Score: '+ songScore +
+			'\nCurrent Combo: '+ combo +
+			'\nHighest combo: '+ highestcombo +
+			'\n------\nSicks: '+ sicks +
+			'\nGoods: ' + goods +
+			'\nBads: ' + bads +
+			'\nShits: ' + shits +
+			'\nMisses: ' + songMisses
+			#if debug
+			+ '\n!!! Debug mode !!!'
+			#end
+		, 20);
+		scoretable.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoretable.scrollFactor.set();
+		scoretable.cameras = [camHUD];
+		add(scoretable);
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -2359,6 +2384,18 @@ class PlayState extends MusicBeatState
 		}
 		botplayTxt.visible = cpuControlled;
 
+		scoretable.text = 'Song Score: '+ songScore +
+			'\nCurrent Combo: '+ combo +
+			'\nHighest combo: '+ highestcombo +
+			'\n------\nSicks: '+ sicks +
+			'\nGoods:' + goods +
+			'\nBads: ' + bads +
+			'\nShits: ' + shits +
+			'\nMisses: ' + songMisses
+			#if debug
+			+ '\n!!! Debug mode !!!'
+			#end;
+
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			var ret:Dynamic = callOnLuas('onPause', []);
@@ -3574,21 +3611,25 @@ class PlayState extends MusicBeatState
 		{
 			daRating = 'shit';
 			score = 50;
+			shits++;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.5)
 		{
 			daRating = 'bad';
 			score = 100;
+			bads++;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.25)
 		{
 			daRating = 'good';
 			score = 200;
+			goods++;
 		}
 
 		if(daRating == 'sick')
 		{
 			spawnNoteSplashOnNote(note);
+			sicks++;
 		}
 
 		//trace(daRating);
@@ -4072,6 +4113,7 @@ class PlayState extends MusicBeatState
 				{
 					popUpScore(note);
 					if (combo < 9999) combo += 1;	//who the fuck put 9999+ notes
+					if (combo > highestcombo) highestcombo = combo;
 				}
 
 				/**
