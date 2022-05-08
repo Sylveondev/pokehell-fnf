@@ -2406,10 +2406,10 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
-
-		//iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
-		//iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
-		
+		if (!ClientPrefs.dohealthrot){
+			iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+			iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+		}
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
@@ -4379,12 +4379,15 @@ class PlayState extends MusicBeatState
 		//I only need the one where the icon rotates, the one I made glitches out often.
 		if (curBeat % gfSpeed == 0) {
 			curBeat % (gfSpeed * 2) == 0 ? {
-				FlxTween.angle(iconP1, -(ClientPrefs.healthrot), 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-				FlxTween.angle(iconP2, ClientPrefs.healthrot, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				if (ClientPrefs.dohealthrot){
+					FlxTween.angle(iconP1, -(ClientPrefs.healthrot), 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+					FlxTween.angle(iconP2, ClientPrefs.healthrot, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				}
 			} : {
-
-				FlxTween.angle(iconP2, -(ClientPrefs.healthrot), 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-				FlxTween.angle(iconP1, ClientPrefs.healthrot, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				if (ClientPrefs.dohealthrot){
+					FlxTween.angle(iconP2, -(ClientPrefs.healthrot), 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+					FlxTween.angle(iconP1, ClientPrefs.healthrot, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				}
 			}
 			
 			iconP1.updateHitbox();
@@ -4434,16 +4437,21 @@ class PlayState extends MusicBeatState
 			camHUD.zoom += 0.03;
 		}
 
-		//iconP1.setGraphicSize(Std.int(iconP1.width + 30));
-		//iconP2.setGraphicSize(Std.int(iconP2.width + 30));
-		
+		if (!ClientPrefs.dohealthrot){
+			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
+			iconP2.setGraphicSize(Std.int(iconP2.width + 30));
+		}
+
 		iconrot = iconrot * -1;
 
+		//This code doesn't work right, look in beatHit() for the working code
 		//FlxTween.angle(iconP1, (32 * iconrot), 0, 1, {ease: FlxEase.quartOut});
 		//FlxTween.angle(iconP2, -(32 * iconrot), 0, 1, {ease: FlxEase.quartOut});
 
-		//iconP1.updateHitbox();
-		//iconP2.updateHitbox();
+		if (!ClientPrefs.dohealthrot){
+			iconP1.updateHitbox();
+			iconP2.updateHitbox();
+		}
 
 		if (curBeat % gfSpeed == 0 && !gf.stunned && gf.animation.curAnim.name != null && !gf.animation.curAnim.name.startsWith("sing"))
 		{

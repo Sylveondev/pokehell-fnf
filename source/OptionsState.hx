@@ -642,6 +642,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Hide Song Length',
 		'Flashing Lights',
 		'Camera Zooms',
+		'Do HealthIcon rotation',
 		'HealthIcon rotation'
 		#if !mobile
 		,'FPS Counter'
@@ -829,6 +830,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 
 					case 'Hide Song Length':
 						ClientPrefs.hideTime = !ClientPrefs.hideTime;
+
+					case 'Do HealthIcon rotation':
+						ClientPrefs.dohealthrot = !ClientPrefs.dohealthrot;
 				}
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				reloadValues();
@@ -894,6 +898,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 		switch(options[curSelected]) {
 			case 'Framerate':
 				daText = "Pretty self explanatory, isn't it?\nDefault value is 60.";
+			case 'Do HealthIcon rotation':
+				daText = "Disabling this will use the classic health icon animation (bumping)";
 			case 'HealthIcon rotation':
 				daText = "How far the icon should rotate.\nDefault value is 32 degrees.";
 			case 'Note Delay':
@@ -1011,6 +1017,10 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.imagesPersist;
 					case 'Hide Song Length':
 						daValue = ClientPrefs.hideTime;
+					case 'optimization':
+						daValue = ClientPrefs.optimization;
+					case 'Do HealthIcon rotation':
+						daValue = ClientPrefs.dohealthrot;
 				}
 				checkbox.daValue = daValue;
 			}
