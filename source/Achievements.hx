@@ -157,12 +157,14 @@ class AchievementObject extends FlxSpriteGroup {
 			cam = [camera];
 		}
 		alpha = 0;
+		this.y = -100;
 		achievementBG.cameras = cam;
 		achievementName.cameras = cam;
 		achievementText.cameras = cam;
 		achievementIcon.cameras = cam;
-		alphaTween = FlxTween.tween(this, {alpha: 1}, 0.5, {onComplete: function (twn:FlxTween) {
-			alphaTween = FlxTween.tween(this, {alpha: 0}, 0.5, {
+		alphaTween = FlxTween.tween(this, {alpha: 1, y: 25}, 0.5, {ease: FlxEase.quadOut, onComplete: function (twn:FlxTween) {
+			alphaTween = FlxTween.tween(this, {alpha: 0, y: -100}, 0.5, {
+				ease: FlxEase.quadIn,
 				startDelay: 2.5,
 				onComplete: function(twn:FlxTween) {
 					alphaTween = null;

@@ -4374,16 +4374,22 @@ class PlayState extends MusicBeatState
 			trace('BEAT HIT: ' + curBeat + ', LAST HIT: ' + lastBeatHit);
 			return;
 		}
+		
+		//Based from golden apple because I have no god damn idea what I'm doing.
+		//I only need the one where the icon rotates, the one I made glitches out often.
+		if (curBeat % gfSpeed == 0) {
+			curBeat % (gfSpeed * 2) == 0 ? {
+				FlxTween.angle(iconP1, -(ClientPrefs.healthrot), 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP2, ClientPrefs.healthrot, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			} : {
 
-		#if !LUA_ALLOWED || !sys
-		if (curSong == 'drugged') {
-			if (curBeat == 32) {
-				dadGroup.add(dad);
-				dad.alpha = 1;
-				iconP2.alpha = 1;
+				FlxTween.angle(iconP2, -(ClientPrefs.healthrot), 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP1, ClientPrefs.healthrot, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 			}
+			
+			iconP1.updateHitbox();
+			iconP2.updateHitbox();
 		}
-		#end
 
 		if (curStage == 'tank') {
 			if (curBeat % 2 == 0) {
@@ -4433,11 +4439,11 @@ class PlayState extends MusicBeatState
 		
 		iconrot = iconrot * -1;
 
-		FlxTween.angle(iconP1, (32 * iconrot), 0, 1, {ease: FlxEase.quartOut});
-		FlxTween.angle(iconP2, -(32 * iconrot), 0, 1, {ease: FlxEase.quartOut});
+		//FlxTween.angle(iconP1, (32 * iconrot), 0, 1, {ease: FlxEase.quartOut});
+		//FlxTween.angle(iconP2, -(32 * iconrot), 0, 1, {ease: FlxEase.quartOut});
 
-		iconP1.updateHitbox();
-		iconP2.updateHitbox();
+		//iconP1.updateHitbox();
+		//iconP2.updateHitbox();
 
 		if (curBeat % gfSpeed == 0 && !gf.stunned && gf.animation.curAnim.name != null && !gf.animation.curAnim.name.startsWith("sing"))
 		{

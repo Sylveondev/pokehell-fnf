@@ -619,6 +619,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 	];
 	static var noCheckbox:Array<String> = [
 		'Framerate',
+		'HealthIcon rotation',
 		'Note Delay'
 	];
 
@@ -640,7 +641,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Hide HUD',
 		'Hide Song Length',
 		'Flashing Lights',
-		'Camera Zooms'
+		'Camera Zooms',
+		'HealthIcon rotation'
 		#if !mobile
 		,'FPS Counter'
 		#end
@@ -848,6 +850,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 							FlxG.drawFramerate = ClientPrefs.framerate;
 							FlxG.updateFramerate = ClientPrefs.framerate;
 						}
+					case 'HealthIcon rotation':
+						ClientPrefs.healthrot += add;
 					case 'Note Delay':
 						var mult:Int = 1;
 						if(holdTime > 1.5) { //Double speed after 1.5 seconds holding
@@ -890,6 +894,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 		switch(options[curSelected]) {
 			case 'Framerate':
 				daText = "Pretty self explanatory, isn't it?\nDefault value is 60.";
+			case 'HealthIcon rotation':
+				daText = "How far the icon should rotate.\nDefault value is 32 degrees.";
 			case 'Note Delay':
 				daText = "Changes how late a note is spawned.\nUseful for preventing audio lag from wireless earphones.";
 			case 'FPS Counter':
@@ -1018,6 +1024,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daText = '' + ClientPrefs.framerate;
 					case 'Note Delay':
 						daText = ClientPrefs.noteOffset + 'ms';
+					case 'HealthIcon rotation':
+						daText = ''+ClientPrefs.healthrot;
 				}
 				var lastTracker:FlxSprite = text.sprTracker;
 				text.sprTracker = null;

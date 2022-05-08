@@ -103,6 +103,8 @@ class Note extends FlxSprite
 				case 'Heal Note':
 					reloadNote('HEALNOTE_assets');
 				case 'Kill Note':
+					hitCausesMiss = true;
+					ignoreNote = mustPress;
 					reloadNote('KILLNOTE_assets');
 				case 'AntiMiss Note':
 					reloadNote('ANTIMISSNOTE_assets');

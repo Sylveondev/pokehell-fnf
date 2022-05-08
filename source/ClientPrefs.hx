@@ -16,6 +16,7 @@ class ClientPrefs {
 	public static var noteSplashes:Bool = true;
 	public static var lowQuality:Bool = false;
 	public static var framerate:Int = 120;
+	public static var healthrot:Int = 32;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
@@ -121,6 +122,7 @@ class ClientPrefs {
 		FlxG.save.data.noteSplashes = noteSplashes;
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.framerate = framerate;
+		FlxG.save.data.healthrot = healthrot;
 		FlxG.save.data.cursing = cursing;
 		FlxG.save.data.violence = violence;
 		FlxG.save.data.camZooms = camZooms;
@@ -188,6 +190,9 @@ class ClientPrefs {
 				FlxG.drawFramerate = framerate;
 				FlxG.updateFramerate = framerate;
 			}
+		}
+		if(FlxG.save.data.healthrot != null) {
+			healthrot = FlxG.save.data.healthrot;
 		}
 		/*if(FlxG.save.data.cursing != null) {
 			cursing = FlxG.save.data.cursing;
