@@ -101,6 +101,8 @@
 	
 	<assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
+	<assets path='art/resetmods.bat' rename='reset the mods folder.bat' />
+	<assets path='art/Pokemods.url' rename='download a pokemod.url' />
 	<!-- <template path='mods' /> -->
 	
 	<!-- assets path="CHANGELOG.md" rename='changelog.txt' -->

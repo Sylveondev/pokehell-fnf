@@ -55,6 +55,8 @@ class TitleState extends MusicBeatState
 	var mustUpdate:Bool = false;
 	public static var updateVersion:String = '';
 
+	public var gfSpeed:Int = 1;
+
 	override public function create():Void
 	{
 		#if (polymod && !html5)
@@ -452,6 +454,14 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
+		if (curBeat % gfSpeed == 0) {
+			curBeat % (gfSpeed * 2) == 0 ? {
+				FlxTween.angle(logoBl, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			} : {
+				FlxTween.angle(logoBl, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			}
+		}
+
 		if(logoBl != null) 
 			logoBl.animation.play('bump');
 
@@ -530,13 +540,15 @@ class TitleState extends MusicBeatState
 
 			logoBl.angle = -4;
 
-			new FlxTimer().start(0.01, function(tmr:FlxTimer)
-			{
-				if (logoBl.angle == -4)
-					FlxTween.angle(logoBl, logoBl.angle, 4, 4, {ease: FlxEase.quartInOut});
-				if (logoBl.angle == 4)
-					FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quartInOut});
-			}, 0);
+			//Classic, taken from kade engine.
+			//new FlxTimer().start(0.01, function(tmr:FlxTimer)
+			//{
+			//	if (logoBl.angle == -4)
+			//		FlxTween.angle(logoBl, logoBl.angle, 4, 4, {ease: FlxEase.quartInOut});
+			//	if (logoBl.angle == 4)
+			//		FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quartInOut});
+			//}, 0);
+			//
 
 			FlxG.camera.flash(FlxColor.RED, 4);
 			remove(credGroup);
