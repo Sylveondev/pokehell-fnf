@@ -6,6 +6,7 @@ import Discord.DiscordClient;
 import Section.SwagSection;
 import Song.SwagSong;
 import WiggleEffect.WiggleEffectType;
+import Shaders.PulseEffect;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
@@ -49,6 +50,8 @@ import Achievements;
 import StageData;
 import FunkinLua;
 import DialogueBoxPsych;
+import flash.geom.Point;
+import flash.filters.ColorMatrixFilter;
 
 #if sys
 import sys.FileSystem;
@@ -211,6 +214,8 @@ class PlayState extends MusicBeatState
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var fastCar:BGSprite;
 
+	var trippyBG:BGSprite;
+
 	var upperBoppers:BGSprite;
 	var bottomBoppers:BGSprite;
 	var santa:BGSprite;
@@ -259,6 +264,10 @@ class PlayState extends MusicBeatState
 	public var defaultCamZoom:Float = 1.05;
 	public var defaultHudZoom:Float = 1;
 
+	public var hueRotation:Int = 0; // degrees. Tested with values from 0...359
+	// cosA and sinA are in radians
+	public var cosA:Float;
+	public var sinA:Float;
 
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
@@ -470,6 +479,18 @@ class PlayState extends MusicBeatState
 			case 'mountains': //Week 8: Potassium
 				var bg:BGSprite = new BGSprite('mountains', -600, -200, 1, 1);
 				add(bg);
+
+			case 'trippy': //Week 9: System86
+				
+				trippyBG = new BGSprite('trippy', -600, -200, 1, 1.3);
+				add(trippyBG);
+
+				hueRotation = 25; // degrees. Tested with values from 0...359
+				// cosA and sinA are in radians
+				cosA = Math.cos(hueRotation * Math.PI / 180);
+				sinA = Math.sin(hueRotation * Math.PI / 180);
+
+				
 
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
@@ -854,6 +875,14 @@ class PlayState extends MusicBeatState
 					tank3.scrollFactor.set(1.5, 1.5);
 					tank3.antialiasing = true;
 					add(tank3);
+		}
+
+		if (curStage == 'trippy'){
+			var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
+			testshader.waveAmplitude = 0.1;
+			testshader.waveFrequency = 5;
+			testshader.waveSpeed = 2;
+			trippyBG.shader = testshader.shader;
 		}
 
 		if(isPixelStage) {
@@ -1325,6 +1354,15 @@ class PlayState extends MusicBeatState
 
 		if (SONG.song.toLowerCase() == 'stress')
 			GameOverSubstate.characterName = 'bf-holding-gf-dead';
+
+		if (curStage == 'trippy'){
+				var evilTrail = new FlxTrail(boyfriend, null, 4, 24, 0.3, 0.069); //nice
+				insert(members.indexOf(boyfriendGroup) - 1, evilTrail);
+				var evilTrail = new FlxTrail(gf, null, 4, 24, 0.3, 0.069); //nice
+				insert(members.indexOf(gfGroup) - 1, evilTrail);
+				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				insert(members.indexOf(dadGroup) - 1, evilTrail);
+		}
 	}
 
 	public function addTextToDebug(text:String) {
@@ -2204,6 +2242,28 @@ class PlayState extends MusicBeatState
 	var swayNotesRange:Float = 10;
 	var swayNotesInd = 0;
 
+	var bfspd:Float = FlxG.random.float(1, 5);
+	var bfangspd:Float = FlxG.random.float(1,10);
+	var bfangr:Float = FlxG.random.float(5, 45);
+	var bfrang:Float = FlxG.random.float(-90, 90);
+	var bfind = 0;
+
+	var gfspd:Float = FlxG.random.float(1, 5);
+	var gfangspd:Float = FlxG.random.float(1,10);
+	var gfangr:Float = FlxG.random.float(5, 25);
+	var gfrang:Float = FlxG.random.float(-90, 90);
+	var gfind = 0;
+
+	var dadspd:Float = FlxG.random.float(1, 5);
+	var dadangspd:Float = FlxG.random.float(1,10);
+	var dadangr:Float = FlxG.random.float(5, 25);
+	var dadrang:Float = FlxG.random.float(-90, 90);
+	var dadind = 0;
+
+	var stageSpd:Float = 5;
+	var stageRange:Float = 10;
+	var stageInd = 0;
+
 	override public function update(elapsed:Float)
 	{
 		/*if (FlxG.keys.justPressed.NINE)
@@ -2215,6 +2275,26 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
+			case 'trippy':
+				var shad = cast(trippyBG.shader, Shaders.GlitchShader);
+				shad.uTime.value[0] += elapsed;
+
+				stageInd ++;
+				trippyBG.angle = Math.sin(stageInd / 100 * bfangspd) * 15;
+				trippyBG.x = -600 + Math.sin(stageInd / 100 * stageSpd) * 100;
+				trippyBG.y = -200 +Math.sin(stageInd / 100 * stageSpd) * 100;
+
+				bfind ++;
+				boyfriend.angle = Math.sin(bfind / 100 * bfangspd) * bfangr;
+				boyfriend.x = BF_X + Math.sin(bfind / 100 * bfspd) * bfrang;
+				
+				gfind ++;
+				gf.angle = Math.sin(gfind / 100 * gfangspd) * gfangr;
+				gf.x = GF_X + Math.sin(gfind / 100 * gfspd) * gfrang;
+				
+				dadind ++;
+				dad.angle = Math.sin(dadind / 100 * dadangspd) * dadangr;
+				dad.x = DAD_X + Math.sin(dadind / 100 * dadspd) * dadrang;
 			case 'schoolEvil':
 				if(!ClientPrefs.lowQuality && bgGhouls.animation.curAnim.finished) {
 					bgGhouls.visible = false;
@@ -2326,6 +2406,8 @@ class PlayState extends MusicBeatState
 			case 'tank':
 				moveTank();
 		}
+
+
 
 		if (rotCam)
 		{
@@ -4402,12 +4484,21 @@ class PlayState extends MusicBeatState
 		lastStepHit = curStep;
 		setOnLuas('curStep', curStep);
 		callOnLuas('onStepHit', []);
+
+		if (curStage == 'trippy') {
+		
+
+		//Dave and bambi glitch effect for the background.
+		
+	}
 	}
 
 	var lightningStrikeBeat:Int = 0;
 	var lightningOffset:Int = 8;
 
 	var lastBeatHit:Int = -1;
+
+	
 	override function beatHit()
 	{
 		super.beatHit();
@@ -4446,6 +4537,10 @@ class PlayState extends MusicBeatState
 				tank4.animation.play('idle');
 				tank5.animation.play('idle');
 			}
+		}
+
+		if (curStage == 'trippy'){
+			
 		}
 
 		if (generatedMusic)
