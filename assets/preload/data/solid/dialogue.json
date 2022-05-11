@@ -1,0 +1,39 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "normal",
+			"text": "Lets try that again....."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "normal",
+			"text": "Make it hard this time"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "H-hard?? That'd kill me."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "upset",
+			"text": "..."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I-I guess I'll do it...."
+		}
+	]
+}

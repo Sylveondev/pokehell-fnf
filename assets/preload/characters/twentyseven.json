@@ -1,0 +1,100 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				0,
+				190
+			],
+			"anim": "idle",
+			"fps": 1,
+			"name": "twentyseven idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				190,
+				120
+			],
+			"anim": "singLEFT",
+			"fps": 1,
+			"name": "twentyseven left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-90,
+				190
+			],
+			"anim": "singRIGHT",
+			"fps": 4,
+			"name": "twentyseven right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				90
+			],
+			"anim": "singDOWN",
+			"fps": 7,
+			"name": "twentyseven down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				290
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "twentyseven up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "27",
+			"fps": 27,
+			"name": "twentyseven 27",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "all",
+			"fps": 15,
+			"name": "twentyseven",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/twentyseven",
+	"position": [
+		10,
+		440
+	],
+	"healthicon": "27",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		-330,
+		-470
+	],
+	"sing_duration": 4,
+	"scale": 10
+}

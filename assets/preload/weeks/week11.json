@@ -1,0 +1,29 @@
+{
+	"storyName": "eeveelution squad part 2",
+	"hideFreeplay": false,
+	"weekBackground": "chapter1",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"startUnlocked": true,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"songs": [
+		[
+			"speeding",
+			"speedy",
+			[
+				255,
+				255,
+				0
+			]
+		]
+	],
+	"hideStoryMode": false,
+	"weekName": "chapter2"
+}

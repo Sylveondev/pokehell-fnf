@@ -6,5 +6,9 @@ week4
 week5
 week6
 week7
-bonus
 week8
+week9
+week10
+week11
+bonus-sylveon
+bonus-es

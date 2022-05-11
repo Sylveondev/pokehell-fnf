@@ -44,6 +44,8 @@ class TitleState extends MusicBeatState
 	var textGroup:FlxGroup;
 	var logoSpr:FlxSprite;
 
+	var canzoom:Bool = true;
+
 	var curWacky:Array<String> = [];
 
 	var wackyImage:FlxSprite;
@@ -186,7 +188,7 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-		Conductor.changeBPM(102);
+		Conductor.changeBPM(120);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -341,6 +343,9 @@ class TitleState extends MusicBeatState
 				if(titleText != null) titleText.animation.play('press');
 
 				FlxG.camera.flash(FlxColor.RED, 1);
+				canzoom = false;
+				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.3, {ease: FlxEase.quadOut});
+
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 
 				transitioning = true;
@@ -454,6 +459,10 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
+		if (canzoom == true){
+			FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
+		}
+
 		if (curBeat % gfSpeed == 0) {
 			curBeat % (gfSpeed * 2) == 0 ? {
 				FlxTween.angle(logoBl, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
@@ -516,13 +525,13 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
 				case 13:
-					addMoreText('Friday');
+					addMoreText('The');
 				// credTextShit.visible = true;
 				case 14:
-					addMoreText('Night');
+					addMoreText('Pokehell');
 				// credTextShit.text += '\nNight';
 				case 15:
-					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+					addMoreText('Mod'); // credTextShit.text += '\nFunkin';
 
 				case 16:
 					skipIntro();

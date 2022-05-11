@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				190
+			],
+			"loop": true,
+			"fps": 7,
+			"anim": "idle",
+			"indices": [],
+			"name": "speedy idle"
+		},
+		{
+			"offsets": [
+				0,
+				190
+			],
+			"loop": false,
+			"fps": 4,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "speedy left"
+		},
+		{
+			"offsets": [
+				0,
+				190
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "speedy right"
+		},
+		{
+			"offsets": [
+				0,
+				190
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "speedy up"
+		},
+		{
+			"offsets": [
+				0,
+				190
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "speedy down"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/speedy",
+	"position": [
+		10,
+		410
+	],
+	"healthicon": "speedy",
+	"flip_x": true,
+	"healthbar_colors": [
+		240,
+		220,
+		0
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1.2
+}

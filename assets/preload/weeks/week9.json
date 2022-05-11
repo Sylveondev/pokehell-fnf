@@ -1,0 +1,20 @@
+{
+	"songs": [
+		["unchartable", "system86", [255, 225, 0]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "It's not Strident Crisis I'm telling you",
+	"weekBefore": "week6",
+	"weekName": "Week 9",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

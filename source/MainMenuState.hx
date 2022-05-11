@@ -42,6 +42,8 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+		FlxTween.tween(FlxG.camera, {zoom: 5}, 1, {ease: FlxEase.quadOut, type: BACKWARD, startDelay: 3});
+
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -186,12 +188,15 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
+				
 				if (optionShit[curSelected] == 'donate')
 				{
 					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
 				}
 				else
 				{
+					FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.5, {ease: FlxEase.quadOut});
+
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 

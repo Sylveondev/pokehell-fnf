@@ -489,8 +489,30 @@ class PlayState extends MusicBeatState
 				// cosA and sinA are in radians
 				cosA = Math.cos(hueRotation * Math.PI / 180);
 				sinA = Math.sin(hueRotation * Math.PI / 180);
-
+			
+			case 'treehouse': //Week 10: Eeveelution squad
+				var bg:BGSprite = new BGSprite('treehouseback', -600, -200, 0.9, 0.9);
+				var front:BGSprite = new BGSprite('treehousefront', -650, 600, 0.9, 0.9);
+				front.setGraphicSize(Std.int(front.width * 1.1));
 				
+				add(bg);
+				add(front);
+
+				case 'treehouseb': //Week 10: Eeveelution squad
+				var bg:BGSprite = new BGSprite('treehousebback', -600, -200, 0.9, 0.9);
+				var front:BGSprite = new BGSprite('treehousebfront', -650, 600, 0.9, 0.9);
+				front.setGraphicSize(Std.int(front.width * 1.1));
+				
+				add(bg);
+				add(front);
+
+				case '27': //Week 10: Eeveelution squad
+				var bg:BGSprite = new BGSprite('27back', -600, -200, 0.9, 0.9);
+				var front:BGSprite = new BGSprite('27front', -650, 600, 0.9, 0.9);
+				front.setGraphicSize(Std.int(front.width * 1.1));
+				
+				add(bg);
+				add(front);
 
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
@@ -1319,12 +1341,15 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-				case 'tutorial' | 'smoking' | 'headache'|'sinful'|'flaming'|'burned'|'drugged'|'hypergalcemia'|'banana':
+				case 'tutorial' | 'smoking' | 'headache'|'electric'|'rock'|'metal'|'sinful'|'flaming'|'burned'|'cold'|'solid'|'frozen'|'drugged'|'hypergalcemia'|'banana':
 					startDialogue(dialogueJson);
 				case 'ugh' | 'guns' | 'stress':
 					var leSong:String = SONG.song.toLowerCase();
 					if (leSong == 'stress')
 						GameOverSubstate.characterName = 'bf-holding-gf-dead';
+					startVideo(leSong + 'Cutscene');
+				case 'squad' | 'speeding':
+					var leSong:String = SONG.song.toLowerCase();
 					startVideo(leSong + 'Cutscene');
 				default:
 					startCountdown();
@@ -4064,7 +4089,10 @@ class PlayState extends MusicBeatState
 				combo = 0;
 	
 				if(!practiceMode) songScore -= 10;
-				if(!endingSong) songMisses++;
+				if(!endingSong){
+					songMisses++;
+					camGame.shake(0.5, 0.1);
+				};
 				RecalculateRating();
 	
 				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
