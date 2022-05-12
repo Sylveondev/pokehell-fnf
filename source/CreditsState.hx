@@ -136,7 +136,8 @@ class CreditsState extends MusicBeatState
 	{
 		rotCamHudInd ++;
 		for (i in 0...iconArray.length) {
-			iconArray[i].angle = Math.sin(rotCamHudInd / 100 * 1) * 5;
+			iconArray[i].angle = Math.sin(rotCamHudInd / 100 * 1) * 15;
+			trace(iconArray[i].angle);
 		}
 		if (FlxG.sound.music.volume < 0.7)
 		{

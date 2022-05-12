@@ -21,6 +21,7 @@ bf-pixel-opponent
 pico-player
 vaporeon
 vaporeon-hurt
+denis
 jolteon
 flareon
 umbreon

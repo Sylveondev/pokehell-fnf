@@ -206,7 +206,7 @@ class FreeplayState extends MusicBeatState
 	{
 		rotCamHudInd ++;
 		for (i in 0...iconArray.length) {
-			iconArray[i].angle = Math.sin(rotCamHudInd / 100 * 1) * 5;
+			iconArray[i].angle = Math.sin(rotCamHudInd / 100 * 1) * 15;
 		}
 		if (FlxG.sound.music.volume < 0.7)
 		{

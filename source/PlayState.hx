@@ -460,6 +460,10 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('ally', -600, -200, 1, 1);
 				add(bg);
 
+			case 'greenally': //Secret Week 1: Denis
+				var bg:BGSprite = new BGSprite('greenally', -600, -200, 1, 1);
+				add(bg);
+
 			case 'stage2': //Week 2: Jolteon
 				var bg:BGSprite = new BGSprite('stage2', -600, -200, 1, 1);
 				add(bg);
@@ -1179,6 +1183,7 @@ class PlayState extends MusicBeatState
 			+ " - Pokehell Dev version (PE "+MainMenuState.psychEngineVersion+")", 16);
 		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
+		kadeEngineWatermark.updateHitbox();
 		kadeEngineWatermark.cameras = [camHUD];
 		add(kadeEngineWatermark);
 		#else
@@ -1188,6 +1193,7 @@ class PlayState extends MusicBeatState
 			+ " - Pokehell " + MainMenuState.pokehellVersion+" (PE "+MainMenuState.psychEngineVersion+")", 16);
 		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
+		kadeEngineWatermark.updateHitbox();
 		kadeEngineWatermark.cameras = [camHUD];
 		add(kadeEngineWatermark);
 		#end
@@ -1338,6 +1344,8 @@ class PlayState extends MusicBeatState
 							}
 						});
 					});
+				
+				
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
@@ -1387,6 +1395,11 @@ class PlayState extends MusicBeatState
 				insert(members.indexOf(gfGroup) - 1, evilTrail);
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 				insert(members.indexOf(dadGroup) - 1, evilTrail);
+		}
+		if (curStage == 'greenally'){
+			var dark:FlxSprite = new FlxSprite(0,0).loadGraphic(Paths.image('darkgradient'));
+			dark.cameras = [camHUD];
+			add(dark);
 		}
 	}
 
@@ -2534,17 +2547,63 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if (FlxG.keys.justPressed.THREE && !endingSong && !inCutscene)
+		{
+			FlxG.mouse.visible = true;
+		}
+		if (FlxG.mouse.justPressed)
+		{
+			trace('Overlapping: '+FlxG.mouse.overlaps(dad));
+			if (FlxG.mouse.overlaps(dad))
+			{
+				var songData = SONG;
+				curSong = songData.song;
+
+				if (curSong.toLowerCase() == 'squad'){
+					var poop:String = Highscore.formatSong('execution', 2);
+					PlayState.SONG = Song.loadFromJson(poop, 'execution');
+					PlayState.isStoryMode = false;
+					PlayState.storyDifficulty = 2;
+
+					PlayState.storyWeek = 10;
+					trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
+
+					unloadAssets();
+					if (FlxG.sound.music != null)
+						FlxG.sound.music.stop();
+					LoadingState.loadAndSwitchState(new PlayState());
+				}
+			}
+		}
 		if (FlxG.keys.justPressed.SEVEN && !endingSong && !inCutscene)
 		{
-			persistentUpdate = false;
-			paused = true;
-			cancelFadeTween();
-			CustomFadeTransition.nextCamera = camOther;
-			MusicBeatState.switchState(new ChartingState());
+			var songData = SONG;
+			curSong = songData.song;
 
-			#if desktop
-			DiscordClient.changePresence("Chart Editor", null, null, true);
-			#end
+			if (curSong.toLowerCase() == 'headache'){
+				var poop:String = Highscore.formatSong('denis', 2);
+				PlayState.SONG = Song.loadFromJson(poop, curSong.toLowerCase());
+				PlayState.isStoryMode = false;
+				PlayState.storyDifficulty = 2;
+
+				PlayState.storyWeek = 1;
+				trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
+
+				unloadAssets();
+				if (FlxG.sound.music != null)
+					FlxG.sound.music.stop();
+				LoadingState.loadAndSwitchState(new PlayState());
+			}else{
+				persistentUpdate = false;
+				paused = true;
+				cancelFadeTween();
+				CustomFadeTransition.nextCamera = camOther;
+				MusicBeatState.switchState(new ChartingState());
+
+				#if desktop
+				DiscordClient.changePresence("Chart Editor", null, null, true);
+				#end
+			}
 		}
 
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);

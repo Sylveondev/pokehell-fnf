@@ -8,6 +8,7 @@ school
 schoolEvil
 tank
 ally
+greenally
 stage2
 hell
 icecave

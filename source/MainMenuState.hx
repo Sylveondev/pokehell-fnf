@@ -42,8 +42,6 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-		FlxTween.tween(FlxG.camera, {zoom: 5}, 1, {ease: FlxEase.quadOut, type: BACKWARD, startDelay: 3});
-
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -56,6 +54,7 @@ class MainMenuState extends MusicBeatState
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camAchievement);
 		FlxCamera.defaultCameras = [camGame];
+
 
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
@@ -70,6 +69,8 @@ class MainMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
+
+		FlxTween.tween(FlxG.camera, {zoom: 5}, 1, {ease: FlxEase.quadInOut, type: BACKWARD});
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		camFollowPos = new FlxObject(0, 0, 1, 1);
