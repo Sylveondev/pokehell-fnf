@@ -518,6 +518,10 @@ class PlayState extends MusicBeatState
 				add(bg);
 				add(front);
 
+			case 'box': //Week 1: Vaporeon
+				var bg:BGSprite = new BGSprite('box', -600, -200, 1, 1);
+				add(bg);
+
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
 					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
@@ -2558,7 +2562,11 @@ class PlayState extends MusicBeatState
 			{
 				var songData = SONG;
 				curSong = songData.song;
-
+				
+				/*
+				If sunshine is clicked, load twentyseven. 
+				You need to press 3 to unlock the mouse cursor first.
+				*/
 				if (curSong.toLowerCase() == 'squad'){
 					var poop:String = Highscore.formatSong('execution', 2);
 					PlayState.SONG = Song.loadFromJson(poop, 'execution');
@@ -2580,6 +2588,12 @@ class PlayState extends MusicBeatState
 			var songData = SONG;
 			curSong = songData.song;
 
+			/*
+			If 7 is pressed in headache, load denis. Otherwise, load
+			the chart editor. Denis can't be loaded in the chart editor
+			unless you're in the song. Don't worry guys. This isn't a
+			bug. It's supposed to be like that.
+			*/
 			if (curSong.toLowerCase() == 'headache'){
 				var poop:String = Highscore.formatSong('denis', 2);
 				PlayState.SONG = Song.loadFromJson(poop, curSong.toLowerCase());

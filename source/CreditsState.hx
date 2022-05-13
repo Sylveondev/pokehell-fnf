@@ -69,7 +69,15 @@ class CreditsState extends MusicBeatState
 		['Pokehell Devs'],
 		['SylveonDev',		'sylveondev',		'Owner of Pokehell.',					'https://www.youtube.com/channel/UC8wo8sY38N-wyZDtit2psjg',	'0xFFFF9EFD'],
 		['Spongey',		'spongey',		'Graphics and programming.',					'https://twitter.com/spongebob7989b',	'0xFFEDB96F'],
-		['Discord',		'discord',		'Made a chat platform with voice and text and stuff.',					'https://discord.com/',	'0xFFFFFFFF'],
+		['Discord',		'discord',		'The pokehell discord.',					'https://discord.gg/efE9c9AkWy',	'0xFF5865F2'],
+		[''],
+		['Pokehell Contributors'],
+		['ladtower',		'mai',		'Created the eeveelution squad weeks.',					'https://www.youtube.com/channel/UCvEubu0Jnl4RXm_K8fBMsZA',	'0xFFFFDD33'],
+		['Greek BS',		'bs',		'Charted most of the eeveelution squad weeks. (Spongey made it better)',					'https://www.youtube.com/channel/UCbl9PNfiCm6A3jFdGU72umw',	'0xFFFFDD33'],
+		['theautistic1',		'theautistic1',		'Makes appearance in the Espeon week.',					'https://www.youtube.com/channel/UCsaDDC8XJpRFH_98YnOnEkQ',	'0xFFFFDD33'],
+		['nickplaysgaming',		'nickplaysgaming',		'Makes appearance in the Espeon week.',					'https://www.deviantart.com/nickplaysgaming',	'0xFFFFDD33'],
+		['FNF Renderite',		'renderite',		'Eevee directwave file in the song crossover.',					'https://www.youtube.com/channel/UC8tEOrvXcZNZvsEba8pzoHA',	'0xFFFFDD33'],
+		['EV-0',		'evzero',		'Created the es comic. Spongey has not read it yet lol.',					'https://www.deviantart.com/ev-zero',	'0xFFFFDD33'],
 		[''],
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	'0xFFFFDD33'],
@@ -137,7 +145,9 @@ class CreditsState extends MusicBeatState
 		rotCamHudInd ++;
 		for (i in 0...iconArray.length) {
 			iconArray[i].angle = Math.sin(rotCamHudInd / 100 * 1) * 15;
-			trace(iconArray[i].angle);
+			/* Don't uncomment this or there'll be a lot of lag in the console.
+				trace(iconArray[i].angle);
+			*/
 		}
 		if (FlxG.sound.music.volume < 0.7)
 		{
