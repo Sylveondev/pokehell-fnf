@@ -4671,8 +4671,8 @@ class PlayState extends MusicBeatState
 			FlxTween.tween(writerbg, {alpha: 0, x: -100}, 0.5, {ease: FlxEase.circOut});
 		}
 		
-		//Based from golden apple because I have no god damn idea what I'm doing.
-		//I only need the one where the icon rotates, the one I made glitches out often.
+		//I have no god damn idea what I'm doing.
+		//The old icon rotation was glitchy so I moved it to beathit.
 		if (curBeat % gfSpeed == 0) {
 			curBeat % (gfSpeed * 2) == 0 ? {
 				if (ClientPrefs.dohealthrot){

@@ -25,6 +25,15 @@
 			]
 		],
 		[
+			"beserk",
+			"sunshine",
+			[
+				20,
+				20,
+				20
+			]
+		],
+		[
 			"money-machine",
 			"speedy",
 			[
@@ -32,7 +41,9 @@
 				240,
 				0
 			]
-		]
+		],
+		["unchartable", "system86", [255, 225, 0]]
+		
 	],
 	"hideStoryMode": true,
 	"weekName": "Chiller"

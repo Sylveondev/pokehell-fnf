@@ -1,6 +1,9 @@
 {
 	"songs": [
-		["unchartable", "system86", [255, 225, 0]]
+		["programmed", "system86", [255, 225, 0]],
+		["bootstrap", "system86", [255, 225, 0]],
+		["responsive", "system86", [255, 225, 0]]
+
 	],
 
 	"weekCharacters": [
