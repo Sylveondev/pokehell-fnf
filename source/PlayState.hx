@@ -279,6 +279,9 @@ class PlayState extends MusicBeatState
 	var kadeEngineWatermark:FlxText;
 	var scoretable:FlxText;
 
+	var writerbg:FlxSprite;
+	var writertxt:FlxText;
+
 	#if desktop
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
@@ -1066,6 +1069,25 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.downScroll) strumLine.y = FlxG.height - 150;
 		strumLine.scrollFactor.set();
 
+		scoretable = new FlxText(-100, FlxG.height / 2, 0,
+			'Song Score: '+ songScore +
+			'\nCurrent Combo: '+ combo +
+			'\nHighest combo: '+ highestcombo +
+			'\n------\nSicks: '+ sicks +
+			'\nGoods: ' + goods +
+			'\nBads: ' + bads +
+			'\nShits: ' + shits +
+			'\nMisses: ' + songMisses
+			#if debug
+			+ '\n!!! Debug mode !!!'
+			#end
+		, 20);
+		scoretable.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoretable.scrollFactor.set();
+		scoretable.cameras = [camHUD];
+		scoretable.alpha = 0;
+		add(scoretable);
+
 		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 20, 400, "", 32);
 		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		timeTxt.scrollFactor.set();
@@ -1073,6 +1095,49 @@ class PlayState extends MusicBeatState
 		timeTxt.borderSize = 2;
 		timeTxt.visible = !ClientPrefs.hideTime;
 		if(ClientPrefs.downScroll) timeTxt.y = FlxG.height - 45;
+
+		writertxt = new FlxText(-100, FlxG.width * 0.25, 400, "", 32);
+		writertxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.BLACK, LEFT);
+		writertxt.scrollFactor.set();
+		
+		var foundFile:Bool = false;
+		var fileName:String = #if MODS_ALLOWED Paths.modFolders('data/' + Paths.formatToSongPath(SONG.song) + '/writer.txt'); #else ''; #end
+		#if sys
+		if(FileSystem.exists(fileName)) {
+			foundFile = true;
+		}
+		#end
+
+		var curWriter:String;
+		var artist:Array<String>;
+		
+		if(!foundFile) {
+			fileName = Paths.txt(Paths.formatToSongPath(SONG.song) + '/' + 'artist');
+			trace(fileName);
+			#if sys
+			if(FileSystem.exists(fileName)) {
+			#else
+			if(OpenFlAssets.exists(fileName)) {
+			#end
+				foundFile = true;
+			}
+		}
+		if (foundFile == true) {
+			artist = CoolUtil.coolTextFile(Paths.txt(Paths.formatToSongPath(SONG.song) + '/' + 'artist'));
+			writertxt.text = artist.join('\n');
+		}else{
+			writertxt.text = "Artist unknown";
+		}
+
+		writerbg = new FlxSprite(-100, scoretable.y - writertxt.height - 4).makeGraphic(Std.int(writertxt.width + 2), Std.int(writertxt.height + 2), FlxColor.WHITE);
+		writertxt.y = writerbg.y+1;
+
+		writertxt.cameras = [camHUD];
+		writerbg.cameras = [camHUD];
+		writertxt.alpha = 0;
+		writerbg.alpha = 0;
+		add(writerbg);
+		add(writertxt);
 
 		timeBarBG = new AttachedSprite('timeBar');
 		timeBarBG.x = timeTxt.x;
@@ -1202,23 +1267,7 @@ class PlayState extends MusicBeatState
 		add(kadeEngineWatermark);
 		#end
 
-		scoretable = new FlxText(4, FlxG.height / 2, 0,
-			'Song Score: '+ songScore +
-			'\nCurrent Combo: '+ combo +
-			'\nHighest combo: '+ highestcombo +
-			'\n------\nSicks: '+ sicks +
-			'\nGoods: ' + goods +
-			'\nBads: ' + bads +
-			'\nShits: ' + shits +
-			'\nMisses: ' + songMisses
-			#if debug
-			+ '\n!!! Debug mode !!!'
-			#end
-		, 20);
-		scoretable.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		scoretable.scrollFactor.set();
-		scoretable.cameras = [camHUD];
-		add(scoretable);
+		
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -1840,6 +1889,7 @@ class PlayState extends MusicBeatState
 	var lastReportedPlayheadPosition:Int = 0;
 	var songTime:Float = 0;
 
+
 	function startSong():Void
 	{
 		startingSong = false;
@@ -1861,6 +1911,12 @@ class PlayState extends MusicBeatState
 		songLength = FlxG.sound.music.length;
 		FlxTween.tween(timeBar, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
 		FlxTween.tween(timeTxt, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
+
+		FlxTween.tween(scoretable, {alpha: 1, x: 4}, 0.5, {ease: FlxEase.circOut});
+		
+		FlxTween.tween(writertxt, {alpha: 1, x: 4}, 0.5, {ease: FlxEase.circOut});
+		FlxTween.tween(writerbg, {alpha: 1, x: 0}, 0.5, {ease: FlxEase.circOut});
+
 
 		#if desktop
 		// Updating Discord Rich Presence (with Time Left)
@@ -4607,6 +4663,12 @@ class PlayState extends MusicBeatState
 		if(lastBeatHit >= curBeat) {
 			trace('BEAT HIT: ' + curBeat + ', LAST HIT: ' + lastBeatHit);
 			return;
+		}
+
+		//Hide the song artist thing now
+		if (curBeat >= 10 && writertxt.alpha != 0){
+			FlxTween.tween(writertxt, {alpha: 0, x: -100}, 0.5, {ease: FlxEase.circOut});
+			FlxTween.tween(writerbg, {alpha: 0, x: -100}, 0.5, {ease: FlxEase.circOut});
 		}
 		
 		//Based from golden apple because I have no god damn idea what I'm doing.
