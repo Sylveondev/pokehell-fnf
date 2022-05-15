@@ -291,6 +291,7 @@ class StoryMenuState extends MusicBeatState
 			PlayState.isStoryMode = true;
 			selectedWeek = true;
 
+			curDifficulty = 1;
 			var diffic = CoolUtil.difficultyStuff[curDifficulty][1];
 			if(diffic == null) diffic = '';
 

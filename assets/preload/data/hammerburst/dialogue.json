@@ -1,0 +1,53 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "espeon",
+			"boxState": "normal",
+			"expression": "normal",
+			"text": "Well well well, what do we have here."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "confused",
+			"text": "Hi... uhh, where are we?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "espeon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "That won't matter soon enough. I'm holding you captive."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Huh?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "espeon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Good, they don't know."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hey, lets sing a song!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "espeon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hmm.. Alright, that's just another way to humiliate yourself. I'm in."
+		}
+	]
+}

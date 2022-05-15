@@ -1,0 +1,24 @@
+{
+	"position": [
+		0,
+		50
+	],
+	"dialogue_pos": "left",
+	"scale": 1.25,
+	"image": "renderite_dialogue",
+	"animations": [
+		{
+			"anim": "normal",
+			"loop_name": "normal",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_name": "normal",
+			"idle_offsets": [
+				0,
+				0
+			]
+		}
+	]
+}

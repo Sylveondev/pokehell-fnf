@@ -1402,7 +1402,7 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-				case 'tutorial' | 'smoking' | 'headache'|'electric'|'rock'|'metal'|'sinful'|'flaming'|'burned'|'cold'|'solid'|'frozen'|'drugged'|'hypergalcemia'|'banana':
+				case 'tutorial' | 'smoking' | 'headache'|'electric'|'rock'|'metal'|'sinful'|'flaming'|'burned'|'cold'|'solid'|'frozen'|'drugged'|'hypergalcemia'|'banana'|'hammerburst'|'retro-stab'|'lancer'|'crossover':
 					startDialogue(dialogueJson);
 				case 'ugh' | 'guns' | 'stress':
 					var leSong:String = SONG.song.toLowerCase();
