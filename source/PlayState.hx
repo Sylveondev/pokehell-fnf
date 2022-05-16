@@ -1101,10 +1101,14 @@ class PlayState extends MusicBeatState
 		writertxt.scrollFactor.set();
 		
 		var foundFile:Bool = false;
-		var fileName:String = #if MODS_ALLOWED Paths.modFolders('data/' + Paths.formatToSongPath(SONG.song) + '/writer.txt'); #else ''; #end
+		var fileName:String = #if MODS_ALLOWED Paths.modFolders('data/' + SONG.song.toLowerCase().replace(' ', '-') + '/artist.txt'); #else ''; #end
 		#if sys
+		trace(fileName);
 		if(FileSystem.exists(fileName)) {
 			foundFile = true;
+			trace('artist found');
+		}else{
+			trace('Artist not found in mods folder.');
 		}
 		#end
 
@@ -1120,12 +1124,14 @@ class PlayState extends MusicBeatState
 			if(OpenFlAssets.exists(fileName)) {
 			#end
 				foundFile = true;
+				trace('artist found');
 			}
 		}
 		if (foundFile == true) {
-			artist = CoolUtil.coolTextFile(Paths.txt(Paths.formatToSongPath(SONG.song) + '/' + 'artist'));
+			artist = CoolUtil.coolTextFile(fileName);
 			writertxt.text = artist.join('\n');
 		}else{
+			trace('No artists found');
 			writertxt.text = "Artist unknown";
 		}
 
