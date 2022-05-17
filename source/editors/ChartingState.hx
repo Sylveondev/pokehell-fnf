@@ -96,7 +96,8 @@ class ChartingState extends MusicBeatState
 		['Stop CamHud rotate',"No values needed"],
 		['Do note move',"Value 1: Speed\nValue 2: Distance"],
 		['Stop note move',"No values needed"],
-		['Flip CamHud',"Flips the hud 180 degrees."]
+		['Flip CamHud',"Flips the hud 180 degrees."],
+		['Hide Elements',"Value 1: Element to hide.\nValue 2: true or false"],
 	];
 
 	var _file:FileReference;

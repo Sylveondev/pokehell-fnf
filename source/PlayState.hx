@@ -282,6 +282,8 @@ class PlayState extends MusicBeatState
 	var writerbg:FlxSprite;
 	var writertxt:FlxText;
 
+	var unsupportedText:FlxText;
+
 	#if desktop
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
@@ -302,6 +304,15 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		unsupportedText = new FlxText(-100, FlxG.width * 0.25, 1000, "This chart may not be compatible with pokehell.\nFix this by pressing 7 and change mania to 3.", 32);
+		unsupportedText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		unsupportedText.screenCenter(X);
+		unsupportedText.scrollFactor.set();
+		unsupportedText.borderSize = 2;
+		if (SONG.mania < 0){
+			
+		}
+
 		#if MODS_ALLOWED
 		Paths.destroyLoadedImages(resetSpriteCache);
 		#end
@@ -315,9 +326,10 @@ class PlayState extends MusicBeatState
 		mania = SONG.mania;
 		
 
-		if (mania < 0 || mania == null)
+		if (mania < 0 || mania == null){
 			mania = 3;
-
+			add(unsupportedText);
+		}
 		trace('Mania is '+mania);
 
 		iconrot = 1;
@@ -988,6 +1000,7 @@ class PlayState extends MusicBeatState
 		blammedLightsBlack.alpha = 0.0;
 		#end
 
+		
 		var gfVersion:String = SONG.player3;
 		if(gfVersion == null || gfVersion.length < 1) {
 			switch (curStage)
@@ -1078,9 +1091,6 @@ class PlayState extends MusicBeatState
 			'\nBads: ' + bads +
 			'\nShits: ' + shits +
 			'\nMisses: ' + songMisses
-			#if debug
-			+ '\n!!! Debug mode !!!'
-			#end
 		, 20);
 		scoretable.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoretable.scrollFactor.set();
@@ -1306,6 +1316,7 @@ class PlayState extends MusicBeatState
 			botplayTxt.y = timeBarBG.y - 78;
 		}
 
+		unsupportedText.cameras = [camHUD];
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -3552,6 +3563,37 @@ class PlayState extends MusicBeatState
 				camHUD.x = 0;
 			case 'Flip CamHud':
 				camHUD.angle = camHUD.angle + 180;
+			case 'Hide Elements':
+				var type:Int = Std.parseInt(value1);
+				var enabled:Bool = false;
+				if (value2 == "true")
+					enabled = true;
+
+				if (Math.isNaN(type)) 
+					type = 0;
+				
+				switch(type){
+					case 0:
+						
+					case 1: 
+						playerStrums.members[0].visible = enabled;
+						playerStrums.members[1].visible = enabled;
+						playerStrums.members[2].visible = enabled;
+						playerStrums.members[3].visible = enabled;
+
+					case 2:
+						playerStrums.members[5].visible = enabled;
+						playerStrums.members[6].visible = enabled;
+						playerStrums.members[7].visible = enabled;
+						playerStrums.members[8].visible = enabled;
+
+					case 3:
+						scoreTxt.visible = enabled;
+						iconP1.visible = enabled;
+						iconP2.visible = enabled;
+						healthBar.visible = enabled;
+						healthBarBG.visible = enabled;
+				}
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
@@ -4675,6 +4717,7 @@ class PlayState extends MusicBeatState
 		if (curBeat >= 10 && writertxt.alpha != 0){
 			FlxTween.tween(writertxt, {alpha: 0, x: -100}, 0.5, {ease: FlxEase.circOut});
 			FlxTween.tween(writerbg, {alpha: 0, x: -100}, 0.5, {ease: FlxEase.circOut});
+			FlxTween.tween(unsupportedText, {alpha: 0}, 10, {ease: FlxEase.circOut});
 		}
 		
 		//I have no god damn idea what I'm doing.
