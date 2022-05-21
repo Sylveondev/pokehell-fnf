@@ -3576,17 +3576,29 @@ class PlayState extends MusicBeatState
 					case 0:
 						
 					case 1: 
+						playerStrums.visible = enabled;
+						/*
 						playerStrums.members[0].visible = enabled;
+						strumLineNotes.members[4].visible = enabled;
 						playerStrums.members[1].visible = enabled;
+						strumLineNotes.members[5].visible = enabled;
 						playerStrums.members[2].visible = enabled;
+						strumLineNotes.members[6].visible = enabled;
 						playerStrums.members[3].visible = enabled;
-
+						strumLineNotes.members[7].visible = enabled;
+						*/
 					case 2:
-						playerStrums.members[5].visible = enabled;
-						playerStrums.members[6].visible = enabled;
-						playerStrums.members[7].visible = enabled;
-						playerStrums.members[8].visible = enabled;
-
+						opponentStrums.visible = enabled;
+						/*
+						opponentStrums.members[0].visible = enabled;
+						strumLineNotes.members[0].visible = enabled;
+						opponentStrums.members[1].visible = enabled;
+						strumLineNotes.members[1].visible = enabled;
+						opponentStrums.members[2].visible = enabled;
+						strumLineNotes.members[2].visible = enabled;
+						opponentStrums.members[3].visible = enabled;
+						strumLineNotes.members[3].visible = enabled;
+						*/
 					case 3:
 						scoreTxt.visible = enabled;
 						iconP1.visible = enabled;

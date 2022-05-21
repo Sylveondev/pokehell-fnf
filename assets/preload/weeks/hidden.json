@@ -42,7 +42,8 @@
 				0
 			]
 		],
-		["unchartable", "system86", [255, 225, 0]]
+		["unchartable", "system86", [255, 225, 0]],
+		["gentex-commander-3", "potassium", [255, 225, 255]]
 		
 	],
 	"hideStoryMode": true,

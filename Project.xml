@@ -101,8 +101,8 @@
 	
 	<assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
-	<assets path='art/resetmods.bat' rename='reset the mods folder.bat' if="WINDOWS" />
-	<assets path='art/mods.zip' rename='assets/mods.zip' if="WINDOWS" />
+	<assets path='art/resetmods.bat' rename='reset the mods folder.bat' if="windows" />
+	<assets path='art/mods.zip' rename='assets/mods.zip' if="windows" />
 	<assets path='art/Pokemods.url' rename='download a pokemod.url' if="desktop" />
 	<!-- <template path='mods' /> -->
 	

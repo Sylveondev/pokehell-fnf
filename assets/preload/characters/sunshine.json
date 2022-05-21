@@ -1,13 +1,13 @@
 {
 	"animations": [
 		{
-			"loop": true,
+			"loop": false,
 			"offsets": [
 				0,
 				190
 			],
 			"anim": "idle",
-			"fps": 7,
+			"fps": 15,
 			"name": "sunshine idle",
 			"indices": []
 		},
@@ -17,20 +17,9 @@
 				0,
 				190
 			],
-			"anim": "singLEFT",
-			"fps": 4,
-			"name": "sunshine left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				190
-			],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "sunshine right",
+			"anim": "singUP",
+			"fps": 12,
+			"name": "sunshine up",
 			"indices": []
 		},
 		{
@@ -40,20 +29,31 @@
 				190
 			],
 			"anim": "singDOWN",
-			"fps": 24,
+			"fps": 12,
 			"name": "sunshine down",
 			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				190
 			],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "sunshine up",
-			"indices": []
+			"indices": [],
+			"fps": 12,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "sunshine right"
+		},
+		{
+			"offsets": [
+				0,
+				190
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "sunshine left"
 		}
 	],
 	"no_antialiasing": false,

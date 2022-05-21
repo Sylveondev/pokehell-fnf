@@ -372,6 +372,7 @@ class StoryMenuState extends MusicBeatState
 			bgSprite.visible = false;
 		} else {
 			bgSprite.loadGraphic(Paths.image('menubackgrounds/menu_' + assetName));
+			bgSprite.color = 0xE40000;
 		}
 		updateText();
 	}

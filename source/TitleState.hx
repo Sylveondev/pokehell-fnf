@@ -153,6 +153,7 @@ class TitleState extends MusicBeatState
 	var logoBl:FlxSprite;
 	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
+	var bgImg:FlxSprite;
 	var titleText:FlxSprite;
 	var swagShader:ColorSwap = null;
 
@@ -206,7 +207,7 @@ class TitleState extends MusicBeatState
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
-		var bgImg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('TitleBG'));
+		bgImg = new FlxSprite().loadGraphic(Paths.image('TitleBG'));
 		bgImg.screenCenter();
 		bgImg.antialiasing = ClientPrefs.globalAntialiasing;
 
@@ -463,6 +464,9 @@ class TitleState extends MusicBeatState
 			FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
 		}
 
+		FlxTween.tween(gfDance.scale, {x: 1.4, y: 0.8}, 0.36, {ease: FlxEase.quadOut, type: BACKWARD});
+
+
 		if (curBeat % gfSpeed == 0) {
 			curBeat % (gfSpeed * 2) == 0 ? {
 				FlxTween.angle(logoBl, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
@@ -547,7 +551,7 @@ class TitleState extends MusicBeatState
 		{
 			remove(logoSpr);
 
-			logoBl.angle = -4;
+			//logoBl.angle = -4;
 
 			//Classic, taken from kade engine.
 			//new FlxTimer().start(0.01, function(tmr:FlxTimer)
@@ -562,6 +566,8 @@ class TitleState extends MusicBeatState
 			FlxG.camera.flash(FlxColor.RED, 4);
 			remove(credGroup);
 			skippedIntro = true;
+
+			FlxTween.tween(bgImg, {y: FlxG.height}, 5, {ease: FlxEase.quadOut, type: BACKWARD});
 		}
 	}
 }
