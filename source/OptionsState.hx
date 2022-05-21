@@ -648,10 +648,10 @@ class PreferencesSubstate extends MusicBeatSubstate
 		/*
 		'Do HealthIcon rotation',
 		'HealthIcon rotation'
-		*/
 		#if !mobile
 		,'FPS Counter'
 		#end
+		*/
 	];
 
 	private var grpOptions:FlxTypedGroup<Alphabet>;
@@ -1077,7 +1077,9 @@ class CustomizationSubstate extends MusicBeatSubstate
 	static var options:Array<String> = [
 		'CUSTOMIZATION',
 		'Do HealthIcon rotation',
-		'HealthIcon rotation'
+		'HealthIcon rotation',
+		'Score table',
+		'Artist information'
 		#if !mobile
 		,'FPS Counter'
 		#end
@@ -1267,6 +1269,12 @@ class CustomizationSubstate extends MusicBeatSubstate
 
 					case 'Do HealthIcon rotation':
 						ClientPrefs.dohealthrot = !ClientPrefs.dohealthrot;
+
+					case 'Score table':
+						ClientPrefs.doScoretable = !ClientPrefs.doScoretable;
+
+					case 'Artist information':
+						ClientPrefs.doArtistinfo = !ClientPrefs.doArtistinfo;
 				}
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				reloadValues();
@@ -1368,6 +1376,10 @@ class CustomizationSubstate extends MusicBeatSubstate
 				daText = "If checked, the bar showing how much time is left\nwill be hidden.";
 			case 'Optimization':
 				daText = "If checked, your memory usage will lower.";
+			case 'Artist information':
+				daText = "If checked, the artist of the song will display in the beginning of the song.";
+			case 'Score table':
+				daText = "If checked, a score table will show on the side.";
 		}
 		descText.text = daText;
 
@@ -1455,6 +1467,10 @@ class CustomizationSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.optimization;
 					case 'Do HealthIcon rotation':
 						daValue = ClientPrefs.dohealthrot;
+					case 'Artist information':
+						daValue = ClientPrefs.doArtistinfo;
+					case 'Score table':
+						daValue = ClientPrefs.doScoretable;
 				}
 				checkbox.daValue = daValue;
 			}

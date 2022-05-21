@@ -537,6 +537,13 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('box', -600, -200, 1, 1);
 				add(bg);
 
+			case 'white-center': //Week 1: Vaporeon
+				
+				var bg:BGSprite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
+				bg.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), FlxColor.WHITE);
+				
+				add(bg);
+
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
 					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
@@ -1077,8 +1084,12 @@ class PlayState extends MusicBeatState
 		doof.skipDialogueThing = skipDialogue;
 
 		Conductor.songPosition = -5000;
-
-		strumLine = new FlxSprite(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, 50).makeGraphic(FlxG.width, 10);
+		
+		if (curStage == 'white-center'){
+			strumLine = new FlxSprite(STRUM_X_MIDDLESCROLL, 50).makeGraphic(FlxG.width, 10);
+		}else{
+			strumLine = new FlxSprite(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, 50).makeGraphic(FlxG.width, 10);
+		}
 		if(ClientPrefs.downScroll) strumLine.y = FlxG.height - 150;
 		strumLine.scrollFactor.set();
 
@@ -1096,6 +1107,7 @@ class PlayState extends MusicBeatState
 		scoretable.scrollFactor.set();
 		scoretable.cameras = [camHUD];
 		scoretable.alpha = 0;
+		scoretable.visible = ClientPrefs.doScoretable;
 		add(scoretable);
 
 		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 20, 400, "", 32);
@@ -1152,6 +1164,10 @@ class PlayState extends MusicBeatState
 		writerbg.cameras = [camHUD];
 		writertxt.alpha = 0;
 		writerbg.alpha = 0;
+
+		writerbg.visible = ClientPrefs.doArtistinfo;
+		writertxt.visible = ClientPrefs.doArtistinfo;
+
 		add(writerbg);
 		add(writertxt);
 
@@ -1753,6 +1769,7 @@ class PlayState extends MusicBeatState
 				setOnLuas('defaultOpponentStrumX' + i, opponentStrums.members[i].x);
 				setOnLuas('defaultOpponentStrumY' + i, opponentStrums.members[i].y);
 				if(ClientPrefs.middleScroll) opponentStrums.members[i].visible = false;
+				if(curStage == 'white-center') opponentStrums.members[i].visible = false;
 			}
 
 			startedCountdown = true;
@@ -2133,8 +2150,13 @@ class PlayState extends MusicBeatState
 			for (i in 0...Main.ammo[mania])
 			{
 				// FlxG.log.add(i);
-				var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i);
-	
+				var babyArrow:StrumNote;
+				if (curStage == "white-center"){
+					babyArrow = new StrumNote(STRUM_X_MIDDLESCROLL, strumLine.y, i);
+				}else{
+					babyArrow = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i);
+				}
+
 				var skin:String = 'NOTE_assets';
 				
 				switch (curStage) {
@@ -2390,6 +2412,11 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
+			case 'white-center':
+				dad.x = boyfriend.x;
+				dad.y = boyfriend.y;
+				boyfriend.visible = false;
+				gf.visible = false;
 			case 'trippy':
 				var shad = cast(trippyBG.shader, Shaders.GlitchShader);
 				shad.uTime.value[0] += elapsed;
@@ -2588,10 +2615,7 @@ class PlayState extends MusicBeatState
 			'\nGoods:' + goods +
 			'\nBads: ' + bads +
 			'\nShits: ' + shits +
-			'\nMisses: ' + songMisses
-			#if debug
-			+ '\n!!! Debug mode !!!'
-			#end;
+			'\nMisses: ' + songMisses;
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -2817,6 +2841,11 @@ class PlayState extends MusicBeatState
 					daNote.active = true;
 					daNote.visible = false;
 				}
+				if(!daNote.mustPress && curStage == 'white-center')
+				{
+					daNote.active = true;
+					daNote.visible = false;
+				}
 				else if (daNote.y > FlxG.height)
 				{
 					daNote.active = false;
@@ -2974,6 +3003,16 @@ class PlayState extends MusicBeatState
 					if(daNote.isSustainNote && !daNote.animation.curAnim.name.endsWith('end')) {
 						time += 0.15;
 					}
+
+					opponentStrums.forEach(function(spr:StrumNote)
+						{
+							if (Math.abs(daNote.noteData) == spr.ID)
+							{
+								spr.scale.x = Note.scales[PlayState.SONG.mania] + 0.4;
+								spr.scale.y = Note.scales[PlayState.SONG.mania] - 0.4;
+								FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut});
+							}
+						});
 					StrumPlayAnim(true, Std.int(Math.abs(daNote.noteData)) % Main.ammo[mania], time);
 					daNote.hitByOpponent = true;
 
@@ -3576,8 +3615,6 @@ class PlayState extends MusicBeatState
 					case 0:
 						
 					case 1: 
-						playerStrums.visible = enabled;
-						/*
 						playerStrums.members[0].visible = enabled;
 						strumLineNotes.members[4].visible = enabled;
 						playerStrums.members[1].visible = enabled;
@@ -3586,10 +3623,7 @@ class PlayState extends MusicBeatState
 						strumLineNotes.members[6].visible = enabled;
 						playerStrums.members[3].visible = enabled;
 						strumLineNotes.members[7].visible = enabled;
-						*/
 					case 2:
-						opponentStrums.visible = enabled;
-						/*
 						opponentStrums.members[0].visible = enabled;
 						strumLineNotes.members[0].visible = enabled;
 						opponentStrums.members[1].visible = enabled;
@@ -3598,7 +3632,6 @@ class PlayState extends MusicBeatState
 						strumLineNotes.members[2].visible = enabled;
 						opponentStrums.members[3].visible = enabled;
 						strumLineNotes.members[3].visible = enabled;
-						*/
 					case 3:
 						scoreTxt.visible = enabled;
 						iconP1.visible = enabled;
@@ -4449,12 +4482,24 @@ class PlayState extends MusicBeatState
 					if(note.isSustainNote && !note.animation.curAnim.name.endsWith('end')) {
 						time += 0.15;
 					}
+					playerStrums.forEach(function(spr:StrumNote)
+						{
+							if (Math.abs(note.noteData) == spr.ID)
+							{
+								spr.scale.x = Note.scales[PlayState.SONG.mania] + 0.4;
+								spr.scale.y = Note.scales[PlayState.SONG.mania] - 0.4;
+								FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut});
+							}
+						});
 					StrumPlayAnim(false, Std.int(Math.abs(note.noteData)) % Main.ammo[mania], time);
 				} else {
 					playerStrums.forEach(function(spr:StrumNote)
 					{
 						if (Math.abs(note.noteData) == spr.ID)
 						{
+							spr.scale.x = Note.scales[PlayState.SONG.mania] + 0.4;
+							spr.scale.y = Note.scales[PlayState.SONG.mania] - 0.4;
+							FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut});
 							spr.playAnim('confirm', true);
 						}
 					});
@@ -4725,6 +4770,11 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
+		//Fix the notes
+		//opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr.scale, {x: 1, y: 1}, 0.1); });
+		//playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr.scale, {x: 1, y: 1}, 0.1); });
+		
+
 		//Hide the song artist thing now
 		if (curBeat >= 10 && writertxt.alpha != 0){
 			FlxTween.tween(writertxt, {alpha: 0, x: -100}, 0.5, {ease: FlxEase.circOut});
@@ -4981,7 +5031,7 @@ class PlayState extends MusicBeatState
 				switch(achievementName)
 				{
 					case 'week1_nomiss' | 'week2_nomiss' | 'week3_nomiss' | 'week4_nomiss' | 'week5_nomiss' | 'week6_nomiss' | 'week7_nomiss':
-						if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'HARD' && storyPlaylist.length <= 1 && !changedDifficulty && !usedPractice)
+						if(isStoryMode && campaignMisses + songMisses < 1 && storyPlaylist.length <= 1 && !changedDifficulty && !usedPractice)
 						{
 							var weekName:String = WeekData.getWeekFileName();
 							switch(weekName) //I know this is a lot of duplicated code, but it's easier readable and you can add weeks with different names than the achievement tag
@@ -4994,11 +5044,11 @@ class PlayState extends MusicBeatState
 									if(achievementName == 'week3_nomiss') unlock = true;
 								case 'week4':
 									if(achievementName == 'week4_nomiss') unlock = true;
-								case 'week5':
-									if(achievementName == 'week5_nomiss') unlock = true;
 								case 'week6':
-									if(achievementName == 'week6_nomiss') unlock = true;
+									if(achievementName == 'week5_nomiss') unlock = true;
 								case 'week7':
+									if(achievementName == 'week6_nomiss') unlock = true;
+								case 'week12':
 									if(achievementName == 'week7_nomiss') unlock = true;
 							}
 						}

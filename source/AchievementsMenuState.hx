@@ -87,6 +87,22 @@ class AchievementsMenuState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			MusicBeatState.switchState(new MainMenuState());
 		}
+
+		#if debug
+			if (FlxG.keys.justPressed.TWO){
+				var achievesToCheck:Array<String> = ['week1_nomiss', 'week2_nomiss', 'week3_nomiss', 'week4_nomiss',
+				'week5_nomiss', 'week6_nomiss', 'week7_nomiss', 'oversinging', 'ur_bad',
+				'ur_good', 'hype', 'two_keys', 'toastie', 'debugger'];
+
+				for (i in 0...achievesToCheck.length) {
+					var achievementName:String = achievesToCheck[i];
+					if(!Achievements.isAchievementUnlocked(achievementName)) {
+						Achievements.unlockAchievement(achievementName);
+					}
+				}
+
+			}
+		#end
 	}
 
 	function changeSelection(change:Int = 0) {

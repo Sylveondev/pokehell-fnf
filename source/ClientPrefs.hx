@@ -16,6 +16,8 @@ class ClientPrefs {
 	public static var noteSplashes:Bool = true;
 	public static var lowQuality:Bool = false;
 	public static var framerate:Int = 120;
+	public static var doArtistinfo:Bool = true;
+	public static var doScoretable:Bool = true;
 	public static var dohealthrot:Bool = true;
 	public static var healthrot:Int = 32;
 	public static var cursing:Bool = true;
@@ -123,6 +125,8 @@ class ClientPrefs {
 		FlxG.save.data.noteSplashes = noteSplashes;
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.framerate = framerate;
+		FlxG.save.data.doScoretable = doScoretable;
+		FlxG.save.data.doArtistinfo = doArtistinfo;
 		FlxG.save.data.dohealthrot = dohealthrot;
 		FlxG.save.data.healthrot = healthrot;
 		FlxG.save.data.cursing = cursing;
@@ -198,6 +202,12 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.healthrot != null) {
 			healthrot = FlxG.save.data.healthrot;
+		}
+		if(FlxG.save.data.doArtistinfo != null){
+			doArtistinfo = FlxG.save.data.doArtistinfo;
+		}
+		if(FlxG.save.data.doScoretable != null) {
+			doScoretable = FlxG.save.data.doScoretable;
 		}
 		/*if(FlxG.save.data.cursing != null) {
 			cursing = FlxG.save.data.cursing;
