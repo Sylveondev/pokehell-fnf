@@ -1,78 +1,78 @@
 {
 	"animations": [
 		{
+			"offsets": [
+				0,
+				-20
+			],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"name": "idle",
-			"fps": 24,
-			"loop": false,
 			"indices": [],
+			"name": "idle"
+		},
+		{
 			"offsets": [
 				0,
 				-20
-			]
-		},
-		{
+			],
+			"indices": [],
+			"fps": 42,
 			"anim": "singDOWN",
-			"name": "down0",
-			"fps": 24,
 			"loop": false,
-			"indices": [],
+			"name": "down0"
+		},
+		{
 			"offsets": [
 				0,
 				-20
-			]
-		},
-		{
+			],
+			"indices": [],
+			"fps": 42,
 			"anim": "singLEFT",
-			"name": "left0",
-			"fps": 24,
 			"loop": false,
-			"indices": [],
+			"name": "left0"
+		},
+		{
 			"offsets": [
 				0,
 				-20
-			]
-		},
-		{
+			],
+			"indices": [],
+			"fps": 42,
 			"anim": "singUP",
-			"name": "up0",
-			"fps": 24,
 			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				-20
-			]
+			"name": "up0"
 		},
 		{
-			"anim": "singRIGHT",
-			"name": "right0",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
 			"offsets": [
 				0,
 				-20
-			]
+			],
+			"indices": [],
+			"fps": 42,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right0"
 		}
 	],
+	"no_antialiasing": false,
 	"image": "characters/vaporeon2",
-	"scale": 1.0499999999999998,
-	"sing_duration": 4,
-	"healthicon": "vaporeon",
 	"position": [
 		0,
 		350
+	],
+	"healthicon": "vaporeon",
+	"flip_x": false,
+	"healthbar_colors": [
+		121,
+		204,
+		224
 	],
 	"camera_position": [
 		0,
 		-100
 	],
-	"flip_x": false,
-	"no_antialiasing": false,
-	"healthbar_colors": [
-		121,
-		204,
-		224
-	]
+	"sing_duration": 4,
+	"scale": 1.05
 }

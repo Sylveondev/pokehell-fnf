@@ -14,6 +14,10 @@ import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
 
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
+
+
 import haxe.io.Path;
 
 class LoadingState extends MusicBeatState
@@ -31,6 +35,7 @@ class LoadingState extends MusicBeatState
 	var directory:String;
 	var callbacks:MultiCallback;
 	var targetShit:Float = 0;
+	var loadShit:FlxText;
 
 	function new(target:FlxState, stopMusic:Bool, directory:String)
 	{
@@ -44,20 +49,27 @@ class LoadingState extends MusicBeatState
 	var loadBar:FlxSprite;
 	override function create()
 	{
-		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xffcaff4d);
+
+		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xff000000);
 		add(bg);
+
+		loadShit = new FlxText(10, FlxG.height*0.85);
+		loadShit.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		loadShit.text = "Loading... 0%";
+		add(loadShit);
+
 		funkay = new FlxSprite(0, 0).loadGraphic(Paths.getPath('images/funkay.png', IMAGE));
 		funkay.setGraphicSize(0, FlxG.height);
 		funkay.updateHitbox();
 		funkay.antialiasing = ClientPrefs.globalAntialiasing;
-		add(funkay);
+		//add(funkay);
 		funkay.scrollFactor.set();
 		funkay.screenCenter();
 
-		loadBar = new FlxSprite(0, FlxG.height - 20).makeGraphic(FlxG.width, 10, 0xffff16d2);
-		loadBar.screenCenter(X);
+		loadBar = new FlxSprite(0, FlxG.height - 20).makeGraphic(FlxG.width, 10, 0xffffffff);
+		loadBar.x = 10;
 		loadBar.antialiasing = ClientPrefs.globalAntialiasing;
-		add(loadBar);
+		//add(loadBar);
 		
 		initSongsManifest().onComplete
 		(
@@ -75,7 +87,7 @@ class LoadingState extends MusicBeatState
 					checkLibrary(directory);
 				}
 
-				var fadeTime = 0.5;
+				var fadeTime = 0.25;
 				FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
 				new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
 			}
@@ -123,7 +135,8 @@ class LoadingState extends MusicBeatState
 
 		if(callbacks != null) {
 			targetShit = FlxMath.remapToRange(callbacks.numRemaining / callbacks.length, 1, 0, 0, 1);
-			loadBar.scale.x += 0.5 * (targetShit - loadBar.scale.x);
+			loadShit.text = 'Loading... '+FlxMath.roundDecimal(targetShit*100,0)+'%';
+			loadBar.scale.x += 0.25 * (targetShit);
 		}
 	}
 	

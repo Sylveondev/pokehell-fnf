@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="sunshine.png"><SubTexture name="sunshine down0000" x="0" y="0" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine down0001" x="668" y="0" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine idle0000" x="1336" y="0" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine idle0001" x="0" y="697" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine idle0002" x="668" y="697" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine idle0003" x="1336" y="697" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine idle0004" x="0" y="1394" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine left0000" x="668" y="1394" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine left0001" x="1336" y="1394" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine right0000" x="0" y="2091" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine up0000" x="668" y="2091" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine up0001" x="1336" y="2091" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+<SubTexture name="sunshine right0001" x="0" y="2788" width="668" height="697" frameX="0" frameY="0" frameWidth="668" frameHeight="697" />
+</TextureAtlas>

@@ -1,0 +1,46 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "espeon",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "Aaaaaahh fuck!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "espeon",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "You all are so fucking annoying!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "espeon",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "That's it, I'm cut yall in half!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "How about one more song instead"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "espeon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Silence, ugly deepfake!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "upset",
+			"text": "Now that's not very nice."
+		}
+	]
+}

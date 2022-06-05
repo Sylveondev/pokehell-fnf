@@ -8,8 +8,14 @@ school
 schoolEvil
 tank
 ally
+greenally
 stage2
 hell
 icecave
 house
 blank
+trippy
+treehouse
+treehouseb
+27
+box

@@ -1,0 +1,30 @@
+{
+	"storyName": "eeveelution squad",
+	"hideFreeplay": false,
+	"weekBackground": "chapter1",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"songs": [
+		[
+			"squad",
+			"sunshine",
+			[
+				195,
+				93,
+				0
+			]
+		]
+	],
+	"hideStoryMode": false,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"weekName": "sunshine"
+}

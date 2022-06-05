@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="speedy.png"><SubTexture name="speedy down0000" x="0" y="0" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy down0001" x="278" y="0" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy idle0000" x="556" y="0" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy idle0001" x="0" y="450" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy idle0002" x="278" y="450" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy idle0003" x="556" y="450" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy left0000" x="0" y="900" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy left0001" x="278" y="900" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy right0000" x="556" y="900" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy up0000" x="0" y="1350" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy up0001" x="278" y="1350" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy idle0004" x="556" y="1350" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+<SubTexture name="speedy right0001" x="0" y="1800" width="278" height="450" frameX="0" frameY="0" frameWidth="278" frameHeight="450" />
+</TextureAtlas>

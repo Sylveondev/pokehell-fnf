@@ -1,0 +1,53 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I-I'm f-frozen.."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Awwwww come on.. Jolteon will have to defrost me again."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "upset",
+			"text": "Oh, I guess it did hurt you.."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "normal",
+			"text": "Welp, hope you feel better. See you soon."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hey you little meanie beanie, come back here and battle me."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I'm frozen but I still can sing."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "confused",
+			"text": "Uh oh, looks like revenge, music style"
+		}
+	]
+}

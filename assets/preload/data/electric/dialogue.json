@@ -1,0 +1,88 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Wow, look at this. Just like I remember. My daddy used to take me here when I was only five years old."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Glad you like it."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Are you the owner of this stage?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Yeah. The name's Jolty. Don't confuse me with speedy from the comics."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Wow, you're the Jolty?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "confused",
+			"text": "This is amazing!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "normal",
+			"text": "That's right! So what brings you here?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "We're just looking for someone to sing with. This eevee is a natural."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Really? Ok then, how about we sing a few of my songs."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "excited",
+			"text": "Sure!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Awesome. Lets start off slow with a warm up. Gotta get your vocal cords ready ya' know?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "happy",
+			"text": "Lets start things off with a little Lo-fi action."
+		}
+	]
+}

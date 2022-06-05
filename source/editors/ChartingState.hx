@@ -57,6 +57,9 @@ class ChartingState extends MusicBeatState
 		'Alt Animation',
 		'Hey!',
 		'Hurt Note',
+		'Heal Note',
+		'Kill Note',
+		'AntiMiss Note',
 		'GF Sing',
 		'No Animation'
 	];
@@ -86,7 +89,15 @@ class ChartingState extends MusicBeatState
 		['Spawn Tankmen', "Spawns tankmen (1500ms early)"],
 		['Default Camera Zoom', "Sets the default camera zoom.It's\nlike \"Add Camera Zoom\" but it doesn't zoom back.\nValue 1: Camera Zoom (Default: Based on map)\nValue 2: Tween Duration (Default: 0.5)"],
 		['Default CamHUD Zoom', "Sets the default hud zoom.It's\nlike \"Add Camera Zoom\" but it doesn't zoom back.\nValue 1: HUD Zoom (Default: 1)\nValue 2: Tween Duration (Default: 0.5)"],
-		['Flash camera', "Flashes the camera white\nValue 1: Duration (Default: 1)"]
+		['Flash camera', "Flashes the camera white\nValue 1: Duration (Default: 1)"],
+		['Do Camera rotate',"Value 1: Speed\nValue 2: Angle"],
+		['Stop Camera rotate',"No values needed"],
+		['Do CamHud rotate',"Value 1: Speed\nValue 2: Angle"],
+		['Stop CamHud rotate',"No values needed"],
+		['Do note move',"Value 1: Speed\nValue 2: Distance"],
+		['Stop note move',"No values needed"],
+		['Flip CamHud',"Flips the hud 180 degrees."],
+		['Hide Elements',"Value 1: Element to hide.\nValue 2: true or false"],
 	];
 
 	var _file:FileReference;

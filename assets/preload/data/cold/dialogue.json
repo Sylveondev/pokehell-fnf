@@ -1,0 +1,39 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Who are you?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I'm sally, and I challange you to a singing battle."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I don't know, that sounds risky."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "normal",
+			"text": "One song wouldn't hurt, come on.."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oh.. ok then. I'll give it a shot."
+		}
+	]
+}

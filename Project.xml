@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': Pokehell" file="PsychEngine" packageName="com.shadowmario.psychengine" package="com.shadowmario.psychengine" main="Main" version="0.2.7" company="ShadowMario" />
+	<app title="Friday Night Funkin': Pokehell" file="PsychEngine" packageName="com.sylveondev.pokehell" package="com.sylveondev.pokehell" main="Main" version="1.2" company="SylveonDev" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -102,6 +102,9 @@
 	
 	<assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
+	<assets path='art/resetmods.bat' rename='reset the mods folder.bat' if="windows" />
+	<assets path='art/mods.zip' rename='assets/mods.zip' if="windows" />
+	<assets path='art/Pokemods.url' rename='download a pokemod.url' if="desktop" />
 	<!-- <template path='mods' /> -->
 	
 	<!-- assets path="CHANGELOG.md" rename='changelog.txt' -->

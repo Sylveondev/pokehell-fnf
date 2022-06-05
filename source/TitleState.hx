@@ -44,6 +44,8 @@ class TitleState extends MusicBeatState
 	var textGroup:FlxGroup;
 	var logoSpr:FlxSprite;
 
+	var canzoom:Bool = true;
+
 	var curWacky:Array<String> = [];
 
 	var wackyImage:FlxSprite;
@@ -54,6 +56,8 @@ class TitleState extends MusicBeatState
 
 	var mustUpdate:Bool = false;
 	public static var updateVersion:String = '';
+
+	public var gfSpeed:Int = 1;
 
 	override public function create():Void
 	{
@@ -149,6 +153,7 @@ class TitleState extends MusicBeatState
 	var logoBl:FlxSprite;
 	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
+	var bgImg:FlxSprite;
 	var titleText:FlxSprite;
 	var swagShader:ColorSwap = null;
 
@@ -184,7 +189,7 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-		Conductor.changeBPM(102);
+		Conductor.changeBPM(120);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -202,7 +207,7 @@ class TitleState extends MusicBeatState
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
-		var bgImg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('TitleBG'));
+		bgImg = new FlxSprite().loadGraphic(Paths.image('TitleBG'));
 		bgImg.screenCenter();
 		bgImg.antialiasing = ClientPrefs.globalAntialiasing;
 
@@ -339,6 +344,9 @@ class TitleState extends MusicBeatState
 				if(titleText != null) titleText.animation.play('press');
 
 				FlxG.camera.flash(FlxColor.RED, 1);
+				canzoom = false;
+				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.3, {ease: FlxEase.quadOut});
+
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 
 				transitioning = true;
@@ -452,6 +460,21 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
+		if (canzoom == true){
+			FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
+		}
+
+		FlxTween.tween(gfDance.scale, {x: 1.4, y: 0.8}, 0.36, {ease: FlxEase.quadOut, type: BACKWARD});
+
+
+		if (curBeat % gfSpeed == 0) {
+			curBeat % (gfSpeed * 2) == 0 ? {
+				FlxTween.angle(logoBl, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			} : {
+				FlxTween.angle(logoBl, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			}
+		}
+
 		if(logoBl != null) 
 			logoBl.animation.play('bump');
 
@@ -506,13 +529,13 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
 				case 13:
-					addMoreText('Friday');
+					addMoreText('The');
 				// credTextShit.visible = true;
 				case 14:
-					addMoreText('Night');
+					addMoreText('Pokehell');
 				// credTextShit.text += '\nNight';
 				case 15:
-					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+					addMoreText('Mod'); // credTextShit.text += '\nFunkin';
 
 				case 16:
 					skipIntro();
@@ -528,19 +551,23 @@ class TitleState extends MusicBeatState
 		{
 			remove(logoSpr);
 
-			logoBl.angle = -4;
+			//logoBl.angle = -4;
 
-			new FlxTimer().start(0.01, function(tmr:FlxTimer)
-			{
-				if (logoBl.angle == -4)
-					FlxTween.angle(logoBl, logoBl.angle, 4, 4, {ease: FlxEase.quartInOut});
-				if (logoBl.angle == 4)
-					FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quartInOut});
-			}, 0);
+			//Classic, taken from kade engine.
+			//new FlxTimer().start(0.01, function(tmr:FlxTimer)
+			//{
+			//	if (logoBl.angle == -4)
+			//		FlxTween.angle(logoBl, logoBl.angle, 4, 4, {ease: FlxEase.quartInOut});
+			//	if (logoBl.angle == 4)
+			//		FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quartInOut});
+			//}, 0);
+			//
 
 			FlxG.camera.flash(FlxColor.RED, 4);
 			remove(credGroup);
 			skippedIntro = true;
+
+			FlxTween.tween(bgImg, {y: FlxG.height}, 5, {ease: FlxEase.quadOut, type: BACKWARD});
 		}
 	}
 }
