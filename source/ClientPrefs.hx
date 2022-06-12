@@ -19,6 +19,8 @@ class ClientPrefs {
 	public static var doArtistinfo:Bool = true;
 	public static var doScoretable:Bool = true;
 	public static var dohealthrot:Bool = true;
+	public static var dobumpin:Bool = false;
+	public static var cameraMoveOnNotes:Bool = true;
 	public static var healthrot:Int = 32;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
@@ -128,6 +130,8 @@ class ClientPrefs {
 		FlxG.save.data.doScoretable = doScoretable;
 		FlxG.save.data.doArtistinfo = doArtistinfo;
 		FlxG.save.data.dohealthrot = dohealthrot;
+		FlxG.save.data.dobumpin = dobumpin;
+		FlxG.save.data.cameraMoveOnNotes = cameraMoveOnNotes;
 		FlxG.save.data.healthrot = healthrot;
 		FlxG.save.data.cursing = cursing;
 		FlxG.save.data.violence = violence;
@@ -199,6 +203,12 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.dohealthrot != null){
 			dohealthrot = FlxG.save.data.dohealthrot;
+		}
+		if(FlxG.save.data.dobumpin != null){
+			dobumpin = FlxG.save.data.dobumpin;
+		}
+		if(FlxG.save.data.cameraMoveOnNotes != null){
+			cameraMoveOnNotes = FlxG.save.data.cameraMoveOnNotes;
 		}
 		if(FlxG.save.data.healthrot != null) {
 			healthrot = FlxG.save.data.healthrot;

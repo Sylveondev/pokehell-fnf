@@ -1,0 +1,25 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "Ugh cmon man, you're a big fat cheating bastard! You're using botplay, aren't you."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Uhh..."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Alright then, if you wanna use botplay, I'm gonna crash your whole toaster!"
+		}
+	]
+}

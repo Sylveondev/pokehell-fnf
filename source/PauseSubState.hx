@@ -169,6 +169,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.usedPractice = true;
 					practiceText.visible = PlayState.practiceMode;
 				#else
+					if (PlayState.SONG.player2 == 'creepypastaEevee'){
 						var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('cheater'));
 						bg.screenCenter();
 						add(bg);
@@ -176,6 +177,11 @@ class PauseSubState extends MusicBeatSubstate
 
 						var timer = new haxe.Timer(1000); // 1000ms delay
 						timer.run = function() { System.exit(0); }
+					}else{
+						PlayState.practiceMode = !PlayState.practiceMode;
+						PlayState.usedPractice = true;
+						practiceText.visible = PlayState.practiceMode;
+					}
 				#end
 				case "Restart Song":
 					CustomFadeTransition.nextCamera = transCamera;
@@ -187,6 +193,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.usedPractice = true;
 					botplayText.visible = PlayState.cpuControlled;
 					#else
+					if (PlayState.SONG.player2 == 'creepypastaEevee'){
 						var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('cheater'));
 						bg.screenCenter();
 						add(bg);
@@ -194,6 +201,11 @@ class PauseSubState extends MusicBeatSubstate
 
 						var timer = new haxe.Timer(1000); // 1000ms delay
 						timer.run = function() { System.exit(0); }
+					}else{
+						PlayState.cpuControlled = !PlayState.cpuControlled;
+						PlayState.usedPractice = true;
+						botplayText.visible = PlayState.cpuControlled;
+					}
 					#end
 				case "Exit to menu":
 					PlayState.deathCounter = 0;

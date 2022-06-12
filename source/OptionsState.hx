@@ -40,8 +40,8 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		menuBG = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		menuBG.color = 0xE40000;
+		menuBG = new FlxSprite().loadGraphic(Paths.image('optionsmenuDesat'));
+		menuBG.color = 0x74C2C1;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
@@ -147,6 +147,7 @@ class NoteColorSubstate extends MusicBeatSubstate
 	var posX = 250;
 	public function new() {
 		super();
+		FlxTween.color(OptionsState.menuBG,1, OptionsState.menuBG.color, FlxColor.fromString("0xBA5DAF"));
 
 		grpNotes = new FlxTypedGroup<FlxSprite>();
 		add(grpNotes);
@@ -244,6 +245,7 @@ class NoteColorSubstate extends MusicBeatSubstate
 			} else if (state == 'toSelectNote') {
 				trace('exiting menu');
 				close();
+				FlxTween.color(OptionsState.menuBG,1, OptionsState.menuBG.color, FlxColor.fromString("0x74c2c1"));
 			}
 		}
 
@@ -380,8 +382,13 @@ class ControlsSubstate extends MusicBeatSubstate {
 
 	public function new() {
 		super();
+		FlxTween.color(OptionsState.menuBG,1, OptionsState.menuBG.color, FlxColor.fromString("0xA0D13D"));
+
+
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
+
+		
 
 		controlArray = ClientPrefs.lastControls.copy();
 		for (i in 0...optionShit.length) {
@@ -437,6 +444,7 @@ class ControlsSubstate extends MusicBeatSubstate {
 					}
 				}
 				close();
+			FlxTween.color(OptionsState.menuBG,1, OptionsState.menuBG.color, FlxColor.fromString("0x74c2c1"));
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 			}
 
@@ -667,6 +675,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 	public function new()
 	{
 		super();
+		FlxTween.color(OptionsState.menuBG,1, OptionsState.menuBG.color, FlxColor.fromString("0xE1E352"));
+
+
 		characterLayer = new FlxTypedGroup<Character>();
 		add(characterLayer);
 
@@ -763,6 +774,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 			}
 			descText.alpha = 0;
 			close();
+			FlxTween.color(OptionsState.menuBG,1, OptionsState.menuBG.color, FlxColor.fromString("0x74c2c1"));
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}
 
@@ -1079,7 +1091,9 @@ class CustomizationSubstate extends MusicBeatSubstate
 		'Do HealthIcon rotation',
 		'HealthIcon rotation',
 		'Score table',
-		'Artist information'
+		'Artist information',
+		'Do Character bumpin',
+		'Move Camera on note hit'
 		#if !mobile
 		,'FPS Counter'
 		#end
@@ -1098,6 +1112,9 @@ class CustomizationSubstate extends MusicBeatSubstate
 	public function new()
 	{
 		super();
+		FlxTween.color(OptionsState.menuBG,1, OptionsState.menuBG.color, FlxColor.fromString("0xE6A01E"));
+
+
 		characterLayer = new FlxTypedGroup<Character>();
 		add(characterLayer);
 
@@ -1194,6 +1211,7 @@ class CustomizationSubstate extends MusicBeatSubstate
 			}
 			descText.alpha = 0;
 			close();
+			FlxTween.color(OptionsState.menuBG,1, OptionsState.menuBG.color, FlxColor.fromString("0x74c2c1"));
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}
 
@@ -1270,6 +1288,12 @@ class CustomizationSubstate extends MusicBeatSubstate
 					case 'Do HealthIcon rotation':
 						ClientPrefs.dohealthrot = !ClientPrefs.dohealthrot;
 
+					case 'Do Character bumpin':
+						ClientPrefs.dobumpin = !ClientPrefs.dobumpin;
+
+					case 'Move Camera on note hit':
+						ClientPrefs.cameraMoveOnNotes = !ClientPrefs.cameraMoveOnNotes;
+
 					case 'Score table':
 						ClientPrefs.doScoretable = !ClientPrefs.doScoretable;
 
@@ -1341,7 +1365,11 @@ class CustomizationSubstate extends MusicBeatSubstate
 			case 'Framerate':
 				daText = "Pretty self explanatory, isn't it?\nDefault value is 60.";
 			case 'Do HealthIcon rotation':
-				daText = "Disabling this will use the classic health icon animation (bumping)";
+				daText = "If unchecked, the classic health icon animation (bumping) will be used.";
+			case 'Do Character bumpin':
+				daText = "If checked, the players will bump on a beat hit and on a note hit.";
+			case 'Move Camera on note hit':
+				daText = "If checked, the camera will move on a note hit, no need to edit the xml file.";
 			case 'HealthIcon rotation':
 				daText = "How far the icon should rotate.\nDefault value is 32 degrees.";
 			case 'Note Delay':
@@ -1467,6 +1495,10 @@ class CustomizationSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.optimization;
 					case 'Do HealthIcon rotation':
 						daValue = ClientPrefs.dohealthrot;
+					case 'Do Character bumpin':
+						daValue = ClientPrefs.dobumpin;
+					case 'Move Camera on note hit':
+						daValue = ClientPrefs.cameraMoveOnNotes;
 					case 'Artist information':
 						daValue = ClientPrefs.doArtistinfo;
 					case 'Score table':

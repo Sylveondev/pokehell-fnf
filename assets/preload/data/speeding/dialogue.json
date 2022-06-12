@@ -1,0 +1,53 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "Who the funk is that guy?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oh, Speedy! That's an outcase. He came from outside the comic."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "You mean fan character that isn't canan to the comic but makes fan content for the comic? Like TheAutistic1 or Seth the Lucario?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oh, I don't know. He doesn't look like us. He must be some kinda demension traveler or something."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hey, uhh..."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oh right! Hey speedy, you should rap battle this guy. He's really good at it."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "Oh alright. I ain't gonna go easy on him though. I may have had brain damage but I can still sing fast."
+		}
+	]
+}

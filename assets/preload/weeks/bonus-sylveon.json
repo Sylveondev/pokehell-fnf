@@ -15,7 +15,7 @@
 	"storyName": "What is this shit",
 	"weekBefore": "tutorial",
 	"weekName": "week 7",
-	"startUnlocked": false,
+	"startUnlocked": true,
 
 	"hideStoryMode": false,
 	"hideFreeplay": false

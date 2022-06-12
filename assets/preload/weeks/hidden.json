@@ -15,34 +15,8 @@
 		""
 	],
 	"songs": [
-		[
-			"chiller",
-			"sunshine",
-			[
-				20,
-				20,
-				20
-			]
-		],
-		[
-			"beserk",
-			"sunshine",
-			[
-				20,
-				20,
-				20
-			]
-		],
-		[
-			"money-machine",
-			"speedy",
-			[
-				240,
-				240,
-				0
-			]
-		],
 		["unchartable", "system86", [255, 225, 0]],
+		["old-unchartable", "system86", [255, 225, 0]],
 		["gentex-commander-3", "potassium", [255, 225, 255]],
 		["suppremacy", "skitty", [255, 225, 255]]
 		

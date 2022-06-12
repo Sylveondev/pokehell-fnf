@@ -50,7 +50,7 @@ class TitleState extends MusicBeatState
 
 	var wackyImage:FlxSprite;
 
-	var easterEggEnabled:Bool = true; //Disable this to hide the easter egg
+	var easterEggEnabled:Bool = false; //Disable this to hide the easter egg
 	var easterEggKeyCombination:Array<FlxKey> = [FlxKey.B, FlxKey.B]; //bb stands for bbpanzu cuz he wanted this lmao
 	var lastKeysPressed:Array<FlxKey> = [];
 
@@ -61,6 +61,8 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+	trace(FlxEase);
+
 		#if (polymod && !html5)
 		if (sys.FileSystem.exists('mods/')) {
 			var folders:Array<String> = [];
@@ -351,8 +353,12 @@ class TitleState extends MusicBeatState
 
 				transitioning = true;
 				// FlxG.sound.music.stop();
+				
+				FlxTween.tween(gfDance, {y: FlxG.height + 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
+				FlxTween.tween(logoBl, {y: -(FlxG.height) - 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
+				FlxTween.tween(titleText, {y: -(FlxG.height) - 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
 
-				new FlxTimer().start(1, function(tmr:FlxTimer)
+				new FlxTimer().start(1.5, function(tmr:FlxTimer)
 				{
 					if (mustUpdate) {
 						MusicBeatState.switchState(new OutdatedState());
@@ -392,7 +398,11 @@ class TitleState extends MusicBeatState
 							black.alpha = 0;
 							add(black);
 
-							FlxTween.tween(black, {alpha: 1}, 1, {onComplete:
+							FlxTween.tween(gfDance, {y: FlxG.height + 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
+							FlxTween.tween(logoBl, {y: -(FlxG.height) - 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
+							FlxTween.tween(titleText, {y: -(FlxG.height) - 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
+
+							FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete:
 								function(twn:FlxTween) {
 									FlxTransitionableState.skipNextTransIn = true;
 									FlxTransitionableState.skipNextTransOut = true;
@@ -462,10 +472,11 @@ class TitleState extends MusicBeatState
 
 		if (canzoom == true){
 			FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
+			FlxTween.tween(gfDance, {y: gfDance.y-(0.8*2)}, 0.36, {ease: FlxEase.quadOut, type: BACKWARD});
+			FlxTween.tween(gfDance.scale, {x: 1.4, y: 0.8}, 0.36, {ease: FlxEase.quadOut, type: BACKWARD});
 		}
 
-		FlxTween.tween(gfDance.scale, {x: 1.4, y: 0.8}, 0.36, {ease: FlxEase.quadOut, type: BACKWARD});
-
+		
 
 		if (curBeat % gfSpeed == 0) {
 			curBeat % (gfSpeed * 2) == 0 ? {
@@ -549,6 +560,15 @@ class TitleState extends MusicBeatState
 	{
 		if (!skippedIntro)
 		{
+
+			gfDance.x = FlxG.width + 50;
+			logoBl.x =  -(FlxG.width) - 50;
+			FlxTween.tween(gfDance, {x: FlxG.width * 0.4, y:FlxG.height * 0.07}, 1, {ease: FlxEase.elasticOut, startDelay: 0.5});
+			FlxTween.tween(logoBl, {x: -150, y: -100}, 1, {ease: FlxEase.elasticOut, startDelay: 0.5, onComplete: function(twn:FlxTween){
+				FlxTween.tween(logoBl, {y: 0}, 3, {ease: FlxEase.quadInOut, type: PINGPONG});
+			}});
+
+
 			remove(logoSpr);
 
 			//logoBl.angle = -4;
@@ -567,7 +587,7 @@ class TitleState extends MusicBeatState
 			remove(credGroup);
 			skippedIntro = true;
 
-			FlxTween.tween(bgImg, {y: FlxG.height}, 5, {ease: FlxEase.quadOut, type: BACKWARD});
+			FlxTween.tween(bgImg, {alpha: 0}, 5, {ease: FlxEase.quadOut, type: BACKWARD});
 		}
 	}
 }

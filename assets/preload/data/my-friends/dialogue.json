@@ -1,0 +1,32 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oops, looks like we woke everyone up."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Anywho, these are my friends."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Wait, where's speedy.. He must be away right now. That's a shame, he won't get to see you."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Huh, ok. Lets continue then ig."
+		}
+	]
+}
