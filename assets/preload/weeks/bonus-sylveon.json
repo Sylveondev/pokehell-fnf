@@ -1,0 +1,22 @@
+{
+	"songs": [
+		["Friend", "sillyvon", [255, 134, 255]],
+		["vomit", "sillyvon", [255, 134, 255]],
+		["Angery", "sillyvon", [255, 134, 255]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "What is this shit",
+	"weekBefore": "tutorial",
+	"weekName": "week 7",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

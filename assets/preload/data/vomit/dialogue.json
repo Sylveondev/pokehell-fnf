@@ -1,0 +1,11 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Shoot, you beat the song. Alright alright. Here's a song you can\\'t beat."
+		}
+	]
+}

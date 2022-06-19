@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="skitty.png">
+
+	<SubTexture name="idle0000" x="1" y="1" width="227" height="377" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
+	
+	<SubTexture name="move0000" x="230" y="1" width="227" height="377" frameX="-6" frameY="0" frameWidth="429" frameHeight="767"/>
+	
+</TextureAtlas>

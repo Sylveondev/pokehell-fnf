@@ -1,0 +1,39 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hmm, not bad."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "You are pretty good at singing. You were just like girlfriend when she was young."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Talented. Very talented."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Yeah. Perhaps I should play a harder song so I won't bore you."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "happy",
+			"text": "Alright alright check this chart out."
+		}
+	]
+}

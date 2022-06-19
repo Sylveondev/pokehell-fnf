@@ -1,0 +1,37 @@
+{
+	"dialogue_pos": "left",
+	"position": [
+		0,
+		50
+	],
+	"scale": 1.25,
+	"animations": [
+		{
+			"idle_offsets": [
+				0,
+				0
+			],
+			"loop_offsets": [
+				0,
+				0
+			],
+			"anim": "normal",
+			"loop_name": "normal",
+			"idle_name": "normal"
+		},
+		{
+			"idle_offsets": [
+				-10,
+				0
+			],
+			"loop_offsets": [
+				-10,
+				0
+			],
+			"anim": "crazy",
+			"loop_name": "crazy",
+			"idle_name": "crazy"
+		}
+	],
+	"image": "squad_dialogue"
+}

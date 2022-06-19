@@ -1,0 +1,88 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hey you!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hey, umm.. Do you know where Lemon Demon is at? We're supposed to battle him."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Trespasser! I should hit you with my bat right now!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Now hold on, can we talk about this?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "confused",
+			"text": "Hey, don't touch gf!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "..."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hey wait, you're that eevee who defeated the all mighty Flareon."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "excited",
+			"text": "Yeah, it was really easy."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Alright alright, if you want to know where Lemon Demon is, you will have a rap battle with me."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "If you win, I'll tell you where he is, if you lose..."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "Well, lets just say it won't be pretty."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Alr ig, lets start."
+		}
+	]
+}

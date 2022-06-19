@@ -1,0 +1,60 @@
+{
+	"dialogue": [
+		{
+			"portrait": "gf",
+			"expression": "talk",
+			"text": "Hey Boyfriend.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "excited",
+			"text": "Hello!",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "gf",
+			"expression": "talk",
+			"text": "Wait a minute, you're not boyfriend!",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "talk",
+			"text": "I'm Sally the eevee, and I want to be just like boyfriend. Can you help me be like him?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "gf",
+			"expression": "talk",
+			"text": "I don't know...",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "upset",
+			"text": "Please.....?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "gf",
+			"expression": "talk",
+			"text": "Well aren't you a cutey, huh. Ok. I'll teach you the basics.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "excited",
+			"text": "Yay!",
+			"boxState": "normal",
+			"speed": 0.05
+		}
+	]
+}

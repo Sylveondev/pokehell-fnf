@@ -1,0 +1,95 @@
+{
+	"dialogue": [
+		{
+			"portrait": "gf",
+			"expression": "confused",
+			"text": "I'm getting some bad vibes down here.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "upset",
+			"text": "Me too.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "Mortal, what are you doing here.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "talk",
+			"text": "I'm here to sing.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "...",
+			"boxState": "normal",
+			"speed": 0.20000000000000012
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "Mortal, my hell is for only the most grusome criminals in existance.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "Hypno, Gengar, Yamask, Phantump, Banette, Hypno Girlfriend, Tord, Leafeon",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "gf",
+			"expression": "talk",
+			"text": "Leafeon?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "Slit 193 trainers' necks with only his tail.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "gf",
+			"expression": "talk",
+			"text": "What? A freaking leafeon killed 193 trainers with just his tail?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "That coward didn't even survive my torture method.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "eevee",
+			"expression": "talk",
+			"text": "Okay, lets sing now.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "flareon",
+			"expression": "talk",
+			"text": "But of course,mortal. *Hopefully he doesn't make it past the first song*",
+			"boxState": "normal",
+			"speed": 0.05
+		}
+	]
+}

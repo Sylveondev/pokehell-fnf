@@ -1,0 +1,22 @@
+{
+	"songs": [
+		["hopeful", "sylveon", [255, 134, 255]],
+		["easedrop", "sylveon", [255, 134, 255]],
+		["finale", "sylveon", [255, 134, 255]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "Your demise",
+	"weekBefore": "week6",
+	"weekName": "Week 7",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

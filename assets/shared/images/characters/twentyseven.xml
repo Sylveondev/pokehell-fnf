@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="twentyseven.png"><SubTexture name="twentyseven down0000" x="0" y="0" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven down0001" x="81" y="0" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven down0002" x="162" y="0" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven idle0000" x="243" y="0" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven idle0001" x="0" y="69" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven idle0002" x="81" y="69" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven left0000" x="162" y="69" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven left0001" x="243" y="69" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven left0002" x="0" y="138" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven left0003" x="81" y="138" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven left0004" x="162" y="138" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven left0005" x="243" y="138" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven right0000" x="0" y="207" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven right0001" x="81" y="207" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven right0002" x="162" y="207" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven 270000" x="243" y="207" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven 270001" x="0" y="276" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven 270002" x="81" y="276" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven up0000" x="162" y="276" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven up0001" x="243" y="276" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+<SubTexture name="twentyseven up0002" x="0" y="345" width="81" height="69" frameX="0" frameY="0" frameWidth="81" frameHeight="69" />
+</TextureAtlas>

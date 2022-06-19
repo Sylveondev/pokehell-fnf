@@ -1,0 +1,67 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Huh, where am I, where is gf?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Woah, a visitor, we don't get those ever. Welcome to the comic!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "shocked",
+			"text": "Uh oh, looks like I fell asleep with DeviantArt open again."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Well at least it wasn't on any feet pics. I wouldn't be alive if that's the case."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oooooooh, is that a mic? Do you sing?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Uhh, yeah. I mean I did like, throw you a mic."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oh, I didn't see it. I can't really look down."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "squad",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Do you wanna sing?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "excited",
+			"text": "Yeah sure"
+		}
+	]
+}

@@ -1,0 +1,39 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Ok Sylveon, now that you know the basics, try to replicate it."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "But that doesn't seem fair.."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Fairness is the last thing on an fnf mod charter's mind. Now replicate it."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "*sigh*.. Fine, just tell me what to do.."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Just add 7 keys and spam like hell."
+		}
+	]
+}

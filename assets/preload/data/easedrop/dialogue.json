@@ -1,0 +1,102 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Alright. A deal is a deal. I will tell you where Lemon Demon is."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "Lemon Demon is in some comic called ''Eeveelution Squad'' by EV-Zero."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "He said he has unfinish business with one of the, uhh.. squad members. Goes by the name, sunshine."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hmm.. I wonder what Lemon Demon is doing in that comic."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "He said he is corru-"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Dude, you're ass man."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "confused",
+			"text": "Woah, there's 2 of you!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Sillyvon, what are you doing here!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "That song was way to easy.. Such a discrase to Friday Night Funkin."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Big words for someone who can't spell even spell ''disgrace''."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "crazy",
+			"text": "Shut yo' ass up fool"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sylveon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Sillyvon, please leave..."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Let me show you how you're actually supposed to play Friday Night Funkin."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Repeat this chart, sylveon."
+		}
+	]
+}

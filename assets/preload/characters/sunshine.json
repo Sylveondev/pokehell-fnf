@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				190
+			],
+			"anim": "idle",
+			"fps": 15,
+			"name": "sunshine idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				190
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "sunshine up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				190
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "sunshine down",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				190
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "sunshine right"
+		},
+		{
+			"offsets": [
+				0,
+				190
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "sunshine left"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/sunshine",
+	"position": [
+		10,
+		280
+	],
+	"healthicon": "sunshine",
+	"flip_x": true,
+	"healthbar_colors": [
+		140,
+		60,
+		22
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 0.6
+}

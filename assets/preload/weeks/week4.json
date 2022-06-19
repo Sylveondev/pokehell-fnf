@@ -1,0 +1,21 @@
+{
+	"songs": [
+		["Caution", "umbreon", [73, 73, 73]],
+		["Danger", "umbreon", [73, 73, 73]]
+	],
+	
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "Scared silly",
+	"weekBefore": "week3",
+	"weekName": "Week 4",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

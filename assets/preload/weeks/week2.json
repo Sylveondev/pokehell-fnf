@@ -1,0 +1,22 @@
+{
+	"songs": [
+		["Electric", "jolteon", [254, 254, 97]],
+		["Rock", "jolteon", [254, 254, 97]],
+		["Metal", "jolteon", [254, 254, 97]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "Rock concert",
+	"weekBefore": "week1",
+	"weekName": "Week 2",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

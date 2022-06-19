@@ -1,0 +1,22 @@
+{
+	"songs": [
+		["drugged", "potassium", [255, 225, 255]],
+		["hypergalcemia", "potassium", [255, 225, 255]],
+		["banana", "potassium", [255, 225, 255]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "I'm dying",
+	"weekBefore": "week6",
+	"weekName": "Week 8",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

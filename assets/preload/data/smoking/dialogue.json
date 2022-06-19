@@ -1,0 +1,88 @@
+{
+	"dialogue": [
+		{
+			"expression": "talk",
+			"text": "Man, I'm so bored.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		},
+		{
+			"expression": "talk",
+			"text": "Hey you!",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "shook",
+			"text": "Huh? Who are you?",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		},
+		{
+			"expression": "excited",
+			"text": "I'm Sally the eevee! I want to sing with you!",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "left",
+			"text": "Uhh...",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		},
+		{
+			"expression": "talk",
+			"text": "No.. I'm not a good singer.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		},
+		{
+			"expression": "upset",
+			"text": "Come on! Just a song or two, promise.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "talk",
+			"text": "Just let me smoke in peace dude..",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		},
+		{
+			"expression": "sobbing",
+			"text": "Please please please please plea-",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "sigh",
+			"text": "No.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		},
+		{
+			"expression": "talk",
+			"text": "Come on, whatever your name is. Make this child's dream come true.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "gf"
+		},
+		{
+			"expression": "talk",
+			"text": "I guess I have no choice.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		}
+	]
+}

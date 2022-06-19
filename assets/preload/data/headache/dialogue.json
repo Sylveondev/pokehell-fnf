@@ -1,0 +1,74 @@
+{
+	"dialogue": [
+		{
+			"expression": "high",
+			"text": "Ah shit man. I think I over did it again.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "vaporeon",
+			"boxState": "normal",
+			"expression": "highAlt",
+			"text": "Alright, lets go then."
+		},
+		{
+			"expression": "upset",
+			"text": "Oh no, did I do it?",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "sobbing",
+			"text": "I'm so sorry!",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "highAlt",
+			"text": "Ah it's not your fault. Lets just finish the week.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		},
+		{
+			"expression": "confused",
+			"text": "Do you need an ambulance or something?",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "gf"
+		},
+		{
+			"expression": "highAlt",
+			"text": "Nah I'll be fine. I'll go home afterwards and rest this wicked headache off.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		},
+		{
+			"expression": "upset",
+			"text": "I hope you feel better.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "highAlt",
+			"text": "...",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		},
+		{
+			"expression": "high",
+			"text": "Oh. Thanks man. That means a lot.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "vaporeon"
+		}
+	]
+}

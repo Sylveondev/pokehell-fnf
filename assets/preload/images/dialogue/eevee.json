@@ -1,0 +1,89 @@
+{
+	"position": [
+		0,
+		50
+	],
+	"dialogue_pos": "right",
+	"scale": 1.25,
+	"image": "eevee_dialogue",
+	"animations": [
+		{
+			"idle_offsets": [
+				0,
+				0
+			],
+			"loop_offsets": [
+				0,
+				0
+			],
+			"anim": "talk",
+			"idle_name": "happy",
+			"loop_name": "happy"
+		},
+		{
+			"idle_offsets": [
+				-16,
+				0
+			],
+			"anim": "excited",
+			"loop_offsets": [
+				-16,
+				0
+			],
+			"idle_name": "cheer",
+			"loop_name": "cheer"
+		},
+		{
+			"anim": "confused",
+			"loop_name": "confused",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_name": "confused",
+			"idle_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"anim": "normal",
+			"loop_name": "normal",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_name": "normal",
+			"idle_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"anim": "upset",
+			"loop_name": "upset",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_name": "upset",
+			"idle_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"anim": "sobbing",
+			"loop_name": "sobbing",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_name": "sobbing",
+			"idle_offsets": [
+				0,
+				0
+			]
+		}
+	]
+}

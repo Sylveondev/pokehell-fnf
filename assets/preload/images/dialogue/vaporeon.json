@@ -1,0 +1,102 @@
+{
+	"position": [
+		0,
+		50
+	],
+	"dialogue_pos": "left",
+	"scale": 1.25,
+	"image": "vaporeon_dialogue",
+	"animations": [
+		{
+			"idle_offsets": [
+				0,
+				0
+			],
+			"loop_offsets": [
+				0,
+				0
+			],
+			"anim": "talk",
+			"idle_name": "normal",
+			"loop_name": "normal"
+		},
+		{
+			"anim": "sobbing",
+			"loop_name": "sobbing",
+			"loop_offsets": [
+				-13,
+				0
+			],
+			"idle_name": "sobbing",
+			"idle_offsets": [
+				-13,
+				0
+			]
+		},
+		{
+			"anim": "left",
+			"loop_name": "left",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_name": "left",
+			"idle_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"anim": "sigh",
+			"loop_name": "sigh",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_name": "sigh",
+			"idle_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"anim": "shook",
+			"loop_name": "shook",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_name": "shook",
+			"idle_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"anim": "high",
+			"loop_name": "pain",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_name": "pain",
+			"idle_offsets": [
+				0,
+				0
+			]
+		},
+		{
+			"anim": "highAlt",
+			"loop_name": "baked",
+			"loop_offsets": [
+				-15,
+				0
+			],
+			"idle_name": "baked",
+			"idle_offsets": [
+				-15,
+				0
+			]
+		}
+	]
+}

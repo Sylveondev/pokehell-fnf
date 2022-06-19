@@ -1,0 +1,25 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hello, welcome to my bonus week. Sorry that Sylveon was such a terribly easy week. He can't sing for crap."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Wow, a bonus week, what do you have planned?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "sillyvon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Good stuff. Just try to sing along and you'll survive another week."
+		}
+	]
+}

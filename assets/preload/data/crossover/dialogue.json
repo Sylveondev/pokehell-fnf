@@ -1,0 +1,137 @@
+{
+	"dialogue": [
+		{
+			"expression": "talk",
+			"text": "Yo wassup.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "theautistic1"
+		},
+		{
+			"expression": "talk",
+			"text": "Sup yall.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "renderite"
+		},
+		{
+			"expression": "upset",
+			"text": "Oh no a fourth song. I don't wanna spam again.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "talk",
+			"text": "Chill out bro, we ain't gonna spam.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "renderite"
+		},
+		{
+			"expression": "talk",
+			"text": "I might..",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "theautistic1"
+		},
+		{
+			"expression": "upset",
+			"text": "Oh, then what's this fourth song?",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "talk",
+			"text": "We heard that you beat flareon and sylveon. That's really impressive.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "theautistic1"
+		},
+		{
+			"expression": "normal",
+			"text": "Yeah, and you just beat espeon. You're not afraid of danger. I mean if you lost you would've died. ",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "renderite"
+		},
+		{
+			"expression": "normal",
+			"text": "I-I guess that's true..",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "talk",
+			"text": "Yeah so we wanna sing with you. You're pretty cool.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "theautistic1"
+		},
+		{
+			"expression": "normal",
+			"text": "...",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "excited",
+			"text": "Ok! I'll sing!",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "talk",
+			"text": "Swag",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "renderite"
+		},
+		{
+			"expression": "talk",
+			"text": "Hey, uhh.. Can I join in?",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "talk",
+			"text": "Why?",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "renderite"
+		},
+		{
+			"expression": "talk",
+			"text": "Look dude, I haven't sung in weeks, I wanna keep doing it. I gotta admit, it's kinda fun.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "talk",
+			"text": "As long as you pay us 5 bucks",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "theautistic1"
+		},
+		{
+			"expression": "talk",
+			"text": "Deal",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "talk",
+			"text": "Swag",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "renderite"
+		}
+	]
+}

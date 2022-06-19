@@ -1,0 +1,22 @@
+{
+	"songs": [
+		["Sinful", "flareon", [255, 75, 0]],
+		["Flaming", "flareon", [255, 75, 0]],
+		["Burned", "flareon", [255, 75, 0]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "Hell",
+	"weekBefore": "week2",
+	"weekName": "Week 3",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

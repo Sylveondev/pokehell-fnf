@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-90,
+				-200
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-90,
+				-200
+			],
+			"indices": [],
+			"fps": 42,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [
+				-90,
+				-200
+			],
+			"indices": [],
+			"fps": 42,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [
+				-90,
+				-200
+			],
+			"indices": [],
+			"fps": 42,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [
+				-90,
+				-200
+			],
+			"indices": [],
+			"fps": 42,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [
+				-90,
+				-200
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "cold",
+			"loop": false,
+			"name": "cold"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/glaceon",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "glaceon",
+	"flip_x": false,
+	"healthbar_colors": [
+		157,
+		157,
+		221
+	],
+	"camera_position": [
+		-40,
+		-320
+	],
+	"sing_duration": 4,
+	"scale": 1.6
+}

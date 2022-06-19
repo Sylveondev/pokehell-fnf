@@ -1,0 +1,74 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Damn, that's not even the hardest part yet."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I'm starting to hate pokemon with a burning passion."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Hey, blame that frozen dumbass over there for doing that."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I had to defrost her goofy ass with a hair dryer because she sang to hard knowing damn well that would happen."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "glaceon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Why are you such a dick :("
+		},
+		{
+			"speed": 0.05,
+			"portrait": "potassium",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Alright I'm tired of the fighting you goofy heads are doin' I'm gonna give you all Hyper- gylcemia now."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Why Ninjamuffin99, why did you make Funkin' open source...."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I'm used to being threatened for my life by now. Can't break the tradition so I have to act scared for it's not a good mod."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "*ehem*"
+		},
+		{
+			"speed": 0.00500000000000001,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "shocked",
+			"text": "AAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAA "
+		}
+	]
+}

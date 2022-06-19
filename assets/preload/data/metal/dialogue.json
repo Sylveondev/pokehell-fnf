@@ -1,0 +1,46 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Amazing.. You got some seriously tight bars. Girlfriend must've tought you right."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Ah you know, tutorial weeks can help sometimes. Yeah."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Wow, I'm really winning!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "excited",
+			"text": "This is so much fun, one more!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "jolteon",
+			"boxState": "normal",
+			"expression": "happy",
+			"text": "You're in luck, I have one more song for you."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "excited",
+			"text": ":D"
+		}
+	]
+}

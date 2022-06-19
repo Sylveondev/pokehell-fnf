@@ -1,0 +1,21 @@
+{
+	"songs": [
+		["Smoking", "vaporeon", [118, 201, 223]],
+		["Headache", "vaporeon", [118, 201, 223]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "In the allyway",
+	"weekBefore": "tutorial",
+	"weekName": "Week 1",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}
