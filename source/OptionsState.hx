@@ -40,7 +40,7 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		menuBG = new FlxSprite().loadGraphic(Paths.image('optionsmenuDesat'));
+		menuBG = new FlxSprite().loadGraphic(Paths.image('menus/menu'+ FlxG.random.int(0, 5) +'Desat'));
 		menuBG.color = 0x74C2C1;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
@@ -1093,7 +1093,8 @@ class CustomizationSubstate extends MusicBeatSubstate
 		'Score table',
 		'Artist information',
 		'Do Character bumpin',
-		'Move Camera on note hit'
+		'Move Camera on note hit',
+		'Enable Anti spam'
 		#if !mobile
 		,'FPS Counter'
 		#end
@@ -1293,6 +1294,9 @@ class CustomizationSubstate extends MusicBeatSubstate
 
 					case 'Move Camera on note hit':
 						ClientPrefs.cameraMoveOnNotes = !ClientPrefs.cameraMoveOnNotes;
+					
+					case 'Enable Anti spam':
+					ClientPrefs.antispam = !ClientPrefs.antispam;
 
 					case 'Score table':
 						ClientPrefs.doScoretable = !ClientPrefs.doScoretable;
@@ -1370,6 +1374,8 @@ class CustomizationSubstate extends MusicBeatSubstate
 				daText = "If checked, the players will bump on a beat hit and on a note hit.";
 			case 'Move Camera on note hit':
 				daText = "If checked, the camera will move on a note hit, no need to edit the xml file.";
+			case 'Enable Anti spam':
+				daText = "If unchecked, you will not be pentalized for spamming. Also making you a certified pussy.";
 			case 'HealthIcon rotation':
 				daText = "How far the icon should rotate.\nDefault value is 32 degrees.";
 			case 'Note Delay':
@@ -1499,6 +1505,8 @@ class CustomizationSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.dobumpin;
 					case 'Move Camera on note hit':
 						daValue = ClientPrefs.cameraMoveOnNotes;
+					case 'Enable Anti spam':
+						daValue = ClientPrefs.antispam;
 					case 'Artist information':
 						daValue = ClientPrefs.doArtistinfo;
 					case 'Score table':

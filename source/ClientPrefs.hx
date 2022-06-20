@@ -21,6 +21,7 @@ class ClientPrefs {
 	public static var dohealthrot:Bool = true;
 	public static var dobumpin:Bool = false;
 	public static var cameraMoveOnNotes:Bool = true;
+	public static var antispam:Bool = true;
 	public static var healthrot:Int = 32;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
@@ -132,6 +133,7 @@ class ClientPrefs {
 		FlxG.save.data.dohealthrot = dohealthrot;
 		FlxG.save.data.dobumpin = dobumpin;
 		FlxG.save.data.cameraMoveOnNotes = cameraMoveOnNotes;
+		FlxG.save.data.antispam = antispam;
 		FlxG.save.data.healthrot = healthrot;
 		FlxG.save.data.cursing = cursing;
 		FlxG.save.data.violence = violence;
@@ -209,6 +211,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.cameraMoveOnNotes != null){
 			cameraMoveOnNotes = FlxG.save.data.cameraMoveOnNotes;
+		}
+		if(FlxG.save.data.antispam != null){
+			antispam = FlxG.save.data.antispam;
 		}
 		if(FlxG.save.data.healthrot != null) {
 			healthrot = FlxG.save.data.healthrot;

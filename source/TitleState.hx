@@ -43,6 +43,8 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var logoSpr:FlxSprite;
+	var thedevs:FlxSprite;
+	var thosepeople:FlxSprite;
 
 	var canzoom:Bool = true;
 
@@ -58,6 +60,8 @@ class TitleState extends MusicBeatState
 	public static var updateVersion:String = '';
 
 	public var gfSpeed:Int = 1;
+
+	var coolTitleTween:FlxTween;
 
 	override public function create():Void
 	{
@@ -274,6 +278,22 @@ class TitleState extends MusicBeatState
 		logoSpr.screenCenter(X);
 		logoSpr.antialiasing = ClientPrefs.globalAntialiasing;
 
+		thedevs = new FlxSprite(0, FlxG.height * 0.4).loadGraphic(Paths.image('thedevs'));
+		add(thedevs);
+		thedevs.visible = false;
+		thedevs.setGraphicSize(Std.int(thedevs.width * 0.55));
+		thedevs.updateHitbox();
+		thedevs.screenCenter(X);
+		thedevs.antialiasing = ClientPrefs.globalAntialiasing;
+
+		thosepeople = new FlxSprite(0, FlxG.height * 0.4).loadGraphic(Paths.image('thoseguys'));
+		add(thosepeople);
+		thosepeople.visible = false;
+		thosepeople.setGraphicSize(Std.int(thosepeople.width * 0.55));
+		thosepeople.updateHitbox();
+		thosepeople.screenCenter(X);
+		thosepeople.antialiasing = ClientPrefs.globalAntialiasing;
+
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
 		if (initialized)
@@ -347,23 +367,25 @@ class TitleState extends MusicBeatState
 
 				FlxG.camera.flash(FlxColor.RED, 1);
 				canzoom = false;
-				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.3, {ease: FlxEase.quadOut});
 
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 
 				transitioning = true;
 				// FlxG.sound.music.stop();
 				
-				FlxTween.tween(gfDance, {y: FlxG.height + 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
-				FlxTween.tween(logoBl, {y: -(FlxG.height) - 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
-				FlxTween.tween(titleText, {y: -(FlxG.height) - 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
+				FlxTween.tween(gfDance, {y: FlxG.height + 50}, 1.5, {ease: FlxEase.elasticIn});
+				FlxTween.tween(logoBl, {y: -(FlxG.height) - 50}, 1.5, {ease: FlxEase.elasticIn});
+				FlxTween.tween(titleText, {y: -(FlxG.height) - 50}, 1.5, {ease: FlxEase.elasticIn});
+				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.5, {ease: FlxEase.quadOut,startDelay: 1.5});
 
-				new FlxTimer().start(1.5, function(tmr:FlxTimer)
+				if (coolTitleTween != null) coolTitleTween.cancel();
+
+				new FlxTimer().start(2, function(tmr:FlxTimer)
 				{
 					if (mustUpdate) {
 						MusicBeatState.switchState(new OutdatedState());
 					} else {
-						MusicBeatState.switchState(new MainMenuState());
+						MusicBeatState.switchState(new WarningState());
 					}
 					closedState = true;
 				});
@@ -508,6 +530,7 @@ class TitleState extends MusicBeatState
 				case 3:
 					addMoreText('Shadow Mario', 45);
 					addMoreText('RiverOaken', 45);
+					addMoreText('BBPanzu', 45);
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
 				case 4:
@@ -529,26 +552,56 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = 'Shoutouts Tom Fulp';
 				// credTextShit.screenCenter();
 				case 9:
-					createCoolText([curWacky[0]]);
+					createCoolText(['Pokehell by'], -60);
 				// credTextShit.visible = true;
 				case 11:
+					addMoreText('SylveonDev', -60);
+					addMoreText('Spongey', -60);
+					thedevs.visible = true;
+				case 12:
+					deleteCoolText();
+					thedevs.visible = false;
+				// credTextShit.visible = false;
+
+				// credTextShit.text = 'Shoutouts Tom Fulp';
+				// credTextShit.screenCenter();
+				case 13:
+					createCoolText(['Featuring'], -60);
+				// credTextShit.visible = true;
+				case 15:
+					addMoreText('These people', -60);
+					addMoreText('and more', -60);
+					thosepeople.visible = true;
+				case 16:
+					deleteCoolText();
+					thosepeople.visible = false;
+				// credTextShit.visible = false;
+
+				// credTextShit.text = 'Shoutouts Tom Fulp';
+				// credTextShit.screenCenter();
+				
+				case 17:
+					createCoolText([curWacky[0]]);
+				// credTextShit.visible = true;
+				case 19:
 					addMoreText(curWacky[1]);
 				// credTextShit.text += '\nlmao';
-				case 12:
+				case 20:
 					deleteCoolText();
 				// credTextShit.visible = false;
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
-				case 13:
+				case 21:
 					addMoreText('The');
 				// credTextShit.visible = true;
-				case 14:
+				case 22:
 					addMoreText('Pokehell');
 				// credTextShit.text += '\nNight';
-				case 15:
+				case 23:
 					addMoreText('Mod'); // credTextShit.text += '\nFunkin';
-
-				case 16:
+				case 24:
+					deleteCoolText();
+				case 25:
 					skipIntro();
 			}
 		}
@@ -565,11 +618,13 @@ class TitleState extends MusicBeatState
 			logoBl.x =  -(FlxG.width) - 50;
 			FlxTween.tween(gfDance, {x: FlxG.width * 0.4, y:FlxG.height * 0.07}, 1, {ease: FlxEase.elasticOut, startDelay: 0.5});
 			FlxTween.tween(logoBl, {x: -150, y: -100}, 1, {ease: FlxEase.elasticOut, startDelay: 0.5, onComplete: function(twn:FlxTween){
-				FlxTween.tween(logoBl, {y: 0}, 3, {ease: FlxEase.quadInOut, type: PINGPONG});
+				coolTitleTween = FlxTween.tween(logoBl, {y: 0}, 3, {ease: FlxEase.quadInOut, type: PINGPONG});
 			}});
 
 
 			remove(logoSpr);
+			remove(thedevs);
+			remove(thosepeople);
 
 			//logoBl.angle = -4;
 

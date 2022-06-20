@@ -22,7 +22,8 @@ class MasterEditorMenu extends MusicBeatState
 		'Menu Character Editor',
 		'Dialogue Editor',
 		'Dialogue Portrait Editor',
-		'Character Editor'
+		'Character Editor',
+		'Charting Editor'
 	];
 	private var grpTexts:FlxTypedGroup<Alphabet>;
 
@@ -36,7 +37,7 @@ class MasterEditorMenu extends MusicBeatState
 		DiscordClient.changePresence("Editors Main Menu", null);
 		#end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menus/menu'+ FlxG.random.int(0, 5) +'Desat'));
 		bg.scrollFactor.set();
 		bg.color = 0xFF353535;
 		add(bg);

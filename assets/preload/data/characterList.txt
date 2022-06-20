@@ -27,3 +27,7 @@ unknown
 unknown-alt
 theautistic1
 renderite
+renderite-alt
+evzero
+seth
+zeroeffort

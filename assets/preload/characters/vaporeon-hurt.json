@@ -16,10 +16,10 @@
 				0,
 				-20
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 42,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down0"
 		},
 		{
@@ -27,10 +27,10 @@
 				0,
 				-20
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 42,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left0"
 		},
 		{
@@ -38,10 +38,10 @@
 				0,
 				-20
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 42,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up0"
 		},
 		{
@@ -49,11 +49,44 @@
 				0,
 				-20
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 42,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right0"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				0,
+				-20
+			],
+			"anim": "faintLoop",
+			"fps": 24,
+			"name": "faintloop",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				-20
+			],
+			"anim": "faint",
+			"fps": 24,
+			"name": "fainting",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				-20
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "headache",
+			"loop": false,
+			"name": "hurtin"
 		}
 	],
 	"no_antialiasing": false,

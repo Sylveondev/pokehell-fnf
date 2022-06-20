@@ -218,6 +218,7 @@ class PlayState extends MusicBeatState
 	var fastCar:BGSprite;
 
 	var trippyBG:BGSprite;
+	var boxBG:BGSprite;
 	var squad:BGSprite;
 
 	var upperBoppers:BGSprite;
@@ -552,8 +553,13 @@ class PlayState extends MusicBeatState
 				add(front);
 
 			case 'box': //Week 1: Vaporeon
-				var bg:BGSprite = new BGSprite('box', -600, -200, 1, 1);
-				add(bg);
+				if (SONG.song.toLowerCase() == 'crossover'){
+					var bg:BGSprite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
+					bg.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), 0xFFA0A0A0);
+					add(bg);
+				}
+				boxBG = new BGSprite('box', -600, -200, 1, 1);
+				add(boxBG);
 
 			case 'white-center': //Week 1: Vaporeon
 				
@@ -2759,6 +2765,7 @@ class PlayState extends MusicBeatState
 			unless you're in the song. Don't worry guys. This isn't a
 			bug. It's supposed to be like that.
 			*/
+			#if !debug
 			if (curSong.toLowerCase() == 'headache'){
 				var poop:String = Highscore.formatSong('denis', 2);
 				PlayState.SONG = Song.loadFromJson(poop, curSong.toLowerCase());
@@ -2772,7 +2779,7 @@ class PlayState extends MusicBeatState
 				if (FlxG.sound.music != null)
 					FlxG.sound.music.stop();
 				LoadingState.loadAndSwitchState(new PlayState());
-			}else{
+			}else{#end
 				persistentUpdate = false;
 				paused = true;
 				cancelFadeTween();
@@ -2782,7 +2789,7 @@ class PlayState extends MusicBeatState
 				#if desktop
 				DiscordClient.changePresence("Chart Editor", null, null, true);
 				#end
-			}
+			#if !debug } #end
 		}
 
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
@@ -3599,6 +3606,10 @@ class PlayState extends MusicBeatState
 								dad.alpha = 1;
 								dad.alreadyLoaded = true;
 							}
+							if (value2 == 'evzero'){
+								FlxTween.tween(dad, {y: -1500}, 3, {ease: FlxEase.elasticInOut, type: BACKWARD});
+
+							}
 							dad.visible = true;
 							iconP2.changeIcon(dad.healthIcon);
 						}
@@ -3818,21 +3829,23 @@ class PlayState extends MusicBeatState
 	var transitioning = false;
 	public function endSong():Void
 	{
-		//Should kill you if you tried to cheat
-		if(!startingSong) {
-			notes.forEach(function(daNote:Note) {
-				if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
-					health -= 0.0475;
+		if (ClientPrefs.antispam){
+			//Should kill you if you tried to cheat
+			if(!startingSong) {
+				notes.forEach(function(daNote:Note) {
+					if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
+						health -= 0.0475;
+					}
+				});
+				for (daNote in unspawnNotes) {
+					if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
+						health -= 0.0475;
+					}
 				}
-			});
-			for (daNote in unspawnNotes) {
-				if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
-					health -= 0.0475;
-				}
-			}
 
-			if(doDeathCheck()) {
-				return;
+				if(doDeathCheck()) {
+					return;
+				}
 			}
 		}
 		
@@ -4910,12 +4923,16 @@ class PlayState extends MusicBeatState
 			curBeat % (gfSpeed * 2) == 0 ? {
 				if (ClientPrefs.dohealthrot){
 					FlxTween.angle(iconP1, -(ClientPrefs.healthrot), 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+					FlxTween.tween(iconP1.scale, {x: (iconP1.scale.x - 0.2), y: (iconP1.scale.y + 0.3)}, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut,type:BACKWARD});
 					FlxTween.angle(iconP2, ClientPrefs.healthrot, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+					FlxTween.tween(iconP2.scale, {x: (iconP1.scale.x + 0.2), y: (iconP1.scale.y - 0.3)}, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut,type:BACKWARD});
 				}
 			} : {
 				if (ClientPrefs.dohealthrot){
 					FlxTween.angle(iconP2, -(ClientPrefs.healthrot), 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+					FlxTween.tween(iconP1.scale, {x: (iconP1.scale.x + 0.2), y: (iconP1.scale.y - 0.3)}, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut,type:BACKWARD});
 					FlxTween.angle(iconP1, ClientPrefs.healthrot, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+					FlxTween.tween(iconP2.scale, {x: (iconP1.scale.x - 0.2), y: (iconP1.scale.y + 0.3)}, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut,type:BACKWARD});
 				}
 			}
 			
@@ -5006,6 +5023,58 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
+			case 'ally':
+				// Stop vaporeon from going into pain when beat 224 hits (the end of headache).
+				// This so vaporeon doesn't wake up from his sleep
+				if (SONG.song.toLowerCase() == 'headache' && FlxG.random.bool(5) && curBeat < 224)
+					dad.playAnim('headache',true);
+			case 'icecave':
+				// Glaceon freezes at beat 160. Stop the random animations here.
+				if (SONG.song.toLowerCase() == 'solid' && FlxG.random.bool(5) && curBeat < 160)
+					dad.playAnim('cold',true);
+			case 'box':
+				if (SONG.song.toLowerCase() == 'crossover'){
+					if (curBeat == 1060){
+						FlxTween.tween(gf, {alpha: 0}, 2, {ease: FlxEase.quadInOut});
+						FlxTween.tween(boxBG, {alpha: 0}, 2, {ease: FlxEase.quadInOut});
+
+						if(boyfriend.curCharacter != "bfGray") {
+							if(!boyfriendMap.exists("bfGray")) {
+								addCharacterToList("bfGray", 0);
+							}
+
+							boyfriend.visible = false;
+							boyfriend = boyfriendMap.get("bfGray");
+							if(!boyfriend.alreadyLoaded) {
+								boyfriend.alpha = 1;
+								boyfriend.alreadyLoaded = true;
+							}
+							boyfriend.visible = true;
+							iconP1.changeIcon(boyfriend.healthIcon);
+							reloadHealthBarColors();
+						}
+					}
+					if (curBeat == 1124){
+							FlxTween.tween(gf, {alpha: 1}, 2, {ease: FlxEase.quadInOut});
+							FlxTween.tween(boxBG, {alpha: 1}, 2, {ease: FlxEase.quadInOut});
+	
+							if(boyfriend.curCharacter != "bf") {
+								if(!boyfriendMap.exists("bf")) {
+									addCharacterToList("bf", 0);
+								}
+	
+								boyfriend.visible = false;
+								boyfriend = boyfriendMap.get("bf");
+								if(!boyfriend.alreadyLoaded) {
+									boyfriend.alpha = 1;
+									boyfriend.alreadyLoaded = true;
+								}
+								boyfriend.visible = true;
+								iconP1.changeIcon(boyfriend.healthIcon);
+								reloadHealthBarColors();
+							}
+						}
+				}
 			case 'school':
 				if(!ClientPrefs.lowQuality) {
 					bgGirls.dance();
