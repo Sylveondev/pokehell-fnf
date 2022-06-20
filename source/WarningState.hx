@@ -31,9 +31,9 @@ class WarningState extends MusicBeatState
 
 		warnText = new FlxText(0, 0, FlxG.width,
 			"Hey, thanks for "+
-            #if !html5 "downloading the mod!"+ #else "playing the mod online!" #end
+            #if !html5 "downloading the mod!"+ #else "playing the mod online!" + #end
             "\n\nNobody records any footage on Youtube, so thanks for giving us a chance.\nBefore you continue, heads up that this mod contains some language that isn't suitable to younger audiences.\nAlso this mod has screen shaking that may trigger some users.\nYou can't disable these so be careful."+
-            #if html5 "Also, consider downloading the mod on gamebanana to enjoy more of the mod,\nIt'd really help us out."+ #end
+            #if html5 "Also, this mod isn't very stable on html5 so consider downloading on gamebanana."+ #end
             "\nAlso remember to have fun playing <3 -The devs of pokehell\n\n(Press Enter to continue)",
 			32);
 		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
