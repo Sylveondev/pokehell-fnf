@@ -15,7 +15,7 @@
 	"weekBefore": "tutorial",
 	"weekName": "Week 1",
 	"startUnlocked": true,
-
+	"pokehellWeek": true,
 	"hideStoryMode": false,
 	"hideFreeplay": false
 }

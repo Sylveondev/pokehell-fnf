@@ -131,7 +131,7 @@ class StoryMenuState extends MusicBeatState
 		}
 
 		difficultySelectors = new FlxGroup();
-		//add(difficultySelectors);
+		add(difficultySelectors);
 
 		leftArrow = new FlxSprite(grpWeekText.members[0].x + grpWeekText.members[0].width + 10, grpWeekText.members[0].y + 10);
 		leftArrow.frames = ui_tex;
@@ -142,7 +142,7 @@ class StoryMenuState extends MusicBeatState
 		difficultySelectors.add(leftArrow);
 
 		sprDifficultyGroup = new FlxTypedGroup<FlxSprite>();
-		//add(sprDifficultyGroup);
+		add(sprDifficultyGroup);
 
 		
 		for (i in 0...CoolUtil.difficultyStuff.length) {
@@ -202,7 +202,7 @@ class StoryMenuState extends MusicBeatState
 
 		// FlxG.watch.addQuick('font', scoreText.font);
 
-		difficultySelectors.visible = !weekIsLocked(curWeek);
+		difficultySelectors.visible = !weekIsLocked(curWeek) || WeekData.getWeek(curWeek).pokehellWeek;
 
 		if (!movedBack && !selectedWeek)
 		{
@@ -291,13 +291,17 @@ class StoryMenuState extends MusicBeatState
 			PlayState.isStoryMode = true;
 			selectedWeek = true;
 
-			curDifficulty = 1;
+			//For pokehell weeks, there's a better way now.
+			//curDifficulty = 1;
 			var diffic = CoolUtil.difficultyStuff[curDifficulty][1];
 			if(diffic == null) diffic = '';
 
 			PlayState.storyDifficulty = curDifficulty;
 
 			PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
+			if (PlayState.SONG.mania < 0){
+				PlayState.SONG.mania = 3;
+			}
 			PlayState.storyWeek = curWeek;
 			PlayState.campaignScore = 0;
 			PlayState.campaignMisses = 0;
@@ -315,10 +319,15 @@ class StoryMenuState extends MusicBeatState
 	{
 		curDifficulty += change;
 
+		if (WeekData.getWeek(curWeek).pokehellWeek == false){
 		if (curDifficulty < 0)
 			curDifficulty = CoolUtil.difficultyStuff.length-1;
 		if (curDifficulty >= CoolUtil.difficultyStuff.length)
 			curDifficulty = 0;
+		}else{
+			curDifficulty = 1;
+
+		}
 
 		sprDifficultyGroup.forEach(function(spr:FlxSprite) {
 			spr.visible = false;
@@ -349,6 +358,8 @@ class StoryMenuState extends MusicBeatState
 
 		var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[curWeek]);
 		WeekData.setDirectoryFromWeek(leWeek);
+
+		changeDifficulty();
 
 		var leName:String = leWeek.storyName;
 		txtWeekTitle.text = leName.toUpperCase();

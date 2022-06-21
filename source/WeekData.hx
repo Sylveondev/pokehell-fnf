@@ -24,6 +24,7 @@ typedef WeekFile =
 	var startUnlocked:Bool;
 	var hideStoryMode:Bool;
 	var hideFreeplay:Bool;
+	var pokehellWeek:Bool;
 }
 
 class WeekData {
@@ -42,6 +43,7 @@ class WeekData {
 	public var startUnlocked:Bool;
 	public var hideStoryMode:Bool;
 	public var hideFreeplay:Bool;
+	public var pokehellWeek:Bool;
 
 	public static function createWeekFile():WeekFile {
 		var weekFile:WeekFile = {
@@ -54,7 +56,8 @@ class WeekData {
 			freeplayColor: [146, 113, 253],
 			startUnlocked: true,
 			hideStoryMode: false,
-			hideFreeplay: false
+			hideFreeplay: false,
+			pokehellWeek: false
 		};
 		return weekFile;
 	}
@@ -71,6 +74,7 @@ class WeekData {
 		startUnlocked = weekFile.startUnlocked;
 		hideStoryMode = weekFile.hideStoryMode;
 		hideFreeplay = weekFile.hideFreeplay;
+		pokehellWeek = weekFile.pokehellWeek;
 	}
 
 	public static function reloadWeekFiles(isStoryMode:Null<Bool> = false)
@@ -175,6 +179,10 @@ class WeekData {
 	//Used on LoadingState, nothing really too relevant
 	public static function getCurrentWeek():WeekData {
 		return weeksLoaded.get(weeksList[PlayState.storyWeek]);
+	}
+
+	public static function getWeek(week:Int):WeekData {
+		return weeksLoaded.get(weeksList[week]);
 	}
 
 	public static function setDirectoryFromWeek(?data:WeekData = null) {

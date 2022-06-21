@@ -21,6 +21,7 @@ class PauseSubState extends MusicBeatSubstate
 
 	var menuItems:Array<String> = [];
 	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Toggle Practice Mode', 'Botplay', 'Exit to menu'];
+
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
@@ -33,6 +34,10 @@ class PauseSubState extends MusicBeatSubstate
 	public function new(x:Float, y:Float)
 	{
 		super();
+
+		if (WeekData.getCurrentWeek().pokehellWeek == false)
+			menuItemsOG.insert(2, 'Change Difficulty');
+
 		menuItems = menuItemsOG;
 
 		for (i in 0...CoolUtil.difficultyStuff.length) {
@@ -52,6 +57,7 @@ class PauseSubState extends MusicBeatSubstate
 		bg.scrollFactor.set();
 		add(bg);
 
+		
 		var levelInfo:FlxText = new FlxText(20, 15, 0, "", 32);
 		levelInfo.text += PlayState.SONG.song;
 		levelInfo.scrollFactor.set();
@@ -64,9 +70,14 @@ class PauseSubState extends MusicBeatSubstate
 		levelDifficulty.scrollFactor.set();
 		levelDifficulty.setFormat(Paths.font('vcr.ttf'), 32);
 		levelDifficulty.updateHitbox();
-		//add(levelDifficulty);
+		if (WeekData.getCurrentWeek().pokehellWeek == false)
+			add(levelDifficulty);
 
-		var blueballedTxt:FlxText = new FlxText(20, 15 + 32, 0, "", 32);
+		var blueballedTxt:FlxText;
+		if (WeekData.getCurrentWeek().pokehellWeek == true)
+			blueballedTxt = new FlxText(20, 15 + 32, 0, "", 32);
+		else
+			blueballedTxt = new FlxText(20, 15 + 64, 0, "", 32);
 		blueballedTxt.text = "Blueballed: " + PlayState.deathCounter;
 		blueballedTxt.scrollFactor.set();
 		blueballedTxt.setFormat(Paths.font('vcr.ttf'), 32);
