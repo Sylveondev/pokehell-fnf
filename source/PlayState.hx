@@ -557,8 +557,9 @@ class PlayState extends MusicBeatState
 					var bg:BGSprite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
 					bg.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), 0xFFA0A0A0);
 					add(bg);
-				}
-				boxBG = new BGSprite('box', -600, -200, 1, 1);
+					boxBG = new BGSprite('box-alt', -600, -200, 1, 1);
+				}else
+					boxBG = new BGSprite('box', -600, -200, 1, 1);
 				add(boxBG);
 
 			case 'white-center': //Week 1: Vaporeon
@@ -1052,7 +1053,7 @@ class PlayState extends MusicBeatState
 		startCharacterPos(gf);
 		gf.scrollFactor.set(0.95, 0.95);
 		gfGroup.add(gf);
-		if (curStage.startsWith('treehouse')) gf.visible = false;
+		if (curStage.startsWith('treehouse')||SONG.song.toLowerCase() == 'crossover') gf.visible = false;
 
 		if (gfVersion == 'pico-speaker') {
 			gf.x -= 100;
@@ -1456,13 +1457,13 @@ class PlayState extends MusicBeatState
 						});
 					});
 				
-				case 'squad' | 'speeding':
+				case 'squad' | 'speeding' | 'crossover':
 					var leSong:String = SONG.song.toLowerCase();
 					startVideo(leSong + 'Cutscene');
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-				case 'tutorial' | 'smoking' | 'headache'|'electric'|'rock'|'metal'|'sinful'|'flaming'|'burned'|'cold'|'solid'|'frozen'|'hopeful'|'easedrop'|'finale'|'friend'|'vomit'|'angery'|'drugged'|'hypergalcemia'|'banana'|'my-friends'|'hammerburst'|'retro-stab'|'lancer'|'crossover':
+				case 'tutorial' | 'smoking' | 'headache'|'electric'|'rock'|'metal'|'sinful'|'flaming'|'burned'|'cold'|'solid'|'frozen'|'hopeful'|'easedrop'|'finale'|'friend'|'vomit'|'angery'|'drugged'|'hypergalcemia'|'banana'|'my-friends'|'hammerburst'|'retro-stab'|'lancer':
 					startDialogue(dialogueJson);
 				case 'ugh' | 'guns' | 'stress':
 					var leSong:String = SONG.song.toLowerCase();
@@ -1604,7 +1605,7 @@ class PlayState extends MusicBeatState
 				if(endingSong) {
 					endSong();
 				} else {
-					if (SONG.song.toLowerCase() == 'squad' || SONG.song.toLowerCase() == 'speeding'){					
+					if (SONG.song.toLowerCase() == 'squad' || SONG.song.toLowerCase() == 'speeding' || SONG.song.toLowerCase() == 'crossover'){					
 						startDialogue(dialogueJson);
 					}else startCountdown();
 				}

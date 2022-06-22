@@ -1,137 +1,109 @@
 {
 	"dialogue": [
 		{
+			"speed": 0.05,
+			"portrait": "theautistic1",
+			"boxState": "normal",
 			"expression": "talk",
-			"text": "Yo wassup.",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "theautistic1"
+			"text": "Huh, this isn't my universe.."
 		},
 		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
 			"expression": "talk",
-			"text": "Sup yall.",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "renderite"
+			"text": "Wow, what an awesome room."
 		},
 		{
-			"expression": "upset",
-			"text": "Oh no a fourth song. I don't wanna spam again.",
-			"boxState": "normal",
 			"speed": 0.05,
-			"portrait": "eevee"
-		},
-		{
-			"expression": "talk",
-			"text": "Chill out bro, we ain't gonna spam.",
+			"portrait": "eevee",
 			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "renderite"
-		},
-		{
-			"expression": "talk",
-			"text": "I might..",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "theautistic1"
-		},
-		{
-			"expression": "upset",
-			"text": "Oh, then what's this fourth song?",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "eevee"
-		},
-		{
-			"expression": "talk",
-			"text": "We heard that you beat flareon and sylveon. That's really impressive.",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "theautistic1"
-		},
-		{
 			"expression": "normal",
-			"text": "Yeah, and you just beat espeon. You're not afraid of danger. I mean if you lost you would've died. ",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "renderite"
+			"text": "Say, what are you doing on your laptop? I've never seen that before."
 		},
 		{
-			"expression": "normal",
-			"text": "I-I guess that's true..",
-			"boxState": "normal",
 			"speed": 0.05,
-			"portrait": "eevee"
-		},
-		{
+			"portrait": "theautistic1",
+			"boxState": "normal",
 			"expression": "talk",
-			"text": "Yeah so we wanna sing with you. You're pretty cool.",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "theautistic1"
+			"text": "Ah, I was just finishing up my sprites on Flipaclip. I don't have a phone so I use bluestacks on my pc."
 		},
 		{
+			"speed": 0.05,
+			"portrait": "theautistic1",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Right now I'm working on a character called Lucario BF, suggested by my man Seth the Lucario. He has a lot of ideas. Really cool."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "confused",
+			"text": "Flipaclip?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "theautistic1",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Pretty neat right? I just have to finish this one and I can start working on my songs!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "confused",
+			"text": "Really? Wow, so cool!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
 			"expression": "normal",
-			"text": "...",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "eevee"
+			"text": "Can you make me a song?"
 		},
 		{
+			"speed": 0.05,
+			"portrait": "theautistic1",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Maybe, my todo list is pretty full. I have a lot of suggestions, a lot from Seth the Lucario, the community, the comments section.."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "theautistic1",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I'll probably make one for you, depends on time really. You seem like a chill dude."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "confused",
+			"text": "ooh, such interesting paintings, what are they?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "theautistic1",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "My friends, they come from different universes. I could call up a few if you'd like."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
 			"expression": "excited",
-			"text": "Ok! I'll sing!",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "eevee"
+			"text": "I'd love to meet them!"
 		},
 		{
-			"expression": "talk",
-			"text": "Swag",
-			"boxState": "normal",
 			"speed": 0.05,
-			"portrait": "renderite"
-		},
-		{
-			"expression": "talk",
-			"text": "Hey, uhh.. Can I join in?",
+			"portrait": "theautistic1",
 			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "flareon"
-		},
-		{
 			"expression": "talk",
-			"text": "Why?",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "renderite"
-		},
-		{
-			"expression": "talk",
-			"text": "Look dude, I haven't sung in weeks, I wanna keep doing it. I gotta admit, it's kinda fun.",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "flareon"
-		},
-		{
-			"expression": "talk",
-			"text": "As long as you pay us 5 bucks",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "theautistic1"
-		},
-		{
-			"expression": "talk",
-			"text": "Deal",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "flareon"
-		},
-		{
-			"expression": "talk",
-			"text": "Swag",
-			"boxState": "normal",
-			"speed": 0.05,
-			"portrait": "renderite"
+			"text": "Alr then, lemme just save Lucario BF real quick and I'll hit 'em up."
 		}
 	]
 }
