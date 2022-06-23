@@ -98,6 +98,8 @@ class ChartingState extends MusicBeatState
 		['Stop note move',"No values needed"],
 		['Flip CamHud',"Flips the hud 180 degrees."],
 		['Hide Elements',"Value 1: Element to hide.\nValue 2: true or false"],
+		['Scroll speed','Value 1: Scroll speed (Default: 3)'],
+		['Jumpscare','Flashes an image on screen.\nDon\'t spam this event or you\'ll cause some weird shit to happen.\nValue 1: The image\nValue 2: The audio and duration (ex.  \"vineboom, 1\")']
 	];
 
 	var _file:FileReference;

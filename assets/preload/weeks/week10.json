@@ -1,56 +1,22 @@
 {
-	"storyName": "eeveelution squad",
-	"hideFreeplay": false,
-	"weekBackground": "chapter1",
-	"freeplayColor": [
-		146,
-		113,
-		253
-	],
-	"weekBefore": "tutorial",
-	"startUnlocked": true,
 	"songs": [
-		[
-			"squad",
-			"sunshine",
-			[
-				195,
-				93,
-				0
-			]
-		],[
-			"swell",
-			"sunshine",
-			[
-				195,
-				93,
-				0
-			]
-		],[
-
-			"my-friends",
-			"sunshine",
-			[
-				195,
-				93,
-				0
-			]
-		],[
-			"speeding",
-			"speedy",
-			[
-				255,
-				255,
-				0
-			]
-		]
+		["trees", "leafeon", [64, 163, 64]],
+		["afternoon", "leafeon", [64, 163, 64]],
+		["unwanted-guest", "eeeee", [25, 88, 25]]
 	],
-	"hideStoryMode": false,
+
 	"weekCharacters": [
 		"",
-		"",
-		""
+		"bf",
+		"gf"
 	],
-	"weekName": "sunshine",
-	"pokehellWeek": true
+	"weekBackground": "stage",
+
+	"storyName": "Such a beautiful day",
+	"weekBefore": "week9",
+	"weekName": "Week 10",
+	"startUnlocked": true,
+	"pokehellWeek": true,
+	"hideStoryMode": false,
+	"hideFreeplay": false
 }

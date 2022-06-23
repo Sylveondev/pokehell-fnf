@@ -1,22 +1,56 @@
 {
-	"songs": [
-		["drugged", "potassium", [255, 225, 255]],
-		["hypergalcemia", "potassium", [255, 225, 255]],
-		["banana", "potassium", [255, 225, 255]]
+	"storyName": "eeveelution squad",
+	"hideFreeplay": false,
+	"weekBackground": "chapter1",
+	"freeplayColor": [
+		146,
+		113,
+		253
 	],
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"songs": [
+		[
+			"squad",
+			"sunshine",
+			[
+				195,
+				93,
+				0
+			]
+		],[
+			"swell",
+			"sunshine",
+			[
+				195,
+				93,
+				0
+			]
+		],[
 
+			"my-friends",
+			"sunshine",
+			[
+				195,
+				93,
+				0
+			]
+		],[
+			"speeding",
+			"speedy",
+			[
+				255,
+				255,
+				0
+			]
+		]
+	],
+	"hideStoryMode": false,
 	"weekCharacters": [
 		"",
-		"bf",
-		"gf"
+		"",
+		""
 	],
-	"weekBackground": "stage",
-
-	"storyName": "I'm dying",
-	"weekBefore": "week6",
-	"weekName": "Week 8",
-	"startUnlocked": true,
-	"pokehellWeek": true,
-	"hideStoryMode": false,
-	"hideFreeplay": false
+	"weekName": "sunshine",
+	"pokehellWeek": true
 }

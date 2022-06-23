@@ -1,0 +1,23 @@
+{
+	"songs": [
+		["hammerburst", "espeon", [221, 116, 215]],
+		["retro-stab", "espeon", [221, 116, 215]],
+		["lancer", "espeon", [221, 116, 215]],
+		["crossover", "theautistic1", [194, 143, 92]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "Gears of war 3 reference",
+	"weekBefore": "week6",
+	"weekName": "Week 12",
+	"startUnlocked": true,
+	"pokehellWeek": true,
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

@@ -618,7 +618,8 @@ class TitleState extends MusicBeatState
 			logoBl.x =  -(FlxG.width) - 50;
 			FlxTween.tween(gfDance, {x: FlxG.width * 0.4, y:FlxG.height * 0.07}, 1, {ease: FlxEase.elasticOut, startDelay: 0.5});
 			FlxTween.tween(logoBl, {x: -150, y: -100}, 1, {ease: FlxEase.elasticOut, startDelay: 0.5, onComplete: function(twn:FlxTween){
-				coolTitleTween = FlxTween.tween(logoBl, {y: 0}, 3, {ease: FlxEase.quadInOut, type: PINGPONG});
+				//Only start tweening the logo if not in the process of switching states
+				if (canzoom) coolTitleTween = FlxTween.tween(logoBl, {y: 0}, 3, {ease: FlxEase.quadInOut, type: PINGPONG});
 			}});
 
 

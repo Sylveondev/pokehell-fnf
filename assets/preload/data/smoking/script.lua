@@ -54,82 +54,82 @@ function onBeatHit()
 
     if bumpgui == true then
         setProperty('camHUD.angle',invert * 10)
-        doTweenAngle('turn', 'camHUD', 0, stepCrochet*0.008, 'elasticOut')
+        doTweenAngle('turn', 'camHUD', 0, stepCrochet*0.003, 'quadOut')
     end
 
     --Complicated thingy because enabling both would break for some reason
     if bumpnotex == true then
-        noteTweenX('A',0 , defaultNotePos[0 + 1][1] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('B',1 , defaultNotePos[1 + 1][1] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('C',2 , defaultNotePos[2 + 1][1] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('D',3 , defaultNotePos[3 + 1][1] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('E',4 , defaultNotePos[4 + 1][1] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('F',5 , defaultNotePos[5 + 1][1] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('G',6 , defaultNotePos[6 + 1][1] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('H',7 , defaultNotePos[7 + 1][1] + invert * 32 , stepCrochet*0.005, 'elasticOut');
+        noteTweenX('A',0 , defaultNotePos[0 + 1][1] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('B',1 , defaultNotePos[1 + 1][1] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('C',2 , defaultNotePos[2 + 1][1] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('D',3 , defaultNotePos[3 + 1][1] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('E',4 , defaultNotePos[4 + 1][1] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('F',5 , defaultNotePos[5 + 1][1] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('G',6 , defaultNotePos[6 + 1][1] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('H',7 , defaultNotePos[7 + 1][1] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
     end
     if bumpnotey == true then
-        noteTweenY('A',0 , defaultNotePos[0 + 1][2] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('B',1 , defaultNotePos[1 + 1][2] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('C',2 , defaultNotePos[2 + 1][2] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('D',3 , defaultNotePos[3 + 1][2] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('E',4 , defaultNotePos[4 + 1][2] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('F',5 , defaultNotePos[5 + 1][2] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('G',6 , defaultNotePos[6 + 1][2] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('H',7 , defaultNotePos[7 + 1][2] + invert * 32 , stepCrochet*0.005, 'elasticOut');
+        noteTweenY('A',0 , defaultNotePos[0 + 1][2] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('B',1 , defaultNotePos[1 + 1][2] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('C',2 , defaultNotePos[2 + 1][2] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('D',3 , defaultNotePos[3 + 1][2] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('E',4 , defaultNotePos[4 + 1][2] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('F',5 , defaultNotePos[5 + 1][2] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('G',6 , defaultNotePos[6 + 1][2] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('H',7 , defaultNotePos[7 + 1][2] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
     end
 
     --Doesn't work as intended, sorry
     if bumpbothnotes == true then
-        noteTweenX('A',0 , defaultNotePos[0 + 1][1] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('A',0 , defaultNotePos[0 + 1][2] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('B',1 , defaultNotePos[1 + 1][1] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('B',1 , defaultNotePos[1 + 1][2] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('C',2 , defaultNotePos[2 + 1][1] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('C',2 , defaultNotePos[2 + 1][2] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('D',3 , defaultNotePos[3 + 1][1] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('D',3 , defaultNotePos[3 + 1][2] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('E',4 , defaultNotePos[4 + 1][1] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('E',4 , defaultNotePos[4 + 1][2] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('F',5 , defaultNotePos[5 + 1][1] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('F',5 , defaultNotePos[5 + 1][2] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('G',6 , defaultNotePos[6 + 1][1] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('G',6 , defaultNotePos[6 + 1][2] + -invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenX('H',7 , defaultNotePos[7 + 1][1] + invert * 32 , stepCrochet*0.005, 'elasticOut');
-        noteTweenY('H',7 , defaultNotePos[7 + 1][2] + invert * 32 , stepCrochet*0.005, 'elasticOut');
+        noteTweenX('A',0 , defaultNotePos[0 + 1][1] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('A',0 , defaultNotePos[0 + 1][2] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('B',1 , defaultNotePos[1 + 1][1] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('B',1 , defaultNotePos[1 + 1][2] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('C',2 , defaultNotePos[2 + 1][1] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('C',2 , defaultNotePos[2 + 1][2] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('D',3 , defaultNotePos[3 + 1][1] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('D',3 , defaultNotePos[3 + 1][2] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('E',4 , defaultNotePos[4 + 1][1] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('E',4 , defaultNotePos[4 + 1][2] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('F',5 , defaultNotePos[5 + 1][1] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('F',5 , defaultNotePos[5 + 1][2] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('G',6 , defaultNotePos[6 + 1][1] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('G',6 , defaultNotePos[6 + 1][2] + -invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenX('H',7 , defaultNotePos[7 + 1][1] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenY('H',7 , defaultNotePos[7 + 1][2] + invert * 32 , stepCrochet*0.0025, 'quadInOut');
     end
 
     if bumpnotesides == true then
         if invert == 1 then
-            noteTweenX('A',0 , defaultNotePos[4 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('B',1 , defaultNotePos[5 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('C',2 , defaultNotePos[6 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('D',3 , defaultNotePos[7 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('E',4 , defaultNotePos[0 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('F',5 , defaultNotePos[1 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('G',6 , defaultNotePos[2 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('H',7 , defaultNotePos[3 + 1][1], stepCrochet*0.005, 'elasticOut');
+            noteTweenX('A',0 , defaultNotePos[4 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('B',1 , defaultNotePos[5 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('C',2 , defaultNotePos[6 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('D',3 , defaultNotePos[7 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('E',4 , defaultNotePos[0 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('F',5 , defaultNotePos[1 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('G',6 , defaultNotePos[2 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('H',7 , defaultNotePos[3 + 1][1], stepCrochet*0.0025, 'quadInOut');
         else
-            noteTweenX('A',0 , defaultNotePos[0 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('B',1 , defaultNotePos[1 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('C',2 , defaultNotePos[2 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('D',3 , defaultNotePos[3 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('E',4 , defaultNotePos[4 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('F',5 , defaultNotePos[5 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('G',6 , defaultNotePos[6 + 1][1], stepCrochet*0.005, 'elasticOut');
-            noteTweenX('H',7 , defaultNotePos[7 + 1][1], stepCrochet*0.005, 'elasticOut');
+            noteTweenX('A',0 , defaultNotePos[0 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('B',1 , defaultNotePos[1 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('C',2 , defaultNotePos[2 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('D',3 , defaultNotePos[3 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('E',4 , defaultNotePos[4 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('F',5 , defaultNotePos[5 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('G',6 , defaultNotePos[6 + 1][1], stepCrochet*0.0025, 'quadInOut');
+            noteTweenX('H',7 , defaultNotePos[7 + 1][1], stepCrochet*0.0025, 'quadInOut');
         end
     end
 
     if bumpnoteangle == true then
-        noteTweenAngle('A',0 , -invert * 45 , stepCrochet*0.005, 'elasticOut');
-        noteTweenAngle('B',1 , invert * 45 , stepCrochet*0.005, 'elasticOut');
-        noteTweenAngle('C',2 , -invert * 45 , stepCrochet*0.005, 'elasticOut');
-        noteTweenAngle('D',3 , invert * 45 , stepCrochet*0.005, 'elasticOut');
-        noteTweenAngle('E',4 , -invert * 45 , stepCrochet*0.005, 'elasticOut');
-        noteTweenAngle('F',5 , invert * 45 , stepCrochet*0.005, 'elasticOut');
-        noteTweenAngle('G',6 , -invert * 45 , stepCrochet*0.005, 'elasticOut');
-        noteTweenAngle('H',7 , invert * 45 , stepCrochet*0.005, 'elasticOut');
+        noteTweenAngle('A',0 , -invert * 45 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenAngle('B',1 , invert * 45 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenAngle('C',2 , -invert * 45 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenAngle('D',3 , invert * 45 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenAngle('E',4 , -invert * 45 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenAngle('F',5 , invert * 45 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenAngle('G',6 , -invert * 45 , stepCrochet*0.0025, 'quadInOut');
+        noteTweenAngle('H',7 , invert * 45 , stepCrochet*0.0025, 'quadInOut');
     end
 end
 

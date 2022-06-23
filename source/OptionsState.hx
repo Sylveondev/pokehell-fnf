@@ -172,13 +172,13 @@ class NoteColorSubstate extends MusicBeatSubstate
 			grpNotes.add(note);
 
 			var noteLetter:FlxText = new FlxText(posX + 175, 55 + (75 * i), 0, ClientPrefs.noteOrder[i], 32);
-			noteLetter.setFormat(Paths.font('vcr.ttf'), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			noteLetter.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			noteLetter.ID = i;
 			noteLetter.alpha = 0.5;
 			grpLetters.add(noteLetter);
 
 			var noteOption:FlxText = new FlxText(posX + 610, 55 + (75 * i), 0, ClientPrefs.noteOption[i], 32);
-			noteOption.setFormat(Paths.font('vcr.ttf'), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			noteOption.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			noteOption.ID = i;
 			noteOption.alpha = 0.5;
 			grpAvailable.add(noteOption);
@@ -728,7 +728,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		}
 
 		descText = new FlxText(50, 600, 1180, "", 32);
-		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		descText.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		descText.scrollFactor.set();
 		descText.borderSize = 2.4;
 		add(descText);
@@ -1166,7 +1166,7 @@ class CustomizationSubstate extends MusicBeatSubstate
 		}
 
 		descText = new FlxText(50, 600, 1180, "", 32);
-		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		descText.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		descText.scrollFactor.set();
 		descText.borderSize = 2.4;
 		add(descText);

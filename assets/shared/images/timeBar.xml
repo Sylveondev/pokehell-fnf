@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="healthBar.png">
+	<SubTexture name="normal0000" x="0" y="0" width="400" height="19"/>
+	<SubTexture name="normal0001" x="0" y="0" width="400" height="19"/>
+    <SubTexture name="normal0002" x="0" y="19" width="400" height="19"/>
+	<SubTexture name="normal0003" x="0" y="19" width="400" height="19"/>
+    <SubTexture name="normal0004" x="0" y="38" width="400" height="19"/>
+	<SubTexture name="normal0005" x="0" y="38" width="400" height="19"/>
+	<SubTexture name="normal0006" x="0" y="57" width="400" height="19"/>
+	<SubTexture name="normal0007" x="0" y="57" width="400" height="19"/>
+	<SubTexture name="normal0008" x="0" y="57" width="400" height="19"/>
+	<SubTexture name="normal0009" x="0" y="57" width="400" height="19"/>
+	<SubTexture name="normal0010" x="0" y="38" width="400" height="19"/>
+	<SubTexture name="normal0011" x="0" y="38" width="400" height="19"/>
+	<SubTexture name="normal0012" x="0" y="19" width="400" height="19"/>
+	<SubTexture name="normal0013" x="0" y="19" width="400" height="19"/>
+    <SubTexture name="normal0014" x="0" y="0" width="400" height="19"/>
+	<SubTexture name="normal0015" x="0" y="0" width="400" height="19"/>
+</TextureAtlas>

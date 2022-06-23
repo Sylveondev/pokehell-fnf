@@ -5,6 +5,7 @@ local invert = 1;
 
 local spin = false;
 local bumpgui = false;
+local bumpcam = false;
 local bumpnotex = false;
 local bumpnotey = false;
 local bumpbothnotes = false;
@@ -36,7 +37,9 @@ function onBeatHit()
         resetNotePos()
         bumpnotey = true
         bumpgui = true
+        bumpcam = true
     elseif curBeat == 80 then
+        bumpcam = false
         bumpnotey = false
         bumpgui = false
         resetNotePos()
@@ -74,8 +77,15 @@ function onBeatHit()
     end
 
     if bumpgui == true then
-        setProperty('camHUD.angle',invert * 10)
+        setProperty('camHUD.angle',-invert * 10)
+        setProperty('camera.angle',invert * 10)
         doTweenAngle('turn', 'camHUD', 0, stepCrochet*0.008, 'elasticOut')
+        doTweenAngle('turnagain', 'camera', 0, stepCrochet*0.008, 'elasticOut')
+    end
+
+    if bumpcam == true then
+        
+        
     end
 
     --Complicated thingy because enabling both would break for some reason

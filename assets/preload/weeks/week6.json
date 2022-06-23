@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["Cold", "glaceon", [157, 157, 221]],
-		["Solid", "glaceon", [157, 157, 221]],
-		["Frozen", "glaceon", [157, 157, 221]]
+		["hopeful", "sylveon", [255, 134, 255]],
+		["easedrop", "sylveon", [255, 134, 255]],
+		["finale", "sylveon", [255, 134, 255]]
 	],
 
 	"weekCharacters": [
@@ -12,9 +12,9 @@
 	],
 	"weekBackground": "stage",
 
-	"storyName": "Glaceon's freezer",
-	"weekBefore": "week5",
-	"weekName": "Week 6",
+	"storyName": "Your demise",
+	"weekBefore": "week6",
+	"weekName": "Week 7",
 	"startUnlocked": true,
 	"pokehellWeek": true,
 	"hideStoryMode": false,

@@ -36,7 +36,7 @@ class WarningState extends MusicBeatState
             #if html5 "Also, this mod isn't very stable on html5 so consider downloading on gamebanana."+ #end
             "\nAlso remember to have fun playing <3 -The devs of pokehell\n\n(Press Enter to continue)",
 			32);
-		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		warnText.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		warnText.screenCenter();
         bg.screenCenter();
         warnText.borderSize = 2;

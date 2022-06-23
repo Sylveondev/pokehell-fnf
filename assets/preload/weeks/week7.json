@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["hopeful", "sylveon", [255, 134, 255]],
-		["easedrop", "sylveon", [255, 134, 255]],
-		["finale", "sylveon", [255, 134, 255]]
+		["drugged", "potassium", [255, 225, 255]],
+		["hypergalcemia", "potassium", [255, 225, 255]],
+		["banana", "potassium", [255, 225, 255]]
 	],
 
 	"weekCharacters": [
@@ -12,9 +12,9 @@
 	],
 	"weekBackground": "stage",
 
-	"storyName": "Your demise",
+	"storyName": "I'm dying",
 	"weekBefore": "week6",
-	"weekName": "Week 7",
+	"weekName": "Week 8",
 	"startUnlocked": true,
 	"pokehellWeek": true,
 	"hideStoryMode": false,

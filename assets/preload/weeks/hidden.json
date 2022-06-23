@@ -19,7 +19,7 @@
 		["old-unchartable", "system86", [255, 225, 0]],
 		["gentex-commander-3", "potassium", [255, 225, 255]],
 		["suppremacy", "skitty", [255, 225, 255]],
-		["evzero-effort", "zeroeffort", [255, 225, 255]]
+		["evzero-effort", "zeroeffort", [255, 225, 0]]
 		
 	],
 	"hideStoryMode": true,

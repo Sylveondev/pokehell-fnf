@@ -86,6 +86,13 @@ class MasterEditorMenu extends MusicBeatState
 					LoadingState.loadAndSwitchState(new DialogueCharacterEditorState(), false);
 				case 'Dialogue Editor':
 					LoadingState.loadAndSwitchState(new DialogueEditorState(), false);
+				case 'Charting Editor':
+					var poop:String = Highscore.formatSong('smoking', 1);
+					PlayState.SONG = Song.loadFromJson(poop, 'smoking');
+					PlayState.isStoryMode = false;
+					PlayState.storyDifficulty = 1;
+					PlayState.storyWeek = 1;
+					LoadingState.loadAndSwitchState(new ChartingState(), false);
 			}
 			FlxG.sound.music.volume = 0;
 			FreeplayState.destroyFreeplayVocals();
