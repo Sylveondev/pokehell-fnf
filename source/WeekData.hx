@@ -77,13 +77,20 @@ class WeekData {
 		pokehellWeek = weekFile.pokehellWeek;
 	}
 
-	public static function reloadWeekFiles(isStoryMode:Null<Bool> = false)
+	public static function reloadWeekFiles(leType:Null<String> = 'default', isStoryMode:Null<Bool> = false)
 	{
 		weeksList = [];
 		weeksLoaded.clear();
 		#if MODS_ALLOWED
-		var directories:Array<String> = [Paths.mods(), Paths.getPreloadPath()];
+			var directories:Array<String>;
+		if (leType == 'default' && isStoryMode == true){
+			directories = [Paths.mods(), Paths.getPreloadPath()];
+		}else if (leType == 'default'){
+			directories = [Paths.mods()];
+		}else directories = [Paths.getPreloadPath()];
+
 		var originalLength:Int = directories.length;
+		if (leType == 'default'){
 		if(FileSystem.exists(Paths.mods())) {
 			for (folder in FileSystem.readDirectory(Paths.mods())) {
 				var path = haxe.io.Path.join([Paths.mods(), folder]);
@@ -92,13 +99,25 @@ class WeekData {
 					//trace('pushed Directory: ' + folder);
 				}
 			}
-		}
+		}}
 		#else
 		var directories:Array<String> = [Paths.getPreloadPath()];
 		var originalLength:Int = directories.length;
 		#end
 
-		var sexList:Array<String> = CoolUtil.coolTextFile(Paths.getPreloadPath('weeks/weekList.txt'));
+		var sexList:Array<String>;
+		switch(leType){
+			case 'story':
+				sexList = CoolUtil.coolTextFile(Paths.getPreloadPath('weeks/storyWeekList.txt'));
+			case 'bonus':
+				sexList = CoolUtil.coolTextFile(Paths.getPreloadPath('weeks/bonusWeekList.txt'));
+			case 'covers':
+				sexList = CoolUtil.coolTextFile(Paths.getPreloadPath('weeks/coversWeekList.txt'));
+			default:
+				leType = 'default';
+				sexList = CoolUtil.coolTextFile(Paths.getPreloadPath('weeks/weekList.txt'));
+		}
+
 		for (i in 0...sexList.length) {
 			for (j in 0...directories.length) {
 				var fileToCheck:String = directories[j] + 'weeks/' + sexList[i] + '.json';
@@ -106,10 +125,12 @@ class WeekData {
 					var week:WeekFile = getWeekFile(fileToCheck);
 					if(week != null) {
 						var weekFile:WeekData = new WeekData(week);
-
+						
 						#if MODS_ALLOWED
+						if (leType == 'default'){
 						if(j >= originalLength) {
 							weekFile.folder = directories[j].substring(Paths.mods().length, directories[j].length-1);
+						}
 						}
 						#end
 
@@ -123,6 +144,7 @@ class WeekData {
 		}
 
 		#if MODS_ALLOWED
+		if (leType == 'default'){
 		for (i in 0...directories.length) {
 			var directory:String = directories[i] + 'weeks/';
 			if(FileSystem.exists(directory)) {
@@ -147,7 +169,7 @@ class WeekData {
 					}
 				}
 			}
-		}
+		}}
 		#end
 	}
 

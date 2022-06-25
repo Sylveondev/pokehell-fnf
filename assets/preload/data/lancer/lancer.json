@@ -6644,6 +6644,11 @@
 		"player2": "espeon-lancer",
 		"player3": "gf",
 		"mania": 3,
+		"fontColor": "#d428ba",
+		"timebarColor": [
+			"#9c338c",
+			"#fa5ce2"
+		],
 		"song": "lancer",
 		"needsVoices": true,
 		"validScore": true,

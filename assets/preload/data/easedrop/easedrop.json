@@ -10882,6 +10882,11 @@
 		"sections": 0,
 		"validScore": true,
 		"stage": "spooky",
+		"fontColor": "#ff7dff",
+		"timebarColor": [
+			"#d689d6",
+			"#ffb5ff"
+		],
 		"bpm": 175,
 		"speed": 3
 	}

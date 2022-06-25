@@ -124,6 +124,7 @@ class PlayState extends MusicBeatState
 	var newManiaVal:Int;
 
 	public static var mania:Null<Int> = 3;
+	public static var uiColor:Null<FlxColor> = FlxColor.fromString('0xFFF5AA42');
 
 	public var vocals:FlxSound;
 
@@ -319,8 +320,20 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		//Initialize unused variables
+		if (SONG.noBotplay != false || SONG.noBotplay != true) SONG.noBotplay = false;
+		if (SONG.noPractice != false || SONG.noPractice != true) SONG.noPractice = false;
+		if (SONG.forceMiddlescroll != false || SONG.noPractice != true) SONG.forceMiddlescroll = false;
+		if (SONG.forceGhostingOff != false || SONG.noPractice != true) SONG.forceGhostingOff = false;
+		if (SONG.hideGF != false || SONG.noPractice != true) SONG.hideGF = false;
+		if (SONG.disableChartEditor != false || SONG.noPractice != true) SONG.disableChartEditor = false;
+
+		uiColor = FlxColor.fromString('0xFFF5AA42');
+		if (SONG.fontColor != null) uiColor = FlxColor.fromString(SONG.fontColor);
+		if (uiColor == null) uiColor = FlxColor.fromString('0xFFF5AA42');
+
 		unsupportedText = new FlxText(-100, FlxG.width * 0.25, 1000, "This chart may not be compatible with pokehell.\nFix this by pressing 7 and change mania to 3.", 32);
-		unsupportedText.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.fromString('0xFFF5AA42'), CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		unsupportedText.setFormat(Paths.font("righteous.ttf"), 32, uiColor, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		unsupportedText.screenCenter(X);
 		unsupportedText.scrollFactor.set();
 		unsupportedText.borderSize = 2;
@@ -575,6 +588,10 @@ class PlayState extends MusicBeatState
 					boxBG = new BGSprite('forest', -600, -200, 1, 1);
 				
 				add(boxBG);
+
+			case 'coliseum':
+				var bg:BGSprite = new BGSprite('coliseum', -600, -200, 1, 1);
+				add(bg);
 
 			case 'white-center': //Bonus song
 				
@@ -1067,8 +1084,8 @@ class PlayState extends MusicBeatState
 		startCharacterPos(gf);
 		gf.scrollFactor.set(0.95, 0.95);
 		gfGroup.add(gf);
-		if (curStage.startsWith('treehouse')||SONG.song.toLowerCase() == 'crossover') gf.visible = false;
-
+		if (SONG.hideGF == true) gf.visible = false;
+	
 		if (gfVersion == 'pico-speaker') {
 			gf.x -= 100;
 		}
@@ -1127,6 +1144,8 @@ class PlayState extends MusicBeatState
 		
 		if (curStage == 'white-center'){
 			strumLine = new FlxSprite(STRUM_X_MIDDLESCROLL, 50).makeGraphic(FlxG.width, 10);
+		}else if (SONG.forceMiddlescroll == true){
+			strumLine = new FlxSprite(STRUM_X_MIDDLESCROLL, 50).makeGraphic(FlxG.width, 10);
 		}else{
 			strumLine = new FlxSprite(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, 50).makeGraphic(FlxG.width, 10);
 		}
@@ -1144,7 +1163,7 @@ class PlayState extends MusicBeatState
 			'\nTrashes: ' + shits +
 			'\nMisses: ' + songMisses
 		, 20);
-		scoretable.setFormat(Paths.font("righteous.ttf"), 20, FlxColor.fromString('0xFFF5AA42'), LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoretable.setFormat(Paths.font("righteous.ttf"), 20, uiColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoretable.scrollFactor.set();
 		scoretable.cameras = [camHUD];
 		scoretable.alpha = 0;
@@ -1152,7 +1171,7 @@ class PlayState extends MusicBeatState
 		add(scoretable);
 
 		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 20, 400, "", 32);
-		timeTxt.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.fromString('0xFFF5AA42'), CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timeTxt.setFormat(Paths.font("righteous.ttf"), 32, uiColor, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		timeTxt.scrollFactor.set();
 		timeTxt.alpha = 0;
 		timeTxt.borderSize = 2;
@@ -1218,17 +1237,22 @@ class PlayState extends MusicBeatState
 		timeBarBG.scrollFactor.set();
 		timeBarBG.alpha = 0;
 		timeBarBG.visible = !ClientPrefs.hideTime;
-		//timeBarBG.color = FlxColor.BLACK;
+		timeBarBG.color = uiColor;
 		timeBarBG.xAdd = -4;
 		timeBarBG.yAdd = -4;
 		add(timeBarBG);
 
-		
+		//This is probably really stupid.
+		//Hopefully this doesn't crash this bitch.
+		var timebarColor:Array<String> = ['0xFF915D0F', '0xFFFFA621'];
+		if (SONG.timebarColor.length == 2){
+			timebarColor = SONG.timebarColor;
+		}
 
 		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
 			'songPercent', 0, 1);
 		timeBar.scrollFactor.set();
-		timeBar.createFilledBar(0xFF915D0F, 0xFFFFA621);
+		timeBar.createFilledBar(FlxColor.fromString(timebarColor[0]), FlxColor.fromString(timebarColor[1]));
 		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
 		timeBar.alpha = 0;
 		timeBar.visible = !ClientPrefs.hideTime;
@@ -1334,6 +1358,7 @@ class PlayState extends MusicBeatState
 		healthBarBG.visible = !ClientPrefs.hideHud;
 		healthBarBG.xAdd = -4;
 		healthBarBG.yAdd = -4;
+		healthBarBG.color = uiColor;
 		add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
 
@@ -1369,7 +1394,7 @@ class PlayState extends MusicBeatState
 			+ 50, 0,
 			SONG.song
 			+ " - Pokehell Dev version (PE "+MainMenuState.psychEngineVersion+")", 16);
-		kadeEngineWatermark.setFormat(Paths.font("righteous.ttf"), 16, FlxColor.fromString('0xFFF5AA42'), RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		kadeEngineWatermark.setFormat(Paths.font("righteous.ttf"), 16, uiColor, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		kadeEngineWatermark.updateHitbox();
 		kadeEngineWatermark.cameras = [camHUD];
@@ -1379,7 +1404,7 @@ class PlayState extends MusicBeatState
 			+ 50, 0,
 			SONG.song
 			+ " - Pokehell " + MainMenuState.pokehellVersion+" (PE "+MainMenuState.psychEngineVersion+")", 16);
-		kadeEngineWatermark.setFormat(Paths.font("righteous.ttf"), 16, FlxColor.fromString('0xFFF5AA42'), RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		kadeEngineWatermark.setFormat(Paths.font("righteous.ttf"), 16, uiColor, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		kadeEngineWatermark.updateHitbox();
 		kadeEngineWatermark.cameras = [camHUD];
@@ -1403,7 +1428,7 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("righteous.ttf"), 20, FlxColor.fromString('0xFFF5AA42'), CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("righteous.ttf"), 20, uiColor, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
@@ -1856,7 +1881,7 @@ class PlayState extends MusicBeatState
 			for (i in 0...opponentStrums.length) {
 				setOnLuas('defaultOpponentStrumX' + i, opponentStrums.members[i].x);
 				setOnLuas('defaultOpponentStrumY' + i, opponentStrums.members[i].y);
-				if(ClientPrefs.middleScroll) opponentStrums.members[i].visible = false;
+				if(ClientPrefs.middleScroll || SONG.forceMiddlescroll == true) opponentStrums.members[i].visible = false;
 				if(curStage == 'white-center') opponentStrums.members[i].visible = false;
 			}
 
@@ -2547,6 +2572,9 @@ class PlayState extends MusicBeatState
 
 		callOnLuas('onUpdate', [elapsed]);
 
+		if (SONG.noPractice == true) practiceMode = false;
+		if (SONG.noBotplay == true) cpuControlled = false;
+
 		
 
 		timeBarColor.scale.y = timeBar.scale.y;
@@ -2850,6 +2878,8 @@ class PlayState extends MusicBeatState
 					FlxG.sound.music.stop();
 				LoadingState.loadAndSwitchState(new PlayState());
 			}else{#end
+				trace('Chart editor disabled is '+SONG.disableChartEditor);
+				if (SONG.disableChartEditor != true){
 				persistentUpdate = false;
 				paused = true;
 				cancelFadeTween();
@@ -2859,6 +2889,7 @@ class PlayState extends MusicBeatState
 				#if desktop
 				DiscordClient.changePresence("Chart Editor", null, null, true);
 				#end
+				}
 			#if !debug } #end
 		}
 
@@ -2986,7 +3017,12 @@ class PlayState extends MusicBeatState
 					daNote.active = true;
 					daNote.visible = false;
 				}
-				if(!daNote.mustPress && curStage == 'white-center')
+				else if(!daNote.mustPress && SONG.forceMiddlescroll == true)
+				{
+					daNote.active = true;
+					daNote.visible = false;
+				}
+				else if(!daNote.mustPress && curStage == 'white-center')
 				{
 					daNote.active = true;
 					daNote.visible = false;
@@ -4437,6 +4473,7 @@ class PlayState extends MusicBeatState
 		
 					if ((controlHoldArray.contains(true) || controlArray.contains(true)) && !endingSong) {
 						var canMiss:Bool = !ClientPrefs.ghostTapping;
+						if (SONG.forceGhostingOff == true) canMiss = false;
 						if (controlArray.contains(true)) {
 							for (i in 0...controlArray.length) {
 								// heavily based on my own code LOL if it aint broke dont fix it

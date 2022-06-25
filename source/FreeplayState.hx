@@ -29,6 +29,8 @@ class FreeplayState extends MusicBeatState
 	private static var curSelected:Int = 0;
 	private static var curDifficulty:Int = 2;
 
+	public static var curType = 'default';
+
 	var scoreBG:FlxSprite;
 	var scoreText:FlxText;
 	var diffText:FlxText;
@@ -54,7 +56,7 @@ class FreeplayState extends MusicBeatState
 		#if MODS_ALLOWED
 		Paths.destroyLoadedImages();
 		#end
-		WeekData.reloadWeekFiles(false);
+		WeekData.reloadWeekFiles(curType,false);
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);

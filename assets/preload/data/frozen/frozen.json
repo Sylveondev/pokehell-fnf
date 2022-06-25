@@ -5329,6 +5329,11 @@
 		"player2": "glaceon-frozen",
 		"sectionLengths": [],
 		"speed": 2.5000000000000013,
+		"fontColor": "#45c7ff",
+		"timebarColor": [
+			"#3594bd",
+			"#63d0ff"
+		],
 		"validScore": true,
 		"player3": "gf",
 		"stage": "icecave"

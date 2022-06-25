@@ -8298,6 +8298,11 @@
 		"speed": 4.500000000000001,
 		"validScore": true,
 		"player3": "gf",
+		"fontColor": "#bf4300",
+		"timebarColor": [
+			"#a63c03",
+			"#ff772e"
+		],
 		"stage": "hell"
 	}
 }

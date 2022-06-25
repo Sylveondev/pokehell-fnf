@@ -28,6 +28,15 @@ typedef SwagSong =
 	var arrowSkin:String;
 	var splashSkin:String;
 	var validScore:Bool;
+
+	var forceMiddlescroll:Bool;
+	var forceGhostingOff:Bool;
+	var noBotplay:Bool;
+	var noPractice:Bool;
+	var timebarColor:Array<String>;
+	var fontColor:String;
+	var hideGF:Bool;
+	var disableChartEditor:Bool;
 }
 
 class Song
@@ -44,6 +53,15 @@ class Song
 	public var player1:String = 'bf';
 	public var player2:String = 'dad';
 	public var player3:String = 'gf';
+
+	public var forceMiddlescroll:Bool = false;
+	public var forceGhostingOff:Bool = false;
+	public var noBotplay:Bool = false;
+	public var noPractice:Bool = false;
+	public var timebarColor:Array<String> = ['0xFF915D0F', '0xFFFFA621'];
+	public var fontColor:String = '0xFFF5AA42';
+	public var hideGF:Bool = false;
+	public var disableChartEditor:Bool = false;
 
 	public function new(song, notes, bpm)
 	{
@@ -105,6 +123,14 @@ class Song
 			{
 				songJson.mania = 3;
 				trace('New Mania: '+songJson.mania);
+			}
+		if (!Std.isOfType(songJson.timebarColor,Array))
+			{
+				songJson.timebarColor = ['0xFF915D0F', '0xFFFFA621'];
+			}
+		if (songJson.fontColor == "")
+			{
+				songJson.fontColor = '0xFFF5AA42';
 			}
 			trace('Final Mania: '+songJson.mania);
 

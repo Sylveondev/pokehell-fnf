@@ -6009,6 +6009,11 @@
 		"needsVoices": true,
 		"player1": "bf",
 		"player2": "jolteon",
+		"fontColor": "#e9f01a",
+		"timebarColor": [
+			"#999e00",
+			"#adb300"
+		],
 		"sectionLengths": [],
 		"speed": 4.000000000000001,
 		"validScore": true,

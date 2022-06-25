@@ -1810,6 +1810,11 @@
 		"stage": "forest",
 		"validScore": true,
 		"sections": 0,
+		"fontColor": "#1fb81f",
+		"timebarColor": [
+			"#369636",
+			"#56e856"
+		],
 		"needsVoices": true,
 		"speed": 2.5,
 		"bpm": 150

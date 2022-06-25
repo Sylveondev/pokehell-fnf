@@ -7264,6 +7264,11 @@
 		"player2": "espeon-retro",
 		"player3": "gf",
 		"mania": 3,
+		"fontColor": "#d428ba",
+		"timebarColor": [
+			"#9c338c",
+			"#fa5ce2"
+		],
 		"song": "retro-stab",
 		"needsVoices": true,
 		"validScore": true,

@@ -2805,6 +2805,11 @@
 		"needsVoices": true,
 		"sections": 0,
 		"validScore": true,
+		"fontColor": "#45c7ff",
+		"timebarColor": [
+			"#3594bd",
+			"#63d0ff"
+		],
 		"stage": "icecave",
 		"bpm": 120,
 		"speed": 2

@@ -7111,6 +7111,11 @@
 		"sectionLengths": [],
 		"speed": 3.500000000000002,
 		"validScore": true,
+		"fontColor": "#ff7dff",
+		"timebarColor": [
+			"#d689d6",
+			"#ffb5ff"
+		],
 		"player3": "gf",
 		"stage": "spooky"
 	}

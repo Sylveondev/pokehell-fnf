@@ -1,0 +1,20 @@
+{
+	"songs": [
+		["triple-trouble", "eeeee", [255,255,255]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "The story beginning",
+	"weekBefore": "tutorial",
+	"weekName": "Tutorial",
+	"startUnlocked": true,
+	"pokehellWeek": true,
+	"hideStoryMode": true,
+	"hideFreeplay": false
+}

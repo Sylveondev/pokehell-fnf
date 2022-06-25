@@ -41,6 +41,8 @@ import openfl.utils.Assets as OpenFlAssets;
 import lime.media.AudioBuffer;
 import haxe.io.Bytes;
 import flash.geom.Rectangle;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 #if MODS_ALLOWED
 import sys.io.File;
 import sys.FileSystem;
@@ -105,6 +107,8 @@ class ChartingState extends MusicBeatState
 	var _file:FileReference;
 
 	var UI_box:FlxUITabMenu;
+	var UIconf_box:FlxUITabMenu;
+
 
 	/**
 	 * Array of notes showing when each section STARTS in STEPS
@@ -156,6 +160,15 @@ class ChartingState extends MusicBeatState
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
 
+	var leftIconBig:HealthIcon;
+	var rightIconBig:HealthIcon;
+
+	var dadOnLeft:Bool = false;
+	var bfOnLeft:Bool = false;
+
+	var leftIconTween:FlxTween;
+	var rightIconTween:FlxTween;
+
 	var value1InputText:FlxUIInputText;
 	var value2InputText:FlxUIInputText;
 	var currentSongName:String;
@@ -165,6 +178,7 @@ class ChartingState extends MusicBeatState
 
 	#if !html5
 	var zoomList:Array<Float> = [
+		0.5,
 		1,
 		2,
 		4,
@@ -175,6 +189,7 @@ class ChartingState extends MusicBeatState
 	];
 	#else //The grid gets all black when over 1/12 snap
 	var zoomList:Array<Float> = [
+		0.5,
 		1,
 		2,
 		4,
@@ -253,7 +268,15 @@ class ChartingState extends MusicBeatState
 				mania: 3,
 				speed: 1,
 				stage: 'stage',
-				validScore: false
+				validScore: false,
+				forceMiddlescroll: false,
+				forceGhostingOff: false,
+				noBotplay: false,
+				noPractice: false,
+				timebarColor: ['0xFF915D0F', '0xFFFFA621'],
+				fontColor: '0xFFF5AA42',
+				hideGF: false,
+				disableChartEditor: false
 			};
 		}
 		
@@ -295,6 +318,12 @@ class ChartingState extends MusicBeatState
 			{name: "Events", label: 'Events'},
 			{name: "Charting", label: 'Charting'},
 		];
+		var tabsettwo = [
+			{name: "Tips", label: 'Tips'},
+			{name: "Customize", label: 'Customize'},
+			{name: "Misc", label: 'Misc'},
+			{name: "Heads", label: 'Heads'},
+		];
 
 		UI_box = new FlxUITabMenu(null, tabs, true);
 
@@ -303,12 +332,22 @@ class ChartingState extends MusicBeatState
 		UI_box.y = 25;
 		UI_box.scrollFactor.set();
 
+		UIconf_box = new FlxUITabMenu(null, tabsettwo, true);
+
+		UIconf_box.resize(500, 275);
+		UIconf_box.x = FlxG.width / 2 + 120;
+		UIconf_box.y = UI_box.y + UI_box.height + 8;
+		UIconf_box.scrollFactor.set();
+
+		var tab_group_tips = new FlxUI(null, UIconf_box);
+		tab_group_tips.name = "Tips";
+
 		var text:String =	//zooming is disabled because funny crash :trol:
 		"W/S or Mouse Wheel - Change Conductor's strum time
 		\nA or Left/D or Right - Go to the previous/next section
 		\nHold Shift to move 4x faster
 		\nHold Control and click on an arrow to select it
-		\n
+		\nZ/X - Zoom in or out
 		\nEsc - Test your chart inside Chart Editor
 		\nEnter - Play your chart
 		\nQ/E - Decrease/Increase Note Sustain Length
@@ -316,14 +355,64 @@ class ChartingState extends MusicBeatState
 
 		var tipTextArray:Array<String> = text.split('\n');
 		for (i in 0...tipTextArray.length) {
-			var tipText:FlxText = new FlxText(UI_box.x, UI_box.y + UI_box.height + 8, 0, tipTextArray[i], 16);
+			var tipText:FlxText = new FlxText(10, 10, 0, tipTextArray[i], 16);
 			tipText.y += i * 14;
 			tipText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
 			//tipText.borderSize = 2;
 			tipText.scrollFactor.set();
-			add(tipText);
+			tab_group_tips.add(tipText);
 		}
+		add(UIconf_box);
 		add(UI_box);
+		UIconf_box.addGroup(tab_group_tips);
+
+
+		leftIconBig = new HealthIcon('bf');
+		rightIconBig = new HealthIcon('dad');
+		rightIconBig.flipX = true;
+		var tipText:FlxText = new FlxText(10, leftIconBig.y + 200, 0, 'The icons will bump on a note hit', 16);
+
+		leftIconBig.setGraphicSize(0, 150);
+		rightIconBig.setGraphicSize(0, 150);
+
+		var tab_group_heads = new FlxUI(null, UIconf_box);
+		tab_group_heads.name = "Heads";
+
+		tab_group_heads.add(tipText);
+		tab_group_heads.add(leftIconBig);
+		tab_group_heads.add(rightIconBig);
+
+		leftIconBig.setPosition(50, 25);
+		rightIconBig.setPosition(250, 25);
+
+		UIconf_box.addGroup(tab_group_heads);
+
+		var tab_group_cust = new FlxUI(null, UIconf_box);
+		tab_group_cust.name = "Customize";
+
+		var colorsText:FlxText = new FlxText(10, 10, 0, 'Note that the colors must be hex values, otherwise it will fail.\nIf it is to fail, a failsafe is in place to prevent the game from crashing.', 8);
+		tab_group_cust.add(colorsText);
+		fontColorInputText = new FlxUIInputText(10, 50, 150, _song.fontColor, 8);
+		blockPressWhileTypingOn.push(fontColorInputText);
+		tab_group_cust.add(fontColorInputText);
+		tab_group_cust.add(new FlxText(fontColorInputText.x, fontColorInputText.y - 15, 0, 'HUD Font color:'));
+
+		timebarColorInputText = new FlxUIInputText(10, fontColorInputText.y + 30, 150, _song.timebarColor[0], 8);
+		blockPressWhileTypingOn.push(timebarColorInputText);
+		tab_group_cust.add(timebarColorInputText);
+		tab_group_cust.add(new FlxText(timebarColorInputText.x, timebarColorInputText.y - 15, 0, 'Timebar fill color:'));
+		
+		timebarColorInputAltText = new FlxUIInputText(170, fontColorInputText.y + 30, 150, _song.timebarColor[1], 8);
+		blockPressWhileTypingOn.push(timebarColorInputAltText);
+		tab_group_cust.add(timebarColorInputAltText);
+		tab_group_cust.add(new FlxText(timebarColorInputAltText.x, timebarColorInputAltText.y - 15, 0, 'Timebar empty color:'));
+
+		var colorPicker:FlxButton = new FlxButton(10, timebarColorInputText.y + 30, "Color picker", function()
+			{
+				CoolUtil.browserLoad('https://g.co/kgs/hQbExi');
+			});
+		tab_group_cust.add(colorPicker);
+		UIconf_box.addGroup(tab_group_cust);
 
 		addSongUI();
 		addSectionUI();
@@ -357,6 +446,9 @@ class ChartingState extends MusicBeatState
 	var playSoundBf:FlxUICheckBox = null;
 	var playSoundDad:FlxUICheckBox = null;
 	var UI_songTitle:FlxUIInputText;
+	var fontColorInputText:FlxUIInputText;
+	var timebarColorInputText:FlxUIInputText;
+	var timebarColorInputAltText:FlxUIInputText;
 	var noteSkinInputText:FlxUIInputText;
 	var noteSplashesInputText:FlxUIInputText;
 	var stageDropDown:FlxUIDropDownMenuCustom;
@@ -427,11 +519,11 @@ class ChartingState extends MusicBeatState
 			saveEvents();
 		});
 
-		var clear_events:FlxButton = new FlxButton(320, 310, 'Clear events', function()
+		var clear_events:FlxButton = new FlxButton(10, 150, 'Clear events', function()
 			{
 				clearEvents();
 			});
-		var clear_notes:FlxButton = new FlxButton(320, clear_events.y + 30, 'Clear notes', function()
+		var clear_notes:FlxButton = new FlxButton(clear_events.x + 100, 150, 'Clear notes', function()
 			{
 				for (sec in 0..._song.notes.length) {
 					var count:Int = 0;
@@ -577,9 +669,61 @@ class ChartingState extends MusicBeatState
 		tab_group_song.name = "Song";
 		tab_group_song.add(UI_songTitle);
 
+		var tab_group_misc = new FlxUI(null, UI_box);
+		tab_group_misc.name = "Misc";
+
+		var botplayCheck:FlxUICheckBox = new FlxUICheckBox(10, 10, null, null, "Disable Botplay", 100);
+		botplayCheck.checked = _song.noBotplay;
+		botplayCheck.callback = function()
+		{
+			_song.noBotplay = botplayCheck.checked;
+		};
+		tab_group_misc.add(botplayCheck);
+
+		var pracCheck:FlxUICheckBox = new FlxUICheckBox(10, botplayCheck.y + 20, null, null, "Disable Practice Mode", 100);
+		pracCheck.checked = _song.noPractice;
+		pracCheck.callback = function()
+		{
+			_song.noPractice = pracCheck.checked;
+		};
+		tab_group_misc.add(pracCheck);
+
+		var forceMiddle:FlxUICheckBox = new FlxUICheckBox(10, botplayCheck.y + 40, null, null, "Force Middlescroll", 100);
+		forceMiddle.checked = _song.forceMiddlescroll;
+		forceMiddle.callback = function()
+		{
+			_song.forceMiddlescroll = forceMiddle.checked;
+		};
+		tab_group_misc.add(forceMiddle);
+
+		var ghostCheck:FlxUICheckBox = new FlxUICheckBox(10, botplayCheck.y + 60, null, null, "Disable Ghost tapping", 100);
+		ghostCheck.checked = _song.forceGhostingOff;
+		ghostCheck.callback = function()
+		{
+			_song.forceGhostingOff = ghostCheck.checked;
+		};
+		tab_group_misc.add(ghostCheck);
+
+		var disableCharting:FlxUICheckBox = new FlxUICheckBox(10, botplayCheck.y + 80, null, null, "Disable Chart Editor", 100);
+		disableCharting.checked = _song.disableChartEditor;
+		disableCharting.callback = function()
+		{
+			_song.disableChartEditor = disableCharting.checked;
+		};
+		tab_group_misc.add(disableCharting);
+
+		var girlCheck:FlxUICheckBox = new FlxUICheckBox(10, botplayCheck.y + 100, null, null, "Disable Girlfriend", 100);
+		girlCheck.checked = _song.hideGF;
+		girlCheck.callback = function()
+		{
+			_song.hideGF = girlCheck.checked;
+		};
+		tab_group_misc.add(girlCheck);
+		
+
 		tab_group_song.add(check_voices);
-		tab_group_song.add(clear_events);
-		tab_group_song.add(clear_notes);
+		tab_group_misc.add(clear_events);
+		tab_group_misc.add(clear_notes);
 		tab_group_song.add(saveButton);
 		tab_group_song.add(saveEvents);
 		tab_group_song.add(reloadSong);
@@ -609,6 +753,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(stageDropDown);
 
 		UI_box.addGroup(tab_group_song);
+		UIconf_box.addGroup(tab_group_misc);
 
 		FlxG.camera.follow(camPos);
 	}
@@ -1177,6 +1322,9 @@ class ChartingState extends MusicBeatState
 		}
 		Conductor.songPosition = FlxG.sound.music.time;
 		_song.song = UI_songTitle.text;
+		_song.timebarColor[0] = timebarColorInputText.text;
+		_song.timebarColor[1] = timebarColorInputAltText.text;
+		_song.fontColor = fontColorInputText.text;
 
 		strumLine.y = getYfromStrum((Conductor.songPosition - sectionStartTime()) / zoomList[curZoom] % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps));
 		camPos.y = strumLine.y;
@@ -1458,6 +1606,27 @@ class ChartingState extends MusicBeatState
 						}
 						FlxG.sound.play(Paths.sound(soundToPlay));
 						playedSound[data] = true;
+					}
+				}
+				if (note.strumTime > lastConductorPos && note.mustPress && FlxG.sound.music.playing && note.noteData > -1){
+					if (bfOnLeft == true){
+						if (leftIconTween != null) leftIconTween.cancel();
+						leftIconBig.scale.set(1.5,1.5);
+						leftIconTween = FlxTween.tween(leftIconBig.scale, {x: 1, y: 1}, 0.5, {ease: FlxEase.quadOut});
+					}else{
+						if (rightIconTween != null) leftIconTween.cancel();
+						rightIconBig.scale.set(1.5,1.5);
+						rightIconTween = FlxTween.tween(rightIconBig.scale, {x: 1, y: 1}, 0.5, {ease: FlxEase.quadOut});
+					}
+				}else if (note.strumTime > lastConductorPos && !note.mustPress && FlxG.sound.music.playing && note.noteData > -1){
+					if (dadOnLeft == true){
+						if (leftIconTween != null) leftIconTween.cancel();
+						leftIconBig.scale.set(1.5,1.5);
+						leftIconTween = FlxTween.tween(leftIconBig.scale, {x: 1, y: 1}, 0.5, {ease: FlxEase.quadOut});
+					}else{
+						if (rightIconTween != null) rightIconTween.cancel();
+						rightIconBig.scale.set(1.5,1.5);
+						rightIconTween = FlxTween.tween(rightIconBig.scale, {x: 1, y: 1}, 0.5, {ease: FlxEase.quadOut});
 					}
 				}
 			}
@@ -1749,11 +1918,19 @@ class ChartingState extends MusicBeatState
 		{
 			leftIcon.changeIcon(healthIconP1);
 			rightIcon.changeIcon(healthIconP2);
+			leftIconBig.changeIcon(healthIconP1);
+			rightIconBig.changeIcon(healthIconP2);
+			bfOnLeft = true;
+			dadOnLeft = false;
 		}
 		else
 		{
 			leftIcon.changeIcon(healthIconP2);
 			rightIcon.changeIcon(healthIconP1);
+			leftIconBig.changeIcon(healthIconP2);
+			rightIconBig.changeIcon(healthIconP1);
+			bfOnLeft = false;
+			dadOnLeft = true;
 		}
 	}
 
@@ -2182,7 +2359,15 @@ class ChartingState extends MusicBeatState
 			player3: _song.player3,
 			mania: _song.mania,
 			stage: _song.stage,
-			validScore: false
+			validScore: false,
+			forceMiddlescroll: _song.forceMiddlescroll,
+			forceGhostingOff: _song.forceGhostingOff,
+			noBotplay: _song.noBotplay,
+			noPractice: _song.noPractice,
+			timebarColor: [_song.timebarColor[0], _song.timebarColor[1]],
+			fontColor: _song.fontColor,
+			hideGF: _song.hideGF,
+			disableChartEditor: _song.disableChartEditor
 		};
 		var json = {
 			"song": eventsSong

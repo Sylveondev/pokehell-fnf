@@ -17,6 +17,6 @@
 	"weekName": "week 7",
 	"startUnlocked": true,
 	"pokehellWeek": true,
-	"hideStoryMode": false,
+	"hideStoryMode": true,
 	"hideFreeplay": false
 }

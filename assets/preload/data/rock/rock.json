@@ -3729,6 +3729,11 @@
 		"player1": "bf",
 		"player2": "jolteon",
 		"sectionLengths": [],
+		"fontColor": "#e9f01a",
+		"timebarColor": [
+			"#999e00",
+			"#adb300"
+		],
 		"speed": 3,
 		"validScore": true,
 		"player3": "gf",

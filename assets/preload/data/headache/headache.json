@@ -3162,6 +3162,11 @@
 		"mania": 3,
 		"song": "Headache",
 		"stage": "ally",
+		"fontColor": "0xFF55A1C2",
+		"timebarColor": [
+			"0xFF1A3B75",
+			"0xFF5C7DB5"
+		],
 		"validScore": true,
 		"sections": 0,
 		"needsVoices": true,
