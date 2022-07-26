@@ -1,0 +1,25 @@
+{
+	"storyName": "eeveelution squad part 2",
+	"hideFreeplay": false,
+	"pokehellWeek": true,
+	"weekBackground": "chapter2",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"startUnlocked": true,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"songs": [
+		["speeding", "speedy", [255, 225, 0]],
+		["darkglow", "black", [50, 50, 50]],
+		["showtime", "sunshine", [195, 93, 0]]
+	],
+	"hideStoryMode": false,
+	"weekBefore": "ph-week8",
+	"weekName": "chapter2"
+}

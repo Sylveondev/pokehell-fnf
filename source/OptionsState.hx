@@ -652,6 +652,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Hide HUD',
 		'Hide Song Length',
 		'Flashing Lights',
+		'Move Window',
 		'Camera Zooms'
 		/*
 		'Do HealthIcon rotation',
@@ -820,6 +821,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 					case 'Flashing Lights':
 						ClientPrefs.flashing = !ClientPrefs.flashing;
 
+					case 'Move Window':
+						ClientPrefs.windowMove = !ClientPrefs.windowMove;
+
 					case 'Violence':
 						ClientPrefs.violence = !ClientPrefs.violence;
 
@@ -873,6 +877,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 						}
 					case 'HealthIcon rotation':
 						ClientPrefs.healthrot += add;
+
 					case 'Note Delay':
 						var mult:Int = 1;
 						if(holdTime > 1.5) { //Double speed after 1.5 seconds holding
@@ -943,6 +948,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "If unchecked, hitting \"Sick!\" notes won't show particles.";
 			case 'Flashing Lights':
 				daText = "Uncheck this if you're sensitive to flashing lights!";
+			case 'Move Window':
+				daText = "Uncheck this to disable the window moving.";
 			case 'Camera Zooms':
 				daText = "If unchecked, the camera won't zoom in on a beat hit.";
 			case 'Hide HUD':
@@ -1016,6 +1023,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.noteSplashes;
 					case 'Flashing Lights':
 						daValue = ClientPrefs.flashing;
+					case 'Move Window':
+						daValue = ClientPrefs.windowMove;
 					case 'Downscroll':
 						daValue = ClientPrefs.downScroll;
 					case 'Middlescroll':
@@ -1078,26 +1087,37 @@ class CustomizationSubstate extends MusicBeatSubstate
 	static var unselectableOptions:Array<String> = [
 		'GRAPHICS',
 		'GAMEPLAY',
-		'CUSTOMIZATION'
+		'INTERFACE',
+		'MISC',
+		'MECHANICS'
 	];
 	static var noCheckbox:Array<String> = [
 		'Framerate',
 		'HealthIcon rotation',
+		'Scroll speed',
 		'Note Delay'
 	];
 
 	static var options:Array<String> = [
-		'CUSTOMIZATION',
+		'INTERFACE',
 		'Do HealthIcon rotation',
 		'HealthIcon rotation',
 		'Score table',
 		'Artist information',
+		'Classic botplay text',
+		'Classic HUD',
+		#if !mobile
+		'FPS Counter',
+		#end
+		'MISC',
 		'Do Character bumpin',
 		'Move Camera on note hit',
-		'Enable Anti spam'
-		#if !mobile
-		,'FPS Counter'
-		#end
+		'Enable Anti spam',
+		'Override scroll speed',
+		'Scroll speed',
+		'MECHANICS',
+		'Source modcharts',
+		'Source events'
 	];
 
 	private var grpOptions:FlxTypedGroup<Alphabet>;
@@ -1258,6 +1278,9 @@ class CustomizationSubstate extends MusicBeatSubstate
 					case 'Flashing Lights':
 						ClientPrefs.flashing = !ClientPrefs.flashing;
 
+					case 'Move Window':
+						ClientPrefs.windowMove = !ClientPrefs.windowMove;
+
 					case 'Violence':
 						ClientPrefs.violence = !ClientPrefs.violence;
 
@@ -1296,13 +1319,28 @@ class CustomizationSubstate extends MusicBeatSubstate
 						ClientPrefs.cameraMoveOnNotes = !ClientPrefs.cameraMoveOnNotes;
 					
 					case 'Enable Anti spam':
-					ClientPrefs.antispam = !ClientPrefs.antispam;
+						ClientPrefs.antispam = !ClientPrefs.antispam;
+
+					case 'Override scroll speed':
+							ClientPrefs.overrideScroll = !ClientPrefs.overrideScroll;
 
 					case 'Score table':
 						ClientPrefs.doScoretable = !ClientPrefs.doScoretable;
 
 					case 'Artist information':
 						ClientPrefs.doArtistinfo = !ClientPrefs.doArtistinfo;
+
+					case 'Classic botplay text':
+						ClientPrefs.classicBotplayText = !ClientPrefs.classicBotplayText;
+					
+					case 'Classic HUD':
+						ClientPrefs.classicHUD = !ClientPrefs.classicHUD;
+
+					case 'Source modcharts':
+						ClientPrefs.sourceModcharts = !ClientPrefs.sourceModcharts;
+
+					case 'Source events':
+						ClientPrefs.sourceEvents = !ClientPrefs.sourceEvents;
 				}
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				reloadValues();
@@ -1326,6 +1364,13 @@ class CustomizationSubstate extends MusicBeatSubstate
 						}
 					case 'HealthIcon rotation':
 						ClientPrefs.healthrot += add;
+					
+					case 'Scroll speed':
+						ClientPrefs.scrollspeed += (0.1 * add);
+						
+						if (ClientPrefs.scrollspeed < 0.1) ClientPrefs.scrollspeed = 0.1;
+						if (ClientPrefs.scrollspeed > 10) ClientPrefs.scrollspeed = 10;
+
 					case 'Note Delay':
 						var mult:Int = 1;
 						if(holdTime > 1.5) { //Double speed after 1.5 seconds holding
@@ -1376,6 +1421,10 @@ class CustomizationSubstate extends MusicBeatSubstate
 				daText = "If checked, the camera will move on a note hit, no need to edit the xml file.";
 			case 'Enable Anti spam':
 				daText = "If unchecked, you will not be pentalized for spamming. Also making you a certified pussy.";
+			case 'Override scroll speed':
+				daText = "If checked, the scroll speed of the songs are forced to the scroll speed below.";
+			case 'Scroll speed':
+				daText = "The scroll speed to change to.\nDefault value is 1.0";
 			case 'HealthIcon rotation':
 				daText = "How far the icon should rotate.\nDefault value is 32 degrees.";
 			case 'Note Delay':
@@ -1414,6 +1463,14 @@ class CustomizationSubstate extends MusicBeatSubstate
 				daText = "If checked, the artist of the song will display in the beginning of the song.";
 			case 'Score table':
 				daText = "If checked, a score table will show on the side.";
+			case 'Classic botplay text':
+				daText = "If checked, the botplay text will look like Kade Engine!";
+			case 'Classic HUD':
+				daText = "If checked, the old psych engine score bar shows.\nThis settings also hides the your rating.";
+			case 'Source modcharts':
+				daText = "If unchecked, disables Pokehell's built-in modcharts and mechanics.\nNote that this does not disable pokehell's lua modcharts!\nYou just suck at pokehell if you disable this.";
+			case 'Source events':
+				daText = "If unchecked, disables all of pokehell's events. You little cry baby..\nThis leaves in psych's built in events and lua events.";
 		}
 		descText.text = daText;
 
@@ -1479,6 +1536,8 @@ class CustomizationSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.noteSplashes;
 					case 'Flashing Lights':
 						daValue = ClientPrefs.flashing;
+					case 'Move Window':
+						daValue = ClientPrefs.windowMove;
 					case 'Downscroll':
 						daValue = ClientPrefs.downScroll;
 					case 'Middlescroll':
@@ -1501,6 +1560,8 @@ class CustomizationSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.optimization;
 					case 'Do HealthIcon rotation':
 						daValue = ClientPrefs.dohealthrot;
+					case 'Override scroll speed':
+						daValue = ClientPrefs.overrideScroll;
 					case 'Do Character bumpin':
 						daValue = ClientPrefs.dobumpin;
 					case 'Move Camera on note hit':
@@ -1511,6 +1572,14 @@ class CustomizationSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.doArtistinfo;
 					case 'Score table':
 						daValue = ClientPrefs.doScoretable;
+					case 'Classic botplay text':
+						daValue = ClientPrefs.classicBotplayText;
+					case 'Classic HUD':
+						daValue = ClientPrefs.classicHUD;
+					case 'Source modcharts':
+						daValue = ClientPrefs.sourceModcharts;
+					case 'Source events':
+						daValue = ClientPrefs.sourceEvents;
 				}
 				checkbox.daValue = daValue;
 			}
@@ -1526,6 +1595,8 @@ class CustomizationSubstate extends MusicBeatSubstate
 						daText = ClientPrefs.noteOffset + 'ms';
 					case 'HealthIcon rotation':
 						daText = ''+ClientPrefs.healthrot;
+					case 'Scroll speed':
+						daText = ''+ClientPrefs.scrollspeed;
 				}
 				var lastTracker:FlxSprite = text.sprTracker;
 				text.sprTracker = null;

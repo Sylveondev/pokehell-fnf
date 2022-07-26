@@ -13,6 +13,7 @@ import openfl.utils.Assets;
 import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
+import flixel.util.FlxStringUtil;
 
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
@@ -50,21 +51,26 @@ class LoadingState extends MusicBeatState
 	override function create()
 	{
 
-		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xff000000);
+		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xFF66FF33);
 		add(bg);
 
-		loadShit = new FlxText(10, FlxG.height*0.85);
-		loadShit.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		loadShit.text = "Loading... 0%";
-		add(loadShit);
+		
 
-		funkay = new FlxSprite(0, 0).loadGraphic(Paths.getPath('images/funkay.png', IMAGE));
+		var imgthingy:String = 'loadingScreens/screen'+ FlxG.random.int(0, 3);
+
+		funkay = new FlxSprite(0, 0).loadGraphic(Paths.image(imgthingy));
 		funkay.setGraphicSize(0, FlxG.height);
 		funkay.updateHitbox();
 		funkay.antialiasing = ClientPrefs.globalAntialiasing;
-		//add(funkay);
+		add(funkay);
 		funkay.scrollFactor.set();
 		funkay.screenCenter();
+
+		loadShit = new FlxText(10, FlxG.height*0.85);
+		loadShit.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		loadShit.text = "Loading... 0% complete - Preparing load";
+		loadShit.screenCenter(X);
+		add(loadShit);
 
 		loadBar = new FlxSprite(0, FlxG.height - 20).makeGraphic(FlxG.width, 10, 0xffffffff);
 		loadBar.x = 10;
@@ -135,10 +141,20 @@ class LoadingState extends MusicBeatState
 
 		if(callbacks != null) {
 			targetShit = FlxMath.remapToRange(callbacks.numRemaining / callbacks.length, 1, 0, 0, 1);
-			loadShit.text = 'Loading... '+FlxMath.roundDecimal(targetShit*100,0)+'%';
+			var secondsTotal:Int = Math.floor((elapsed));
+			if(secondsTotal < 0) secondsTotal = 0;
+			loadShit.text = 'Loading... '+FlxMath.roundDecimal(targetShit*100,0)+'% complete - '+callbacks.numRemaining+" objects remaining";
+			loadShit.color = FlxColor.WHITE;
+			loadShit.screenCenter(X);
 			loadBar.scale.x += 0.25 * (targetShit);
+		}else{
+			loadShit.text = 'Loading... '+FlxMath.roundDecimal(targetShit*100,0)+'% complete - Loading stopped!';
+			loadShit.color = FlxColor.RED;
 		}
+
 	}
+
+
 	
 	function onLoad()
 	{

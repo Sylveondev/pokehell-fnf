@@ -2,7 +2,8 @@
 	"songs": [
 		["Cold", "glaceon", [157, 157, 221]],
 		["Solid", "glaceon", [157, 157, 221]],
-		["Frozen", "glaceon", [157, 157, 221]]
+		["Frozen", "glaceon", [157, 157, 221]],
+		["Defrost", "jolteonGlaceon", [157, 157, 221]]
 	],
 
 	"weekCharacters": [
@@ -13,7 +14,7 @@
 	"weekBackground": "stage",
 
 	"storyName": "Glaceon's freezer",
-	"weekBefore": "week5",
+	"weekBefore": "ph-week4",
 	"weekName": "Week 6",
 	"startUnlocked": true,
 	"pokehellWeek": true,

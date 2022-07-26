@@ -5,6 +5,8 @@
 		"player1": "bf-car",
 		"player2": "eeeee",
 		"player3": "bf",
+		"noPractice": false,
+		"noBotplay": false,
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -423,7 +425,7 @@
 						45714.2857142857,
 						-1,
 						"Scroll speed",
-						"4",
+						"3",
 						""
 					]
 				],
@@ -888,14 +890,32 @@
 				"bpm": 0,
 				"changeBPM": false,
 				"mustHitSection": false
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"bpm": 0,
+				"changeBPM": false,
+				"mustHitSection": false
 			}
 		],
 		"splashSkin": null,
+		"forceMiddlescroll": false,
 		"validScore": false,
+		"timebarColor": [
+			"#369636",
+			"#56e856"
+		],
+		"fontColor": "#1fb81f",
 		"bpm": 210,
 		"mania": 3,
+		"forceGhostingOff": false,
 		"arrowSkin": null,
 		"needsVoices": true,
-		"song": "unwanted-guest"
+		"disableChartEditor": false,
+		"song": "unwanted-guest",
+		"hideGF": false
 	}
 }

@@ -1,0 +1,76 @@
+{
+	"storyName": "Rematch",
+	"hideFreeplay": false,
+	"weekBackground": "bonus",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"weekBefore": "ph-week10",
+	"startUnlocked": true,
+	"pokehellWeek": true,
+	"hideStoryMode": false,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"songs": [
+		[
+			"Sizzled",
+			"vaporeon",
+			[
+				6,
+				173,
+				253
+			]
+		],
+		[
+			"Conductee",
+			"jolteon",
+			[
+				226,
+				215,
+				33
+			]
+		],
+		[
+			"Dusk dream",
+			"umbreon",
+			[
+				35,
+				40,
+				53
+			]
+		],
+		[
+			"Shiver-up",
+			"glaceon",
+			[
+				106,
+				113,
+				193
+			]
+		],
+		[
+			"Pinkin",
+			"sylveon",
+			[
+				226,
+				93,
+				195
+			]
+		],
+		[
+			"Purflip",
+			"espurr",
+			[
+				166,
+				113,
+				235
+			]
+		]
+	],
+	"weekName": "Rematch"
+}

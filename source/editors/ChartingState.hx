@@ -99,7 +99,7 @@ class ChartingState extends MusicBeatState
 		['Do note move',"Value 1: Speed\nValue 2: Distance"],
 		['Stop note move',"No values needed"],
 		['Flip CamHud',"Flips the hud 180 degrees."],
-		['Hide Elements',"Value 1: Element to hide.\nValue 2: true or false"],
+		['Hide Elements',"Value 1: Element to hide.\n(0: all, 1: opponent strums, 2: player strums, 3: health bar)\nValue 2: Show the element? true or false"],
 		['Scroll speed','Value 1: Scroll speed (Default: 3)'],
 		['Jumpscare','Flashes an image on screen.\nDon\'t spam this event or you\'ll cause some weird shit to happen.\nValue 1: The image\nValue 2: The audio and duration (ex.  \"vineboom, 1\")']
 	];
@@ -357,7 +357,7 @@ class ChartingState extends MusicBeatState
 		for (i in 0...tipTextArray.length) {
 			var tipText:FlxText = new FlxText(10, 10, 0, tipTextArray[i], 16);
 			tipText.y += i * 14;
-			tipText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
+			tipText.setFormat(Paths.font("righteous.ttf"), 16, FlxColor.WHITE, LEFT/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
 			//tipText.borderSize = 2;
 			tipText.scrollFactor.set();
 			tab_group_tips.add(tipText);
@@ -2038,7 +2038,7 @@ class ChartingState extends MusicBeatState
 
 			if(note.noteData < 0) {
 				var daText:AttachedFlxText = new AttachedFlxText(0, 0, 400, 'Event: ' + note.eventName + ' (' + Math.floor(note.strumTime) + ' ms)' + '\nValue 1: ' + note.eventVal1 + '\nValue 2: ' + note.eventVal2, 12);
-				daText.setFormat(Paths.font("vcr.ttf"), 12, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				daText.setFormat(Paths.font("righteous.ttf"), 12, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 				daText.xAdd = -410;
 				daText.borderSize = 1;
 				curRenderedNoteType.add(daText);
@@ -2050,7 +2050,7 @@ class ChartingState extends MusicBeatState
 					if(typeInt == null) theType = '?';
 
 					var daText:AttachedFlxText = new AttachedFlxText(0, 0, 100, theType, 24);
-					daText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+					daText.setFormat(Paths.font("righteous.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 					daText.xAdd = -32;
 					daText.yAdd = 6;
 					daText.borderSize = 1;

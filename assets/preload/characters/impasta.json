@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"anim": "idle",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singLEFT",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singRIGHT",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singUP",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		},
+		{
+			"anim": "singDOWN",
+			"name": "idle",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-90,
+				-200
+			]
+		}
+	],
+	"image": "characters/gus",
+	"scale": 1.5000000000000004,
+	"sing_duration": 4,
+	"healthicon": "gus",
+	"position": [
+		0,
+		350
+	],
+	"camera_position": [
+		-40,
+		-320
+	],
+	"flip_x": false,
+	"no_antialiasing": false,
+	"healthbar_colors": [
+		157,
+		157,
+		221
+	]
+}

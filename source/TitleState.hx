@@ -213,7 +213,27 @@ class TitleState extends MusicBeatState
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
-		bgImg = new FlxSprite().loadGraphic(Paths.image('TitleBG'));
+		//SylveonDev's method of fucking up the game.
+		//The background of the title screen is based on time of day.
+		//Good luck trying to explain this to tom.
+
+		/*
+			20:00 - 6:00 = Nighttime image
+			6:00 - 8:00 = Dimmed image
+			8:00 - 18:00 = Daytime image
+			18:00 - 20:00 = Dimmed image
+		*/
+		var leDate = Date.now();
+		var dayShit = 'titleBgNight';
+		if (leDate.getHours() >= 6 && leDate.getHours() <= 8) {
+			dayShit = 'titleBgDimmed';
+		}else if ((leDate.getHours() >= 8) && leDate.getHours() <= 18) {
+			dayShit = 'TitleBG';
+		}else if (leDate.getHours() >= 18 && leDate.getHours() < 20) {
+			dayShit = 'titleBgDimmed';
+		}
+
+		bgImg = new FlxSprite().loadGraphic(Paths.image(dayShit));
 		bgImg.screenCenter();
 		bgImg.antialiasing = ClientPrefs.globalAntialiasing;
 
@@ -223,6 +243,7 @@ class TitleState extends MusicBeatState
 			gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
 			gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
 			gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+			if (dayShit == 'titleBgNight') gfDance.visible = false;
 		}
 		else //Psyka easter egg
 		{
@@ -493,18 +514,18 @@ class TitleState extends MusicBeatState
 		super.beatHit();
 
 		if (canzoom == true){
-			FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
-			FlxTween.tween(gfDance, {y: gfDance.y-(0.8*2)}, 0.36, {ease: FlxEase.quadOut, type: BACKWARD});
-			FlxTween.tween(gfDance.scale, {x: 1.4, y: 0.8}, 0.36, {ease: FlxEase.quadOut, type: BACKWARD});
+			FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.3, {ease: FlxEase.circOut, type: BACKWARD});
+			//FlxTween.tween(gfDance, {y: gfDance.y-(0.8*2)}, 0.36, {ease: FlxEase.quadOut, type: BACKWARD});
+			//FlxTween.tween(gfDance.scale, {x: 1.4, y: 0.8}, 0.36, {ease: FlxEase.quadOut, type: BACKWARD});
 		}
 
 		
 
 		if (curBeat % gfSpeed == 0) {
 			curBeat % (gfSpeed * 2) == 0 ? {
-				FlxTween.angle(logoBl, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(logoBl, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.circOut});
 			} : {
-				FlxTween.angle(logoBl, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(logoBl, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.circOut});
 			}
 		}
 
@@ -616,8 +637,8 @@ class TitleState extends MusicBeatState
 
 			gfDance.x = FlxG.width + 50;
 			logoBl.x =  -(FlxG.width) - 50;
-			FlxTween.tween(gfDance, {x: FlxG.width * 0.4, y:FlxG.height * 0.07}, 1, {ease: FlxEase.elasticOut, startDelay: 0.5});
-			FlxTween.tween(logoBl, {x: -150, y: -100}, 1, {ease: FlxEase.elasticOut, startDelay: 0.5, onComplete: function(twn:FlxTween){
+			FlxTween.tween(gfDance, {x: FlxG.width * 0.4, y:FlxG.height * 0.07}, 1, {ease: FlxEase.backOut, startDelay: 0.5});
+			FlxTween.tween(logoBl, {x: -150, y: -100}, 1, {ease: FlxEase.backOut, startDelay: 0.5, onComplete: function(twn:FlxTween){
 				//Only start tweening the logo if not in the process of switching states
 				if (canzoom) coolTitleTween = FlxTween.tween(logoBl, {y: 0}, 3, {ease: FlxEase.quadInOut, type: PINGPONG});
 			}});
@@ -639,7 +660,7 @@ class TitleState extends MusicBeatState
 			//}, 0);
 			//
 
-			FlxG.camera.flash(FlxColor.RED, 4);
+			FlxG.camera.flash(FlxColor.YELLOW, 4);
 			remove(credGroup);
 			skippedIntro = true;
 

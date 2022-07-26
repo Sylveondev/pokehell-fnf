@@ -1,5 +1,6 @@
 package openfl.display;
 
+import openfl.text.Font;
 import haxe.Timer;
 import openfl.events.Event;
 import openfl.text.TextField;
@@ -51,7 +52,7 @@ class FPS extends TextField
 		memPeak = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat("_sans", 14, color);
+		defaultTextFormat = new TextFormat('Righteous', 24, color);
 		autoSize = LEFT;
 		multiline = true;
 		text = "FPS: ";
@@ -93,14 +94,14 @@ class FPS extends TextField
 			#if openfl
 			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
 			if (memoryMegas > memPeak) memPeak = memoryMegas;
-			text += "\nMemory: " + memoryMegas + " MB\nMem Peak: " + memPeak + #if debug " MB\nPokehell Dev Version" #else "MB\nPokehell "+MainMenuState.pokehellVersion #end;
+			//text += " - Memory: " + memoryMegas + " MB - Mem Peak: " + memPeak + #if debug " MB - Pokehell Dev Version" #else "MB - Pokehell "+MainMenuState.pokehellVersion #end;
 			#end
 
 			textColor = 0xFFFFFFFF;
 			if (memoryMegas > 3000 || currentFPS <= ClientPrefs.framerate / 2)
 			{
-				textColor = 0xFFFF0000;
-				text += "\nOVERLOAD!!\nHELP ME, NOOO!!!";
+				textColor = 0xFFFF8585;
+				text += "\nThe game is lagging!";
 			}
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))

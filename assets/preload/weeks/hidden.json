@@ -1,5 +1,5 @@
 {
-	"storyName": "chiller",
+	"storyName": "hidden",
 	"hideFreeplay": false,
 	"weekBackground": "",
 	"weekBefore": "tutorial",
@@ -16,8 +16,8 @@
 	],
 	"songs": [
 		["unchartable", "system86", [255, 225, 0]],
-		["old-unchartable", "system86", [255, 225, 0]],
-		["gentex-commander-3", "potassium", [255, 225, 255]],
+		["bling-blunkin", "leafyCool", [255, 225, 225]],
+		["treacherous", "polyeon", [255, 225, 255]],
 		["suppremacy", "skitty", [255, 225, 255]],
 		["evzero-effort", "zeroeffort", [255, 225, 0]]
 		

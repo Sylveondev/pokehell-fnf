@@ -27,6 +27,10 @@ function onSongStart()
  
 end
 
+function onCreate()
+    setProperty('gf.visible', false)
+end
+
 --Basically the magic
 function onBeatHit()
     invert = invert / -1;

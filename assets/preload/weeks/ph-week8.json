@@ -7,7 +7,7 @@
 		113,
 		253
 	],
-	"weekBefore": "tutorial",
+	"weekBefore": "ph-week7",
 	"startUnlocked": true,
 	"songs": [
 		[
@@ -33,14 +33,6 @@
 			[
 				195,
 				93,
-				0
-			]
-		],[
-			"speeding",
-			"speedy",
-			[
-				255,
-				255,
 				0
 			]
 		]

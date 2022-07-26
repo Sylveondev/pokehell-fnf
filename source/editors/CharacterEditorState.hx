@@ -84,8 +84,8 @@ class CharacterEditorState extends MusicBeatState
 
 	override function create()
 	{
-		FlxG.sound.playMusic(Paths.music('breakfast'), 0.5);	//whoever did this youre a piece of shit.
-		songPlaying = 'breakfast';
+		FlxG.sound.playMusic(Paths.music('dialogue'), 0.5);	//whoever did this youre a piece of shit.
+		songPlaying = 'dialogue';
 
 		camEditor = new FlxCamera();
 		camHUD = new FlxCamera();
@@ -104,7 +104,7 @@ class CharacterEditorState extends MusicBeatState
 		add(charLayer);
 
 		var pointer:FlxGraphic = FlxGraphic.fromClass(GraphicCursorCross);
-		cameraFollowPointer = new FlxSprite().loadGraphic(pointer);
+		cameraFollowPointer = new FlxSprite().loadGraphic(Paths.image('ui/campointer'));
 		cameraFollowPointer.setGraphicSize(40, 40);
 		cameraFollowPointer.updateHitbox();
 		cameraFollowPointer.color = FlxColor.WHITE;
@@ -149,7 +149,7 @@ class CharacterEditorState extends MusicBeatState
 		dumbTexts.cameras = [camHUD];
 
 		textAnim = new FlxText(300, 16);
-		textAnim.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		textAnim.setFormat(Paths.font("righteous.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		textAnim.borderSize = 1;
 		textAnim.size = 32;
 		textAnim.scrollFactor.set();

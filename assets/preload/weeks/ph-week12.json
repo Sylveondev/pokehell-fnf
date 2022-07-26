@@ -1,0 +1,49 @@
+{
+	"storyName": "Poke-ribbon now on Playstation",
+	"hideFreeplay": false,
+	"weekBackground": "bonus",
+	"freeplayColor": [
+		60,
+		60,
+		60
+	],
+	"weekBefore": "ph-week11",
+	"startUnlocked": true,
+	"pokehellWeek": true,
+	"hideStoryMode": false,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"songs": [
+		[
+			"Mansion",
+			"polyeon",
+			[
+				80,
+				80,
+				80
+			]
+		],
+		[
+			"Banger",
+			"polyeon",
+			[
+				80,
+				80,
+				80
+			]
+		],
+		[
+			"Fair",
+			"polyeon",
+			[
+				80,
+				80,
+				80
+			]
+		]
+	],
+	"weekName": "week12"
+}

@@ -13,7 +13,7 @@
 	"weekBackground": "stage",
 
 	"storyName": "Hell",
-	"weekBefore": "week2",
+	"weekBefore": "ph-week2",
 	"weekName": "Week 3",
 	"startUnlocked": true,
 	"pokehellWeek": true,

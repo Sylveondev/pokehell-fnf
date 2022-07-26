@@ -30,8 +30,15 @@ class HealthIcon extends FlxSprite
 	}
 
 	public function swapOldIcon() {
-		if(isOldIcon = !isOldIcon) changeIcon('bf-old');
-		else changeIcon('bf');
+		switch(char){
+			case 'bf-car':
+				if(isOldIcon = !isOldIcon) changeIcon('bf-old');
+				else changeIcon('realbf');
+			default:
+				if(isOldIcon = !isOldIcon) changeIcon('bf-kindaold');
+				else changeIcon('bf');
+		}
+		
 	}
 
 	public function changeIcon(char:String) {

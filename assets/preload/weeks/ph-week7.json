@@ -2,6 +2,7 @@
 	"songs": [
 		["drugged", "potassium", [255, 225, 255]],
 		["hypergalcemia", "potassium", [255, 225, 255]],
+		["bambers", "dave", [255, 225, 255]],
 		["banana", "potassium", [255, 225, 255]]
 	],
 
@@ -13,7 +14,7 @@
 	"weekBackground": "stage",
 
 	"storyName": "I'm dying",
-	"weekBefore": "week6",
+	"weekBefore": "ph-week6",
 	"weekName": "Week 8",
 	"startUnlocked": true,
 	"pokehellWeek": true,

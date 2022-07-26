@@ -20,8 +20,15 @@ class ClientPrefs {
 	public static var doScoretable:Bool = true;
 	public static var dohealthrot:Bool = true;
 	public static var dobumpin:Bool = false;
+	public static var windowMove:Bool = false;
 	public static var cameraMoveOnNotes:Bool = true;
 	public static var antispam:Bool = true;
+	public static var overrideScroll:Bool = false;
+	public static var scrollspeed:Float = 1.0;
+	public static var classicBotplayText:Bool = true;
+	public static var classicHUD:Bool = false;
+	public static var sourceModcharts:Bool = true;
+	public static var sourceEvents:Bool = true;
 	public static var healthrot:Int = 32;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
@@ -132,8 +139,15 @@ class ClientPrefs {
 		FlxG.save.data.doArtistinfo = doArtistinfo;
 		FlxG.save.data.dohealthrot = dohealthrot;
 		FlxG.save.data.dobumpin = dobumpin;
+		FlxG.save.data.windowMove = windowMove;
 		FlxG.save.data.cameraMoveOnNotes = cameraMoveOnNotes;
 		FlxG.save.data.antispam = antispam;
+		FlxG.save.data.overrideScroll = overrideScroll;
+		FlxG.save.data.scrollspeed = scrollspeed;
+		FlxG.save.data.classicBotplayText = classicBotplayText;
+		FlxG.save.data.classicHUD = classicHUD;
+		FlxG.save.data.sourceModcharts = sourceModcharts;
+		FlxG.save.data.sourceEvents = sourceEvents;
 		FlxG.save.data.healthrot = healthrot;
 		FlxG.save.data.cursing = cursing;
 		FlxG.save.data.violence = violence;
@@ -209,11 +223,32 @@ class ClientPrefs {
 		if(FlxG.save.data.dobumpin != null){
 			dobumpin = FlxG.save.data.dobumpin;
 		}
+		if(FlxG.save.data.windowMove != null){
+			windowMove = FlxG.save.data.windowMove;
+		}
 		if(FlxG.save.data.cameraMoveOnNotes != null){
 			cameraMoveOnNotes = FlxG.save.data.cameraMoveOnNotes;
 		}
 		if(FlxG.save.data.antispam != null){
 			antispam = FlxG.save.data.antispam;
+		}
+		if(FlxG.save.data.overrideScroll != null){
+			overrideScroll = FlxG.save.data.overrideScroll;
+		}
+		if(FlxG.save.data.classicBotplayText != null){
+			classicBotplayText = FlxG.save.data.classicBotplayText;
+		}
+		if(FlxG.save.data.classicHUD != null){
+			classicHUD = FlxG.save.data.classicHUD;
+		}
+		if(FlxG.save.data.sourceModcharts != null){
+			sourceModcharts = FlxG.save.data.sourceModcharts;
+		}
+		if(FlxG.save.data.sourceEvents != null){
+			sourceEvents = FlxG.save.data.sourceEvents;
+		}
+		if(FlxG.save.data.scrollspeed != null){
+			scrollspeed = FlxG.save.data.scrollspeed;
 		}
 		if(FlxG.save.data.healthrot != null) {
 			healthrot = FlxG.save.data.healthrot;

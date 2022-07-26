@@ -39,7 +39,18 @@ class GameOverSubstate extends MusicBeatSubstate
 		state.setOnLuas('inGameOver', true);
 		super();
 
+		deathSoundName = PlayState.soundPrefix + 'fnf_loss_sfx';
+
 		Conductor.songPosition = 0;
+
+		switch(PlayState.SONG.player1){
+			case 'bf':
+				characterName = 'RIPEEVEELOL';
+				deathSoundName = 'fnf_loss_sfx';
+			default:
+				characterName = 'RIPBFLOL';
+				deathSoundName = 'fnf_loss_sfx_bf';
+		}
 
 		bf = new Boyfriend(x, y, characterName);
 		add(bf);

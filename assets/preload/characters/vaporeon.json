@@ -1,100 +1,34 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-20
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
-			"offsets": [
-				0,
-				-20
-			],
-			"loop": false,
 			"fps": 24,
-			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "leftMiss"
+			"name": "idle",
+			"indices": []
 		},
 		{
 			"offsets": [
 				0,
-				-20
+				-10
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
-			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "downMiss"
-		},
-		{
-			"offsets": [
-				0,
-				-20
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUPmiss",
-			"indices": [],
-			"name": "upMiss"
-		},
-		{
-			"offsets": [
-				0,
-				-20
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "rightMiss"
-		},
-		{
-			"offsets": [
-				0,
-				-20
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "hey",
-			"indices": [],
-			"name": "hey"
-		},
-		{
-			"offsets": [
-				0,
-				-20
-			],
-			"loop": true,
-			"fps": 24,
-			"anim": "scared",
-			"indices": [],
-			"name": "scared"
-		},
-		{
-			"offsets": [
-				0,
-				-20
-			],
-			"indices": [],
-			"fps": 42,
 			"anim": "singDOWN",
 			"loop": false,
 			"name": "down0"
 		},
 		{
 			"offsets": [
-				0,
+				20,
 				-20
 			],
 			"indices": [],
-			"fps": 42,
+			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
 			"name": "left0"
@@ -102,10 +36,10 @@
 		{
 			"offsets": [
 				0,
-				-20
+				-10
 			],
 			"indices": [],
-			"fps": 42,
+			"fps": 24,
 			"anim": "singUP",
 			"loop": false,
 			"name": "up0"
@@ -116,7 +50,7 @@
 				-20
 			],
 			"indices": [],
-			"fps": 42,
+			"fps": 24,
 			"anim": "singRIGHT",
 			"loop": false,
 			"name": "right0"
@@ -126,7 +60,7 @@
 	"image": "characters/vaporeon",
 	"position": [
 		0,
-		350
+		320
 	],
 	"healthicon": "vaporeon",
 	"flip_x": false,
@@ -136,9 +70,9 @@
 		224
 	],
 	"camera_position": [
-		0,
-		-100
+		-60,
+		60
 	],
 	"sing_duration": 4,
-	"scale": 1.05
+	"scale": 1.15
 }
