@@ -8,62 +8,51 @@
 			],
 			"anim": "idle",
 			"fps": 24,
-			"name": "idle",
+			"name": "Idle",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				20,
-				0
+				-2,
+				-6
 			],
 			"anim": "singLEFT",
 			"fps": 24,
-			"name": "left",
+			"name": "Left",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				0
+				-70,
+				-31
 			],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "down",
+			"name": "Down",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				0
+				-4,
+				23
 			],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "up",
+			"name": "Up",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				0
+				-40,
+				-6
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "finger",
-			"fps": 24,
-			"name": "finger",
+			"name": "Right",
 			"indices": []
 		}
 	],
@@ -81,8 +70,8 @@
 		95
 	],
 	"camera_position": [
-		-270,
-		-360
+		10,
+		50
 	],
 	"sing_duration": 4,
 	"scale": 1.5

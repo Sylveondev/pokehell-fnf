@@ -28,6 +28,7 @@ jobs:
       - uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.2.0
+      
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
@@ -52,7 +53,7 @@ jobs:
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
-        run: haxelib run lime build Project.xml linux --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build Project-dev.xml linux --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -94,8 +95,9 @@ jobs:
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
+        run: haxelib run lime build Project-dev.xml html5 --app-version="4.0.0-${{ github.run_id}}"
+      - name: Publish to github Pages
         run: |
-          haxelib run lime build Project.xml html5 --app-version="4.0.0-${{ github.run_id}}"
           cd export/release/html5/bin
           git init
           git add *
@@ -109,8 +111,8 @@ jobs:
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: linuxBuild
-          path: 'export/release/linux/bin' 
+          name: htmlBuild
+          path: 'export/release/html5/bin' 
   buildWindows:
     runs-on: windows-latest
     
@@ -146,7 +148,7 @@ jobs:
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
-        run: haxelib run lime build windows --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build Project-dev.xml windows --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:

@@ -31,11 +31,14 @@ class WarningState extends MusicBeatState
         FlxTween.tween(bg, {alpha: 1}, 15, {startDelay: 3});
 
 		warnText = new FlxText(0, 0, FlxG.width,
+			#if DEVBUILD
+			"Greetings, you have made yourself completely clear.\nUnderstood.\nI am your humble servant, will follow you to the utmost...\n\n(This is a beta build. Expect bugs and broken stuff)\n(Press Enter to continue)"
+			#else
 			"Hey, thanks for "+
             #if !html5 "downloading the mod!"+ #else "playing the mod online!" + #end
             "\n\nNobody records any footage on Youtube, so thanks for giving us a chance.\nBefore you continue, heads up that this mod contains some language that isn't suitable to younger audiences.\nAlso this mod has screen shaking that may trigger some users.\nYou can't disable these so be careful."+
             #if html5 "Also, this mod isn't very stable on html5 so consider downloading on gamebanana."+ #end
-            "\nAlso remember to have fun playing <3 -The devs of pokehell\n\n(Press Enter to continue)",
+            "\nAlso remember to have fun playing <3 -The devs of pokehell\n\n(Press Enter to continue)"#end,
 			32);
 		warnText.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		warnText.screenCenter();
@@ -50,7 +53,7 @@ class WarningState extends MusicBeatState
 			if (controls.ACCEPT || controls.BACK) {
 				leftState = true;
 				FlxG.sound.play(Paths.sound('scrollMenu'));
-				FlxTween.tween(FlxG.camera, {zoom: 0.5}, 1, {ease: FlxEase.quadIn,startDelay: .75});
+				FlxTween.tween(FlxG.camera, {zoom: 0.2}, 1, {ease: FlxEase.quadIn,startDelay: .5});
 				FlxTween.tween(warnText, {alpha: 0}, 1, {
 					onComplete: function (twn:FlxTween) {
 						MusicBeatState.switchState(new MainMenuState());

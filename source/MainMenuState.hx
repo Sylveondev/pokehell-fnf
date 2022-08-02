@@ -19,6 +19,7 @@ import flixel.util.FlxColor;
 import lime.app.Application;
 import Achievements;
 import editors.MasterEditorMenu;
+import haxe.macro.Compiler;
 
 using StringTools;
 
@@ -29,7 +30,7 @@ class MainMenuState extends MusicBeatState
 	public static var gitCommit:String = '';
 	public static var isGitRelease:Bool = false;
 	
-	public static var pokehellVersion:String = isGitRelease ? 'git@' + gitCommit : '1.3'; //This is also used for Discord RPC
+	public static var pokehellVersion:String = #if DEVBUILD 'pre-1.3' #else '1.3' #end; //This is also used for Discord RPC
 
 	public static var curSelected:Int = 0;
 
@@ -134,15 +135,21 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - #if !DEVBUILD 44 #else 64 #end, 0, "Psych Engine v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat(Paths.font("righteous.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Pokehell mod v" + pokehellVersion, 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - #if !DEVBUILD 24 #else 44 #end, 0, "Pokehell mod " + pokehellVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat(Paths.font("righteous.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-
+		#if DEVBUILD
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Github commit: git@" + Compiler.getDefine('version'), 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat(Paths.font("righteous.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		#end
+		
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();

@@ -665,10 +665,37 @@ class PlayState extends MusicBeatState
 					boxBG.alpha = 0;
 				}
 			case 'sally':
+
 				var bg:BGSprite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
 				bg.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), 0xFFB96414);
 				add(bg);
-				
+
+				if (!ClientPrefs.lowQuality){
+					var road = new FlxBackdrop(Paths.image('OldSally16'), 0, 0, true, true);
+					road.velocity.set(100, 100);
+					road.updateHitbox();
+					road.scrollFactor.set(0.5, 0.5);
+					road.antialiasing = ClientPrefs.globalAntialiasing;
+					add(road);
+
+					var road = new FlxBackdrop(Paths.image('OldSally4'), 0, 0, true, true);
+					road.velocity.set(50, 50);
+					road.updateHitbox();
+					road.scrollFactor.set(0.75, 0.75);
+					road.antialiasing = ClientPrefs.globalAntialiasing;
+					add(road);
+				}
+
+				var road = new FlxBackdrop(Paths.image('OldSally'), 0, 0, true, true);
+				road.velocity.set(25, 25);
+				road.updateHitbox();
+				road.scrollFactor.set(1, 1);
+				road.antialiasing = ClientPrefs.globalAntialiasing;
+				add(road);
+
+				var bg:BGSprite = new BGSprite('sallyMap', -600, -200, 1, 1);
+				add(bg);
+
 			case 'box': //Week 9: Espeon
 				if (SONG.song.toLowerCase() == 'crossover'){
 					addCharacterToList('bfGray', 0);
@@ -2531,7 +2558,13 @@ class PlayState extends MusicBeatState
 
 				var skin:String = 'NOTE_assets';
 				
+				//Appearently note skins aren't supported in the extra keys mod.
+				//These will hardcode skins to the mod, meaning these can't be changed
+				//unless you know how to modify and compile the source code.
+				//Fuck you tposejank, always taking the good stuff out of Psych.
 				switch (curStage) {
+					case 'sally':
+						skin = 'SALLY_NOTE_assets';
 					case 'school' | 'schoolEvil':
 						skin = 'PIXEL_NOTE_assets';
 						babyArrow.antialiasing = false;

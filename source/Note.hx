@@ -153,7 +153,17 @@ class Note extends FlxSprite
 		if (isPixel)
 			frames = Paths.getSparrowAtlas('PIXEL_NOTE_assets');
 		else
-			frames = Paths.getSparrowAtlas('NOTE_assets');
+			//Appearently note skins aren't supported in the extra keys mod.
+			//These will hardcode skins to the mod, meaning these can't be changed
+			//unless you know how to modify and compile the source code.
+			//Fuck you tposejank, always taking the good stuff out of Psych.
+			switch (daStage) {
+				case 'sally':
+					frames = Paths.getSparrowAtlas('SALLY_NOTE_assets');
+				default:
+					frames = Paths.getSparrowAtlas('NOTE_assets');
+
+			}
 
 		loadNoteAnims();
 
