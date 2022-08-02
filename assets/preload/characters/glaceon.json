@@ -1,77 +1,111 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-90,
-				-200
+				-40
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-90,
-				-200
-			],
-			"indices": [],
-			"fps": 42,
-			"anim": "singLEFT",
 			"loop": false,
-			"name": "left"
-		},
-		{
 			"offsets": [
 				-90,
-				-200
+				-40
 			],
-			"indices": [],
-			"fps": 42,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right"
-		},
-		{
-			"offsets": [
-				-90,
-				-200
-			],
-			"indices": [],
-			"fps": 42,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "down"
-		},
-		{
-			"offsets": [
-				-90,
-				-200
-			],
-			"indices": [],
-			"fps": 42,
-			"anim": "singUP",
-			"loop": false,
-			"name": "up"
-		},
-		{
-			"offsets": [
-				-90,
-				-200
-			],
-			"indices": [],
-			"fps": 12,
 			"anim": "cold",
+			"fps": 24,
+			"name": "cold",
+			"indices": [
+				1,
+				2,
+				3,
+				1,
+				2,
+				3,
+				1,
+				2,
+				3,
+				1,
+				2,
+				3,
+				1,
+				2,
+				3,
+				1,
+				2,
+				3,
+				1,
+				2,
+				3,
+				1,
+				2,
+				3,
+				1,
+				2,
+				3,
+				1,
+				2,
+				3,
+				1,
+				2,
+				3
+			]
+		},
+		{
 			"loop": false,
-			"name": "cold"
+			"offsets": [
+				-120,
+				-40
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-130,
+				-40
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-80,
+				-80
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-98,
+				-10
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/glaceon",
 	"position": [
-		0,
-		350
+		-100,
+		300
 	],
 	"healthicon": "glaceon",
 	"flip_x": false,
@@ -81,9 +115,9 @@
 		221
 	],
 	"camera_position": [
-		-40,
-		-320
+		10,
+		60
 	],
 	"sing_duration": 4,
-	"scale": 1.6
+	"scale": 1.4
 }

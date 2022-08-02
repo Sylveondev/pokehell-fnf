@@ -1,0 +1,122 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-40,
+				-70
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-51,
+				-81
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				6,
+				-50
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				17,
+				-62
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				42,
+				-62
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left0",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-43,
+				-70
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "altRight0"
+		},
+		{
+			"offsets": [
+				-43,
+				41
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "altUp0"
+		},
+		{
+			"offsets": [
+				-43,
+				-70
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"loop": false,
+			"name": "altDown0"
+		},
+		{
+			"offsets": [
+				123,
+				-70
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "altLeft0"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/jolteonGlaceon",
+	"position": [
+		100,
+		230
+	],
+	"healthicon": "jolteonGlaceon",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		234,
+		73
+	],
+	"camera_position": [
+		-125,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1.55
+}

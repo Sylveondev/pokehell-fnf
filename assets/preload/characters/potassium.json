@@ -57,8 +57,8 @@
 		},
 		{
 			"offsets": [
-				0,
-				0
+				-7,
+				1
 			],
 			"loop": false,
 			"fps": 24,
@@ -70,7 +70,7 @@
 	"no_antialiasing": false,
 	"image": "characters/potassium",
 	"position": [
-		0,
+		50,
 		400
 	],
 	"healthicon": "potassium",
@@ -81,8 +81,8 @@
 		255
 	],
 	"camera_position": [
-		-20,
-		-240
+		-290,
+		-250
 	],
 	"sing_duration": 4,
 	"scale": 1.3

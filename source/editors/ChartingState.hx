@@ -62,6 +62,7 @@ class ChartingState extends MusicBeatState
 		'Heal Note',
 		'Kill Note',
 		'AntiMiss Note',
+		'Sylveon Note',
 		'GF Sing',
 		'No Animation'
 	];

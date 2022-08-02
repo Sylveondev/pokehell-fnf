@@ -1,0 +1,53 @@
+{
+	"dialogue": [
+		{
+			"portrait": "dave",
+			"expression": "pissed",
+			"text": "Aha, now you're fucked.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "gf",
+			"expression": "shocked",
+			"text": "God dammit bf, look what you did!",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "bf",
+			"expression": "shocked",
+			"text": "My bad, I forgot he can do that.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "dave",
+			"expression": "pissed",
+			"text": "I'm gonna beat the kool-aid out of you.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "bf",
+			"expression": "pissed",
+			"text": "I'd like to see you try.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "dave",
+			"expression": "pissed",
+			"text": "You can't beat my week without botplay. You can't win. You will never win. You have let youtube down.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "dave",
+			"expression": "excited",
+			"text": "Your story ends here. Now hold still",
+			"boxState": "normal",
+			"speed": 0.05
+		}
+	]
+}

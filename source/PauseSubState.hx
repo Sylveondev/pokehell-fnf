@@ -204,7 +204,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.usedPractice = true;
 					botplayText.visible = PlayState.cpuControlled;
 					#else
-					if (PlayState.SONG.player2 == 'creepypastaEevee'){
+					if (PlayState.SONG.player2 == 'unknown'||PlayState.SONG.player2 == 'unknown-alt'){
 						var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('cheater'));
 						bg.screenCenter();
 						add(bg);

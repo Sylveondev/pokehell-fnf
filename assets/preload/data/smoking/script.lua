@@ -29,6 +29,7 @@ end
 --Basically the magic
 function onBeatHit()
     invert = invert / -1;
+    --[[
     if curBeat == 64 then
         bumpnotex = true
     elseif curBeat == 96 then
@@ -47,7 +48,7 @@ function onBeatHit()
         resetNotePos()
     elseif curBeat == 224 then
         bumpnotex = true
-    elseif curBeat == 256 then
+    else]]if curBeat == 256 then
         spin = true
         bumpnoteangle = true
     end
@@ -142,17 +143,34 @@ function resetNotePos()
     end
 end
 
+local spinlength = 0
 function onUpdate(elapsed)
     songPos = getPropertyFromClass('Conductor', 'songPosition');
 
-    currentBeat = (songPos / 1000) * (bpm / 60)
+    rawBeat = (songPos / 1000) * (bpm / 60)
+
+    currentBeat = math.floor(rawBeat)
 
     print(currentBeat)
 
     if spin == true then
         for i = 0,7 do
-            setPropertyFromGroup('strumLineNotes', i, 'x', defaultNotePos[i + 1][1] + 16 * math.sin((currentBeat + i*0.25) * math.pi))
-            setPropertyFromGroup('strumLineNotes', i, 'y', defaultNotePos[i + 1][2] + 16 * math.sin((currentBeat + i*0.25) * math.pi))
+            setPropertyFromGroup('strumLineNotes', i, 'x', defaultNotePos[i + 1][1] + 16 * math.sin((rawBeat + i*0.25) * math.pi))
+            setPropertyFromGroup('strumLineNotes', i, 'y', defaultNotePos[i + 1][2] + 16 * math.sin((rawBeat + i*0.25) * math.pi))
         end
+    end
+
+    if currentBeat >= 64 and currentBeat < 96 then
+        if spinlength < 32 then spinlength = spinlength + 0.5 end
+        for i = 0,7 do
+            setPropertyFromGroup('strumLineNotes', i, 'x', defaultNotePos[i + 1][1] + spinlength * math.sin((rawBeat + i*0.25) * math.pi))
+        end
+    elseif currentBeat >= 96 and currentBeat < 110 then
+        if spinlength > 0 then spinlength = spinlength - 0.5 end
+        for i = 0,7 do
+            setPropertyFromGroup('strumLineNotes', i, 'x', defaultNotePos[i + 1][1] + spinlength * math.sin((rawBeat + i*0.25) * math.pi))
+        end
+    elseif currentBeat == 110 then
+        resetNotePos()
     end
 end

@@ -2634,21 +2634,48 @@
 			},
 			{
 				"lengthInSteps": 16,
-				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
+				"altAnim": false,
 				"bpm": 150,
 				"changeBPM": false,
 				"mustHitSection": true
 			},
 			{
 				"lengthInSteps": 16,
-				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
+				"altAnim": false,
 				"bpm": 150,
 				"changeBPM": false,
 				"mustHitSection": true
+			},
+			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"altAnim": false,
+				"bpm": 150,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"altAnim": false,
+				"bpm": 150,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 150
 			},
 			{
 				"lengthInSteps": 16,
@@ -2669,14 +2696,25 @@
 				"mustHitSection": true
 			}
 		],
+		"forceGhostingOff": true,
+		"hideGF": false,
 		"player3": "gf",
 		"mania": 3,
+		"disableChartEditor": false,
+		"fontColor": "0xFFF5AA42",
 		"song": "execution",
-		"stage": "27",
 		"validScore": true,
-		"needsVoices": true,
 		"speed": 3.2,
-		"bpm": 150,
-		"noteStyle": null
+		"noBotplay": true,
+		"noPractice": false,
+		"timebarColor": [
+			"0xFF915D0F",
+			"0xFFFFA621"
+		],
+		"forceMiddlescroll": false,
+		"needsVoices": true,
+		"stage": "27",
+		"noteStyle": null,
+		"bpm": 150
 	}
 }

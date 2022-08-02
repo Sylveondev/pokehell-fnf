@@ -25,20 +25,20 @@
 				]
 			],
 			[
-				"beserk",
-				"sunshine",
-				[
-					20,
-					20,
-					20
-				]
-			],
-			[
 				"money-machine",
 				"speedy",
 				[
 					240,
 					240,
+					0
+				]
+			],[
+
+				"showtime",
+				"sunshine",
+				[
+					195,
+					93,
 					0
 				]
 			]

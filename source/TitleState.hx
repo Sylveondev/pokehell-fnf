@@ -394,14 +394,14 @@ class TitleState extends MusicBeatState
 				transitioning = true;
 				// FlxG.sound.music.stop();
 				
-				FlxTween.tween(gfDance, {y: FlxG.height + 50}, 1.5, {ease: FlxEase.elasticIn});
-				FlxTween.tween(logoBl, {y: -(FlxG.height) - 50}, 1.5, {ease: FlxEase.elasticIn});
-				FlxTween.tween(titleText, {y: -(FlxG.height) - 50}, 1.5, {ease: FlxEase.elasticIn});
-				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.5, {ease: FlxEase.quadOut,startDelay: 1.5});
+				FlxTween.tween(gfDance, {y: FlxG.height + 50}, .75, {ease: FlxEase.backIn});
+				FlxTween.tween(logoBl, {y: -(FlxG.height) - 50}, .75, {ease: FlxEase.backIn});
+				FlxTween.tween(titleText, {y: -(FlxG.height) - 50}, .75, {ease: FlxEase.backIn});
+				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.5, {ease: FlxEase.quadOut,startDelay: .75});
 
 				if (coolTitleTween != null) coolTitleTween.cancel();
 
-				new FlxTimer().start(2, function(tmr:FlxTimer)
+				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
 					if (mustUpdate) {
 						MusicBeatState.switchState(new OutdatedState());
@@ -441,9 +441,9 @@ class TitleState extends MusicBeatState
 							black.alpha = 0;
 							add(black);
 
-							FlxTween.tween(gfDance, {y: FlxG.height + 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
-							FlxTween.tween(logoBl, {y: -(FlxG.height) - 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
-							FlxTween.tween(titleText, {y: -(FlxG.height) - 50}, 1, {ease: FlxEase.elasticIn, startDelay: 0.5});
+							FlxTween.tween(gfDance, {y: FlxG.height + 50}, 1.5, {ease: FlxEase.backIn});
+							FlxTween.tween(logoBl, {y: -(FlxG.height) - 50}, 1.5, {ease: FlxEase.backIn});
+							FlxTween.tween(titleText, {y: -(FlxG.height) - 50}, 1.5, {ease: FlxEase.backIn});
 
 							FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete:
 								function(twn:FlxTween) {
@@ -637,10 +637,10 @@ class TitleState extends MusicBeatState
 
 			gfDance.x = FlxG.width + 50;
 			logoBl.x =  -(FlxG.width) - 50;
-			FlxTween.tween(gfDance, {x: FlxG.width * 0.4, y:FlxG.height * 0.07}, 1, {ease: FlxEase.backOut, startDelay: 0.5});
-			FlxTween.tween(logoBl, {x: -150, y: -100}, 1, {ease: FlxEase.backOut, startDelay: 0.5, onComplete: function(twn:FlxTween){
+			FlxTween.tween(gfDance, {x: FlxG.width * 0.4, y:FlxG.height * 0.07}, 2, {ease: FlxEase.backOut});
+			FlxTween.tween(logoBl, {x: -150, y: -100}, 2, {ease: FlxEase.backOut, onComplete: function(twn:FlxTween){
 				//Only start tweening the logo if not in the process of switching states
-				if (canzoom) coolTitleTween = FlxTween.tween(logoBl, {y: 0}, 3, {ease: FlxEase.quadInOut, type: PINGPONG});
+				if (canzoom) coolTitleTween = FlxTween.tween(logoBl, {y: 25}, 2, {ease: FlxEase.cubeInOut, type: PINGPONG});
 			}});
 
 

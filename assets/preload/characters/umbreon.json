@@ -1,78 +1,89 @@
 {
 	"animations": [
 		{
-			"anim": "idle",
-			"name": "idle",
-			"fps": 24,
 			"loop": false,
-			"indices": [],
 			"offsets": [
-				-40,
-				0
-			]
-		},
-		{
+				-65,
+				-40
+			],
 			"anim": "singDOWN",
-			"name": "down0",
 			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				-40,
-				0
-			]
+			"name": "Down0",
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				9,
+				5
+			],
 			"anim": "singLEFT",
-			"name": "left0",
 			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				-40,
-				0
-			]
+			"name": "Left0",
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				-9,
+				-23
+			],
 			"anim": "singUP",
-			"name": "up0",
 			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				-40,
-				0
-			]
+			"name": "Up0",
+			"indices": []
 		},
 		{
-			"anim": "singRIGHT",
-			"name": "right0",
-			"fps": 24,
 			"loop": false,
+			"offsets": [
+				-39,
+				-7
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Right0",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-67,
+				-66
+			],
 			"indices": [],
+			"fps": 24,
+			"anim": "idle-alt",
+			"loop": false,
+			"name": "IdleAlt"
+		},
+		{
 			"offsets": [
 				-40,
 				0
-			]
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "Idle0"
 		}
 	],
-	"image": "characters/umbreon",
-	"scale": 1.35,
-	"sing_duration": 4,
-	"healthicon": "umbreon",
-	"position": [
-		100,
-		350
-	],
-	"camera_position": [
-		-25,
-		-260
-	],
-	"flip_x": false,
 	"no_antialiasing": false,
+	"image": "characters/umbreon",
+	"position": [
+		70,
+		250
+	],
+	"healthicon": "umbreon",
+	"flip_x": false,
 	"healthbar_colors": [
 		80,
 		80,
 		80
-	]
+	],
+	"camera_position": [
+		-85,
+		-40
+	],
+	"sing_duration": 4,
+	"scale": 1.45
 }

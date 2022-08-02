@@ -1,7 +1,10 @@
 --PS, the ; is optional.
+
+--[[
 local defaultNotePos = {};
 
 local invert = 1;
+local invertbool = false;
 
 local spin = false;
 local bumpgui = false;
@@ -34,21 +37,19 @@ end
 --Basically the magic
 function onBeatHit()
     invert = invert / -1;
+    invertbool = (invertbool and true or false);
     if curBeat == 32 then
         bumpnotex = true
     elseif curBeat == 48 then
         bumpnotex = false
         resetNotePos()
         bumpnotey = true
-        bumpgui = true
-        bumpcam = true
     elseif curBeat == 80 then
-        bumpcam = false
         bumpnotey = false
-        bumpgui = false
         resetNotePos()
         spin = true
     elseif curBeat == 112 then
+        triggerEvent('Default Camera Zoom', 1, 1)
         spin = false
         resetNotePos()
     elseif curBeat == 176 then
@@ -78,6 +79,49 @@ function onBeatHit()
     elseif curBeat == 1124 then
         bumpnotesides = false
         resetNotePos()
+    end
+
+    if curBeat >= 32 and curBeat <= 48 then
+        setProperty('camHUD.angle',invert * 2)
+        setProperty('camera.angle',invert * 2)
+        doTweenAngle('turn', 'camHUD', 0, stepCrochet*0.008, 'circOut')
+        doTweenAngle('turnagain', 'camera', 0, stepCrochet*0.008, 'circOut')
+
+        triggerEvent('Add Camera Zoom', 0.3, 0.2)
+        bumpnotex = true
+    elseif curBeat >= 48 and curBeat <= 80 then
+        setProperty('camHUD.angle',invert * 16)
+        setProperty('camera.angle',invert * 16)
+        doTweenAngle('turn', 'camHUD', 0, stepCrochet*0.008, 'elasticOut')
+        doTweenAngle('turnagain', 'camera', 0, stepCrochet*0.008, 'elasticOut')
+        if curBeat == 81 then 
+            triggerEvent('Default Camera Zoom', 1, 0.05) 
+            triggerEvent('Default CamHUD Zoom', 1, 0.05)
+        end
+        triggerEvent('Add Camera Zoom', 1.5, 0.6)
+    elseif curBeat >= 80 and curBeat <= 112 then
+        triggerEvent('Add Camera Zoom', 0.3, 0.2)
+        if curBeat == 81 then
+            doTweenAlpha('fadecam', 'camHUD', 0, 1, 'quadInOut')
+        elseif curBeat > 81 and curBeat % 2 == 0 then
+                if getPropertyFromClass('ClientPrefs', 'flashing') == true then
+                    triggerEvent('Add Camera Zoom', 1.5, 0.6)
+                    triggerEvent('Flash camera', 0.5)
+                    
+                    setProperty('boxBG.color', getColorFromHex('000000'))
+                    setProperty('boyfriend.color', getColorFromHex(rgbToHex(math.floor(math.random()*255),math.floor(math.random()*255),math.floor(math.random()*255))))
+                    setProperty('dad.color', getColorFromHex(rgbToHex(math.floor(math.random()*255),math.floor(math.random()*255),math.floor(math.random()*255))))
+            end
+        end
+        if curBeat == 91 then
+            doTweenAlpha('fadecam', 'camHUD', 1, 10, 'quadInOut')
+        end
+    elseif curBeat > 112 then
+        if curBeat == 113 then
+            setProperty('boxBG.color', getColorFromHex('FFFFFF'))
+            setProperty('boyfriend.color', getColorFromHex('FFFFFF'))
+            setProperty('dad.color', getColorFromHex('FFFFFF'))
+        end
     end
 
     if bumpgui == true then
@@ -191,3 +235,64 @@ function onUpdate(elapsed)
         end
     end
 end
+
+function getColor(r1, g1, b1, r2, g2, b2)
+    local out = {}
+  
+    -- set the base range of numbers (0 to high-low)
+    local rRange = math.abs(r1 - r2)
+    local gRange = math.abs(g1 - g2)
+    local bRange = math.abs(b1 - b2)
+      
+    -- set the modifier for each color with a common random
+    local rand = math.random()
+    local rMod = rand * rRange
+    local gMod = rand * gRange
+    local bMod = rand * bRange
+  
+    if r1 < r2 then
+      out.r = rMod + r1
+    else
+      out.r = r1 - rMod
+    end
+      
+    if g1 < g2 then
+      out.g = gMod + g1
+    else
+      out.g = g1 - gMod
+    end
+      
+    if b1 < b2 then
+      out.b = bMod + b1
+    else
+      out.b = b1 - bMod
+    end
+  
+    return out
+  end
+
+  function rgbToHex(rgb)
+	local hexadecimal = ''
+
+	for key, value in pairs(rgb) do
+		local hex = ''
+
+		while(value > 0)do
+			local index = math.fmod(value, 16) + 1
+			value = math.floor(value / 16)
+			hex = string.sub('0123456789ABCDEF', index, index) .. hex			
+		end
+
+		if(string.len(hex) == 0)then
+			hex = '00'
+
+		elseif(string.len(hex) == 1)then
+			hex = '0' .. hex
+		end
+
+		hexadecimal = hexadecimal .. hex
+	end
+
+	return hexadecimal
+end
+]]--

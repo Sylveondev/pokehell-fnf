@@ -1,89 +1,89 @@
 {
 	"animations": [
 		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "idle",
+			"fps": 24,
 			"name": "idle",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				0
-			]
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				17,
+				9
+			],
 			"anim": "singLEFT",
+			"fps": 24,
 			"name": "left",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				20,
-				0
-			]
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				99,
+				-15
+			],
 			"anim": "singDOWN",
+			"fps": 24,
 			"name": "down",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				0
-			]
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				-20,
+				46
+			],
 			"anim": "singUP",
+			"fps": 24,
 			"name": "up",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				0
-			]
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				-2,
+				-3
+			],
 			"anim": "singRIGHT",
-			"name": "right",
 			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				0
-			]
+			"name": "right",
+			"indices": []
 		},
 		{
-			"anim": "finger",
-			"name": "finger",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
 			"offsets": [
-				0,
+				93,
 				0
-			]
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "swing",
+			"loop": false,
+			"name": "swing"
 		}
 	],
-	"image": "characters/sylveon",
-	"scale": 1.3000000000000003,
-	"sing_duration": 4,
-	"healthicon": "sylveon",
-	"position": [
-		0,
-		400
-	],
-	"camera_position": [
-		-20,
-		-240
-	],
-	"flip_x": false,
 	"no_antialiasing": false,
+	"image": "characters/sylveon",
+	"position": [
+		180,
+		340
+	],
+	"healthicon": "sylveon",
+	"flip_x": false,
 	"healthbar_colors": [
 		255,
 		143,
 		255
-	]
+	],
+	"camera_position": [
+		-180,
+		20
+	],
+	"sing_duration": 4,
+	"scale": 1.2
 }

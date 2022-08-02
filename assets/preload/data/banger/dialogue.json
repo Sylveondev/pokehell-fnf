@@ -1,0 +1,75 @@
+{
+	"dialogue": [
+		{
+			"portrait": "dave",
+			"expression": "pissed",
+			"text": "Wow you're really good at this.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "bf",
+			"expression": "excited",
+			"text": "Told you I'd beat you, dumbass.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "gf",
+			"expression": "normal",
+			"text": "Nice one bf.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "dave",
+			"expression": "pissed",
+			"text": "Do you also feel weird?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "bf",
+			"expression": "pissed",
+			"text": "Must be a skill issue.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "gf",
+			"expression": "normal",
+			"text": "You're the one to talk bf.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "dave",
+			"expression": "pissed",
+			"text": "I feel... 3d.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "bf",
+			"expression": "pissed",
+			"text": "We done yet?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "dave",
+			"expression": "pissed",
+			"text": "Lets go again, don't you think?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "bf",
+			"expression": "normal",
+			"text": "I guess..",
+			"boxState": "normal",
+			"speed": 0.05
+		}
+        
+	]
+}

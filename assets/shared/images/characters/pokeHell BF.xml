@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="pokeHell BF.png">
+<SubTexture name="pokeHell BF idle0000" x="0" y="1630" width="595" height="778" frameX="-103" frameY="-47" frameWidth="828" frameHeight="837" />
+<SubTexture name="pokeHell BF idle0001" x="2110" y="795" width="641" height="779" frameX="-102" frameY="-47" frameWidth="828" frameHeight="841" />
+<SubTexture name="pokeHell BF idle0002" x="1468" y="0" width="642" height="805" frameX="-105" frameY="-21" frameWidth="828" frameHeight="837" />
+<SubTexture name="pokeHell BF left0000" x="0" y="825" width="708" height="805" frameX="-3" frameY="-24" frameWidth="828" frameHeight="841" />
+<SubTexture name="pokeHell BF left0001" x="708" y="825" width="701" height="805" frameX="-42" frameY="-24" frameWidth="828" frameHeight="841" />
+<SubTexture name="pokeHell BF right0000" x="1409" y="825" width="662" height="795" frameX="-125" frameY="-36" frameWidth="828" frameHeight="841" />
+<SubTexture name="pokeHell BF right0001" x="2110" y="0" width="710" height="795" frameX="-83" frameY="-37" frameWidth="828" frameHeight="837" />
+<SubTexture name="pokeHell BF up0000" x="0" y="0" width="731" height="825" frameX="-78" frameY="-2" frameWidth="828" frameHeight="841" />
+<SubTexture name="pokeHell BF up0001" x="731" y="0" width="737" height="810" frameX="-85" frameY="-18" frameWidth="828" frameHeight="844" />
+<SubTexture name="pokeHell BF down0000" x="1269" y="1630" width="724" height="712" frameX="-58" frameY="-112" frameWidth="828" frameHeight="837" />
+<SubTexture name="pokeHell BF down0001" x="595" y="1630" width="674" height="769" frameX="-88" frameY="-57" frameWidth="828" frameHeight="835" />
+</TextureAtlas>

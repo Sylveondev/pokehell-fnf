@@ -9,6 +9,7 @@ import flixel.effects.FlxFlicker;
 import lime.app.Application;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import flixel.util.FlxTimer;
 
 class WarningState extends MusicBeatState
@@ -49,6 +50,7 @@ class WarningState extends MusicBeatState
 			if (controls.ACCEPT || controls.BACK) {
 				leftState = true;
 				FlxG.sound.play(Paths.sound('scrollMenu'));
+				FlxTween.tween(FlxG.camera, {zoom: 0.5}, 1, {ease: FlxEase.quadIn,startDelay: .75});
 				FlxTween.tween(warnText, {alpha: 0}, 1, {
 					onComplete: function (twn:FlxTween) {
 						MusicBeatState.switchState(new MainMenuState());

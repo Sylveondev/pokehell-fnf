@@ -1,0 +1,8 @@
+[.ShellClassInfo]
+ConfirmFileOp=0
+InfoTip=Friday Night Funkin - Pokehell Psych Edition
+IconResource=.\foldericon.ico,0
+[ViewState]
+Mode=
+Vid=
+FolderType=Generic

@@ -1,66 +1,66 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"offsets": [
-				0,
-				190
-			],
-			"anim": "idle",
-			"fps": 15,
-			"name": "sunshine idle",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				190
-			],
-			"anim": "singUP",
-			"fps": 12,
-			"name": "sunshine up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				190
-			],
-			"anim": "singDOWN",
-			"fps": 12,
-			"name": "sunshine down",
-			"indices": []
-		},
-		{
 			"offsets": [
 				0,
 				190
 			],
 			"indices": [],
-			"fps": 12,
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "Idle"
+		},
+		{
+			"offsets": [
+				-19,
+				207
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Up"
+		},
+		{
+			"offsets": [
+				-19,
+				168
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Down"
+		},
+		{
+			"offsets": [
+				12,
+				223
+			],
+			"indices": [],
+			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
-			"name": "sunshine right"
+			"name": "Right"
 		},
 		{
 			"offsets": [
-				0,
-				190
+				-17,
+				221
 			],
 			"indices": [],
-			"fps": 12,
+			"fps": 24,
 			"anim": "singRIGHT",
 			"loop": false,
-			"name": "sunshine left"
+			"name": "Left"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/sunshine",
 	"position": [
 		10,
-		280
+		420
 	],
 	"healthicon": "sunshine",
 	"flip_x": true,
@@ -70,8 +70,8 @@
 		22
 	],
 	"camera_position": [
-		0,
-		0
+		70,
+		10
 	],
 	"sing_duration": 4,
 	"scale": 0.6

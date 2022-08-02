@@ -37,6 +37,7 @@ class LoadingState extends MusicBeatState
 	var callbacks:MultiCallback;
 	var targetShit:Float = 0;
 	var loadShit:FlxText;
+	var fails:Int = 0;
 
 	function new(target:FlxState, stopMusic:Bool, directory:String)
 	{
@@ -83,6 +84,7 @@ class LoadingState extends MusicBeatState
 			{
 				callbacks = new MultiCallback(onLoad);
 				var introComplete = callbacks.add("introComplete");
+				trace('Added callback "introComplete"');
 				if (PlayState.SONG != null) {
 					checkLoadSong(getSongPath());
 					if (PlayState.SONG.needsVoices)
@@ -111,7 +113,8 @@ class LoadingState extends MusicBeatState
 			// @:privateAccess
 			// library.pathGroups.set(symbolPath, [library.__cacheBreak(symbolPath)]);
 			var callback = callbacks.add("song:" + path);
-			Assets.loadSound(path).onComplete(function (_) { callback(); });
+			trace('Adding callback "song:'+ path +'"');
+			Assets.loadSound(path).onComplete(function (_) { trace("Success!"); callback(); }).onError(function(err){ trace("Failed to load sound: "+ path+"\nReason:"+err); fails++; });
 		}
 	}
 	
@@ -124,7 +127,8 @@ class LoadingState extends MusicBeatState
 				throw "Missing library: " + library;
 
 			var callback = callbacks.add("library:" + library);
-			Assets.loadLibrary(library).onComplete(function (_) { callback(); });
+			trace('Adding callback "library:'+ library +'"');
+			Assets.loadLibrary(library).onComplete(function (_) { trace("Success!"); callback(); }).onError(function(err){ trace("Failed to load library: "+ library+"\nReason:"+err); fails++; });
 		}
 	}
 	
@@ -139,12 +143,13 @@ class LoadingState extends MusicBeatState
 			funkay.updateHitbox();
 		}
 
+		//Pokehell loading sucks. Tells you how many objects are left to load in
 		if(callbacks != null) {
 			targetShit = FlxMath.remapToRange(callbacks.numRemaining / callbacks.length, 1, 0, 0, 1);
 			var secondsTotal:Int = Math.floor((elapsed));
 			if(secondsTotal < 0) secondsTotal = 0;
-			loadShit.text = 'Loading... '+FlxMath.roundDecimal(targetShit*100,0)+'% complete - '+callbacks.numRemaining+" objects remaining";
-			loadShit.color = FlxColor.WHITE;
+			loadShit.text = 'Loading... '+FlxMath.roundDecimal(targetShit*100,0)+'% complete - '+callbacks.numRemaining+" objects remaining" + (fails > 0 ? ' (' + fails + ' failed to load! Aborted!)' : '');
+			loadShit.color = (fails > 0 ? FlxColor.RED : FlxColor.WHITE);
 			loadShit.screenCenter(X);
 			loadBar.scale.x += 0.25 * (targetShit);
 		}else{
@@ -166,12 +171,12 @@ class LoadingState extends MusicBeatState
 	
 	static function getSongPath()
 	{
-		return Paths.inst(PlayState.SONG.song);
+		return Paths.inst(PlayState.SONG.song, true);
 	}
 	
 	static function getVocalPath()
 	{
-		return Paths.voices(PlayState.SONG.song);
+		return Paths.voices(PlayState.SONG.song, true);
 	}
 	
 	inline static public function loadAndSwitchState(target:FlxState, stopMusic = false)

@@ -5,28 +5,13 @@
 		"player1": "bf-car",
 		"player2": "twentyseven",
 		"player3": "gf",
+		"noPractice": false,
+		"noBotplay": false,
 		"notes": [
 			{
 				"lengthInSteps": 16,
 				"altAnim": false,
 				"typeOfSection": 0,
-				"sectionNotes": [
-					[
-						0,
-						-1,
-						"Hide Elements",
-						"3",
-						"false"
-					]
-				],
-				"bpm": 0,
-				"changeBPM": false,
-				"mustHitSection": false
-			},
-			{
-				"lengthInSteps": 16,
-				"altAnim": false,
-				"typeOfSection": 0,
 				"sectionNotes": [],
 				"bpm": 0,
 				"changeBPM": false,
@@ -46,48 +31,6 @@
 				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"bpm": 0,
-				"changeBPM": false,
-				"mustHitSection": false
-			},
-			{
-				"lengthInSteps": 16,
-				"altAnim": false,
-				"typeOfSection": 0,
-				"sectionNotes": [],
-				"bpm": 0,
-				"changeBPM": false,
-				"mustHitSection": false
-			},
-			{
-				"lengthInSteps": 16,
-				"altAnim": false,
-				"typeOfSection": 0,
-				"sectionNotes": [],
-				"bpm": 0,
-				"changeBPM": false,
-				"mustHitSection": false
-			},
-			{
-				"lengthInSteps": 16,
-				"altAnim": false,
-				"typeOfSection": 0,
-				"sectionNotes": [
-					[
-						9600,
-						-1,
-						"Do CamHud rotate",
-						"5",
-						"25"
-					],
-					[
-						9614.28571428571,
-						-1,
-						"Do Camera rotate",
-						"2.5",
-						"12.5"
-					]
-				],
 				"bpm": 0,
 				"changeBPM": false,
 				"mustHitSection": false
@@ -850,11 +793,20 @@
 			}
 		],
 		"splashSkin": null,
+		"forceMiddlescroll": false,
 		"validScore": false,
+		"timebarColor": [
+			"0xFF915D0F",
+			"0xFFFFA621"
+		],
+		"fontColor": "",
 		"bpm": 150,
 		"mania": 3,
+		"forceGhostingOff": false,
 		"arrowSkin": null,
 		"needsVoices": true,
-		"song": "execution"
+		"disableChartEditor": false,
+		"song": "execution",
+		"hideGF": false
 	}
 }

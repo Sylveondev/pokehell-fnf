@@ -1,0 +1,11 @@
+{
+	"dialogue": [
+		{
+			"expression": "excited",
+			"text": "Placeholder text, SylveonDev can put whatever here.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		}
+	]
+}

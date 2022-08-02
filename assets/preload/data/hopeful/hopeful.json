@@ -164,6 +164,12 @@
 						17750,
 						1,
 						0
+					],
+					[
+						16000,
+						1,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"mustHitSection": true
@@ -196,6 +202,12 @@
 						19750,
 						1,
 						0
+					],
+					[
+						18000,
+						0,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"mustHitSection": true
@@ -223,6 +235,12 @@
 						21000,
 						2,
 						0
+					],
+					[
+						20000,
+						3,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"mustHitSection": true
@@ -240,6 +258,12 @@
 						23000,
 						0,
 						0
+					],
+					[
+						22000,
+						2,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"mustHitSection": true
@@ -393,6 +417,18 @@
 						33750,
 						3,
 						0
+					],
+					[
+						32000,
+						0,
+						0,
+						"Sylveon Note"
+					],
+					[
+						33500,
+						1,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"mustHitSection": true
@@ -440,6 +476,12 @@
 						35750,
 						1,
 						0
+					],
+					[
+						35000,
+						2,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"mustHitSection": true
@@ -571,6 +613,18 @@
 						41750,
 						0,
 						0
+					],
+					[
+						40000,
+						3,
+						0,
+						"Sylveon Note"
+					],
+					[
+						41500,
+						2,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"mustHitSection": true
@@ -608,6 +662,12 @@
 						43750,
 						1,
 						0
+					],
+					[
+						43500,
+						1,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"mustHitSection": true
@@ -749,6 +809,12 @@
 						49750,
 						0,
 						0
+					],
+					[
+						48000,
+						0,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"mustHitSection": true
@@ -796,6 +862,18 @@
 						51750,
 						0,
 						0
+					],
+					[
+						50750,
+						3,
+						0,
+						"Sylveon Note"
+					],
+					[
+						51500,
+						1,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"mustHitSection": true
@@ -938,6 +1016,12 @@
 						57750,
 						1,
 						0
+					],
+					[
+						56000,
+						0,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -988,6 +1072,12 @@
 						59750,
 						1,
 						0
+					],
+					[
+						58750,
+						3,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -1143,6 +1233,12 @@
 						69750,
 						1,
 						0
+					],
+					[
+						68000,
+						1,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -1178,6 +1274,12 @@
 						71750,
 						1,
 						0
+					],
+					[
+						70000,
+						0,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -1208,6 +1310,12 @@
 						73000,
 						2,
 						0
+					],
+					[
+						72000,
+						3,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -1228,6 +1336,12 @@
 						75000,
 						0,
 						0
+					],
+					[
+						74000,
+						2,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -1498,6 +1612,18 @@
 						85875,
 						3,
 						0
+					],
+					[
+						84000,
+						1,
+						0,
+						"Sylveon Note"
+					],
+					[
+						85000,
+						1,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -1568,6 +1694,18 @@
 						87875,
 						3,
 						0
+					],
+					[
+						86000,
+						3,
+						0,
+						"Sylveon Note"
+					],
+					[
+						87000,
+						0,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -1783,6 +1921,12 @@
 						101750,
 						1,
 						0
+					],
+					[
+						100000,
+						1,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -1818,6 +1962,12 @@
 						103750,
 						1,
 						0
+					],
+					[
+						102000,
+						0,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -1848,6 +1998,12 @@
 						105000,
 						2,
 						0
+					],
+					[
+						104000,
+						3,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -1868,6 +2024,12 @@
 						107000,
 						0,
 						0
+					],
+					[
+						106000,
+						2,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -2138,6 +2300,18 @@
 						117875,
 						3,
 						0
+					],
+					[
+						116000,
+						3,
+						0,
+						"Sylveon Note"
+					],
+					[
+						117000,
+						1,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -2208,6 +2382,18 @@
 						119875,
 						3,
 						0
+					],
+					[
+						118000,
+						1,
+						0,
+						"Sylveon Note"
+					],
+					[
+						119000,
+						2,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -2238,6 +2424,12 @@
 						121500,
 						1,
 						0
+					],
+					[
+						120375,
+						2,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -2268,6 +2460,12 @@
 						123500,
 						3,
 						0
+					],
+					[
+						122750,
+						1,
+						0,
+						"Sylveon Note"
 					]
 				],
 				"typeOfSection": 0,
@@ -2404,6 +2602,42 @@
 			},
 			{
 				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"altAnim": false,
+				"bpm": 120,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"altAnim": false,
+				"bpm": 120,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 120
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 120
+			},
+			{
+				"lengthInSteps": 16,
 				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
@@ -2428,7 +2662,7 @@
 		"fontColor": "#ff7dff",
 		"song": "Hopeful",
 		"validScore": true,
-		"speed": 2,
+		"speed": 2.5,
 		"sectionLengths": [],
 		"noBotplay": false,
 		"noPractice": false,
@@ -2437,7 +2671,7 @@
 			"#d689d6",
 			"#ffb5ff"
 		],
-		"stage": "spooky",
+		"stage": "house",
 		"sections": 0,
 		"needsVoices": true,
 		"bpm": 120

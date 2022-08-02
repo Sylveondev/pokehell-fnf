@@ -1,0 +1,102 @@
+{
+	"dialogue": [
+		{
+			"portrait": "dave",
+			"expression": "talk",
+			"text": "Who are you?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "bf",
+			"expression": "talk",
+			"text": "What?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "dave",
+			"expression": "talk",
+			"text": "You're not from here are you?",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "bf",
+			"expression": "pissed",
+			"text": "Fuck no.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "dave",
+			"expression": "excited",
+			"text": "Huh, no wonder your girl is hot.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "bf",
+			"expression": "talk",
+			"text": "Nah... Stop flirtin' bruh, you ain't gettin' her.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "gf",
+			"expression": "talk",
+			"text": "Come on bf, don't destroy the tradition... You know how it goes.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+		{
+			"portrait": "gf",
+			"expression": "talk",
+			"text": "The character tries to steal me away so you battle for three battles and on the third one they take their final form.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "bf",
+			"expression": "pissed",
+			"text": "That's bullshit.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "gf",
+			"expression": "confused",
+			"text": "No it's not.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "bf",
+			"expression": "pissed",
+			"text": "Fine fine.. Just for you, I'll kick Dave's ass for you.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "dave",
+			"expression": "excited",
+			"text": "Not so sure about the ass kicking part, but lets go.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "bf",
+			"expression": "pissed",
+			"text": "Lets do this.",
+			"boxState": "normal",
+			"speed": 0.05
+		},
+        {
+			"portrait": "bf",
+			"expression": "pissed",
+			"text": "*Dumbass*",
+			"boxState": "normal",
+			"speed": 0.05
+		}
+	]
+}

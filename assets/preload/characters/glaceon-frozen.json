@@ -1,78 +1,78 @@
 {
 	"animations": [
 		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "idle",
-			"name": "idle",
 			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				-90,
-				-200
-			]
+			"name": "frozen",
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "singLEFT",
-			"name": "idle",
 			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				-90,
-				-200
-			]
+			"name": "frozen",
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "singRIGHT",
-			"name": "idle",
 			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				-90,
-				-200
-			]
+			"name": "frozen",
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "singUP",
-			"name": "idle",
 			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				-90,
-				-200
-			]
+			"name": "frozen",
+			"indices": []
 		},
 		{
-			"anim": "singDOWN",
-			"name": "idle",
-			"fps": 24,
 			"loop": false,
-			"indices": [],
 			"offsets": [
-				-90,
-				-200
-			]
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "frozen",
+			"indices": []
 		}
 	],
-	"image": "characters/glaceon2",
-	"scale": 1.5000000000000004,
-	"sing_duration": 4,
-	"healthicon": "glaceon",
-	"position": [
-		0,
-		350
-	],
-	"camera_position": [
-		-40,
-		-320
-	],
-	"flip_x": false,
 	"no_antialiasing": false,
+	"image": "characters/glaceon",
+	"position": [
+		-50,
+		300
+	],
+	"healthicon": "glaceon",
+	"flip_x": false,
 	"healthbar_colors": [
 		157,
 		157,
 		221
-	]
+	],
+	"camera_position": [
+		-40,
+		40
+	],
+	"sing_duration": 4,
+	"scale": 1.4
 }

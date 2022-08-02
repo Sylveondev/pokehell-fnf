@@ -106,6 +106,10 @@ class Note extends FlxSprite
 					hitCausesMiss = true;
 					ignoreNote = mustPress;
 					reloadNote('KILLNOTE_assets');
+				case 'Sylveon Note':
+					//hitCausesMiss = true;
+					ignoreNote = mustPress;
+					reloadNote('SYLVEONNOTE_assets');
 				case 'AntiMiss Note':
 					reloadNote('ANTIMISSNOTE_assets');
 				case 'No Animation':

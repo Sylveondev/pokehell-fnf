@@ -318,6 +318,8 @@ class PlayState extends MusicBeatState
 
 	var unsupportedText:FlxText;
 
+	var isTweeningCam:Array<Bool> = [false, false];
+
 	#if desktop
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
@@ -653,7 +655,20 @@ class PlayState extends MusicBeatState
 				
 				add(bg);
 				add(front);
-
+			
+			case 'blank':
+				boxBG = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
+				boxBG.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), FlxColor.WHITE);
+				
+				add(boxBG);
+				if (SONG.song.toLowerCase() == 'forgotten'){
+					boxBG.alpha = 0;
+				}
+			case 'sally':
+				var bg:BGSprite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
+				bg.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), 0xFFB96414);
+				add(bg);
+				
 			case 'box': //Week 9: Espeon
 				if (SONG.song.toLowerCase() == 'crossover'){
 					addCharacterToList('bfGray', 0);
@@ -1536,7 +1551,8 @@ class PlayState extends MusicBeatState
 		}
 		add(camFollowPos);
 
-		FlxG.camera.follow(camFollowPos, LOCKON, 1);
+		
+		FlxG.camera.follow(camFollowPos, LOCKON, 2);
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		camHUD.zoom = defaultHudZoom;
@@ -1585,17 +1601,6 @@ class PlayState extends MusicBeatState
 
 		//Ripped straight from Kade Engine, fight me over it
 		
-		#if debug
-		kadeEngineWatermark = new FlxText(4, healthBarBG.y
-			+ 50, 0,
-			SONG.song
-			+ " - Pokehell Dev version (PE "+MainMenuState.psychEngineVersion+")", 16);
-		kadeEngineWatermark.setFormat(Paths.font("righteous.ttf"), 16, uiColor, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		kadeEngineWatermark.scrollFactor.set();
-		kadeEngineWatermark.updateHitbox();
-		kadeEngineWatermark.cameras = [camHUD];
-		add(kadeEngineWatermark);
-		#else
 		kadeEngineWatermark = new FlxText(4, healthBarBG.y
 			+ 50, 0,
 			SONG.song
@@ -1605,7 +1610,6 @@ class PlayState extends MusicBeatState
 		kadeEngineWatermark.updateHitbox();
 		kadeEngineWatermark.cameras = [camHUD];
 		add(kadeEngineWatermark);
-		#end
 
 		
 
@@ -1731,7 +1735,7 @@ class PlayState extends MusicBeatState
 						camHUD.visible = true;
 						remove(blackScreen);
 						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
-							ease: FlxEase.quadInOut,
+							ease: FlxEase.elasticOut,
 							onComplete: function(twn:FlxTween)
 							{
 								startCountdown();
@@ -2824,6 +2828,9 @@ class PlayState extends MusicBeatState
 				dad.y = boyfriend.y;
 				boyfriend.visible = false;
 				gf.visible = false;
+			case 'blank':
+				if (SONG.song.toLowerCase() == 'forgotten'){
+				gf.visible = false;}
 			case 'trippy':
 				if (!ClientPrefs.lowQuality){
 					var shad = cast(trippyBG.shader, Shaders.GlitchShader);
@@ -3227,8 +3234,8 @@ class PlayState extends MusicBeatState
 
 		if (camZooming)
 		{
-			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
-			camHUD.zoom = FlxMath.lerp(defaultHudZoom, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
+			if (cameraTwn == null) FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
+			if (camhudTwn == null) camHUD.zoom = FlxMath.lerp(defaultHudZoom, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
 		}
 
 		FlxG.watch.addQuick("beatShit", curBeat);
@@ -3502,6 +3509,13 @@ class PlayState extends MusicBeatState
 					if (daNote.mustPress && !cpuControlled &&!daNote.ignoreNote && !endingSong && (daNote.tooLate || !daNote.wasGoodHit)) {
 						noteMiss(daNote);
 					}
+
+					if (daNote.noteType == 'Sylveon Note'){
+						dad.playAnim('swing');
+						dad.specialAnim = true;
+						boyfriend.playAnim('scared');
+						boyfriend.specialAnim = true;
+					} 
 
 					daNote.active = false;
 					daNote.visible = false;
@@ -4018,9 +4032,11 @@ class PlayState extends MusicBeatState
 					}
 				}
 
-				if(!camZooming) { //Just a way for preventing it to be permanently zoomed until Skid & Pump hits a note
-					FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, duration);
-				}}
+				cameraTwn = FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, duration, {ease: FlxEase.circInOut,
+					onComplete:function(_){
+						cameraTwn = null;
+				}});
+				}	
 			case 'Default CamHUD Zoom':
 				if (ClientPrefs.sourceEvents){
 				var duration:Float = 0.5;
@@ -4032,9 +4048,11 @@ class PlayState extends MusicBeatState
 					defaultHudZoom = 1;
 				}
 
-				if(!camZooming) { //Just a way for preventing it to be permanently zoomed until Skid & Pump hits a note
-					FlxTween.tween(camHUD, {zoom: defaultHudZoom}, duration);
-				}}
+				camhudTwn = FlxTween.tween(camHUD, {zoom: defaultHudZoom}, duration, {ease: FlxEase.circInOut,
+					onComplete:function(_){
+						camhudTwn = null;
+				}});
+				}
 			case 'Flash camera':
 				if (ClientPrefs.sourceEvents){
 				var flashduration:Float = 1;
@@ -4193,6 +4211,7 @@ class PlayState extends MusicBeatState
 	}
 
 	var cameraTwn:FlxTween;
+	var camhudTwn:FlxTween;
 	public function moveCamera(isDad:Bool) {
 		if(isDad) {
 			camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
@@ -4860,7 +4879,7 @@ class PlayState extends MusicBeatState
 				if(!practiceMode) songScore -= 10;
 				if(!endingSong){
 					songMisses++;
-					camGame.shake(0.5, 0.1);
+					camHUD.shake(0.05, 0.25);
 				};
 				RecalculateRating();
 	
@@ -4877,17 +4896,20 @@ class PlayState extends MusicBeatState
 
 				vocals.volume = 0;
 				
+				
 				if (daNote.noteType == 'GF Sing') {
 					gf.playAnim('sing' + Main.charDir[Main.gfxHud[mania][daNote.noteData]] + 'miss', true);
 				} else if (daNote.noteType == 'AntiMiss Note') {
 					health = 0;
-				} else {
+				}else {
 					var daAlt = '';
 
 					if (SONG.notes[Math.floor(curStep / 16)].altAnim || daNote.noteType == 'Alt Animation') {	//bf can play alt notes too without having plagiarize the chart
 						daAlt = '-alt';
 					}
-					boyfriend.playAnim('sing' + Main.charDir[Main.gfxHud[mania][daNote.noteData]] + 'miss' + daAlt, true);
+					if (boyfriend.animOffsets.exists('sing' + Main.charDir[Main.gfxHud[mania][daNote.noteData]] + 'miss' + daAlt)){
+						boyfriend.playAnim('sing' + Main.charDir[Main.gfxHud[mania][daNote.noteData]] + 'miss' + daAlt, true);
+					}
 				}
 				callOnLuas('noteMiss', [notes.members.indexOf(daNote), daNote.noteData, daNote.noteType, daNote.isSustainNote]);
 			}
@@ -4944,7 +4966,7 @@ class PlayState extends MusicBeatState
 							health = 100;
 							note.wasGoodHit = true;
 						}
-					case 'Kill Note':
+					case 'Kill Note' | 'Sylveon Note':
 						if(!boyfriend.stunned)
 						{
 							health = 0;
@@ -5222,8 +5244,8 @@ class PlayState extends MusicBeatState
 			camHUD.zoom += 0.03;
 
 			if(!camZooming) { //Just a way for preventing it to be permanently zoomed until Skid & Pump hits a note
-				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 0.5);
-				FlxTween.tween(camHUD, {zoom: defaultHudZoom}, 0.5);
+				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 0.5, {ease: FlxEase.circInOut});
+				FlxTween.tween(camHUD, {zoom: defaultHudZoom}, 0.5, {ease: FlxEase.circInOut});
 			}
 		}
 
@@ -5492,6 +5514,14 @@ class PlayState extends MusicBeatState
 				// Glaceon freezes at beat 160. Stop the random animations here.
 				if (SONG.song.toLowerCase() == 'solid' && FlxG.random.bool(5) && curBeat < 160)
 					dad.playAnim('cold',true);}
+			case 'blank':
+				if (ClientPrefs.sourceModcharts){
+					if (SONG.song.toLowerCase() == 'forgotten'){
+						if (curBeat == 96){
+							FlxTween.tween(boxBG,{alpha: 1},12,{ease:FlxEase.quadInOut});
+						}
+					}
+				}
 			case 'box':
 				if (ClientPrefs.sourceModcharts){
 				if (SONG.song.toLowerCase() == 'crossover'){

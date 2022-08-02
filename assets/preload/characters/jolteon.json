@@ -1,56 +1,56 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-40,
 				-70
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
 			"offsets": [
-				-40,
-				-70
+				-51,
+				-81
 			],
 			"indices": [],
-			"fps": 42,
+			"fps": 24,
 			"anim": "singRIGHT",
 			"loop": false,
 			"name": "right0"
 		},
 		{
 			"offsets": [
-				-40,
-				-70
+				-6,
+				-50
 			],
 			"indices": [],
-			"fps": 42,
+			"fps": 24,
 			"anim": "singUP",
 			"loop": false,
 			"name": "up0"
 		},
 		{
 			"offsets": [
-				-40,
-				-70
+				17,
+				-62
 			],
 			"indices": [],
-			"fps": 42,
+			"fps": 24,
 			"anim": "singDOWN",
 			"loop": false,
 			"name": "down0"
 		},
 		{
 			"offsets": [
-				-40,
-				-70
+				42,
+				-62
 			],
 			"indices": [],
-			"fps": 42,
+			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
 			"name": "left0"
@@ -60,7 +60,7 @@
 	"image": "characters/jolteon",
 	"position": [
 		100,
-		350
+		230
 	],
 	"healthicon": "jolteon",
 	"flip_x": false,
@@ -70,9 +70,9 @@
 		73
 	],
 	"camera_position": [
-		-25,
-		-260
+		-125,
+		0
 	],
 	"sing_duration": 4,
-	"scale": 1.35
+	"scale": 1.55
 }

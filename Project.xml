@@ -100,11 +100,18 @@
 	<assets path="assets/week7"         library="week7"         exclude="*.ogg" if="web"/>
 	<assets path="assets/week7"         library="week7"         exclude="*.mp3" unless="web"/>
 	
+	<!-- Boring ass psych engine shit -->
 	<assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
+	<!-- Windows users will see the pokehell logo as the folder icon 
+	<assets path='art/foldericon.txt' rename='desktop.ini' if="windows" />
+	<assets path='art/pokehelllogo.ico' rename='foldericon.ico' if="windows" />-->
+	<!-- Allows desktop to reset the mods folder by opening a batch script -->
+	<!-- Linux users will have support for this soon -->
 	<assets path='art/resetmods.bat' rename='reset the mods folder.bat' if="windows" />
-	<assets path='art/mods.zip' rename='assets/mods.zip' if="windows" />
-	<assets path='art/Pokemods.url' rename='download a pokemod.url' if="desktop" />
+	<assets path='art/mods.zip' rename='assets/mods.zip' if="desktop" />
+	<!-- Links to a google drive. Pokemods are dead, this is useless. -->
+	<assets path='art/Pokemods.url' rename='download a pokemod.url' if="MODS_ALLOWED" />
 	<!-- <template path='mods' /> -->
 	
 	<!-- assets path="CHANGELOG.md" rename='changelog.txt' -->
