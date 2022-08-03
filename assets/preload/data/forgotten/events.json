@@ -19,6 +19,13 @@
 						"Default Camera Zoom",
 						"2",
 						"2"
+					],
+					[
+						12.0385232744783,
+						-1,
+						"Alt Idle Animation",
+						"dad",
+						"-alt"
 					]
 				],
 				"bpm": 0,
@@ -315,6 +322,13 @@
 						"Default Camera Zoom",
 						"1",
 						"2"
+					],
+					[
+						43230.3370786517,
+						-1,
+						"Alt Idle Animation",
+						"dad",
+						""
 					]
 				],
 				"bpm": 0,
@@ -611,6 +625,13 @@
 						"Default Camera Zoom",
 						"1.25",
 						"2"
+					],
+					[
+						86376.4044943821,
+						-1,
+						"Alt Idle Animation",
+						"dad",
+						"-alt"
 					]
 				],
 				"bpm": 0,
@@ -923,8 +944,33 @@
 						"Default Camera Zoom",
 						"1",
 						"2"
+					],
+					[
+						129522.471910113,
+						-1,
+						"Alt Idle Animation",
+						"dad",
+						""
 					]
 				],
+				"bpm": 0,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"bpm": 0,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
 				"bpm": 0,
 				"changeBPM": false,
 				"mustHitSection": false

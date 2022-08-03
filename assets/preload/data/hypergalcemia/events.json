@@ -1,10 +1,12 @@
 {
 	"song": {
-		"speed": 6.00000000000001,
+		"speed": 3.50000000000002,
 		"stage": "mountains",
 		"player1": "bf-car",
 		"player2": "potassium",
 		"player3": "gf",
+		"noPractice": false,
+		"noBotplay": false,
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -470,15 +472,25 @@
 				"lengthInSteps": 16,
 				"altAnim": false,
 				"typeOfSection": 0,
-				"sectionNotes": [
-					[
-						46857.1428571429,
-						-1,
-						"Default Camera Zoom",
-						"1",
-						"0.5"
-					]
-				],
+				"sectionNotes": [],
+				"bpm": 0,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"bpm": 0,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
 				"bpm": 0,
 				"changeBPM": false,
 				"mustHitSection": false
@@ -514,23 +526,6 @@
 				"lengthInSteps": 16,
 				"altAnim": false,
 				"typeOfSection": 0,
-				"sectionNotes": [
-					[
-						51428.5714285714,
-						-1,
-						"Default Camera Zoom",
-						"1",
-						"0.5"
-					]
-				],
-				"bpm": 0,
-				"changeBPM": false,
-				"mustHitSection": false
-			},
-			{
-				"lengthInSteps": 16,
-				"altAnim": false,
-				"typeOfSection": 0,
 				"sectionNotes": [],
 				"bpm": 0,
 				"changeBPM": false,
@@ -550,23 +545,6 @@
 				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"bpm": 0,
-				"changeBPM": false,
-				"mustHitSection": false
-			},
-			{
-				"lengthInSteps": 16,
-				"altAnim": false,
-				"typeOfSection": 0,
-				"sectionNotes": [
-					[
-						56000,
-						-1,
-						"Default Camera Zoom",
-						"1",
-						"0.5"
-					]
-				],
 				"bpm": 0,
 				"changeBPM": false,
 				"mustHitSection": false
@@ -770,14 +748,32 @@
 				"bpm": 0,
 				"changeBPM": false,
 				"mustHitSection": false
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"bpm": 0,
+				"changeBPM": false,
+				"mustHitSection": false
 			}
 		],
 		"splashSkin": null,
+		"forceMiddlescroll": false,
 		"validScore": false,
+		"timebarColor": [
+			"0xFF915D0F",
+			"0xFFFFA621"
+		],
+		"fontColor": "",
 		"bpm": 210,
 		"mania": 3,
+		"forceGhostingOff": false,
 		"arrowSkin": null,
 		"needsVoices": true,
-		"song": "hypergalcemia"
+		"disableChartEditor": false,
+		"song": "hypergalcemia",
+		"hideGF": false
 	}
 }
