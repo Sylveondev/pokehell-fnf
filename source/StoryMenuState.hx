@@ -1,7 +1,11 @@
 package;
 
+import openfl.utils.Assets;
 #if desktop
 import Discord.DiscordClient;
+#end
+#if sys
+import sys.FileSystem;
 #end
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -17,6 +21,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.net.curl.CURLCode;
+import openfl.display.BitmapData;
 import WeekData;
 
 using StringTools;
@@ -50,6 +55,8 @@ class StoryMenuState extends MusicBeatState
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
 
+	var storyBg:FlxSprite;
+
 	var trackedAssets:Array<flixel.FlxBasic> = [];
 
 	override function create()
@@ -71,6 +78,15 @@ class StoryMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		bg.color = 0xDAC133;
 		add(bg);
+
+		storyBg = new FlxSprite(-80).loadGraphic(Paths.image('storyBackgrounds/week0'));
+		storyBg.scrollFactor.set(0, 0);
+		storyBg.setGraphicSize(Std.int(storyBg.width * 1.175));
+		storyBg.updateHitbox();
+		storyBg.screenCenter();
+		storyBg.antialiasing = ClientPrefs.globalAntialiasing;
+		storyBg.color = 0xDAC133;
+		add(storyBg);
 
 		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
 		scoreText.setFormat(Paths.font("righteous.ttf"), 32);
@@ -360,7 +376,19 @@ class StoryMenuState extends MusicBeatState
 
 	function changeWeek(change:Int = 0):Void
 	{
+		
 		curWeek += change;
+
+		storyBg.visible = false;
+				var loadedMenu:BitmapData = null;
+				var bgToUse:String = Paths.image('storyBackgrounds/week'+ (curWeek + 1) +'.png');
+				if(#if MODS_ALLOWED FileSystem.exists(bgToUse) #else Assets.exists(bgToUse) #end)
+				{
+					loadedMenu = BitmapData.fromFile(bgToUse);
+				}if (loadedMenu != null){
+					storyBg.loadGraphic(loadedMenu);
+					storyBg.visible = true;
+				}
 
 		if (curWeek >= WeekData.weeksList.length)
 			curWeek = 0;
