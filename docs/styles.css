@@ -57,6 +57,24 @@ a { color:inherit;
     color: #ffb50e;
 }
 
+.buttontext
+{
+    border-radius: 6px;
+    text-align: center;
+    padding: 16px 16px 16px 16px;
+    margin: 6px 6px 6px 6px;
+    display:inline-block;
+    background-color:rgb(255, 219, 16);
+    color:white;
+    text-shadow: 0px 0px #00000077;
+    transition: color 1s, text-shadow 1s;
+}
+
+.buttontext a:hover
+{
+    background-color: rgb(255, 245, 189);
+}
+
 .linktext {
     text-align: center;
     display:block;
