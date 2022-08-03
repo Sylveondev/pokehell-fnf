@@ -394,12 +394,18 @@ class TitleState extends MusicBeatState
 				transitioning = true;
 				// FlxG.sound.music.stop();
 				
+				//Cancels any tweens active.
+				//This fixes title screen crash present in 1.2.2
+				//Uhh.. You're welcome, I believe the word you're looking for is "thank you"?
+				FlxTween.cancelTweensOf(gfDance);
+				FlxTween.cancelTweensOf(logoBl);
+				
 				FlxTween.tween(gfDance, {y: FlxG.height + 50}, .75, {ease: FlxEase.backIn});
 				FlxTween.tween(logoBl, {y: -(FlxG.height) - 50}, .75, {ease: FlxEase.backIn});
 				FlxTween.tween(titleText, {y: -(FlxG.height) - 50}, .75, {ease: FlxEase.backIn});
 				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.5, {ease: FlxEase.quadOut,startDelay: .75});
 
-				if (coolTitleTween != null) coolTitleTween.cancel();
+				//if (coolTitleTween != null) coolTitleTween.cancel();
 
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{

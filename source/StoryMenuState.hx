@@ -81,7 +81,6 @@ class StoryMenuState extends MusicBeatState
 
 		storyBg = new FlxSprite(-80).loadGraphic(Paths.image('storyBackgrounds/week0'));
 		storyBg.scrollFactor.set(0, 0);
-		storyBg.setGraphicSize(Std.int(storyBg.width * 1.175));
 		storyBg.updateHitbox();
 		storyBg.screenCenter();
 		storyBg.antialiasing = ClientPrefs.globalAntialiasing;
@@ -379,13 +378,20 @@ class StoryMenuState extends MusicBeatState
 		
 		curWeek += change;
 
+		//Changes the story background
+		//If background doesn't exist, hide it.
 		storyBg.visible = false;
 				var loadedMenu:BitmapData = null;
-				var bgToUse:String = Paths.image('storyBackgrounds/week'+ (curWeek + 1) +'.png');
-				if(#if MODS_ALLOWED FileSystem.exists(bgToUse) #else Assets.exists(bgToUse) #end)
+				var bgToUse:String = Paths.getPreloadPath('images/storyBackgrounds/week'+ (curWeek + 1) +'.png');
+				//No mod support for this, sorry
+				if(Assets.exists(bgToUse))
 				{
 					loadedMenu = BitmapData.fromFile(bgToUse);
+				}else{
+					loadedMenu = BitmapData.fromFile(Paths.getPreloadPath('images/storyBackgrounds/week0.png'));
 				}if (loadedMenu != null){
+					//I'M QUEMMING!!!!
+					//OOOOH AAAAAH AAAAAH
 					storyBg.loadGraphic(loadedMenu);
 					storyBg.visible = true;
 				}
