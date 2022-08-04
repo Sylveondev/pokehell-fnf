@@ -1661,7 +1661,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		botplayTxt = new FlxText(400, (ClientPrefs.classicBotplayText ? timeBarBG.y - 55 : healthBarBG.y - 155), FlxG.width - 800, "BOTPLAY", 32);
+		botplayTxt = new FlxText(400, (ClientPrefs.classicBotplayText ? timeBarBG.y + 55 : healthBarBG.y - 155), FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.RED);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.5;
@@ -5421,7 +5421,7 @@ class PlayState extends MusicBeatState
 		}
 
 		//Hide the song artist thing now
-		if (curBeat >= 10 && (writerbg.x != 4)){
+		if (curBeat >= 10 && curBeat % 4 == 0){
 			FlxTween.tween(writertxt, {alpha: 0, x: -1000}, .5, {ease: FlxEase.backIn});
 			FlxTween.tween(writerbg, {alpha: 0, x: -1000}, .5, {ease: FlxEase.backIn});
 			FlxTween.tween(unsupportedText, {alpha: 0}, 10, {ease: FlxEase.circOut});

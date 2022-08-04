@@ -79,7 +79,7 @@ class StoryMenuState extends MusicBeatState
 		bg.color = 0xDAC133;
 		add(bg);
 
-		storyBg = new FlxSprite(-80).loadGraphic(Paths.image('storyBackgrounds/week0'));
+		storyBg = new FlxSprite(-80).loadGraphic(Paths.image('storyBackgrounds/week1'));
 		storyBg.scrollFactor.set(0, 0);
 		storyBg.updateHitbox();
 		storyBg.screenCenter();
@@ -378,6 +378,11 @@ class StoryMenuState extends MusicBeatState
 		
 		curWeek += change;
 
+		if (curWeek >= WeekData.weeksList.length)
+			curWeek = 0;
+		if (curWeek < 0)
+			curWeek = WeekData.weeksList.length - 1;
+
 		//Changes the story background
 		//If background doesn't exist, hide it.
 		storyBg.visible = false;
@@ -395,11 +400,6 @@ class StoryMenuState extends MusicBeatState
 					storyBg.loadGraphic(loadedMenu);
 					storyBg.visible = true;
 				}
-
-		if (curWeek >= WeekData.weeksList.length)
-			curWeek = 0;
-		if (curWeek < 0)
-			curWeek = WeekData.weeksList.length - 1;
 
 		var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[curWeek]);
 		WeekData.setDirectoryFromWeek(leWeek);

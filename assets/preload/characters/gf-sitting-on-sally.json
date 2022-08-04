@@ -1,10 +1,14 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"anim": "danceRight",
+			"fps": 24,
+			"name": "GF Dancing Beat",
 			"indices": [
 				15,
 				16,
@@ -21,17 +25,17 @@
 				27,
 				28,
 				29
-			],
-			"fps": 24,
-			"anim": "danceRight",
-			"loop": false,
-			"name": "GF Dancing Beat"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"anim": "danceLeft",
+			"fps": 24,
+			"name": "GF Dancing Beat",
 			"indices": [
 				30,
 				0,
@@ -49,15 +53,11 @@
 				12,
 				13,
 				14
-			],
-			"fps": 24,
-			"anim": "danceLeft",
-			"loop": false,
-			"name": "GF Dancing Beat"
+			]
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/gfEevee",
+	"image": "characters/GFEevee",
 	"position": [
 		0,
 		0

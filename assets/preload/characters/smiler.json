@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				300,
 				-20
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				60,
 				-33
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-60,
 				-10
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				140,
 				250
 			],
-			"loop": false,
-			"fps": 42,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Up"
+			"fps": 42,
+			"name": "Up",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/skitty",
+	"image": "characters/smiler",
 	"position": [
 		0,
 		300

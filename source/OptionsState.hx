@@ -994,7 +994,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 
 		if(options[curSelected] == 'Anti-Aliasing') {
 			if(showCharacter == null) {
-				showCharacter = new Character(840, 170, 'bf', true);
+				showCharacter = new Character(840, 170, 'bf-car', true);
 				showCharacter.setGraphicSize(Std.int(showCharacter.width * 0.8));
 				showCharacter.updateHitbox();
 				showCharacter.dance();

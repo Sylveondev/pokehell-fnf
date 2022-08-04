@@ -204,7 +204,7 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(-150, -100);
+		logoBl = new FlxSprite(-50, -25);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
@@ -642,11 +642,11 @@ class TitleState extends MusicBeatState
 		{
 
 			gfDance.x = FlxG.width + 50;
-			logoBl.x =  -(FlxG.width) - 50;
+			logoBl.y =  (FlxG.height) + 50;
 			FlxTween.tween(gfDance, {x: FlxG.width * 0.4, y:FlxG.height * 0.07}, 2, {ease: FlxEase.backOut});
-			FlxTween.tween(logoBl, {x: -150, y: -100}, 2, {ease: FlxEase.backOut, onComplete: function(twn:FlxTween){
+			FlxTween.tween(logoBl, {x: 50, y: 25}, 1, {ease: FlxEase.backOut, onComplete: function(twn:FlxTween){
 				//Only start tweening the logo if not in the process of switching states
-				if (canzoom) coolTitleTween = FlxTween.tween(logoBl, {y: 25}, 2, {ease: FlxEase.cubeInOut, type: PINGPONG});
+				if (canzoom) coolTitleTween = FlxTween.tween(logoBl, {y: logoBl.y + 25}, 2, {ease: FlxEase.cubeInOut, type: PINGPONG});
 			}});
 
 
