@@ -157,6 +157,7 @@ class TitleState extends MusicBeatState
 
 	var background:FlxSprite;
 	var logoBl:FlxSprite;
+	var txtEdition:FlxText;
 	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
 	var bgImg:FlxSprite;
@@ -213,6 +214,10 @@ class TitleState extends MusicBeatState
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
+		txtEdition = new FlxText(logoBl.x, logoBl.y + logoBl.height + 0.5, 0, "Psych Edition", 64);
+		txtEdition.setFormat(Paths.font("righteous.ttf"), 64, 0xFFD338F1, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		txtEdition.borderSize = 2.4;
+
 		//SylveonDev's method of fucking up the game.
 		//The background of the title screen is based on time of day.
 		//Good luck trying to explain this to tom.
@@ -256,7 +261,9 @@ class TitleState extends MusicBeatState
 		add(bgImg);
 		add(gfDance);
 		gfDance.shader = swagShader.shader;
+		bgImg.shader = swagShader.shader;
 		add(logoBl);
+		add(txtEdition);
 		//logoBl.shader = swagShader.shader;
 
 		titleText = new FlxSprite(100, FlxG.height * 0.8);
@@ -465,6 +472,10 @@ class TitleState extends MusicBeatState
 					}
 				}
 			}
+
+			txtEdition.x = logoBl.x + (logoBl.width * 0.2);
+			txtEdition.y = logoBl.y + logoBl.height - 36;
+			txtEdition.angle = logoBl.angle;
 		}
 
 		if (pressedEnter && !skippedIntro)
@@ -644,9 +655,9 @@ class TitleState extends MusicBeatState
 			gfDance.x = FlxG.width + 50;
 			logoBl.y =  (FlxG.height) + 50;
 			FlxTween.tween(gfDance, {x: FlxG.width * 0.4, y:FlxG.height * 0.07}, 2, {ease: FlxEase.backOut});
-			FlxTween.tween(logoBl, {x: 50, y: 25}, 1, {ease: FlxEase.backOut, onComplete: function(twn:FlxTween){
+			FlxTween.tween(logoBl, {x: 5, y: 5}, 1, {ease: FlxEase.backOut, startDelay: 0.5, onComplete: function(twn:FlxTween){
 				//Only start tweening the logo if not in the process of switching states
-				if (canzoom) coolTitleTween = FlxTween.tween(logoBl, {y: logoBl.y + 25}, 2, {ease: FlxEase.cubeInOut, type: PINGPONG});
+				if (canzoom) coolTitleTween = FlxTween.tween(logoBl, {y: logoBl.y + 100}, 2, {ease: FlxEase.cubeInOut, type: PINGPONG});
 			}});
 
 

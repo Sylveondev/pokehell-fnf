@@ -88,10 +88,13 @@ class StoryMenuState extends MusicBeatState
 		add(storyBg);
 
 		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
-		scoreText.setFormat(Paths.font("righteous.ttf"), 32);
+		scoreText.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.borderSize = 2.4;
 
 		txtWeekTitle = new FlxText(FlxG.width * 0.7, 10, 0, "", 32);
-		txtWeekTitle.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, RIGHT);
+		txtWeekTitle.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		txtWeekTitle.borderSize = 2.4;
+
 		txtWeekTitle.alpha = 0.7;
 
 		var rankText:FlxText = new FlxText(0, 10);
@@ -109,7 +112,8 @@ class StoryMenuState extends MusicBeatState
 		add(grpWeekText);
 
 		var blackBarThingie:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, 56, FlxColor.BLACK);
-		//add(blackBarThingie);
+		blackBarThingie.alpha = 0.2;
+		add(blackBarThingie);
 
 		grpWeekCharacters = new FlxTypedGroup<MenuCharacter>();
 
@@ -225,6 +229,8 @@ class StoryMenuState extends MusicBeatState
 		if(Math.abs(intendedScore - lerpScore) < 10) lerpScore = intendedScore;
 
 		scoreText.text = "WEEK SCORE:" + lerpScore;
+		scoreText.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.borderSize = 2.4;
 
 		// FlxG.watch.addQuick('font', scoreText.font);
 

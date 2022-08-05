@@ -1,0 +1,142 @@
+{
+	"animations": [
+		{
+			"anim": "idle",
+			"name": "John idle dance",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				50
+			]
+		},
+		{
+			"anim": "singLEFT",
+			"name": "John Sing Note LEFT",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				50
+			]
+		},
+		{
+			"anim": "singDOWN",
+			"name": "John Sing Note DOWN",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				30
+			]
+		},
+		{
+			"anim": "singUP",
+			"name": "John Sing Note UP",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				-20,
+				30
+			]
+		},
+		{
+			"anim": "singRIGHT",
+			"name": "John Sing Note RIGHT",
+			"fps": 24,
+			"loop": false,
+			"indices": [],
+			"offsets": [
+				0,
+				27
+			]
+		},
+		{
+			"anim": "idle-loop",
+			"name": "John idle dance",
+			"fps": 24,
+			"loop": true,
+			"indices": [
+				0,
+				11,
+				12,
+				1
+			],
+			"offsets": [
+				0,
+				50
+			]
+		},
+		{
+			"anim": "singLEFT-loop",
+			"name": "John Sing Note LEFT",
+			"fps": 24,
+			"loop": true,
+			"indices": [
+				2,
+				13,
+				14,
+				1
+			],
+			"offsets": [
+				0,
+				50
+			]
+		},
+		{
+			"anim": "singRIGHT-loop",
+			"name": "John Sing Note RIGHT",
+			"fps": 24,
+			"loop": true,
+			"indices": [
+				5,
+				16,
+				17,
+				1
+			],
+			"offsets": [
+				0,
+				27
+			]
+		},
+		{
+			"anim": "singUP-loop",
+			"name": "John Sing Note UP",
+			"fps": 24,
+			"loop": true,
+			"indices": [
+				6,
+				57,
+				58,
+				5
+			],
+			"offsets": [
+				-20,
+				30
+			]
+		}
+	],
+	"image": "characters/blue",
+	"scale": 1,
+	"sing_duration": 6.1,
+	"healthicon": "blue",
+	"position": [
+		0,
+		0
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"flip_x": false,
+	"no_antialiasing": false,
+	"healthbar_colors": [
+		160,
+		140,
+		255
+	]
+}
