@@ -1,0 +1,140 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				225,
+				54
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				49,
+				31
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-40,
+				180
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-120,
+				7
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "danceRight",
+			"fps": 24,
+			"name": "Idle",
+			"indices": [
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				10
+			]
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceLeft",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10
+			],
+			"name": "Idle"
+		},
+		{
+			"offsets": [
+				-35,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "stare",
+			"indices": [
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"name": "Stare"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/zane",
+	"position": [
+		0,
+		50
+	],
+	"healthicon": "zane",
+	"flip_x": false,
+	"healthbar_colors": [
+		142,
+		137,
+		255
+	],
+	"camera_position": [
+		-120,
+		120
+	],
+	"sing_duration": 4,
+	"scale": 0.799999999999999
+}

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="zaneMadCentered.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="DownPissCenter0000" x="0" y="0" width="993" height="285" frameX="0" frameY="-573" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0001" x="1003" y="0" width="838" height="599" frameX="-78" frameY="-287" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0002" x="1851" y="0" width="743" height="790" frameX="-125" frameY="-113" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0003" x="2604" y="0" width="696" height="887" frameX="-149" frameY="-25" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0004" x="3310" y="0" width="682" height="914" frameX="-156" frameY="0" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0005" x="4002" y="0" width="688" height="900" frameX="-153" frameY="-13" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0006" x="4700" y="0" width="702" height="873" frameX="-146" frameY="-38" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0007" x="5412" y="0" width="710" height="857" frameX="-142" frameY="-52" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0008" x="5412" y="0" width="710" height="857" frameX="-142" frameY="-52" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0009" x="5412" y="0" width="710" height="857" frameX="-142" frameY="-52" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0010" x="5412" y="0" width="710" height="857" frameX="-142" frameY="-52" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0011" x="5412" y="0" width="710" height="857" frameX="-142" frameY="-52" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0012" x="5412" y="0" width="710" height="857" frameX="-142" frameY="-52" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0013" x="5412" y="0" width="710" height="857" frameX="-142" frameY="-52" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0014" x="5412" y="0" width="710" height="857" frameX="-142" frameY="-52" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="DownPissCenter0015" x="5412" y="0" width="710" height="857" frameX="-142" frameY="-52" frameWidth="993" frameHeight="914"/>
+	<SubTexture name="IdlePissCenter0000" x="6132" y="0" width="710" height="857" frameX="-83" frameY="0" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0001" x="6852" y="0" width="795" height="773" frameX="-41" frameY="-78" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0002" x="0" y="924" width="827" height="742" frameX="-25" frameY="-106" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0003" x="837" y="924" width="847" height="724" frameX="-15" frameY="-123" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0004" x="1694" y="924" width="861" height="711" frameX="-8" frameY="-135" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0005" x="2565" y="924" width="869" height="702" frameX="-4" frameY="-143" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0006" x="3444" y="924" width="875" height="696" frameX="-1" frameY="-148" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0007" x="4329" y="924" width="877" height="694" frameX="0" frameY="-144" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0008" x="5216" y="924" width="771" height="797" frameX="-53" frameY="-55" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0009" x="5997" y="924" width="741" height="827" frameX="-68" frameY="-29" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0010" x="6748" y="924" width="727" height="840" frameX="-75" frameY="-18" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0011" x="0" y="1774" width="719" height="848" frameX="-79" frameY="-11" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0012" x="729" y="1774" width="715" height="852" frameX="-81" frameY="-7" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0013" x="1454" y="1774" width="713" height="855" frameX="-82" frameY="-5" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0014" x="2177" y="1774" width="711" height="856" frameX="-83" frameY="-4" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="IdlePissCenter0015" x="6132" y="0" width="710" height="857" frameX="-83" frameY="0" frameWidth="877" frameHeight="860"/>
+	<SubTexture name="LeftPissCenter0000" x="2898" y="1774" width="525" height="635" frameX="-101" frameY="-122" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0001" x="3433" y="1774" width="627" height="756" frameX="-50" frameY="-62" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0002" x="4070" y="1774" width="689" height="831" frameX="-19" frameY="-25" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0003" x="4769" y="1774" width="719" height="868" frameX="-4" frameY="-6" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0004" x="5498" y="1774" width="728" height="880"/>
+	<SubTexture name="LeftPissCenter0005" x="6236" y="1774" width="724" height="874" frameX="-2" frameY="-3" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0006" x="6970" y="1774" width="715" height="862" frameX="-6" frameY="-9" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0007" x="0" y="2664" width="710" height="857" frameX="-9" frameY="-12" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0008" x="0" y="2664" width="710" height="857" frameX="-9" frameY="-12" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0009" x="0" y="2664" width="710" height="857" frameX="-9" frameY="-12" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0010" x="0" y="2664" width="710" height="857" frameX="-9" frameY="-12" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0011" x="0" y="2664" width="710" height="857" frameX="-9" frameY="-12" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0012" x="0" y="2664" width="710" height="857" frameX="-9" frameY="-12" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0013" x="0" y="2664" width="710" height="857" frameX="-9" frameY="-12" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0014" x="0" y="2664" width="710" height="857" frameX="-9" frameY="-12" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="LeftPissCenter0015" x="0" y="2664" width="710" height="857" frameX="-9" frameY="-12" frameWidth="728" frameHeight="880"/>
+	<SubTexture name="RightPissCenter0000" x="720" y="2664" width="995" height="1202"/>
+	<SubTexture name="RightPissCenter0001" x="1725" y="2664" width="839" height="1012" frameX="-78" frameY="-95" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0002" x="2574" y="2664" width="743" height="898" frameX="-126" frameY="-152" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0003" x="3327" y="2664" width="695" height="840" frameX="-150" frameY="-181" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0004" x="4032" y="2664" width="681" height="822" frameX="-157" frameY="-190" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0005" x="4723" y="2664" width="689" height="830" frameX="-153" frameY="-186" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0006" x="5422" y="2664" width="703" height="848" frameX="-146" frameY="-177" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0007" x="6135" y="2664" width="710" height="857" frameX="-142" frameY="-172" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0008" x="6135" y="2664" width="710" height="857" frameX="-142" frameY="-172" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0009" x="6135" y="2664" width="710" height="857" frameX="-142" frameY="-172" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0010" x="6135" y="2664" width="710" height="857" frameX="-142" frameY="-172" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0011" x="6135" y="2664" width="710" height="857" frameX="-142" frameY="-172" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0012" x="6135" y="2664" width="710" height="857" frameX="-142" frameY="-172" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0013" x="6135" y="2664" width="710" height="857" frameX="-142" frameY="-172" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0014" x="6135" y="2664" width="710" height="857" frameX="-142" frameY="-172" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="RightPissCenter0015" x="6135" y="2664" width="710" height="857" frameX="-142" frameY="-172" frameWidth="995" frameHeight="1202"/>
+	<SubTexture name="UpPissCenter0000" x="6855" y="2664" width="710" height="1118" frameX="0" frameY="-116" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0001" x="0" y="3876" width="710" height="849" frameX="0" frameY="-58" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0002" x="720" y="3876" width="710" height="685" frameX="0" frameY="-23" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0003" x="1440" y="3876" width="710" height="603" frameX="0" frameY="-5" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0004" x="2160" y="3876" width="710" height="579" frameX="0" frameY="0" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0005" x="2880" y="3876" width="710" height="590" frameX="0" frameY="-3" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0006" x="3600" y="3876" width="710" height="614" frameX="0" frameY="-8" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0007" x="4320" y="3876" width="710" height="627" frameX="0" frameY="-11" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0008" x="4320" y="3876" width="710" height="627" frameX="0" frameY="-11" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0009" x="4320" y="3876" width="710" height="627" frameX="0" frameY="-11" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0010" x="4320" y="3876" width="710" height="627" frameX="0" frameY="-11" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0011" x="4320" y="3876" width="710" height="627" frameX="0" frameY="-11" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0012" x="4320" y="3876" width="710" height="627" frameX="0" frameY="-11" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0013" x="4320" y="3876" width="710" height="627" frameX="0" frameY="-11" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0014" x="4320" y="3876" width="710" height="627" frameX="0" frameY="-11" frameWidth="710" frameHeight="1234"/>
+	<SubTexture name="UpPissCenter0015" x="4320" y="3876" width="710" height="627" frameX="0" frameY="-11" frameWidth="710" frameHeight="1234"/>
+</TextureAtlas>

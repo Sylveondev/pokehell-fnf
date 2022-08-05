@@ -4611,6 +4611,7 @@ class PlayState extends MusicBeatState
 		comboSpr.visible = !ClientPrefs.hideHud;
 
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
+		//add(comboSpr);
 		add(rating);
 
 		if (!PlayState.isPixelStage)

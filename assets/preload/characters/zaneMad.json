@@ -1,0 +1,107 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				465,
+				54
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left"
+		},
+		{
+			"offsets": [
+				39,
+				31
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down"
+		},
+		{
+			"offsets": [
+				-70,
+				190
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up"
+		},
+		{
+			"offsets": [
+				-180,
+				37
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"fps": 24,
+			"anim": "danceLeft",
+			"loop": false,
+			"name": "IdlePiss"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
+			],
+			"fps": 24,
+			"anim": "danceRight",
+			"loop": false,
+			"name": "IdlePiss"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/zaneMad",
+	"position": [
+		0,
+		50
+	],
+	"healthicon": "zane",
+	"flip_x": false,
+	"healthbar_colors": [
+		142,
+		137,
+		255
+	],
+	"camera_position": [
+		-120,
+		120
+	],
+	"sing_duration": 4,
+	"scale": 0.799999999999999
+}

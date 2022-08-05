@@ -1043,7 +1043,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.imagesPersist;
 					case 'Hide Song Length':
 						daValue = ClientPrefs.hideTime;
-					case 'optimization':
+					case 'Optimization':
 						daValue = ClientPrefs.optimization;
 					case 'Do HealthIcon rotation':
 						daValue = ClientPrefs.dohealthrot;
@@ -1556,7 +1556,7 @@ class CustomizationSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.imagesPersist;
 					case 'Hide Song Length':
 						daValue = ClientPrefs.hideTime;
-					case 'optimization':
+					case 'Optimization':
 						daValue = ClientPrefs.optimization;
 					case 'Do HealthIcon rotation':
 						daValue = ClientPrefs.dohealthrot;
