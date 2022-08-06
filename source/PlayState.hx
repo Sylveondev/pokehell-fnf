@@ -1661,7 +1661,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		botplayTxt = new FlxText(400, (ClientPrefs.classicBotplayText ? timeBarBG.y + 55 : healthBarBG.y - 155), FlxG.width - 800, "BOTPLAY", 32);
+		botplayTxt = new FlxText(400, (ClientPrefs.classicBotplayText ? (ClientPrefs.downScroll ? timeBarBG.y - 55 : timeBarBG.y + 55) : (ClientPrefs.downScroll ? healthBarBG.y + 155 : healthBarBG.y - 155)), FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.RED);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.5;
@@ -3046,12 +3046,12 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if(ratingString == '?') {
-			scoreTxt.text = (!ClientPrefs.classicHUD ? ('Sc.: ' + songScore + ' | Mis.: ' + songMisses + ' | Avg.: ?' + ' | Ra.: ' + ratingString + (cpuControlled ? ' | Botplay':'') + (cpuControlled ? ' | Prac. Mode':'')):('Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString));
+			scoreTxt.text = (!ClientPrefs.classicHUD ? ('Sc.: ' + songScore + ' | Mis.: ' + songMisses + ' | Avg.: ?' + ' | Ra.: ' + ratingString + (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | Prac. Mode':'')):('Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString + (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | Prac. Mode':'')));
 		} else {
-			scoreTxt.text = (!ClientPrefs.classicHUD ? ('Sc.: ' + songScore + ' | Mis.: ' + songMisses + ' | Avg.: ' + Math.round(averageMs) + 'ms' + ' | Ra.: ' + ratingString + ' (' + Math.floor(ratingPercent * 100) + '%)' + ' | (' + ratingFC + ') ' + ranking + (cpuControlled ? ' | Botplay':'') + (cpuControlled ? ' | Prac. Mode':'')):('Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString + ' (' + Math.floor(ratingPercent * 100) + '%)'));
+			scoreTxt.text = (!ClientPrefs.classicHUD ? ('Sc.: ' + songScore + ' | Mis.: ' + songMisses + ' | Avg.: ' + Math.round(averageMs) + 'ms' + ' | Ra.: ' + ratingString + ' (' + Math.floor(ratingPercent * 100) + '%)' + ' | (' + ratingFC + ') ' + ranking + (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | Prac. Mode':'')):('Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString + ' (' + Math.floor(ratingPercent * 100) + '%)'+ (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | Prac. Mode':'')));
 		}
 
-		if(cpuControlled) {
+		if(cpuControlled && ClientPrefs.classicBotplayText) {
 			botplaySine += 180 * elapsed;
 			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
 		}
@@ -3187,20 +3187,58 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
-		if (!ClientPrefs.dohealthrot){
-			iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
-			iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
-		}
+		//if (!ClientPrefs.dohealthrot){
+			//Old version of classic bumpin
+			//iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+			//iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * 30), 0, 1))));
+		//}
 
-		iconP1.updateHitbox();
-		iconP2.updateHitbox();
+		
 
 		
 
 		var iconOffset:Int = 26;
 
+		if (ClientPrefs.dohealthrot){
+			var multX:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			var multY:Float = FlxMath.lerp(1, iconP1.scale.y, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			var multAngle:Float = FlxMath.lerp(1, iconP1.angle, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconP1.scale.set(multX, multY);
+			iconP1.angle = multAngle;
+			iconP1.updateHitbox();
+	
+			var multX:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			var multY:Float = FlxMath.lerp(1, iconP2.scale.y, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			var multAngle:Float = FlxMath.lerp(1, iconP2.angle, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconP2.scale.set(multX, multY);
+			iconP2.angle = multAngle;
+			iconP2.updateHitbox();
+		}else{
+			var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconP1.scale.set(mult, mult);
+			iconP1.updateHitbox();
+	
+			var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconP2.scale.set(mult, mult);
+			iconP2.updateHitbox();
+	
+			//Old version of the icon bumpin'
+
+			//iconP1.setGraphicSize(Std.int(iconP1.width + 30));
+			//iconP2.setGraphicSize(Std.int(iconP2.width + 30));
+		}
+
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+		iconP1.updateHitbox();
+		iconP2.updateHitbox();
+
+		var multAngle:Float = FlxMath.lerp(1, timeBarBG.angle, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		scoreTxt.angle = multAngle;
+		timeBarBG.angle = multAngle;
+		timeBarOverlay.angle = multAngle;
+		timeTxt.angle = multAngle;
+		timeBar.angle = multAngle;
 
 		if (health > 2)
 			health = 2;
@@ -3478,8 +3516,9 @@ class PlayState extends MusicBeatState
 
 					opponentStrums.forEach(function(spr:StrumNote)
 						{
-							if (Math.abs(daNote.noteData) == spr.ID)
+							if (Math.abs(daNote.noteData) == spr.ID && !daNote.isSustainNote)
 							{
+								FlxTween.cancelTweensOf(spr);
 								spr.scale.x = Note.scales[PlayState.SONG.mania] + 0.4;
 								spr.scale.y = Note.scales[PlayState.SONG.mania] - 0.4;
 								FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut});
@@ -4565,7 +4604,7 @@ class PlayState extends MusicBeatState
 			songScore += score;
 			songHits++;
 			RecalculateRating();
-			if(scoreTxtTween != null) {
+			/*if(scoreTxtTween != null) {
 				scoreTxtTween.cancel();
 			}
 			scoreTxt.scale.x = 1.1;
@@ -4574,7 +4613,7 @@ class PlayState extends MusicBeatState
 				onComplete: function(twn:FlxTween) {
 					scoreTxtTween = null;
 				}
-			});
+			});*/
 		}
 
 		/* if (combo > 60)
@@ -5046,7 +5085,9 @@ class PlayState extends MusicBeatState
 	
 				if (!note.isSustainNote)
 				{
-					popUpScore(note);
+					//Disables the rating system entirely if botplay is enabled.
+					//This should prevent lagging on spammy songs.
+					if (!cpuControlled) popUpScore(note);
 					if (combo < 9999) combo += 1;	//who the fuck put 9999+ notes
 					if (combo > highestcombo) highestcombo = combo;
 				}
@@ -5087,8 +5128,9 @@ class PlayState extends MusicBeatState
 					}
 					playerStrums.forEach(function(spr:StrumNote)
 						{
-							if (Math.abs(note.noteData) == spr.ID)
+							if (Math.abs(note.noteData) == spr.ID && !note.isSustainNote)
 							{
+								FlxTween.cancelTweensOf(spr);
 								spr.scale.x = Note.scales[PlayState.SONG.mania] + 0.4;
 								spr.scale.y = Note.scales[PlayState.SONG.mania] - 0.4;
 								FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut});
@@ -5098,8 +5140,9 @@ class PlayState extends MusicBeatState
 				} else {
 					playerStrums.forEach(function(spr:StrumNote)
 					{
-						if (Math.abs(note.noteData) == spr.ID)
+						if (Math.abs(note.noteData) == spr.ID && !note.isSustainNote)
 						{
+							FlxTween.cancelTweensOf(spr);
 							spr.scale.x = Note.scales[PlayState.SONG.mania] + 0.4;
 							spr.scale.y = Note.scales[PlayState.SONG.mania] - 0.4;
 							FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut});
@@ -5430,6 +5473,7 @@ class PlayState extends MusicBeatState
 		
 		//I have no god damn idea what I'm doing.
 		//The old icon rotation was glitchy so I moved it to beathit.
+		/*
 		if (curBeat % gfSpeed == 0) {
 			curBeat % (gfSpeed * 2) == 0 ? {
 				if (ClientPrefs.dohealthrot){
@@ -5449,7 +5493,7 @@ class PlayState extends MusicBeatState
 			
 			iconP1.updateHitbox();
 			iconP2.updateHitbox();
-		}
+		}*/
 
 		if (curStage == 'tank') {
 			if (curBeat % 2 == 0) {
@@ -5499,8 +5543,10 @@ class PlayState extends MusicBeatState
 		}
 
 		if (!ClientPrefs.dohealthrot){
-			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
-			iconP2.setGraphicSize(Std.int(iconP2.width + 30));
+			//Old version of the icon bumpin'
+
+			//iconP1.setGraphicSize(Std.int(iconP1.width + 30));
+			//iconP2.setGraphicSize(Std.int(iconP2.width + 30));
 		}
 
 		iconrot = iconrot * -1;
@@ -5510,9 +5556,40 @@ class PlayState extends MusicBeatState
 		//FlxTween.angle(iconP1, (32 * iconrot), 0, 1, {ease: FlxEase.quartOut});
 		//FlxTween.angle(iconP2, -(32 * iconrot), 0, 1, {ease: FlxEase.quartOut});
 
-		if (!ClientPrefs.dohealthrot){
+		if (ClientPrefs.dohealthrot){
+			curBeat % (gfSpeed * 2) == 0 ? {
+				iconP1.angle = ClientPrefs.healthrot;
+				iconP2.angle = -ClientPrefs.healthrot;
+				iconP1.scale.set(0.8, 1.2);
+				iconP2.scale.set(1.2, 0.8);
+			} : {
+				iconP1.angle = -ClientPrefs.healthrot;
+				iconP2.angle = ClientPrefs.healthrot;
+				iconP1.scale.set(1.2, 0.8);
+				iconP2.scale.set(0.8, 1.2);
+			}
+			
 			iconP1.updateHitbox();
 			iconP2.updateHitbox();
+		}else{
+			iconP1.scale.set(1.2, 1.2);
+			iconP2.scale.set(1.2, 1.2);
+			iconP1.updateHitbox();
+			iconP2.updateHitbox();
+		}
+
+		curBeat % (gfSpeed * 2) == 0 ? {
+			scoreTxt.angle = 8;
+			timeBarBG.angle = 8;
+			timeBarOverlay.angle = 8;
+			timeTxt.angle = 8;
+			timeBar.angle = 8;
+		} : {
+			scoreTxt.angle = -8;
+			timeBarBG.angle = -8;
+			timeBarOverlay.angle = -8;
+			timeTxt.angle = -8;
+			timeBar.angle = -8;
 		}
 
 		if (curBeat % gfSpeed == 0 && !gf.stunned && gf.animation.curAnim.name != null && !gf.animation.curAnim.name.startsWith("sing"))

@@ -288,7 +288,7 @@ class TitleState extends MusicBeatState
 		add(credGroup);
 		textGroup = new FlxGroup();
 
-		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF6F4115);
 		credGroup.add(blackScreen);
 
 		credTextShit = new Alphabet(0, 0, "", true);
@@ -409,6 +409,7 @@ class TitleState extends MusicBeatState
 				
 				FlxTween.tween(gfDance, {y: FlxG.height + 50}, .75, {ease: FlxEase.backIn});
 				FlxTween.tween(logoBl, {y: -(FlxG.height) - 50}, .75, {ease: FlxEase.backIn});
+				FlxTween.tween(txtEdition, {y: -(FlxG.height) - 50}, .75, {ease: FlxEase.backIn});
 				FlxTween.tween(titleText, {y: -(FlxG.height) - 50}, .75, {ease: FlxEase.backIn});
 				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.5, {ease: FlxEase.quadOut,startDelay: .75});
 
