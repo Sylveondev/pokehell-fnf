@@ -3051,9 +3051,9 @@ class PlayState extends MusicBeatState
 			scoreTxt.text = (!ClientPrefs.classicHUD ? ('Sc.: ' + songScore + ' | Mis.: ' + songMisses + ' | Avg.: ' + Math.round(averageMs) + 'ms' + ' | Ra.: ' + ratingString + ' (' + Math.floor(ratingPercent * 100) + '%)' + ' | (' + ratingFC + ') ' + ranking + (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | Prac. Mode':'')):('Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString + ' (' + Math.floor(ratingPercent * 100) + '%)'+ (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | Prac. Mode':'')));
 		}
 
-		if(cpuControlled && ClientPrefs.classicBotplayText) {
+		if(cpuControlled) {
 			botplaySine += 180 * elapsed;
-			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
+			botplayTxt.alpha = ClientPrefs.classicBotplayText ? 1 - Math.sin((Math.PI * botplaySine) / 180) : 1;
 		}
 		botplayTxt.visible = cpuControlled;
 
