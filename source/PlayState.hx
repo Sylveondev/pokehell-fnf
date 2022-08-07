@@ -552,6 +552,10 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('greenally', -600, -200, 1, 1);
 				add(bg);
 
+			case 'creepyHouse': //Secret Week 1: Denis
+				var bg:BGSprite = new BGSprite('creepyHouse', -600, -200, 1, 1);
+				add(bg);
+
 			case 'stage2': //Week 2: Jolteon
 				var bg:BGSprite = new BGSprite('stage2', -600, -200, 1, 1);
 				add(bg);
