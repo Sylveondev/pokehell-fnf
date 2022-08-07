@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.tweens.FlxTween;
 
 using StringTools;
 
@@ -14,6 +15,8 @@ class StrumNote extends FlxSprite
 
 	public var defaultY:Float;
 	public var defaultX:Float;
+
+	public var bumpTween:FlxTween;
 
 	public function new(x:Float, y:Float, leData:Int) {
 		colorSwap = new ColorSwap();

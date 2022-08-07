@@ -698,6 +698,11 @@ class PlayState extends MusicBeatState
 
 			case 'box': //Week 9: Espeon
 				if (SONG.song.toLowerCase() == 'crossover'){
+					coDark = new FlxSprite(0,0).loadGraphic(Paths.image('lightgradient'));
+					coDark.cameras = [camOther];
+					coDark.visible = false;
+					add(coDark);
+
 					addCharacterToList('bfGray', 0);
 					var bg:BGSprite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
 					bg.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), 0xFFA0A0A0);
@@ -3518,10 +3523,15 @@ class PlayState extends MusicBeatState
 						{
 							if (Math.abs(daNote.noteData) == spr.ID && !daNote.isSustainNote)
 							{
-								FlxTween.cancelTweensOf(spr);
+								if (spr.bumpTween != null){
+									spr.bumpTween.cancel();
+									spr.bumpTween = null;
+								}
 								spr.scale.x = Note.scales[PlayState.SONG.mania] + 0.4;
 								spr.scale.y = Note.scales[PlayState.SONG.mania] - 0.4;
-								FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut});
+								spr.bumpTween = FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut, onComplete: function(_){
+									spr.bumpTween = null;
+								}});
 							}
 						});
 					StrumPlayAnim(true, Std.int(Math.abs(daNote.noteData)) % Main.ammo[mania], time);
@@ -5130,10 +5140,15 @@ class PlayState extends MusicBeatState
 						{
 							if (Math.abs(note.noteData) == spr.ID && !note.isSustainNote)
 							{
-								FlxTween.cancelTweensOf(spr);
+								if (spr.bumpTween != null){
+									spr.bumpTween.cancel();
+									spr.bumpTween = null;
+								}
 								spr.scale.x = Note.scales[PlayState.SONG.mania] + 0.4;
 								spr.scale.y = Note.scales[PlayState.SONG.mania] - 0.4;
-								FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut});
+								spr.bumpTween = FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut, onComplete: function(_){
+									spr.bumpTween = null;
+								}});
 							}
 						});
 					StrumPlayAnim(false, Std.int(Math.abs(note.noteData)) % Main.ammo[mania], time);
@@ -5142,10 +5157,15 @@ class PlayState extends MusicBeatState
 					{
 						if (Math.abs(note.noteData) == spr.ID && !note.isSustainNote)
 						{
-							FlxTween.cancelTweensOf(spr);
+							if (spr.bumpTween != null){
+								spr.bumpTween.cancel();
+								spr.bumpTween = null;
+							}
 							spr.scale.x = Note.scales[PlayState.SONG.mania] + 0.4;
 							spr.scale.y = Note.scales[PlayState.SONG.mania] - 0.4;
-							FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut});
+							spr.bumpTween = FlxTween.tween(spr.scale, {x: Note.scales[PlayState.SONG.mania], y: Note.scales[PlayState.SONG.mania]}, 0.3, {ease: FlxEase.quadOut, onComplete: function(_){
+								spr.bumpTween = null;
+							}});
 							spr.playAnim('confirm', true);
 						}
 					});
@@ -5636,13 +5656,6 @@ class PlayState extends MusicBeatState
 			case 'box':
 				if (ClientPrefs.sourceModcharts){
 				if (SONG.song.toLowerCase() == 'crossover'){
-					//Load in the dark sprite
-					if (curBeat == 2){
-						coDark = new FlxSprite(0,0).loadGraphic(Paths.image('lightgradient'));
-						coDark.cameras = [camOther];
-						coDark.visible = false;
-						add(coDark);
-					}
 					if (curBeat >= 32 && curBeat <= 47){
 						FlxTween.tween(camHUD, {angle: invert * 2}, Conductor.stepCrochet*0.008, {ease:FlxEase.circOut, type:BACKWARD});
 						FlxTween.tween(FlxG.camera, {angle: invert * 2}, Conductor.stepCrochet*0.008, {ease:FlxEase.circOut, type:BACKWARD});
@@ -5663,6 +5676,35 @@ class PlayState extends MusicBeatState
 						}
 					}
 					if (curBeat == 48){
+						coBfTrail = new FlxTrail(boyfriend, null, 16, 6, 0.6, 0.2); //nice
+						coBfTrail.visible = false;
+						insert(members.indexOf(boyfriendGroup) - 1, coBfTrail);
+						coGfTrail = new FlxTrail(fakegf, null, 16, 6, 0.6, 0.2); //nice
+						coGfTrail.visible = false;
+						insert(members.indexOf(gfGroup) - 1, coGfTrail);
+						coDadTrail = new FlxTrail(dad, null, 16, 6, 0.6, 0.2); //nice
+						coDadTrail.visible = false;
+						insert(members.indexOf(dadGroup) - 1, coDadTrail);
+
+						var dargb = FlxColor.fromRGB(gf.healthColorArray[0], gf.healthColorArray[1], gf.healthColorArray[2]);
+						dargb.saturation = 1;
+
+						coGfTrail.color = dargb;
+
+						var dargb = FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]);
+						dargb.saturation = 1;
+
+						coBfTrail.color = dargb;
+
+						var dargb = FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]);
+						dargb.saturation = 1;
+
+						coDadTrail.color = dargb;
+						
+						coBfTrail.visible = true;
+                    	coGfTrail.visible = true;
+                    	coDadTrail.visible = true;
+
 						if (ClientPrefs.windowMove){
 						FlxG.resizeWindow(630,360);
 						application.window.x = Math.floor((Capabilities.screenResolutionX / 2) - (630 / 2));
@@ -5711,21 +5753,6 @@ class PlayState extends MusicBeatState
 						}
 					}
 					if (curBeat == 80){
-						
-						coBfTrail = new FlxTrail(boyfriend, null, 2, 6, 0.3, 0.069); //nice
-						coBfTrail.visible = false;
-						insert(members.indexOf(boyfriendGroup) - 1, coBfTrail);
-						coGfTrail = new FlxTrail(fakegf, null, 2, 6, 0.3, 0.069); //nice
-						coGfTrail.visible = false;
-						insert(members.indexOf(gfGroup) - 1, coGfTrail);
-						coDadTrail = new FlxTrail(dad, null, 2, 6, 0.3, 0.069); //nice
-						coDadTrail.visible = false;
-						insert(members.indexOf(dadGroup) - 1, coDadTrail);
-						
-						coBfTrail.visible = true;
-                    	coGfTrail.visible = true;
-                    	coDadTrail.visible = true;
-
 						FlxTween.tween(camHUD, {alpha: 0}, 1, {ease: FlxEase.quadOut});
 					}
 					if (ClientPrefs.flashing && curBeat >= 80 && curBeat <= 112){
@@ -5736,10 +5763,12 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(camHUD, {alpha: 1}, 10, {ease: FlxEase.quadInOut});
 						if (curBeat == 80)
 							FlxG.camera.flash(FlxColor.WHITE, 1);
+							camHUD.angle = 0;
+							camGame.angle = 0;
 						if (curBeat % 2 == 0){
 							var dargb = FlxColor.fromRGB(FlxG.random.int(0,255),FlxG.random.int(0,255),FlxG.random.int(0,255));
 							
-							dargb.saturation = 0.5;
+							dargb.saturation = 1;
 							coDark.visible = true;
 							coDark.alpha = 1;
 							coDark.color = dargb;
