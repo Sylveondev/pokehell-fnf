@@ -32,6 +32,26 @@ class Conductor
 	{
 	}
 
+	//Alr Ima try adding ms inputs
+	public static function judgeNote(note:Note, diff:Float=0) //STOLEN FROM KADE ENGINE (bbpanzu) - I had to rewrite it later anyway after i added the custom hit windows lmao (Shadow Mario)
+		{
+			//tryna do MS based judgment due to popular demand
+			var timingWindows:Array<Int> = [10, 45, 90, 135];
+			//The awesome rating is gonna be really rare on the new input system so yeah.
+
+			var windowNames:Array<String> = ['awesome', 'sick', 'good', 'bad'];
+	
+			// var diff = Math.abs(note.strumTime - Conductor.songPosition) / (PlayState.songMultiplier >= 1 ? PlayState.songMultiplier : 1);
+			for(i in 0...timingWindows.length) // based on 4 timing windows, will break with anything else
+			{
+				if (diff <= timingWindows[Math.round(Math.min(i, timingWindows.length - 1))])
+				{
+					return windowNames[i];
+				}
+			}
+			return 'shit';
+		}
+
 	public static function mapBPMChanges(song:SwagSong)
 	{
 		bpmChangeMap = [];
@@ -65,5 +85,36 @@ class Conductor
 
 		crochet = ((60 / bpm) * 1000);
 		stepCrochet = crochet / 4;
+	}
+}
+
+
+class Rating
+{
+	public var name:String = '';
+	public var image:String = '';
+	public var counter:String = '';
+	public var hitWindow:Null<Int> = 0; //ms
+	public var ratingMod:Float = 1;
+	public var score:Int = 350;
+	public var noteSplash:Bool = true;
+
+	var hitWindows:Array<Int> = [];
+
+	public function new(name:String)
+	{
+		this.name = name;
+		this.image = name;
+		this.counter = name + 's';
+		this.hitWindow = Reflect.field(ClientPrefs, name + 'Window');
+		if(hitWindow == null)
+		{
+			hitWindow = 0;
+		}
+	}
+
+	public function increase(blah:Int = 1)
+	{
+		Reflect.setField(PlayState.instance, counter, Reflect.field(PlayState.instance, counter) + blah);
 	}
 }

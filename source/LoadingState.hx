@@ -114,7 +114,16 @@ class LoadingState extends MusicBeatState
 			// library.pathGroups.set(symbolPath, [library.__cacheBreak(symbolPath)]);
 			var callback = callbacks.add("song:" + path);
 			trace('Adding callback "song:'+ path +'"');
-			Assets.loadSound(path).onComplete(function (_) { trace("Success!"); callback(); }).onError(function(err){ trace("Failed to load sound: "+ path+"\nReason:"+err); fails++; });
+			#if MODS_ALLOWED 
+				var funnysong = Paths.returnSongFile(path);
+				if (funnysong != null)
+				{trace('Success!'); callback();}
+				else
+				{trace('Failed to load '+path); fails++;}
+
+			#else 
+				Assets.loadSound(path).onComplete(function (_) { trace("Success!"); callback(); }).onError(function(err){ trace("Failed to load sound: "+ path+"\nReason:"+err); fails++; });
+			#end
 		}
 	}
 	

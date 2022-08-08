@@ -186,13 +186,13 @@ class Paths
 		var file:Sound = returnSongFile(modsSongs(song.toLowerCase().replace(' ', '-') + '/Voices'));
 		if(file != null) {
 			if (returnPath){
-				return 'mods/songs/${song.toLowerCase().replace(' ', '-')}/Voices.$SOUND_EXT';
+				return modsSongs(song.toLowerCase().replace(' ', '-') + '/Voices');
 			}else{
 				return file;
 			}
 		}
 		#end
-		return 'songs:assets/songs/${song.toLowerCase().replace(' ', '-')}/Voices.$SOUND_EXT';
+		return #if !MODS_ALLOWED 'songs:' + #else (returnPath == true ? '' : 'songs:')+#end 'assets/songs/${song.toLowerCase().replace(' ', '-')}/Voices.$SOUND_EXT';
 	}
 
 	inline static public function inst(song:String, ?returnPath:Bool = false):Any
@@ -201,17 +201,17 @@ class Paths
 		var file:Sound = returnSongFile(modsSongs(song.toLowerCase().replace(' ', '-') + '/Inst'));
 		if(file != null) {
 			if (returnPath){
-				return 'mods/songs/${song.toLowerCase().replace(' ', '-')}/Inst.$SOUND_EXT';
+				return modsSongs(song.toLowerCase().replace(' ', '-') + '/Inst');
 			}else{
 				return file;
 			}
 		}
 		#end
-		return 'songs:assets/songs/${song.toLowerCase().replace(' ', '-')}/Inst.$SOUND_EXT';
+		return #if !MODS_ALLOWED 'songs:' + #else (returnPath == true ? '' : 'songs:')+#end 'assets/songs/${song.toLowerCase().replace(' ', '-')}/Inst.$SOUND_EXT';
 	}
 
 	#if MODS_ALLOWED
-	inline static private function returnSongFile(file:String):Sound
+	inline static public function returnSongFile(file:String):Sound
 	{
 		if(FileSystem.exists(file)) {
 			if(!customSoundsLoaded.exists(file)) {

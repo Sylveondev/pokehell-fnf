@@ -1,78 +1,78 @@
 {
 	"animations": [
 		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "idle",
+			"fps": 24,
 			"name": "idle",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				0
-			]
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				140,
+				-3
+			],
 			"anim": "singLEFT",
+			"fps": 24,
 			"name": "left",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				0
-			]
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				24,
+				-10
+			],
 			"anim": "singDOWN",
+			"fps": 24,
 			"name": "down",
-			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				0
-			]
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				-13,
+				84
+			],
 			"anim": "singUP",
-			"name": "up",
 			"fps": 24,
-			"loop": false,
-			"indices": [],
-			"offsets": [
-				0,
-				0
-			]
+			"name": "up",
+			"indices": []
 		},
 		{
-			"anim": "singRIGHT",
-			"name": "right",
-			"fps": 24,
 			"loop": false,
-			"indices": [],
 			"offsets": [
-				0,
-				0
-			]
+				-14,
+				-2
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		}
 	],
-	"image": "characters/espeonretro",
-	"scale": 1.3000000000000003,
-	"sing_duration": 4,
-	"healthicon": "espeon",
+	"no_antialiasing": false,
+	"image": "characters/espeon-retro",
 	"position": [
 		0,
 		280
 	],
-	"camera_position": [
-		-20,
-		-240
-	],
+	"healthicon": "espeon",
 	"flip_x": false,
-	"no_antialiasing": false,
 	"healthbar_colors": [
 		225,
 		79,
 		255
-	]
+	],
+	"camera_position": [
+		-170,
+		-40
+	],
+	"sing_duration": 4,
+	"scale": 1.3
 }

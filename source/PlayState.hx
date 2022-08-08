@@ -335,6 +335,7 @@ class PlayState extends MusicBeatState
 	var boyfriendIdled:Bool = false;
 
 	// Lua shit
+	public static var instance:PlayState;
 	private var luaDebugGroup:FlxTypedGroup<DebugLuaText>;
 	public var introSoundsSuffix:String = '';
 
@@ -345,6 +346,11 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+
+		//Screw this garbage line.
+		//I'm gonna play quem now because epic
+		instance = this;
+
 		//Initialize unused variables
 		if (SONG.noBotplay != false || SONG.noBotplay != true) SONG.noBotplay = false;
 		if (SONG.noPractice != false || SONG.noPractice != true) SONG.noPractice = false;
@@ -4574,11 +4580,14 @@ class PlayState extends MusicBeatState
 		coolText.screenCenter();
 		coolText.x = FlxG.width * 0.55;
 		//
-
+		var daRating:String;
 		var rating:FlxSprite = new FlxSprite();
 		var score:Int = 500;
 
-		var daRating:String = "awesome";
+		if (!ClientPrefs.newInput){
+		
+
+		daRating = "awesome";
 
 		if (noteDiff > Conductor.safeZoneOffset * 0.75)
 		{
@@ -4610,6 +4619,39 @@ class PlayState extends MusicBeatState
 		{
 			spawnNoteSplashOnNote(note);
 			awesomes++;
+		}
+		}else{
+			daRating = Conductor.judgeNote(note, noteDiff);
+
+			if (daRating == 'shit')
+				{
+					score = 50;
+					shits++;
+				}
+				else if (daRating == 'bad')
+				{
+					score = 100;
+					bads++;
+				}
+				else if (daRating == 'good')
+				{
+					daRating = 'good';
+					score = 200;
+					goods++;
+				}
+				else if (daRating == 'sick')
+				{
+					spawnNoteSplashOnNote(note);
+					daRating = 'sick';
+					score = 350;
+					sicks++;
+				}
+		
+				if(daRating == 'awesome')
+				{
+					spawnNoteSplashOnNote(note);
+					awesomes++;
+				}
 		}
 
 		//trace(daRating);
@@ -6018,8 +6060,10 @@ class PlayState extends MusicBeatState
 			else if (accuracy >= 60) ranking = 'C';
 			else if (accuracy < 60) ranking = 'D';
 
-			
+			//Cool Kade Engine stuff in psych lol
 			setOnLuas('kadeRanking',ranking);
+
+			//Everything else
 			setOnLuas('rating', ratingPercent);
 			setOnLuas('ratingName', ratingString);
 			setOnLuas('ratingFC', ratingFC);
@@ -6031,10 +6075,11 @@ class PlayState extends MusicBeatState
 			if (value < 9) {
 				opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
 				opponentStrums.clear();
+				SONG.mania = value;
+				mania = value;
 				generateStaticArrows(0, true);
 				playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
 				playerStrums.clear();
-				mania = value;
 				generateStaticArrows(1, true);
 				callOnLuas('onChangeMania', [value]);
 			}

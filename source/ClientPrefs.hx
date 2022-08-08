@@ -24,6 +24,7 @@ class ClientPrefs {
 	public static var cameraMoveOnNotes:Bool = true;
 	public static var antispam:Bool = true;
 	public static var overrideScroll:Bool = false;
+	public static var newInput:Bool = true;
 	public static var scrollspeed:Float = 1.0;
 	public static var classicBotplayText:Bool = true;
 	public static var classicHUD:Bool = false;
@@ -142,6 +143,7 @@ class ClientPrefs {
 		FlxG.save.data.windowMove = windowMove;
 		FlxG.save.data.cameraMoveOnNotes = cameraMoveOnNotes;
 		FlxG.save.data.antispam = antispam;
+		FlxG.save.data.newInput = newInput;
 		FlxG.save.data.overrideScroll = overrideScroll;
 		FlxG.save.data.scrollspeed = scrollspeed;
 		FlxG.save.data.classicBotplayText = classicBotplayText;
@@ -234,6 +236,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.overrideScroll != null){
 			overrideScroll = FlxG.save.data.overrideScroll;
+		}
+		if(FlxG.save.data.newInput != null){
+			newInput = FlxG.save.data.newInput;
 		}
 		if(FlxG.save.data.classicBotplayText != null){
 			classicBotplayText = FlxG.save.data.classicBotplayText;
