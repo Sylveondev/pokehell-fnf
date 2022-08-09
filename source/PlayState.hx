@@ -209,7 +209,7 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
 		}
 
-		if (SONG.song.toLowerCase() == 'spookeez' || SONG.song.toLowerCase() == 'monster' || SONG.song.toLowerCase() == 'south')
+		/* if (SONG.song.toLowerCase() == 'silly' || SONG.song.toLowerCase() == 'vomit' || SONG.song.toLowerCase() == 'pissy')
 		{
 			curStage = "spooky";
 			halloweenLevel = true;
@@ -225,8 +225,8 @@ class PlayState extends MusicBeatState
 			add(halloweenBG);
 
 			isHalloween = true;
-		}
-		else if (SONG.song.toLowerCase() == 'pico' || SONG.song.toLowerCase() == 'blammed' || SONG.song.toLowerCase() == 'philly')
+		} 
+		else */ if (SONG.song.toLowerCase() == 'pico' || SONG.song.toLowerCase() == 'blammed' || SONG.song.toLowerCase() == 'philly')
 		{
 			curStage = 'philly';
 
@@ -591,6 +591,9 @@ class PlayState extends MusicBeatState
 				dad.y += 130;
 			case 'dad':
 				camPos.x += 400;
+			case 'sillyvon'|'silyvon':
+				dad.y += 400;
+				camPos.set(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y + 800);
 			case 'pico':
 				camPos.x += 600;
 				dad.y += 300;
@@ -1448,6 +1451,8 @@ class PlayState extends MusicBeatState
 
 				switch (dad.curCharacter)
 				{
+					case 'silyvon'|'sillyvon':
+						camFollow.y = dad.getMidpoint().y - 400;
 					case 'mom':
 						camFollow.y = dad.getMidpoint().y;
 					case 'senpai':
@@ -1694,7 +1699,6 @@ class PlayState extends MusicBeatState
 
 				if (SONG.validScore)
 				{
-					NGio.unlockMedal(60961);
 					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 				}
 
