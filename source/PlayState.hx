@@ -1785,7 +1785,7 @@ class PlayState extends MusicBeatState
 						});
 					});
 				
-				case 'squad' | 'speeding' | 'crossover':
+				case 'smoking' | 'squad' | 'speeding' | 'crossover':
 					var leSong:String = SONG.song.toLowerCase();
 					startVideo(leSong + 'Cutscene');
 				case 'senpai' | 'roses' | 'thorns':
@@ -1936,7 +1936,7 @@ class PlayState extends MusicBeatState
 				if(endingSong) {
 					endSong();
 				} else {
-					if (SONG.song.toLowerCase() == 'squad' || SONG.song.toLowerCase() == 'speeding' || SONG.song.toLowerCase() == 'crossover'){					
+					if (SONG.song.toLowerCase() == 'smoking' || SONG.song.toLowerCase() == 'squad' || SONG.song.toLowerCase() == 'speeding' || SONG.song.toLowerCase() == 'crossover'){					
 						startDialogue(dialogueJson);
 					}else startCountdown();
 				}
