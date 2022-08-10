@@ -1791,7 +1791,7 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-				case 'tutorial' | 'smoking' | 'headache'|'electric'|'rock'|'metal'|'sinful'|'flaming'|'burned'|'cold'|'solid'|'frozen'|'hopeful'|'easedrop'|'finale'|'friend'|'vomit'|'angery'|'drugged'|'hypergalcemia'|'banana'|'my-friends'|'hammerburst'|'retro-stab'|'lancer':
+				case 'tutorial' | 'headache'|'electric'|'rock'|'metal'|'sinful'|'flaming'|'burned'|'cold'|'solid'|'frozen'|'hopeful'|'easedrop'|'finale'|'friend'|'vomit'|'angery'|'drugged'|'hypergalcemia'|'banana'|'my-friends'|'hammerburst'|'retro-stab'|'lancer':
 					startDialogue(dialogueJson);
 				case 'ugh' | 'guns' | 'stress':
 					var leSong:String = SONG.song.toLowerCase();
@@ -3061,9 +3061,9 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if(ratingString == '?') {
-			scoreTxt.text = (!ClientPrefs.classicHUD ? ('Sc.: ' + songScore + ' | Mis.: ' + songMisses + ' | Avg.: ?' + ' | Ra.: ' + ratingString + (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | Prac. Mode':'')):('Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString + (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | Prac. Mode':'')));
+			scoreTxt.text = (!ClientPrefs.classicHUD ? ('Sc.: ' + songScore + ' | Mis.: ' + songMisses + ' | Avg.: ?' + ' | Ra.: ' + ratingString + (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | NoDeath':'')):('Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString + (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | NoDeath':'')));
 		} else {
-			scoreTxt.text = (!ClientPrefs.classicHUD ? ('Sc.: ' + songScore + ' | Mis.: ' + songMisses + ' | Avg.: ' + Math.round(averageMs) + 'ms' + ' | Ra.: ' + ratingString + ' (' + Math.floor(ratingPercent * 100) + '%)' + ' | (' + ratingFC + ') ' + ranking + (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | Prac. Mode':'')):('Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString + ' (' + Math.floor(ratingPercent * 100) + '%)'+ (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | Prac. Mode':'')));
+			scoreTxt.text = (!ClientPrefs.classicHUD ? ('Sc.: ' + songScore + ' | Mis.: ' + songMisses + ' | Avg.: ' + Math.round(averageMs) + 'ms' + ' | Ra.: ' + ratingString + ' (' + Math.floor(ratingPercent * 100) + '%)' + ' | (' + ratingFC + ') ' + ranking + (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | NoDeath':'')):('Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString + ' (' + Math.floor(ratingPercent * 100) + '%)'+ (cpuControlled ? ' | Botplay':'') + (practiceMode ? ' | NoDeath':'')));
 		}
 
 		if(cpuControlled) {
