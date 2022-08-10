@@ -20,7 +20,7 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Toggle NoDeath', 'Toggle Botplay', 'Exit to menu'];
+	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Toggle NoDeath', 'Toggle Botplay', 'Toggle Fullscreen', 'Exit to menu'];
 
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
@@ -231,6 +231,8 @@ class PauseSubState extends MusicBeatSubstate
 						botplayText.visible = PlayState.cpuControlled;
 					}
 					#end
+				case "Toggle Fullscreen":
+					FlxG.fullscreen = !FlxG.fullscreen;
 				case "Exit to menu":
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;

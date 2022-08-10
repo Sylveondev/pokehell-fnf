@@ -297,6 +297,11 @@ class MainMenuState extends MusicBeatState
 
 		if (!selectedSomethin)
 		{
+			if (FlxG.keys.justPressed.F)
+			{
+				FlxG.fullscreen = !FlxG.fullscreen;
+			}
+
 			if (controls.UI_UP_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
