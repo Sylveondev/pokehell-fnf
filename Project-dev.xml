@@ -48,8 +48,8 @@
 	<assets path="assets/preload" rename="assets" exclude="*.mp3"  unless="web"/>
 	
 	<!-- PSYCH ENGINE CUSTOMIZATION -->
-	<define name="MODS_ALLOWED" if="desktop" unless="mobile" />
-	<define name="LUA_ALLOWED" if="windows" unless="mobile" />
+	<define name="MODS_ALLOWED" if="desktop" unless="mobile || android" />
+	<define name="LUA_ALLOWED" if="windows" unless="mobile || android" />
 	<define name="ACHIEVEMENTS_ALLOWED" />
 	<define name="VIDEOS_ALLOWED" if="web || windows" unless="32bits"/>
 
