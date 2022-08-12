@@ -43,7 +43,7 @@ import haxe.io.Bytes;
 import flash.geom.Rectangle;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
-#if MODS_ALLOWED
+#if (MODS_ALLOWED || sys)
 import sys.io.File;
 import sys.FileSystem;
 import flash.media.Sound;
