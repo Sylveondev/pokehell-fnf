@@ -164,9 +164,8 @@ jobs:
           
       - name: Build Log
         run: |
-          cp -r assets/preload/videos assets/videos
           haxelib run lime setup android
-          haxelib run lime build android -final
+          haxelib run lime build project-dev.xml android -final
           
       - uses: actions/upload-artifact@v2
         with:
