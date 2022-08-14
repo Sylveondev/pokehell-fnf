@@ -1464,7 +1464,7 @@ class CustomizationSubstate extends MusicBeatSubstate
 			case 'Score table':
 				daText = "If checked, a score table will show on the side.";
 			case 'Classic botplay text':
-				daText = "If checked, the botplay text will look like Kade Engine!";
+				daText = "If unchecked, the botplay text will look like Kade Engine!\nOtherwise it'll be in the strums.";
 			case 'Classic HUD':
 				daText = "If checked, the old psych engine score bar shows.\nThis settings also hides the your rating.";
 			case 'Source modcharts':

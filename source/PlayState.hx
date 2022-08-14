@@ -1669,12 +1669,34 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		reloadHealthBarColors();
 
+		healthBarBG.y += 150;
+		healthBar.y += 150;
+		healthBarOverlay.y += 150;
+		iconP1.y += 150;
+		iconP2.y += 150;
+		FlxTween.tween(healthBarBG, {y: healthBarBG.y - 150}, 1, {ease: FlxEase.backOut, startDelay: 0.5});
+		FlxTween.tween(healthBarBG, {alpha: 1}, 0.2, {ease: FlxEase.circOut, startDelay: 0.5});
+		FlxTween.tween(healthBar, {y: healthBar.y - 150}, 1, {ease: FlxEase.backOut, startDelay: 0.5});
+		FlxTween.tween(healthBar, {alpha: 1}, 0.2, {ease: FlxEase.circOut, startDelay: 0.5});
+		FlxTween.tween(healthBarOverlay, {y: healthBarOverlay.y - 150}, 1, {ease: FlxEase.backOut, startDelay: 0.5});
+		FlxTween.tween(healthBarOverlay, {alpha: 1}, 0.2, {ease: FlxEase.circOut, startDelay: 0.5});
+		FlxTween.tween(iconP1, {y: iconP1.y - 150}, 1, {ease: FlxEase.backOut, startDelay: 0.6});
+		FlxTween.tween(iconP1, {alpha: 1}, 0.2, {ease: FlxEase.circOut, startDelay: 0.6});
+		FlxTween.tween(iconP2, {y: iconP2.y - 150}, 1, {ease: FlxEase.backOut, startDelay: 0.6});
+		FlxTween.tween(iconP2, {alpha: 1}, 0.2, {ease: FlxEase.circOut, startDelay: 0.6});
+		
+
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("righteous.ttf"), 20, uiColor, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
+		scoreTxt.alpha = 0;
 		add(scoreTxt);
+
+		FlxTween.tween(scoreTxt, {y: (healthBarBG.y + 36) - 150}, 1, {ease: FlxEase.backOut, startDelay: 0.6});
+		FlxTween.tween(scoreTxt, {alpha: 1}, 0.2, {ease: FlxEase.circOut, startDelay: 0.6});
+		
 
 		botplayTxt = new FlxText(400, (ClientPrefs.classicBotplayText ? (ClientPrefs.downScroll ? timeBarBG.y - 55 : timeBarBG.y + 55) : (ClientPrefs.downScroll ? healthBarBG.y + 155 : healthBarBG.y - 155)), FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.RED);
@@ -2626,14 +2648,12 @@ class PlayState extends MusicBeatState
 	
 				babyArrow.updateHitbox();
 				babyArrow.scrollFactor.set();
-	
-				if (!isStoryMode)
-				{
-					babyArrow.y -= 10;
-					babyArrow.alpha = 0;
-					FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
-				}
-	
+				
+				babyArrow.alpha = 0;
+				babyArrow.y -= 150;
+				FlxTween.tween(babyArrow, {y: babyArrow.y + 150}, 1, {ease: FlxEase.backOut, startDelay: 0.5 + (0.2 * i)});
+				FlxTween.tween(babyArrow, {alpha: 1}, 0.2, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
+				
 				babyArrow.ID = i;
 	
 				if (player == 1)
