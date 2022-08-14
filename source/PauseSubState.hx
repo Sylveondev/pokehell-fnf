@@ -20,7 +20,7 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Toggle NoDeath', 'Toggle Botplay', 'Toggle Fullscreen', 'Exit to menu'];
+	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Toggle NoDeath', 'Toggle Botplay', #if desktop 'Toggle Fullscreen',#end 'Exit to menu'];
 
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
@@ -42,8 +42,20 @@ class PauseSubState extends MusicBeatSubstate
 				menuItemsOG.insert(2, 'Change Difficulty');
 		}
 
+		trace('Disable botplay is '+PlayState.SONG.noBotplay);
+		trace('Disable nodeath is '+PlayState.SONG.noPractice);
+
+
 		if (PlayState.isStoryMode){
 			menuItemsOG.insert(2, 'Restart with Dialogue');
+		}
+
+		if (PlayState.SONG.noBotplay){
+			menuItemsOG.remove('Toggle Botplay');
+		}
+
+		if (PlayState.SONG.noPractice){
+			menuItemsOG.remove('Toggle NoDeath');
 		}
 
 		menuItems = menuItemsOG;

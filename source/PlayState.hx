@@ -265,7 +265,7 @@ class PlayState extends MusicBeatState
 	var allNotesMs:Float = 0;
 	var averageMs:Float = 0;
 	var ranking:String = 'N/A';
-	public static var soundPrefix:String = '';
+	public static var soundPrefix:Null<String> = '';
 
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
@@ -352,19 +352,21 @@ class PlayState extends MusicBeatState
 		instance = this;
 
 		//Initialize unused variables
-		if (SONG.noBotplay != false || SONG.noBotplay != true) SONG.noBotplay = false;
-		if (SONG.noPractice != false || SONG.noPractice != true) SONG.noPractice = false;
-		if (SONG.forceMiddlescroll != false || SONG.noPractice != true) SONG.forceMiddlescroll = false;
-		if (SONG.forceGhostingOff != false || SONG.noPractice != true) SONG.forceGhostingOff = false;
-		if (SONG.hideGF != false || SONG.noPractice != true) SONG.hideGF = false;
-		if (SONG.disableChartEditor != false || SONG.noPractice != true) SONG.disableChartEditor = false;
-
+		if (SONG.noBotplay != false && SONG.noBotplay != true) SONG.noBotplay = false;
+		if (SONG.noPractice != false && SONG.noPractice != true) SONG.noPractice = false;
+		if (SONG.forceMiddlescroll != false && SONG.forceMiddlescroll != true) SONG.forceMiddlescroll = false;
+		if (SONG.forceGhostingOff != false && SONG.forceGhostingOff != true) SONG.forceGhostingOff = false;
+		if (SONG.hideGF != false && SONG.hideGF != true) SONG.hideGF = false;
+		if (SONG.disableChartEditor != false && SONG.disableChartEditor != true) SONG.disableChartEditor = false;
+		
 		uiColor = FlxColor.fromString('0xFFF5AA42');
 		if (SONG.fontColor != null) uiColor = FlxColor.fromString(SONG.fontColor);
 		if (uiColor == null) uiColor = FlxColor.fromString('0xFFF5AA42');
 
 		//Reset ui shit
-		soundPrefix = '';
+		soundPrefix = ((SONG.soundPrefix != null || SONG.soundPrefix != "") ? SONG.soundPrefix : '');
+		if (soundPrefix == null) soundPrefix = '';
+		
 		uiType = 0;
 		ratingStuff = [
 			['You Suck!', 0.2], //From 0% to 19%
@@ -752,7 +754,7 @@ class PlayState extends MusicBeatState
 				//You can't utilize this variable and this might not get
 				//added to Austin Engine.
 				if (SONG.song.toLowerCase() == 'bling-blunkin'){
-					soundPrefix = 'Vee-';
+					//soundPrefix = 'Vee-';
 					//Makes the whole ui look like Vee Funkin
 					uiType = 1;
 					//Change the ratings.
@@ -1396,10 +1398,8 @@ class PlayState extends MusicBeatState
 		
 		if (curStage == 'white-center'){
 			strumLine = new FlxSprite(STRUM_X_MIDDLESCROLL, 50).makeGraphic(FlxG.width, 10);
-		}else if (SONG.forceMiddlescroll == true){
-			strumLine = new FlxSprite(STRUM_X_MIDDLESCROLL, 50).makeGraphic(FlxG.width, 10);
 		}else{
-			strumLine = new FlxSprite(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, 50).makeGraphic(FlxG.width, 10);
+			strumLine = new FlxSprite((ClientPrefs.middleScroll || SONG.forceMiddlescroll) ? STRUM_X_MIDDLESCROLL : STRUM_X, 50).makeGraphic(FlxG.width, 10);
 		}
 		if(ClientPrefs.downScroll) strumLine.y = FlxG.height - 150;
 		strumLine.scrollFactor.set();
@@ -2203,7 +2203,7 @@ class PlayState extends MusicBeatState
 					bottomBoppers.dance(true);
 					santa.dance(true);
 				}
-
+				trace('Starting countdown with sound prefix:'+soundPrefix);
 				switch (swagCounter)
 				{
 					case 0:
@@ -2872,10 +2872,8 @@ class PlayState extends MusicBeatState
 
 		callOnLuas('onUpdate', [elapsed]);
 
-		if (SONG.noPractice == true) practiceMode = false;
-		if (SONG.noBotplay == true) cpuControlled = false;
-
-		
+		if (SONG.noPractice) practiceMode = false;
+		if (SONG.noBotplay) cpuControlled = false;
 
 		timeBarColor.scale.y = timeBar.scale.y;
 		timeBarColor.scale.x = timeBar.percent;
@@ -4929,8 +4927,7 @@ class PlayState extends MusicBeatState
 					});
 		
 					if ((controlHoldArray.contains(true) || controlArray.contains(true)) && !endingSong) {
-						var canMiss:Bool = !ClientPrefs.ghostTapping;
-						if (SONG.forceGhostingOff == true) canMiss = false;
+						var canMiss:Bool = (!ClientPrefs.ghostTapping);
 						if (controlArray.contains(true)) {
 							for (i in 0...controlArray.length) {
 								// heavily based on my own code LOL if it aint broke dont fix it
@@ -4970,7 +4967,9 @@ class PlayState extends MusicBeatState
 		
 									}
 								}
-								else if (canMiss) 
+								else if (canMiss && !ClientPrefs.ghostTapping) 
+									ghostMiss(controlArray[i], i, true);
+								else if (canMiss && ClientPrefs.antispam) 
 									ghostMiss(controlArray[i], i, true);
 		
 								// I dunno what you need this for but here you go

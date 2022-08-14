@@ -277,7 +277,8 @@ class ChartingState extends MusicBeatState
 				timebarColor: ['0xFF915D0F', '0xFFFFA621'],
 				fontColor: '0xFFF5AA42',
 				hideGF: false,
-				disableChartEditor: false
+				disableChartEditor: false,
+				soundPrefix: ""
 			};
 		}
 		
@@ -408,11 +409,19 @@ class ChartingState extends MusicBeatState
 		tab_group_cust.add(timebarColorInputAltText);
 		tab_group_cust.add(new FlxText(timebarColorInputAltText.x, timebarColorInputAltText.y - 15, 0, 'Timebar empty color:'));
 
-		var colorPicker:FlxButton = new FlxButton(10, timebarColorInputText.y + 30, "Color picker", function()
+		soundPrefixInputText = new FlxUIInputText(10, timebarColorInputText.y + 30, 150, _song.soundPrefix, 8);
+		blockPressWhileTypingOn.push(soundPrefixInputText);
+		tab_group_cust.add(soundPrefixInputText);
+		tab_group_cust.add(new FlxText(soundPrefixInputText.x, soundPrefixInputText.y - 15, 0, 'UI Sound prefix:'));
+		
+		var colorPicker:FlxButton = new FlxButton(10, soundPrefixInputText.y + 30, "Color picker", function()
 			{
 				CoolUtil.browserLoad('https://g.co/kgs/hQbExi');
 			});
 		tab_group_cust.add(colorPicker);
+		
+
+		
 		UIconf_box.addGroup(tab_group_cust);
 
 		addSongUI();
@@ -450,6 +459,7 @@ class ChartingState extends MusicBeatState
 	var fontColorInputText:FlxUIInputText;
 	var timebarColorInputText:FlxUIInputText;
 	var timebarColorInputAltText:FlxUIInputText;
+	var soundPrefixInputText:FlxUIInputText;
 	var noteSkinInputText:FlxUIInputText;
 	var noteSplashesInputText:FlxUIInputText;
 	var stageDropDown:FlxUIDropDownMenuCustom;
@@ -681,7 +691,7 @@ class ChartingState extends MusicBeatState
 		};
 		tab_group_misc.add(botplayCheck);
 
-		var pracCheck:FlxUICheckBox = new FlxUICheckBox(10, botplayCheck.y + 20, null, null, "Disable Practice Mode", 100);
+		var pracCheck:FlxUICheckBox = new FlxUICheckBox(10, botplayCheck.y + 20, null, null, "Disable NoDeath", 100);
 		pracCheck.checked = _song.noPractice;
 		pracCheck.callback = function()
 		{
@@ -734,7 +744,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(stepperBPM);
 		tab_group_song.add(stepperSpeed);
 		tab_group_song.add(stepperMania);
-		tab_group_song.add(reloadNotesButton);
+		//tab_group_song.add(reloadNotesButton);
 		//tab_group_song.add(noteSkinInputText);
 		//tab_group_song.add(noteSplashesInputText);
 		tab_group_song.add(stepperDiffLoader);
@@ -748,7 +758,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 15, 0, 'Stage:'));
 		//tab_group_song.add(new FlxText(noteSkinInputText.x, noteSkinInputText.y - 15, 0, 'Note Texture:'));
 		//tab_group_song.add(new FlxText(noteSplashesInputText.x, noteSplashesInputText.y - 15, 0, 'Note Splashes Texture:'));
-		tab_group_song.add(new FlxText(noteSkinInputText.x, noteSkinInputText.y - 15, 0, 'Note Textures are not supported on the exkeys mod.\nYou have to hardcode them in. Thanks tposejank, very cool'));
+		//tab_group_song.add(new FlxText(noteSkinInputText.x, noteSkinInputText.y - 15, 0, 'Note Textures are not supported on the exkeys mod.\nYou have to hardcode them in. Thanks tposejank, very cool'));
 		tab_group_song.add(player2DropDown);
 		tab_group_song.add(player3DropDown);
 		tab_group_song.add(player1DropDown);
@@ -1325,7 +1335,8 @@ class ChartingState extends MusicBeatState
 		Conductor.songPosition = FlxG.sound.music.time;
 		_song.song = UI_songTitle.text;
 		_song.timebarColor[0] = timebarColorInputText.text;
-		_song.timebarColor[1] = timebarColorInputAltText.text;
+		_song.timebarColor[1] = fontColorInputText.text;
+		_song.soundPrefix = soundPrefixInputText.text;
 		_song.fontColor = fontColorInputText.text;
 
 		strumLine.y = getYfromStrum((Conductor.songPosition - sectionStartTime()) / zoomList[curZoom] % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps));
@@ -2369,7 +2380,8 @@ class ChartingState extends MusicBeatState
 			timebarColor: [_song.timebarColor[0], _song.timebarColor[1]],
 			fontColor: _song.fontColor,
 			hideGF: _song.hideGF,
-			disableChartEditor: _song.disableChartEditor
+			disableChartEditor: _song.disableChartEditor,
+			soundPrefix: _song.soundPrefix
 		};
 		var json = {
 			"song": eventsSong
