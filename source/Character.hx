@@ -30,6 +30,7 @@ typedef CharacterFile = {
 	var flip_x:Bool;
 	var no_antialiasing:Bool;
 	var healthbar_colors:Array<Int>;
+	var isPlayable:Bool;
 }
 
 typedef AnimArray = {
@@ -47,6 +48,7 @@ class Character extends FlxSprite
 	public var debugMode:Bool = false;
 
 	public var isPlayer:Bool = false;
+	public var isPlayable:Bool = false;
 	public var curCharacter:String = DEFAULT_CHARACTER;
 
 	public var colorTween:FlxTween;
@@ -85,6 +87,7 @@ class Character extends FlxSprite
 		#end
 		curCharacter = character;
 		this.isPlayer = isPlayer;
+		//this.isPlayable = isPlayable;
 		antialiasing = ClientPrefs.globalAntialiasing;
 
 		var library:String = null;
@@ -122,6 +125,7 @@ class Character extends FlxSprite
 					frames = Paths.getSparrowAtlas(json.image);
 				}
 				imageFile = json.image;
+				isPlayable = json.isPlayable;
 
 				if(json.scale != 1) {
 					jsonScale = json.scale;
@@ -167,6 +171,9 @@ class Character extends FlxSprite
 				} else {
 					quickAnimAdd('idle', 'BF idle dance');
 				}
+
+				
+
 				//trace('Loaded file to character ' + curCharacter);
 		}
 		originalFlipX = flipX;
@@ -178,25 +185,55 @@ class Character extends FlxSprite
 		{
 			flipX = !flipX;
 
-			/*// Doesn't flip for BF, since his are already in the right place???
-			if (!curCharacter.startsWith('bf'))
+			// If the character is not marked as playable, flip it's animations 
+			// around. If you didn't make your character on Sally Engine, you'll
+			// have to enable isPlayable for your playable character to show
+			// properly.
+			if (!isPlayable)
 			{
 				// var animArray
 				if(animation.getByName('singLEFT') != null && animation.getByName('singRIGHT') != null)
 				{
 					var oldRight = animation.getByName('singRIGHT').frames;
+					var oldRightOffsets = animOffsets.get('singRIGHT');
+					var oldLeftOffsets = animOffsets.get('singLEFT');
 					animation.getByName('singRIGHT').frames = animation.getByName('singLEFT').frames;
+
 					animation.getByName('singLEFT').frames = oldRight;
+					
+					oldRightOffsets[0] /= -1;
+					oldLeftOffsets[0] /= -1;
+					animOffsets.set('singLEFT', oldRightOffsets);
+					animOffsets.set('singRIGHT', oldLeftOffsets);
 				}
 
 				// IF THEY HAVE MISS ANIMATIONS??
 				if (animation.getByName('singLEFTmiss') != null && animation.getByName('singRIGHTmiss') != null)
 				{
 					var oldMiss = animation.getByName('singRIGHTmiss').frames;
+					var oldRightOffsets = animOffsets.get('singRIGHTmiss');
+					var oldLeftOffsets = animOffsets.get('singLEFTmiss');
 					animation.getByName('singRIGHTmiss').frames = animation.getByName('singLEFTmiss').frames;
 					animation.getByName('singLEFTmiss').frames = oldMiss;
+
+					animOffsets.set('singLEFTmiss', oldRightOffsets);
+					animOffsets.set('singRIGHTmiss', oldLeftOffsets);
 				}
-			}*/
+			}
+		}else if (isPlayable){
+			// var animArray
+			if(animation.getByName('singLEFT') != null && animation.getByName('singRIGHT') != null)
+				{
+					var oldRight = animation.getByName('singRIGHT').frames;
+					var oldRightOffsets = animOffsets.get('singRIGHT');
+					var oldLeftOffsets = animOffsets.get('singLEFT');
+					animation.getByName('singRIGHT').frames = animation.getByName('singLEFT').frames;
+
+					animation.getByName('singLEFT').frames = oldRight;
+					
+					animOffsets.set('singLEFT', oldRightOffsets);
+					animOffsets.set('singRIGHT', oldLeftOffsets);
+				}
 		}
 	}
 

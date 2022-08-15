@@ -25,6 +25,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
+	public static var sallyEngineVersion:String = '0.1'; //This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.4.2'; //This is also used for Discord RPC
 	
 	public static var gitCommit:String = '';
@@ -135,7 +136,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - #if !DEVBUILD 44 #else 64 #end, 0, "Psych Engine v" + psychEngineVersion, 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - #if !DEVBUILD 44 #else 64 #end, 0, "Psych Engine " + psychEngineVersion +" - " + sallyEngineVersion + " Sally Engine", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat(Paths.font("righteous.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);

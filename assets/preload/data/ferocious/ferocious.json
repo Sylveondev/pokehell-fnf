@@ -29974,7 +29974,7 @@
 			}
 		],
 		"player2": "zane",
-		"hideGF": false,
+		"hideGF": true,
 		"forceGhostingOff": false,
 		"player3": "bf-car",
 		"mania": 3,
@@ -29990,7 +29990,7 @@
 			"0xFF915D0F",
 			"0xFFFFA621"
 		],
-		"stage": "blank",
+		"stage": "ferocious",
 		"needsVoices": true,
 		"bpm": 206
 	}

@@ -1,162 +1,163 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				-5,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-22,
 				15
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "hey",
-			"fps": 24,
-			"name": "hey",
-			"indices": []
+			"indices": [],
+			"name": "hey"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				21,
 				-27
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left0",
-			"indices": []
+			"indices": [],
+			"name": "left0"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-16,
 				-82
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "down0",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down0"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				32,
 				20
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "up0",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "up0"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-6,
 				-4
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "right0",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right0"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				21,
 				-27
 			],
-			"anim": "singLEFTmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "leftMiss",
-			"indices": []
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "leftMiss"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-6,
 				-4
 			],
-			"anim": "singRIGHTmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "rightMiss",
-			"indices": []
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "rightMiss"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				32,
 				20
 			],
-			"anim": "singUPmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "upMiss",
-			"indices": []
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "upMiss"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-16,
 				-82
 			],
-			"anim": "singDOWNmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "downMiss",
-			"indices": []
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "downMiss"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-8,
 				-82
 			],
-			"anim": "scared",
+			"loop": false,
 			"fps": 24,
-			"name": "scared",
-			"indices": []
+			"anim": "scared",
+			"indices": [],
+			"name": "scared"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				48,
 				2
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "firstDeath",
-			"indices": [],
-			"name": "dies"
+			"fps": 24,
+			"name": "dies",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-22,
 				15
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "deathConfirm",
-			"indices": [],
-			"name": "deadConfirm"
+			"fps": 24,
+			"name": "deadConfirm",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [
 				50,
 				-108
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "deathLoop",
-			"loop": true,
-			"name": "deadLoop"
+			"fps": 24,
+			"name": "deadLoop",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/BOYFRIEND",
+	"isPlayable": false,
 	"position": [
 		0,
 		400
@@ -165,7 +166,7 @@
 	"flip_x": true,
 	"healthbar_colors": [
 		194,
-		143,
+		163,
 		92
 	],
 	"camera_position": [

@@ -1,66 +1,105 @@
 {
 	"animations": [
 		{
+			"offsets": [
+				0,
+				-4
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left"
+		},
+		{
+			"offsets": [
+				0,
+				-1
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down"
+		},
+		{
+			"offsets": [
+				1,
+				19
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up"
+		},
+		{
+			"offsets": [
+				0,
+				14
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right"
+		},
+		{
 			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"anim": "danceLeft",
 			"fps": 24,
 			"name": "Idle",
-			"indices": []
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
+			]
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-2,
-				-6
+				0,
+				0
 			],
-			"anim": "singLEFT",
+			"anim": "danceRight",
 			"fps": 24,
-			"name": "Left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-70,
-				-31
-			],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-4,
-				23
-			],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "Up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-40,
-				-6
-			],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "Right",
-			"indices": []
+			"name": "Idle",
+			"indices": [
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24
+			]
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/leafeon",
+	"image": "characters/leafyCar",
+	"isPlayable": false,
 	"position": [
-		0,
-		400
+		-100,
+		180
 	],
 	"healthicon": "leafyCool",
 	"flip_x": false,
@@ -70,9 +109,9 @@
 		95
 	],
 	"camera_position": [
-		10,
-		50
+		-40,
+		100
 	],
 	"sing_duration": 4,
-	"scale": 1.5
+	"scale": 0.8
 }

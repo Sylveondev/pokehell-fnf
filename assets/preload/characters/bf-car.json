@@ -1,63 +1,64 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "idle",
-			"indices": [],
-			"name": "pokeHell BF idle"
+			"fps": 12,
+			"name": "pokeHell BF idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "pokeHell BF left"
+			"fps": 12,
+			"name": "pokeHell BF left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "pokeHell BF right"
+			"fps": 12,
+			"name": "pokeHell BF right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singUP",
-			"indices": [],
-			"name": "pokeHell BF up"
+			"fps": 12,
+			"name": "pokeHell BF up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "pokeHell BF down"
+			"fps": 12,
+			"name": "pokeHell BF down",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/pokeHell BF",
+	"isPlayable": false,
 	"position": [
 		-120,
 		100

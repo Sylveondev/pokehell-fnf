@@ -82,12 +82,6 @@ function onBeatHit()
     end
 end
 
-function onCreatePost()
-    setProperty('dad.color','0x00000000')
-    setProperty('gf.color','0x00000000')
-    setProperty('botplayTxt.text','You\'ll find out who they are soon. I already leaked them on discord.')
-end
-
 function onStepHit()
     if (curBeat == 211) then
         setProperty('camHUD.zoom', 1.5)

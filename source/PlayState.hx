@@ -123,6 +123,8 @@ class PlayState extends MusicBeatState
 	public static var isPixelStage:Bool = false;
 	public static var SONG:SwagSong = null;
 	public static var isStoryMode:Bool = false;
+	public static var freeplayChar:Bool = false;
+	public static var selectedBF:String = 'bf';
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
@@ -294,6 +296,9 @@ class PlayState extends MusicBeatState
     var tankAngle:Float = FlxG.random.float(-90, 45);
 	var tankX:Int = 400;
 	//end (wow thats a lot)
+
+	var bfCar:FlxSprite;
+
 
 	public var defaultCamZoom:Float = 1.05;
 	public var defaultHudZoom:Float = 1;
@@ -737,8 +742,11 @@ class PlayState extends MusicBeatState
 				add(bg);
 
 			case 'daSchool': //Secret Week 1: Denis
-				var bg:BGSprite = new BGSprite('school', 0, 0, 0.7, 0.7);
-				bg.setGraphicSize(Std.int(bg.width * 2));
+				var bg:BGSprite = new BGSprite('school', -600, -200, 1, 1);
+				add(bg);
+			
+			case 'ferocious': //Secret Week 1: Denis
+				var bg:BGSprite = new BGSprite('school', -600, -200, 1, 1);
 				add(bg);
 
 			case 'white-center': //Bonus song
@@ -1353,9 +1361,20 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		boyfriend = new Boyfriend(0, 0, SONG.player1);
+		boyfriend = new Boyfriend(0, 0, (!isStoryMode && freeplayChar ? selectedBF : SONG.player1));
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
+
+		if (SONG.song.toLowerCase() == 'bling-blunkin'){
+			boyfriend.y -= 50;
+			bfCar = new FlxSprite(boyfriend.x - (boyfriend.width * 0.3), boyfriend.y + (boyfriend.height * 0.75));
+			bfCar.frames = Paths.getSparrowAtlas('car');
+			bfCar.animation.addByPrefix('idle', 'idle', 24, true);
+			bfCar.animation.play('idle');
+			bfCar.scrollFactor.set(1, 1);
+			bfCar.antialiasing = true;
+			add(bfCar);
+		}
 		
 		var camPos:FlxPoint = new FlxPoint(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 		camPos.x += gf.cameraPosition[0];
@@ -1646,7 +1665,7 @@ class PlayState extends MusicBeatState
 		kadeEngineWatermark = new FlxText(4, healthBarBG.y
 			+ 50, 0,
 			SONG.song
-			+ " - Pokehell " + MainMenuState.pokehellVersion+" (PE "+MainMenuState.psychEngineVersion+")", 16);
+			+ " - Pokehell " + MainMenuState.pokehellVersion+" (SE "+ MainMenuState.sallyEngineVersion +" / PE "+MainMenuState.psychEngineVersion+")", 16);
 		kadeEngineWatermark.setFormat(Paths.font("righteous.ttf"), 16, uiColor, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		kadeEngineWatermark.updateHitbox();

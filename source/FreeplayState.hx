@@ -1,5 +1,6 @@
 package;
 
+import ChangePlayerSubstate.ChangePlayerSubState;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -53,6 +54,9 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		Conductor.changeBPM(120);
+		persistentUpdate = true;
+		
 		#if MODS_ALLOWED
 		Paths.destroyLoadedImages();
 		#end
@@ -176,6 +180,15 @@ class FreeplayState extends MusicBeatState
 		super.create();
 	}
 
+	override function beatHit()
+	{
+		super.beatHit();
+
+		for (i in 0...iconArray.length) {
+			iconArray[i].scale.set(1.2, 0.8);
+		}
+	}
+
 	override function closeSubState() {
 		changeSelection();
 		super.closeSubState();
@@ -208,6 +221,9 @@ class FreeplayState extends MusicBeatState
 	{
 		rotCamHudInd ++;
 		for (i in 0...iconArray.length) {
+			var mult:Float = FlxMath.lerp(1, iconArray[i].scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconArray[i].scale.set(mult, mult);
+
 			iconArray[i].angle = Math.sin(rotCamHudInd / 100 * 1) * 15;
 		}
 		if (FlxG.sound.music.volume < 0.7)
@@ -254,7 +270,12 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new MainMenuState());
+			MusicBeatState.switchState(new FreeplaySelectState());
+		}
+
+		if (FlxG.keys.justPressed.TAB){
+			openSubState(new ChangePlayerSubState(0,0));
+			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
 
 		#if PRELOAD_ALL
