@@ -14,6 +14,7 @@ class ClientPrefs {
 	public static var flashing:Bool = true;
 	public static var globalAntialiasing:Bool = true;
 	public static var noteSplashes:Bool = true;
+	public static var noteSounds:Bool = false;
 	public static var lowQuality:Bool = false;
 	public static var framerate:Int = #if (html5 || mobile) 60 #else 120 #end;
 	public static var doArtistinfo:Bool = true;
@@ -134,6 +135,7 @@ class ClientPrefs {
 		FlxG.save.data.flashing = flashing;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
 		FlxG.save.data.noteSplashes = noteSplashes;
+		FlxG.save.data.noteSounds = noteSounds;
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.framerate = framerate;
 		FlxG.save.data.doScoretable = doScoretable;
@@ -205,6 +207,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.noteSplashes != null) {
 			noteSplashes = FlxG.save.data.noteSplashes;
+		}
+		if(FlxG.save.data.noteSounds != null) {
+			noteSounds = FlxG.save.data.noteSounds;
 		}
 		if(FlxG.save.data.lowQuality != null) {
 			lowQuality = FlxG.save.data.lowQuality;

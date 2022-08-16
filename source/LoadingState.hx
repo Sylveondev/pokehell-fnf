@@ -57,7 +57,7 @@ class LoadingState extends MusicBeatState
 
 		
 
-		var imgthingy:String = 'loadingScreens/screen'+ FlxG.random.int(0, 3);
+		var imgthingy:String = 'loadingScreens/screen'+ FlxG.random.int(0, 4);
 
 		funkay = new FlxSprite(0, 0).loadGraphic(Paths.image(imgthingy));
 		funkay.setGraphicSize(0, FlxG.height);

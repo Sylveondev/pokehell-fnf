@@ -263,7 +263,7 @@ class TitleState extends MusicBeatState
 		gfDance.shader = swagShader.shader;
 		bgImg.shader = swagShader.shader;
 		add(logoBl);
-		add(txtEdition);
+		//add(txtEdition);
 		//logoBl.shader = swagShader.shader;
 
 		titleText = new FlxSprite(100, FlxG.height * 0.8);

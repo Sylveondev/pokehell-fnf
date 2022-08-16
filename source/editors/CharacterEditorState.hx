@@ -359,6 +359,7 @@ class CharacterEditorState extends MusicBeatState
 		check_player.callback = function()
 		{
 			char.isPlayer = !char.isPlayer;
+			char.isPlayable = !char.isPlayable;
 			char.flipX = !char.flipX;
 			updatePointerPos();
 			reloadBGs();

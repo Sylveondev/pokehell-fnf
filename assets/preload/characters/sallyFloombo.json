@@ -1,26 +1,114 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "Sally Idle"
+			"fps": 24,
+			"name": "Sally Idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Sally Up"
+			"fps": 24,
+			"name": "Sally Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Sally Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "Sally Ualt",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "Sally Dalt",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "scared",
+			"fps": 24,
+			"name": "Sally Scared",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "laugh",
+			"fps": 24,
+			"name": "Sally Laugh",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "bop",
+			"fps": 24,
+			"name": "Sally Bop",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "crunch",
+			"fps": 24,
+			"name": "Sally Crunch",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "sneeze",
+			"fps": 24,
+			"name": "Sally Sneeze",
+			"indices": []
 		},
 		{
 			"offsets": [
@@ -29,9 +117,31 @@
 			],
 			"loop": false,
 			"fps": 24,
-			"anim": "singDOWN",
+			"anim": "firstDeath",
 			"indices": [],
-			"name": "Sally Down"
+			"name": "Sally FirstDeath"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "deathLoop",
+			"fps": 24,
+			"name": "Sally Dead",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "Sally Alive",
+			"indices": []
 		},
 		{
 			"offsets": [
@@ -39,20 +149,31 @@
 				0
 			],
 			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "Sally Mup"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "Sally Mdown"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Sally Left"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
 			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
 			"name": "Sally Right"
 		},
 		{
@@ -60,43 +181,21 @@
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP-alt",
 			"indices": [],
-			"name": "Sally Ualt"
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Sally Left"
 		},
 		{
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN-alt",
 			"indices": [],
-			"name": "Sally Dalt"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT-alt",
-			"indices": [],
-			"name": "Sally Lalt"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
 			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT-alt",
-			"indices": [],
 			"name": "Sally Ralt"
 		},
 		{
@@ -104,63 +203,40 @@
 				0,
 				0
 			],
-			"loop": true,
-			"fps": 24,
-			"anim": "scared",
 			"indices": [],
-			"name": "Sally Scared"
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "Sally Lalt"
 		},
 		{
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "laugh",
 			"indices": [],
-			"name": "Sally Laugh"
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "Sally Mright"
 		},
 		{
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "bop",
 			"indices": [],
-			"name": "Sally Bop"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
 			"fps": 24,
-			"anim": "crunch",
-			"indices": [],
-			"name": "Sally Crunch"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
+			"anim": "singRIGHTmiss",
 			"loop": false,
-			"fps": 24,
-			"anim": "sneeze",
-			"indices": [],
-			"name": "Sally Sneeze"
+			"name": "Sally Mleft"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/SallyFloombo",
-	"isPlayable": false,
+	"image": "characters/Sally",
 	"position": [
 		0,
-		140
+		0
 	],
 	"healthicon": "sally-icon",
 	"flip_x": false,
@@ -170,9 +246,10 @@
 		80
 	],
 	"camera_position": [
-		-20,
-		160
+		120,
+		60
 	],
 	"sing_duration": 3,
-	"scale": 0.799999999999999
+	"scale": 0.799999999999999,
+	"isPlayable":true
 }
