@@ -157,7 +157,7 @@
 	],
 	"no_antialiasing": false,
 	"image": "characters/BOYFRIEND",
-	"isPlayable": false,
+	"isPlayable": true,
 	"position": [
 		0,
 		400
@@ -166,7 +166,7 @@
 	"flip_x": true,
 	"healthbar_colors": [
 		194,
-		163,
+		143,
 		92
 	],
 	"camera_position": [

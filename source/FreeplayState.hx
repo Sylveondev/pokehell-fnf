@@ -42,6 +42,8 @@ class FreeplayState extends MusicBeatState
 
 	var rotCamHudInd:Int = 0;
 
+	public static var activeButtons:Bool;
+
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
 
@@ -54,8 +56,8 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		activeButtons = false;
 		Conductor.changeBPM(120);
-		persistentUpdate = true;
 		
 		#if MODS_ALLOWED
 		Paths.destroyLoadedImages();
@@ -273,7 +275,8 @@ class FreeplayState extends MusicBeatState
 			MusicBeatState.switchState(new FreeplaySelectState());
 		}
 
-		if (FlxG.keys.justPressed.TAB){
+		if (FlxG.keys.justPressed.TAB||FlxG.keys.justPressed.C){
+			activeButtons = false;
 			openSubState(new ChangePlayerSubState(0,0));
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
@@ -341,6 +344,7 @@ class FreeplayState extends MusicBeatState
 		}
 		else if(controls.RESET)
 		{
+			activeButtons = false;
 			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}

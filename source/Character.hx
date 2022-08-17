@@ -220,7 +220,7 @@ class Character extends FlxSprite
 					animOffsets.set('singRIGHTmiss', oldLeftOffsets);
 				}
 			}
-		}else if (isPlayable){
+		}else if (!isPlayer && isPlayable){
 			// var animArray
 			if(animation.getByName('singLEFT') != null && animation.getByName('singRIGHT') != null)
 				{
