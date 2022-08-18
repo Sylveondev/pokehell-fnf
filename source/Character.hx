@@ -125,7 +125,7 @@ class Character extends FlxSprite
 					frames = Paths.getSparrowAtlas(json.image);
 				}
 				imageFile = json.image;
-				isPlayable = json.isPlayable;
+				this.isPlayable = json.isPlayable;
 
 				if(json.scale != 1) {
 					jsonScale = json.scale;
