@@ -202,8 +202,6 @@ class Character extends FlxSprite
 					animation.getByName('singLEFT').frames = oldRight;
 					
 					
-					animOffsets.set('singLEFT', oldLeftOffsets);
-					animOffsets.set('singRIGHT', oldRightOffsets);
 				}
 
 				// IF THEY HAVE MISS ANIMATIONS??
@@ -215,8 +213,6 @@ class Character extends FlxSprite
 					animation.getByName('singRIGHTmiss').frames = animation.getByName('singLEFTmiss').frames;
 					animation.getByName('singLEFTmiss').frames = oldMiss;
 
-					animOffsets.set('singLEFTmiss', oldRightOffsets);
-					animOffsets.set('singRIGHTmiss', oldLeftOffsets);
 				}
 			}
 		}else if (!isPlayer && isPlayable){
@@ -230,8 +226,6 @@ class Character extends FlxSprite
 
 					animation.getByName('singLEFT').frames = oldRight;
 					
-					animOffsets.set('singLEFT', oldRightOffsets);
-					animOffsets.set('singRIGHT', oldLeftOffsets);
 				}
 		}
 	}

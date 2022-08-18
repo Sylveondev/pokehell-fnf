@@ -1,8 +1,6 @@
 {
 	"songs": [
-		["triple-trouble", "eeeee", [255,255,255]],
-		["algebra", "seth3d", [255,255,255]],
-		["ferocious", "zane", [255,255,255]]
+		["triple-trouble", "eeeee", [255,255,255]]
 	],
 
 	"weekCharacters": [

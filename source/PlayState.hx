@@ -1529,7 +1529,7 @@ class PlayState extends MusicBeatState
 		timeBarBG.color = uiColor;
 		timeBarBG.xAdd = -4;
 		timeBarBG.yAdd = -4;
-		add(timeBarBG);
+		//add(timeBarBG);
 
 		//This is probably really stupid.
 		//Hopefully this doesn't crash this bitch.
@@ -1545,7 +1545,7 @@ class PlayState extends MusicBeatState
 		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
 		timeBar.alpha = 0;
 		timeBar.visible = !ClientPrefs.hideTime;
-		add(timeBar);
+		//add(timeBar);
 		timeBarBG.sprTracker = timeBar;
 
 		timeBarColor = new FlxSprite(timeBarBG.x + 4, timeBarBG.y + 4).loadGraphic(Paths.image('timebarColor'));
@@ -1573,7 +1573,8 @@ class PlayState extends MusicBeatState
 		timeBarOverlay.x = timeBar.x - 3.95;
 		timeBarOverlay.antialiasing = ClientPrefs.globalAntialiasing;
 		timeBarOverlay.cameras = [camHUD];
-		add(timeBarOverlay); if(ClientPrefs.downScroll) timeBarOverlay.y = 0.953 * FlxG.height;
+		//add(timeBarOverlay); 
+		if(ClientPrefs.downScroll) timeBarOverlay.y = 0.953 * FlxG.height;
 		add(timeTxt);
 
 
@@ -1754,7 +1755,7 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-		botplayTxt.cameras = [(ClientPrefs.classicBotplayText ? camHUD : camera)];
+		botplayTxt.cameras = [camHUD];
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
@@ -3418,7 +3419,7 @@ class PlayState extends MusicBeatState
 					var secondsTotal:Int = Math.floor((songLength - curTime) / 1000);
 					if(secondsTotal < 0) secondsTotal = 0;
 
-					timeTxt.text = SONG.song + " - " + FlxStringUtil.formatTime(secondsTotal, false);
+					timeTxt.text = "- " +SONG.song + " - " + FlxStringUtil.formatTime(secondsTotal, false)+" -";
 				}
 			}
 
