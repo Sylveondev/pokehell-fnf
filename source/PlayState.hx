@@ -4796,7 +4796,7 @@ class PlayState extends MusicBeatState
 		//
 		var daRating:String;
 		var rating:FlxSprite = new FlxSprite();
-		var score:Int = 500;
+		var score:Int = 350;
 
 		if (!ClientPrefs.newInput){
 		
