@@ -189,7 +189,7 @@ class Character extends FlxSprite
 			// around. If you didn't make your character on Sally Engine, you'll
 			// have to enable isPlayable for your playable character to show
 			// properly.
-			if (!isPlayable)
+			/*if (!isPlayable)
 			{
 				// var animArray
 				if(animation.getByName('singLEFT') != null && animation.getByName('singRIGHT') != null)
@@ -214,8 +214,8 @@ class Character extends FlxSprite
 					animation.getByName('singLEFTmiss').frames = oldMiss;
 
 				}
-			}
-		}else if (!isPlayer && isPlayable){
+			}*/
+		}/*else if (!isPlayer && isPlayable){
 			// var animArray
 			if(animation.getByName('singLEFT') != null && animation.getByName('singRIGHT') != null)
 				{
@@ -227,7 +227,7 @@ class Character extends FlxSprite
 					animation.getByName('singLEFT').frames = oldRight;
 					
 				}
-		}
+		}*/
 	}
 
 	override function update(elapsed:Float)
