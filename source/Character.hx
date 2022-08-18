@@ -201,10 +201,9 @@ class Character extends FlxSprite
 
 					animation.getByName('singLEFT').frames = oldRight;
 					
-					oldRightOffsets[0] /= -1;
-					oldLeftOffsets[0] /= -1;
-					animOffsets.set('singLEFT', oldRightOffsets);
-					animOffsets.set('singRIGHT', oldLeftOffsets);
+					
+					animOffsets.set('singLEFT', oldLeftOffsets);
+					animOffsets.set('singRIGHT', oldRightOffsets);
 				}
 
 				// IF THEY HAVE MISS ANIMATIONS??

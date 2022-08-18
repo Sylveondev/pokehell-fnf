@@ -2940,13 +2940,6 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
-			case 'box':
-				if (SONG.song.toLowerCase() == 'crossover'){
-					if (curBeat >= 80 && curBeat <= 112 && ClientPrefs.windowMove){
-						swayWinInd ++;
-						application.window.x = Math.floor(Math.sin(swayWinInd / 100 * 5) * 100) + Math.floor((Capabilities.screenResolutionX / 2) - (630 / 2));
-					}
-				}
 			case 'white-center':
 				dad.x = boyfriend.x;
 				dad.y = boyfriend.y;
@@ -5937,7 +5930,7 @@ class PlayState extends MusicBeatState
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.2;
 
-						var lenoteinvert = invert;
+						/*var lenoteinvert = invert;
 						for (i in 0...playerStrums.length){
 							FlxTween.tween(strumLineNotes.members[i + 4], {x: defaultNotePos[i][0] + lenoteinvert * 32}, Conductor.stepCrochet*0.004, {ease: FlxEase.circOut});
 							lenoteinvert = -lenoteinvert;
@@ -5947,7 +5940,7 @@ class PlayState extends MusicBeatState
 						for (i in 0...opponentStrums.length){
 							FlxTween.tween(strumLineNotes.members[i], {x: defaultNotePos[i + 4][0] + lenoteinvert * 32}, Conductor.stepCrochet*0.004, {ease: FlxEase.circOut});
 							lenoteinvert = -lenoteinvert;
-						}
+						}*/
 					}
 					if (curBeat == 48){
 						coBfTrail = new FlxTrail(boyfriend, null, 16, 6, 0.6, 0.2); //nice
@@ -5979,17 +5972,12 @@ class PlayState extends MusicBeatState
                     	coGfTrail.visible = true;
                     	coDadTrail.visible = true;
 
-						if (ClientPrefs.windowMove){
-						//FlxG.resizeWindow(630,360);
-						application.window.x = Math.floor((Capabilities.screenResolutionX / 2) - (630 / 2));
-						application.window.y = Math.floor((Capabilities.screenResolutionY / 2) - (360 / 2));
-						}
-						for (i in 0...playerStrums.length){
+						/*for (i in 0...playerStrums.length){
 							FlxTween.tween(strumLineNotes.members[i + 4], {x: defaultNotePos[i][0],y: defaultNotePos[i][1], angle: 0}, Conductor.stepCrochet*0.004, {ease: FlxEase.circOut});
 						}
 						for (i in 0...opponentStrums.length){
 							FlxTween.tween(strumLineNotes.members[i], {x: defaultNotePos[i + 4][0], y: defaultNotePos[i + 4][1], angle: 0}, Conductor.stepCrochet*0.004, {ease: FlxEase.circOut});
-						}						
+						}*/					
 					}
 					if (curBeat >= 48 && curBeat < 79){
 						FlxTween.tween(camHUD, {angle: invert * 16}, Conductor.stepCrochet*0.004, {ease:FlxEase.circOut, type:BACKWARD});
@@ -5998,15 +5986,7 @@ class PlayState extends MusicBeatState
 						FlxG.camera.zoom += 1.5;
 						camHUD.zoom += 0.6;
 
-						if (curBeat > 47 && curBeat < 79 && ClientPrefs.windowMove){
-							if (curBeat % 0 == 2){
-								FlxTween.tween(application.window, {x: (application.window.x + 150)}, Conductor.stepCrochet * 0.004,{ease:FlxEase.circOut,type:BACKWARD});
-							}else{
-								FlxTween.tween(application.window, {x: (application.window.x - 150)}, Conductor.stepCrochet * 0.004,{ease:FlxEase.circOut,type:BACKWARD});
-							}
-						}
-
-						var lenoteinvert = invert;
+						/*var lenoteinvert = invert;
 						for (i in 0...playerStrums.length){
 							FlxTween.tween(strumLineNotes.members[i + 4], {y: defaultNotePos[i][1] + lenoteinvert * 32}, Conductor.stepCrochet*0.004, {ease: FlxEase.circOut});
 							lenoteinvert = -lenoteinvert;
@@ -6024,7 +6004,7 @@ class PlayState extends MusicBeatState
 						}
 						for (i in 0...opponentStrums.length){
 							FlxTween.tween(strumLineNotes.members[i], {x: defaultNotePos[i + 4][0], y: defaultNotePos[i + 4][1], angle: 0}, Conductor.stepCrochet*0.004, {ease: FlxEase.circOut});
-						}
+						}*/
 					}
 					if (curBeat == 80){
 						FlxTween.tween(camHUD, {alpha: 0}, 1, {ease: FlxEase.quadOut});

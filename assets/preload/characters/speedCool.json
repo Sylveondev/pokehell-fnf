@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				30,
+				-14
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left"
+		},
+		{
+			"offsets": [
+				-30,
+				-31
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down"
+		},
+		{
+			"offsets": [
+				-39,
+				9
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up"
+		},
+		{
+			"offsets": [
+				-20,
+				-5
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "Idle",
+			"fps": 24,
+			"name": "Idle",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/speedCar",
+	"isPlayable": false,
+	"position": [
+		-100,
+		200
+	],
+	"healthicon": "speedCool",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		0
+	],
+	"camera_position": [
+		0,
+		40
+	],
+	"sing_duration": 4,
+	"scale": 0.8
+}
