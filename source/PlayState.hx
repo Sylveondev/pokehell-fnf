@@ -2960,18 +2960,15 @@ class PlayState extends MusicBeatState
 						blingSky.visible = false;
 						blingGreen.visible = false;
 						road.visible = false;
+						if (!ClientPrefs.lowQuality){
 						mountains.visible = false;
-						trees.visible = false;
+						trees.visible = false;}
 
 					}
 					else if (curBeat > 812 && curBeat < 908){
 						cast(dad.shader, YoshiBlammedShader);
 						cast(boyfriend.shader, YoshiBlammedShader);
 						cast(bfCar.shader, YoshiBlammedShader);
-
-						cast(road.shader, YoshiBlammedShader);
-						cast(trees.shader, YoshiBlammedShader);
-						cast(mountains.shader, YoshiBlammedShader);
 					}
 					else if (curBeat == 908){
 						FlxG.camera.flash(FlxColor.WHITE, 1);
@@ -2983,8 +2980,9 @@ class PlayState extends MusicBeatState
 						blingSky.visible = true;
 						blingGreen.visible = true;
 						road.visible = true;
+						if (!ClientPrefs.lowQuality){
 						mountains.visible = true;
-						trees.visible = true;
+						trees.visible = true;}
 					}
 				}
 			case 'trippy':
@@ -5843,13 +5841,13 @@ class PlayState extends MusicBeatState
 			curBeat % (gfSpeed * 2) == 0 ? {
 				iconP1.angle = ClientPrefs.healthrot;
 				iconP2.angle = -ClientPrefs.healthrot;
-				iconP1.scale.set(0.8, 1.2);
-				iconP2.scale.set(1.2, 0.8);
+				iconP1.scale.set(1, 2);
+				iconP2.scale.set(2, 1);
 			} : {
 				iconP1.angle = -ClientPrefs.healthrot;
 				iconP2.angle = ClientPrefs.healthrot;
-				iconP1.scale.set(1.2, 0.8);
-				iconP2.scale.set(0.8, 1.2);
+				iconP1.scale.set(2, 1);
+				iconP2.scale.set(1, 2);
 			}
 			
 			iconP1.updateHitbox();
