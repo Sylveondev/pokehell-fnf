@@ -254,8 +254,9 @@ class Alphabet extends FlxSpriteGroup
 			var isNumber:Bool = AlphaCharacter.numbers.indexOf(splitWords[loopNum]) != -1;
 			var isSymbol:Bool = AlphaCharacter.symbols.indexOf(splitWords[loopNum]) != -1;
 			var isAlphabet:Bool = AlphaCharacter.alphabet.indexOf(splitWords[loopNum].toLowerCase()) != -1;
+			var isKorean:Bool = _finalText == 'a-scary-night-song';
 
-			if ((isAlphabet || isSymbol || isNumber) && (!isBold || !spaceChar))
+			if ((isAlphabet || isSymbol || isNumber || isKorean) && (!isBold || !spaceChar))
 			{
 				if (lastSprite != null && !xPosResetted)
 				{
@@ -285,6 +286,10 @@ class Alphabet extends FlxSpriteGroup
 						letter.createBoldNumber(splitWords[loopNum]);
 					}
 					else if (isSymbol)
+					{
+						letter.createBoldSymbol(splitWords[loopNum]);
+					}
+					else if (isKorean)
 					{
 						letter.createBoldSymbol(splitWords[loopNum]);
 					}
@@ -401,6 +406,20 @@ class AlphaCharacter extends FlxSprite
 	{
 		switch (letter)
 		{
+			case 'k1':
+				animation.addByPrefix(letter, 'bold k1', 24);
+			case 'k2':
+				animation.addByPrefix(letter, 'bold k2', 24);
+			case 'k3':
+				animation.addByPrefix(letter, 'bold k3', 24);
+			case 'k4':
+				animation.addByPrefix(letter, 'bold k4', 24);
+			case 'k5':
+				animation.addByPrefix(letter, 'bold k5', 24);
+			case 'k6':
+				animation.addByPrefix(letter, 'bold k6', 24);
+			case 'k7':
+				animation.addByPrefix(letter, 'bold k7', 24);
 			case '.':
 				animation.addByPrefix(letter, 'PERIOD bold', 24);
 			case "'":
