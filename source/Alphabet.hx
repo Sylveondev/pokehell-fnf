@@ -189,7 +189,10 @@ class Alphabet extends FlxSpriteGroup
 
 	function doSplitWords():Void
 	{
-		splitWords = _finalText.split("");
+		if (_finalText != 'a-scary-night-song'){
+		splitWords = _finalText.split("");}else{
+			splitWords = ['k1','k2','k3','-','k4','k5','-','k6','k7'];
+		}
 	}
 
 	var loopNum:Int = 0;
