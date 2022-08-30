@@ -130,7 +130,9 @@ class Alphabet extends FlxSpriteGroup
 			var isNumber:Bool = AlphaCharacter.numbers.indexOf(character) != -1;
 			var isSymbol:Bool = AlphaCharacter.symbols.indexOf(character) != -1;
 			var isAlphabet:Bool = AlphaCharacter.alphabet.indexOf(character.toLowerCase()) != -1;
-			if ((isAlphabet || isSymbol || isNumber) && (!isBold || !spaceChar))
+			var isKorean:Bool = _finalText == 'a-scary-night-song';
+
+			if ((isAlphabet || isSymbol || isNumber || isKorean) && (!isBold || !spaceChar))
 			{
 				if (lastSprite != null)
 				{
@@ -152,7 +154,7 @@ class Alphabet extends FlxSpriteGroup
 					{
 						letter.createBoldNumber(character);
 					}
-					else if (isSymbol)
+					else if (isSymbol || isKorean)
 					{
 						letter.createBoldSymbol(character);
 					}
@@ -189,6 +191,7 @@ class Alphabet extends FlxSpriteGroup
 
 	function doSplitWords():Void
 	{
+		trace('Splitting: '+_finalText);
 		if (_finalText != 'a-scary-night-song'){
 		splitWords = _finalText.split("");}else{
 			splitWords = ['k1','k2','k3','-','k4','k5','-','k6','k7'];
@@ -255,9 +258,9 @@ class Alphabet extends FlxSpriteGroup
 			var isSymbol:Bool = AlphaCharacter.symbols.indexOf(splitWords[loopNum]) != -1;
 			var isAlphabet:Bool = AlphaCharacter.alphabet.indexOf(splitWords[loopNum].toLowerCase()) != -1;
 			var isKorean:Bool = _finalText == 'a-scary-night-song';
-
 			if ((isAlphabet || isSymbol || isNumber || isKorean) && (!isBold || !spaceChar))
 			{
+				//trace('Creating '+ (isBold ? 'BOLD' : '') +'alphabet.. isNumber: '+isNumber+" isSymbol: "+isSymbol+" isAlphabet: "+isAlphabet+" isKorean: "+isKorean);
 				if (lastSprite != null && !xPosResetted)
 				{
 					lastSprite.updateHitbox();
@@ -305,6 +308,10 @@ class Alphabet extends FlxSpriteGroup
 						letter.createNumber(splitWords[loopNum]);
 					}
 					else if (isSymbol)
+					{
+						letter.createSymbol(splitWords[loopNum]);
+					}
+					else if (isKorean)
 					{
 						letter.createSymbol(splitWords[loopNum]);
 					}
