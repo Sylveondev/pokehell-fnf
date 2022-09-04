@@ -125,7 +125,7 @@ class Character extends FlxSprite
 					frames = Paths.getSparrowAtlas(json.image);
 				}
 				imageFile = json.image;
-				isPlayable = json.isPlayable;
+				this.isPlayable = json.isPlayable;
 
 				if(json.scale != 1) {
 					jsonScale = json.scale;
@@ -189,7 +189,7 @@ class Character extends FlxSprite
 			// around. If you didn't make your character on Sally Engine, you'll
 			// have to enable isPlayable for your playable character to show
 			// properly.
-			if (!isPlayable)
+			/*if (!isPlayable)
 			{
 				// var animArray
 				if(animation.getByName('singLEFT') != null && animation.getByName('singRIGHT') != null)
@@ -201,10 +201,7 @@ class Character extends FlxSprite
 
 					animation.getByName('singLEFT').frames = oldRight;
 					
-					oldRightOffsets[0] /= -1;
-					oldLeftOffsets[0] /= -1;
-					animOffsets.set('singLEFT', oldRightOffsets);
-					animOffsets.set('singRIGHT', oldLeftOffsets);
+					
 				}
 
 				// IF THEY HAVE MISS ANIMATIONS??
@@ -216,11 +213,9 @@ class Character extends FlxSprite
 					animation.getByName('singRIGHTmiss').frames = animation.getByName('singLEFTmiss').frames;
 					animation.getByName('singLEFTmiss').frames = oldMiss;
 
-					animOffsets.set('singLEFTmiss', oldRightOffsets);
-					animOffsets.set('singRIGHTmiss', oldLeftOffsets);
 				}
-			}
-		}else if (isPlayable){
+			}*/
+		}/*else if (!isPlayer && isPlayable){
 			// var animArray
 			if(animation.getByName('singLEFT') != null && animation.getByName('singRIGHT') != null)
 				{
@@ -231,10 +226,8 @@ class Character extends FlxSprite
 
 					animation.getByName('singLEFT').frames = oldRight;
 					
-					animOffsets.set('singLEFT', oldRightOffsets);
-					animOffsets.set('singRIGHT', oldLeftOffsets);
 				}
-		}
+		}*/
 	}
 
 	override function update(elapsed:Float)

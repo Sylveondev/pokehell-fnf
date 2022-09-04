@@ -2,8 +2,7 @@
 	"songs": [
 		["drugged", "potassium", [255, 225, 255]],
 		["hypergalcemia", "potassium", [255, 225, 255]],
-		["bambers", "dave", [255, 225, 255]],
-		["banana", "potassium", [255, 225, 255]]
+		["bambers", "dave", [255, 225, 255]]
 	],
 
 	"weekCharacters": [

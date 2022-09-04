@@ -48,8 +48,19 @@ class HealthIcon extends FlxSprite
 			if(!Paths.fileExists('images/' + name + '.png', IMAGE)) name = 'icons/icon-face'; //Prevents crash from missing icon
 			var file:Dynamic = Paths.image(name);
 
+			var winningIcon:Bool;
+
+			//This is for determining if the icon has a winning icon
+			//We'll floor the icon sizes so abnormally sized icons will not fail the algorithm and cause problems. 
+			switch(Math.floor(width) / Math.floor(height)){
+				case 3:
+					trace('Winning icon enabled for '+char);
+					winningIcon = true;
+				default:
+					winningIcon = false;
+			}
 			loadGraphic(file, true, 150, 150);
-			animation.add(char, [0, 1], 0, false, isPlayer);
+			animation.add(char, winningIcon ? [0, 1, 2] : [0, 1], 0, false, isPlayer);
 			animation.play(char);
 			this.char = char;
 

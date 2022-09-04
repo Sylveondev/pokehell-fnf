@@ -42,6 +42,8 @@ class FreeplayState extends MusicBeatState
 
 	var rotCamHudInd:Int = 0;
 
+	public static var activeButtons:Bool;
+
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
 
@@ -54,8 +56,8 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		activeButtons = false;
 		Conductor.changeBPM(120);
-		persistentUpdate = true;
 		
 		#if MODS_ALLOWED
 		Paths.destroyLoadedImages();
@@ -108,7 +110,7 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
+			var songText:Alphabet = new Alphabet(0, (70 * i) + 30,songs[i].songName, true, false);
 			songText.isMenuItem = true;
 			songText.targetY = i;
 			grpSongs.add(songText);
@@ -169,9 +171,9 @@ class FreeplayState extends MusicBeatState
 		textBG.alpha = 0.6;
 		add(textBG);
 		#if PRELOAD_ALL
-		var leText:String = "Press SPACE to listen to this Song / Press RESET to Reset your Score and Accuracy.";
+		var leText:String = "Press TAB to change selected player / Press SPACE to listen to this Song / Press RESET to Reset your Score and Accuracy.";
 		#else
-		var leText:String = "Press RESET to Reset your Score and Accuracy.";
+		var leText:String = "Press TAB to change selected player / Press RESET to Reset your Score and Accuracy.";
 		#end
 		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, 18);
 		text.setFormat(Paths.font("righteous.ttf"), 18, FlxColor.WHITE, RIGHT);
@@ -273,7 +275,8 @@ class FreeplayState extends MusicBeatState
 			MusicBeatState.switchState(new FreeplaySelectState());
 		}
 
-		if (FlxG.keys.justPressed.TAB){
+		if (FlxG.keys.justPressed.TAB||FlxG.keys.justPressed.C){
+			activeButtons = false;
 			openSubState(new ChangePlayerSubState(0,0));
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
@@ -341,6 +344,7 @@ class FreeplayState extends MusicBeatState
 		}
 		else if(controls.RESET)
 		{
+			activeButtons = false;
 			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}

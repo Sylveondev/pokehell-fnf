@@ -201,7 +201,7 @@
 	],
 	"no_antialiasing": false,
 	"image": "characters/riolubf3d",
-	"isPlayable": false,
+	"isPlayable": true,
 	"position": [
 		0,
 		350
