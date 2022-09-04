@@ -22,8 +22,8 @@ class ChangePlayerSubState extends MusicBeatSubstate
 
     
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['---[ Misc ]---','based on chart','---[ Playable ]---','sally', 'sally - old', 'sally - floombo', 'bf - derpmanzero', 'riolu bf', 'bf - old', 'bf - og fnf', '---[ Story ]---', 'vaporeon', 'jolteon', 'flareon', 'umbreon', 'glaceon', 'sylveon', 'sillyvon', 'potassium', 'sunshine', 'speedy', 'black', 'espeon', 'leafeon', 'eeeee based', 'polyeon', 'espurr'];
-    var iconItems:Array<String> = ['','face','','bf','bf-kindaold','bf','realbf','riolubf3d','realbf','realbf','','vaporeon', 'jolteon', 'flareon', 'umbreon', 'glaceon', 'sylveon', 'sillyvon', 'potassium', 'sunshine', 'speedy', 'black', 'espeon', 'leafeon', 'eeeee', 'polyeon', 'espurr'];
+	var menuItemsOG:Array<String> = ['---[ Misc ]---','based on chart','---[ Playable ]---','sally', 'sally - old', 'sally - floombo', 'sally - vee funkin', 'bf - derpmanzero', 'riolu bf', 'bf - old', 'bf - og fnf', '---[ Story ]---', 'vaporeon', 'jolteon', 'flareon', 'umbreon', 'glaceon', 'sylveon', 'sillyvon', 'potassium', 'sunshine', 'speedy', 'black', 'espeon', 'leafeon', 'eeeee based', 'polyeon', 'espurr'];
+    var iconItems:Array<String> = ['','face','','bf','bf-kindaold','bf','bf','realbf','riolubf3d','realbf','realbf','','vaporeon', 'jolteon', 'flareon', 'umbreon', 'glaceon', 'sylveon', 'sillyvon', 'potassium', 'sunshine', 'speedy', 'black', 'espeon', 'leafeon', 'eeeee', 'polyeon', 'espurr'];
 	var curSelected:Int = 0;
 
 	public static var transCamera:FlxCamera;
@@ -106,6 +106,11 @@ class ChangePlayerSubState extends MusicBeatSubstate
                     case "sally":
                         PlayState.freeplayChar = true;
                         PlayState.selectedBF = "bf";
+                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
+                        close();
+                    case "sally - vee funkin":
+                        PlayState.freeplayChar = true;
+                        PlayState.selectedBF = "cursedSally";
                         FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
                         close();
                     case "sally - old":

@@ -52,6 +52,7 @@ class HealthIcon extends FlxSprite
 
 			//This is for determining if the icon has a winning icon
 			//We'll floor the icon sizes so abnormally sized icons will not fail the algorithm and cause problems. 
+			loadGraphic(file);
 			switch(Math.floor(width) / Math.floor(height)){
 				case 3:
 					trace('Winning icon enabled for '+char);
@@ -59,6 +60,7 @@ class HealthIcon extends FlxSprite
 				default:
 					winningIcon = false;
 			}
+			//Actually load it now
 			loadGraphic(file, true, 150, 150);
 			animation.add(char, winningIcon ? [0, 1, 2] : [0, 1], 0, false, isPlayer);
 			animation.play(char);
