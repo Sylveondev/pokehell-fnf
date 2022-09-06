@@ -1529,7 +1529,7 @@ class PlayState extends MusicBeatState
 		timeBarBG.color = uiColor;
 		timeBarBG.xAdd = -4;
 		timeBarBG.yAdd = -4;
-		//add(timeBarBG);
+		if (ClientPrefs.classicHUD) add(timeBarBG);
 
 		//This is probably really stupid.
 		//Hopefully this doesn't crash this bitch.
@@ -1545,7 +1545,7 @@ class PlayState extends MusicBeatState
 		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
 		timeBar.alpha = 0;
 		timeBar.visible = !ClientPrefs.hideTime;
-		//add(timeBar);
+		if (ClientPrefs.classicHUD) add(timeBar);
 		timeBarBG.sprTracker = timeBar;
 
 		timeBarColor = new FlxSprite(timeBarBG.x + 4, timeBarBG.y + 4).loadGraphic(Paths.image('timebarColor'));
@@ -1643,7 +1643,7 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		moveCameraSection(0);
 
-		healthBarBG = new AttachedSprite('healthBar','normal','shared',true);
+		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
@@ -1651,7 +1651,6 @@ class PlayState extends MusicBeatState
 		healthBarBG.xAdd = -4;
 		healthBarBG.yAdd = -4;
 		healthBarBG.color = uiColor;
-		add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
@@ -1676,7 +1675,8 @@ class PlayState extends MusicBeatState
 		healthBarOverlay.x = healthBarBG.x-1.9;
 		healthBarOverlay.antialiasing = ClientPrefs.globalAntialiasing;
 		healthBarOverlay.cameras = [camHUD];
-		add(healthBarOverlay); 
+		if (!ClientPrefs.classicHUD) add(healthBarOverlay); 
+		add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarOverlay.y = 0.11 * FlxG.height;
 
 		//Ripped straight from Kade Engine, fight me over it
@@ -1736,15 +1736,15 @@ class PlayState extends MusicBeatState
 		FlxTween.tween(scoreTxt, {alpha: 1}, 0.2, {ease: FlxEase.circOut, startDelay: 0.6});
 		
 
-		botplayTxt = new FlxText(400, (ClientPrefs.classicBotplayText ? (ClientPrefs.downScroll ? timeBarBG.y - 55 : timeBarBG.y + 55) : (ClientPrefs.downScroll ? healthBarBG.y + 155 : healthBarBG.y - 155)), FlxG.width - 800, "BOTPLAY", 32);
+		botplayTxt = new FlxText(400,FlxG.height * 0.7 /*(ClientPrefs.classicBotplayText ? (ClientPrefs.downScroll ? timeBarBG.y - 55 : timeBarBG.y + 55) : (ClientPrefs.downScroll ? healthBarBG.y + 155 : healthBarBG.y - 155))*/, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.RED);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.5;
 		botplayTxt.visible = cpuControlled;
 		add(botplayTxt);
-		if(ClientPrefs.downScroll && !ClientPrefs.classicBotplayText) {
+		/*if(ClientPrefs.downScroll && !ClientPrefs.classicBotplayText) {
 			botplayTxt.y = timeBarBG.y + 78;
-		}
+		}*/
 
 		unsupportedText.cameras = [camHUD];
 		strumLineNotes.cameras = [camHUD];
@@ -1755,7 +1755,7 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-		botplayTxt.cameras = [camHUD];
+		botplayTxt.cameras = [camOther];
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
