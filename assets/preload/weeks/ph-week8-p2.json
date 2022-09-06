@@ -16,8 +16,7 @@
 	],
 	"songs": [
 		["speeding", "speedy", [255, 225, 0]],
-		["darkglow", "black", [50, 50, 50]],
-		["showtime", "sunshine", [195, 93, 0]]
+		["darkglow", "black", [50, 50, 50]]
 	],
 	"hideStoryMode": false,
 	"weekBefore": "ph-week8",
