@@ -10,6 +10,17 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
+import openfl.events.Event;
+import openfl.events.UncaughtErrorEvent;
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+import sys.io.Process;
+#end
+import haxe.CallStack.StackItem;
+import haxe.CallStack;
+import haxe.io.Path;
+import lime.app.Application;
 
 
 class Main extends Sprite
@@ -72,6 +83,9 @@ class Main extends Sprite
 	{
 		super();
 
+		#if desktop Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash); #end
+
+
 		if (stage != null)
 		{
 			init();
@@ -91,7 +105,7 @@ class Main extends Sprite
 
 		setupGame();
 	}
-
+	
 	private function setupGame():Void
 	{
 		var stageWidth:Int = Lib.current.stage.stageWidth;
@@ -127,4 +141,47 @@ class Main extends Sprite
 		FlxG.mouse.visible = false;
 		#end
 	}
+
+	#if desktop
+	function onCrash(e:UncaughtErrorEvent):Void
+	{
+		var errMsg:String = "";
+		var errDiag:String = "";
+		var path:String;
+		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+		var dateNow:String = Date.now().toString();
+
+		dateNow = StringTools.replace(dateNow, " ", "_");
+		dateNow = StringTools.replace(dateNow, ":", "'");
+
+		path = "crash/" + "SE_" + dateNow + ".txt";
+
+		errMsg += "\nA fatal error occured: \"" + e.error + "\"\nSally Engine has crashed. Bring this to SylveonDev's attention.\n\n";
+
+		errMsg += "--- Begin crash dump ---";
+		for (stackItem in callStack)
+		{
+			switch (stackItem)
+			{
+				case FilePos(s, file, line, column):
+					errMsg += file + " (line " + line + ")\n";
+				default:
+					Sys.println(stackItem);
+			}
+		}
+		errMsg += "--- End crash dump ---";
+
+		if (!FileSystem.exists("crash/"))
+			FileSystem.createDirectory("crash/");
+
+		File.saveContent(path, errMsg + "\n");
+
+		Sys.println(errMsg);
+		Sys.println("Crash dump saved in " + Path.normalize(path));
+
+		Application.current.window.alert(errMsg, "Seriously?!");
+
+		Sys.exit(1);
+	}
+	#end
 }
