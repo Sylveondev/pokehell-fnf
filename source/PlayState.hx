@@ -85,6 +85,29 @@ class PlayState extends MusicBeatState
 		['Sick!', 1], //From 90% to 99%
 		['Perfect!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
+
+	public static var botplayList:Array<String> = [
+		"BOTPLAY",
+		"YOU SUCK",
+		"STOP USING BOTPLAY",
+		"CHEATING",
+		"DAVE AND BAMBI MOMENT",
+		"Mr Krabs is a robot",
+		"Death X-Gaming",
+		"SYSTEM SENSOR MASS ADA",
+		"POSSASSIUM HYPE",
+		"STOP MODDING THE XBOX",
+		"DIRTY CHEATER",
+		"APERTURE SCIENCE",
+		"TOO HARD FOR YOU?",
+		"JOIN MY DISCORD DAMMIT",
+		"Follow my twitter",
+		"STRIDENT CRISIS",
+		"Thearchy mode",
+		"Beep boop",
+		"MEE6",
+		"Why botplay"
+	];
 	
 	#if (haxe >= "4.0.0")
 	public var modchartTweens:Map<String, FlxTween> = new Map();
@@ -1736,7 +1759,7 @@ class PlayState extends MusicBeatState
 		FlxTween.tween(scoreTxt, {alpha: 1}, 0.2, {ease: FlxEase.circOut, startDelay: 0.6});
 		
 
-		botplayTxt = new FlxText(400,FlxG.height * 0.7 /*(ClientPrefs.classicBotplayText ? (ClientPrefs.downScroll ? timeBarBG.y - 55 : timeBarBG.y + 55) : (ClientPrefs.downScroll ? healthBarBG.y + 155 : healthBarBG.y - 155))*/, FlxG.width - 800, "BOTPLAY", 32);
+		botplayTxt = new FlxText(400,FlxG.height * 0.7 /*(ClientPrefs.classicBotplayText ? (ClientPrefs.downScroll ? timeBarBG.y - 55 : timeBarBG.y + 55) : (ClientPrefs.downScroll ? healthBarBG.y + 155 : healthBarBG.y - 155))*/, FlxG.width - 800, botplayList[FlxG.random.int(0,botplayList.length)], 32);
 		botplayTxt.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.RED);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.5;
