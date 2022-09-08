@@ -582,7 +582,7 @@ class PlayState extends MusicBeatState
 				add(bg);
 
 			case 'creepyHouse': //Secret Week 1: Denis
-				var bg:BGSprite = new BGSprite('creepyHouse', -600, -200, 1, 1);
+				var bg:BGSprite = new BGSprite('cursedHouse', -600, -200, 1, 1);
 				add(bg);
 
 			case 'stage2': //Week 2: Jolteon
@@ -689,7 +689,7 @@ class PlayState extends MusicBeatState
 				add(bg);
 				add(front);
 			
-			case 'blank':
+			default:
 				boxBG = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
 				boxBG.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), FlxColor.WHITE);
 				
@@ -757,11 +757,11 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('coliseum', -600, -200, 1, 1);
 				add(bg);
 
-			case 'daSchool': //Secret Week 1: Denis
+			/*case 'daSchool': //Secret Week 1: Denis
 				var bg:BGSprite = new BGSprite('school', -600, -200, 1, 1);
-				add(bg);
+				add(bg);*/
 			
-			case 'ferocious': //Secret Week 1: Denis
+			case 'ferocious'|'daschool': //Secret Week 1: Denis
 				var bg:BGSprite = new BGSprite('school', -600, -200, 1, 1);
 				add(bg);
 
@@ -1632,7 +1632,7 @@ class PlayState extends MusicBeatState
 		add(camFollowPos);
 
 		
-		FlxG.camera.follow(camFollowPos, LOCKON, 2);
+		FlxG.camera.follow(camFollowPos, LOCKON, 5);
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		camHUD.zoom = defaultHudZoom;
@@ -3236,7 +3236,7 @@ class PlayState extends MusicBeatState
 				You need to press 3 to unlock the mouse cursor first.
 				*/
 				if (curSong.toLowerCase() == 'squad'){
-					var poop:String = Highscore.formatSong('execution', 2);
+					var poop:String = Highscore.formatSong('execution', 1);
 					PlayState.SONG = Song.loadFromJson(poop, 'execution');
 					PlayState.isStoryMode = false;
 					PlayState.storyDifficulty = 1;
@@ -3264,7 +3264,7 @@ class PlayState extends MusicBeatState
 			*/
 			#if !debug
 			if (curSong.toLowerCase() == 'headache'){
-				var poop:String = Highscore.formatSong('denis', 2);
+				var poop:String = Highscore.formatSong('denis', 1);
 				PlayState.SONG = Song.loadFromJson(poop, curSong.toLowerCase());
 				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = 1;
@@ -3277,7 +3277,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.music.stop();
 				LoadingState.loadAndSwitchState(new PlayState());
 			}else if (curSong.toLowerCase() == 'mansion'||curSong.toLowerCase() == 'banger'||curSong.toLowerCase() == 'fair'){
-				var poop:String = Highscore.formatSong(FlxG.random.bool(5) ? 'treacherous':'raging', 2);
+				var poop:String = Highscore.formatSong(FlxG.random.bool(5) ? 'treacherous':'raging', 1);
 				PlayState.SONG = Song.loadFromJson(poop, curSong.toLowerCase());
 				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = 1;
@@ -4342,6 +4342,7 @@ class PlayState extends MusicBeatState
 					}
 				}
 
+				if (cameraTwn != null) cameraTwn.cancel();
 				cameraTwn = FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, duration, {ease: FlxEase.circInOut,
 					onComplete:function(_){
 						cameraTwn = null;
@@ -4358,6 +4359,7 @@ class PlayState extends MusicBeatState
 					defaultHudZoom = 1;
 				}
 
+				if (camhudTwn != null) camhudTwn.cancel();
 				camhudTwn = FlxTween.tween(camHUD, {zoom: defaultHudZoom}, duration, {ease: FlxEase.circInOut,
 					onComplete:function(_){
 						camhudTwn = null;
