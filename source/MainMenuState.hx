@@ -25,7 +25,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var sallyEngineVersion:String = '0.1'; //This is also used for Discord RPC
+	public static var sallyEngineVersion:String = 'A1'; //This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.4.2'; //This is also used for Discord RPC
 	
 	public static var gitCommit:String = '';

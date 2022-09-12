@@ -33,6 +33,7 @@ class Main extends Sprite
 	var skipSplash:Bool = false; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 	public static var fpsVar:FPS;
+	public static var engVar:EngVer;
 	public static var drums:Bool = false;
 	public static var menuBad:Bool = false;
 	public static var menuMusPlay:Bool = false;
@@ -128,9 +129,12 @@ class Main extends Sprite
 
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
+		engVar = new EngVer(1170, 3, 0xFFFFFF);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
 		addChild(fpsVar);
+		addChild(engVar);
+
 		if(fpsVar != null) {
 			fpsVar.visible = ClientPrefs.showFPS;
 		}

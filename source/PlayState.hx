@@ -604,8 +604,8 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('greenally', -600, -200, 1, 1);
 				add(bg);
 
-			case 'creepyHouse': //Secret Week 1: Denis
-				var bg:BGSprite = new BGSprite('cursedHouse', -600, -200, 1, 1);
+			case 'creepyhouse': //Secret Week 1: Denis
+				var bg:BGSprite = new BGSprite('cursedHouse', -400, -180, 0.8, 0.8);
 				add(bg);
 
 			case 'stage2': //Week 2: Jolteon
@@ -1421,7 +1421,7 @@ class PlayState extends MusicBeatState
 		camPos.x += gf.cameraPosition[0];
 		camPos.y += gf.cameraPosition[1];
 
-		if(dad.curCharacter.startsWith('gf')) {
+		if(dad.curCharacter.startsWith('gf') || dad.curCharacter == gf.curCharacter) {
 			dad.setPosition(GF_X, GF_Y);
 			gf.visible = false;
 		}
@@ -1707,7 +1707,7 @@ class PlayState extends MusicBeatState
 		kadeEngineWatermark = new FlxText(4, healthBarBG.y
 			+ 50, 0,
 			SONG.song
-			+ " - Pokehell " + MainMenuState.pokehellVersion+" (SE "+ MainMenuState.sallyEngineVersion +" / PE "+MainMenuState.psychEngineVersion+")", 16);
+			+ " - Pokehell " + MainMenuState.pokehellVersion, 16);
 		kadeEngineWatermark.setFormat(Paths.font("righteous.ttf"), 16, uiColor, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		kadeEngineWatermark.updateHitbox();
@@ -1868,6 +1868,31 @@ class PlayState extends MusicBeatState
 						});
 					});
 				
+				case 'smoked-out':
+					var blackScreen:FlxSprite = new FlxSprite().makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
+					add(blackScreen);
+					blackScreen.scrollFactor.set();
+					camHUD.visible = false;
+					inCutscene = true;
+
+					FlxTween.tween(blackScreen, {alpha: 0}, 0.7, {
+						ease: FlxEase.linear,
+						onComplete: function(twn:FlxTween) {
+							remove(blackScreen);
+						}
+					});
+					new FlxTimer().start(0.8, function(tmr:FlxTimer)
+						{
+							camHUD.visible = true;
+							remove(blackScreen);
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
+								ease: FlxEase.elasticOut,
+								onComplete: function(twn:FlxTween)
+								{
+									startDialogue(dialogueJson);
+								}
+							});
+						});
 				case 'smoking' | 'squad' | 'speeding' | 'crossover':
 					var leSong:String = SONG.song.toLowerCase();
 					startVideo(leSong + 'Cutscene');
@@ -2972,6 +2997,9 @@ class PlayState extends MusicBeatState
 			case 'blank':
 				if (SONG.song.toLowerCase() == 'forgotten'){
 				gf.visible = false;}
+			case 'cursedhouse':
+				gf.visible = false;
+				boyfriend.visible = false;
 			case 'road':
 				if (SONG.song.toLowerCase() == 'bling-blunkin'){
 					if (curBeat == 812){
@@ -3300,8 +3328,9 @@ class PlayState extends MusicBeatState
 					FlxG.sound.music.stop();
 				LoadingState.loadAndSwitchState(new PlayState());
 			}else if (curSong.toLowerCase() == 'mansion'||curSong.toLowerCase() == 'banger'||curSong.toLowerCase() == 'fair'){
-				var poop:String = Highscore.formatSong(FlxG.random.bool(5) ? 'treacherous':'raging', 1);
-				PlayState.SONG = Song.loadFromJson(poop, curSong.toLowerCase());
+				var pee:String = FlxG.random.bool(5) ? 'treacherous':'raging';
+				var poop:String = Highscore.formatSong(pee, 1);
+				PlayState.SONG = Song.loadFromJson(poop, pee);
 				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = 1;
 				
