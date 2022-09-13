@@ -160,9 +160,9 @@ class Main extends Sprite
 
 		path = "crash/" + "SE_" + dateNow + ".txt";
 
-		errMsg += "\nA fatal error occured: \"" + e.error + "\"\nSally Engine has crashed. Bring this to SylveonDev's attention.\n\n";
+		errMsg += "\nA fatal error occured: \"" + e.error + "\"\nSally Engine has crashed due to some uncaught error. Bring this to SylveonDev's attention.\n\n";
 
-		errMsg += "--- Begin crash dump ---";
+		errMsg += "--- Begin crash dump ---\n";
 		for (stackItem in callStack)
 		{
 			switch (stackItem)

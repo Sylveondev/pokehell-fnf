@@ -1661,8 +1661,9 @@ class ChartingState extends MusicBeatState
 	}
 
 	function updateZoom() {
+		if (zoomList[curZoom] == 0.5) curZoom = 1;
 		zoomTxt.text = 'Zoom: ' + zoomList[curZoom] + 'x';
-		trace('zoom' + zoomList[curZoom]);
+		trace('zoom ' + zoomList[curZoom]);
 		reloadGridLayer();
 	}
 

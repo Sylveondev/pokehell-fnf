@@ -1,0 +1,81 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "vaporeon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Ugh, my head.. What happened..?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "You're ok!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "vaporeon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oh, you're still here.. Why are you still here."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "normal",
+			"text": "I was making you feel better after you passed out!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "vaporeon",
+			"boxState": "normal",
+			"expression": "left",
+			"text": "Oh."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "upset",
+			"text": "Are you feeling better?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "vaporeon",
+			"boxState": "normal",
+			"expression": "sigh",
+			"text": "I'll... be fine yea. I'm guessing you'd want another song huh."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "upset",
+			"text": "If you want, no pressure."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "vaporeon",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": ""
+		},
+		{
+			"speed": 0.05,
+			"portrait": "eevee",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I'll take that awkward silence as a yes!"
+		},
+		{
+			"speed": 0.1,
+			"portrait": "vaporeon",
+			"boxState": "normal",
+			"expression": "sobbing",
+			"text": "End my suffering already.."
+		}
+	]
+}
