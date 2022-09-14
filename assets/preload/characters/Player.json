@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-35,
+				281
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Player idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				11,
+				209
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "player down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				24,
+				297
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-8,
+				290
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Right",
+			"indices": []
+		},
+		{
+			"offsets": [
+				50,
+				284
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "oh no ",
+			"indices": [],
+			"name": "o no"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				58,
+				283
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Left",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/his fucking mic is gone",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "Icon-player",
+	"flip_x": false,
+	"healthbar_colors": [
+		254,
+		240,
+		81
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1
+}
