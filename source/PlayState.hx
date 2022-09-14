@@ -607,7 +607,10 @@ class PlayState extends MusicBeatState
 			case 'creepyhouse': //Secret Week 1: Denis
 				var bg:BGSprite = new BGSprite('cursedHouse', -400, -180, 0.8, 0.8);
 				add(bg);
-
+			
+			case 'sytrus': //Secret Week 1: Denis
+				trippyBG = new BGSprite('SytrusStage', -100, -50, 0, 0, ['animated'], false, 12);
+				add(trippyBG);
 			case 'stage2': //Week 2: Jolteon
 				var bg:BGSprite = new BGSprite('stage2', -600, -200, 1, 1);
 				add(bg);
@@ -1405,6 +1408,12 @@ class PlayState extends MusicBeatState
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 
+		if (SONG.song.toLowerCase() == 'sytrus'){
+			dad.alpha = 0;
+			boyfriend.visible = false;
+			gf.visible = false;
+			camHUD.visible = false;
+		}
 		if (SONG.song.toLowerCase() == 'bling-blunkin'){
 			boyfriend.y -= 50;
 			boyfriend.x += 200;
@@ -1911,7 +1920,29 @@ class PlayState extends MusicBeatState
 			}
 			seenCutscene = true;
 		} else {
-			startCountdown();
+			var daSong:String = Paths.formatToSongPath(curSong);
+			switch(daSong){
+				case 'sytrus':
+					new FlxTimer().start(0.25, function(tmr:FlxTimer)
+						{
+							trippyBG.animation.play('animated',true);
+
+							camHUD.visible = false;
+							dad.alpha = 0;
+							boyfriend.alpha = 0;
+							gf.alpha = 0;
+							new FlxTimer().start(2.5, function(tmr:FlxTimer)
+								{
+									camHUD.visible = true;
+									FlxTween.tween(dad, {alpha: 1}, 1.5, {
+										ease: FlxEase.linear
+									});
+									startCountdown();
+								});
+						});
+				default:
+					startCountdown();
+			}
 		}
 		RecalculateRating();
 
@@ -4644,6 +4675,8 @@ class PlayState extends MusicBeatState
 	var transitioning = false;
 	public function endSong():Void
 	{
+		//You ain't getting out of this that easily.
+		if (songMisses >= 100) health = -1;
 		if (ClientPrefs.antispam){
 			//Should kill you if you tried to cheat
 			if(!startingSong) {
@@ -6303,29 +6336,21 @@ class PlayState extends MusicBeatState
 			if (goods > 0) ratingFC = "GFC";
 			if (bads > 0 || shits > 0) ratingFC = "FC";
 			if (songMisses > 0 && songMisses < 10) ratingFC = "SDCB";
-			else if (songMisses >= 10) ratingFC = "Clear";
-
+			else if (songMisses >= 10 && songMisses < 100) ratingFC = "Clear";
+			else if (songMisses >= 100) ratingFC = "Fail";
 
 			var accuracy:Float = Math.floor(ratingPercent * 100);
 
 			//Basically Kade Engine's ranking system but I improved it.
-			if (accuracy >= 99) ranking = 'AAAAA';
-			else if (accuracy >= 98) ranking = 'AAAA:';
-			else if (accuracy >= 97) ranking = 'AAAA.';
-			else if (accuracy >= 96) ranking = 'AAAA';
-			else if (accuracy >= 95) ranking = 'AAA:';
-			else if (accuracy >= 94) ranking = 'AAA.';
-			else if (accuracy >= 93) ranking = 'AAA';
-			else if (accuracy >= 92) ranking = 'AA:';
-			else if (accuracy >= 91) ranking = 'AA.';
-			else if (accuracy >= 90) ranking = 'AA';
-			else if (accuracy >= 86) ranking = 'A:';
-			else if (accuracy >= 83) ranking = 'A.';
-			else if (accuracy >= 80) ranking = 'A';
-			else if (accuracy >= 70) ranking = 'B';
-			else if (accuracy >= 60) ranking = 'C';
-			else if (accuracy < 60) ranking = 'D';
+			if (accuracy >= 98) ranking = 'S+';
+			else if (accuracy >= 96) ranking = 'S';
+			else if (accuracy >= 90) ranking = 'A';
+			else if (accuracy >= 83) ranking = 'B';
+			else if (accuracy >= 73) ranking = 'C';
+			else if (accuracy >= 63) ranking = 'D';
+			else if (accuracy < 63) ranking = 'F';
 
+			if (usedPractice) ranking = '---';
 			//Cool Kade Engine stuff in psych lol
 			setOnLuas('kadeRanking',ranking);
 
