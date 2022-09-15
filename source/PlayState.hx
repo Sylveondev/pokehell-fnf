@@ -231,7 +231,7 @@ class PlayState extends MusicBeatState
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
 	public var camOther:FlxCamera;
-	public var cameraSpeed:Float = 1;
+	public var cameraSpeed:Float = 1.5;
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
@@ -4397,7 +4397,7 @@ class PlayState extends MusicBeatState
 			
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
-			case 'Default Camera Zoom':
+			case 'Set Camera Zoom'|'Default Camera Zoom':
 				if (ClientPrefs.sourceEvents){
 				var duration:Float = 0.5;
 				if (value2 != null) { duration = Std.parseFloat(value2); }
@@ -4431,7 +4431,7 @@ class PlayState extends MusicBeatState
 						cameraTwn = null;
 				}});
 				}	
-			case 'Default CamHUD Zoom':
+			case 'Set CamHUD Zoom'|'Default CamHUD Zoom':
 				if (ClientPrefs.sourceEvents){
 				var duration:Float = 0.5;
 				if (value2 != null) { duration = Std.parseFloat(value2); }
@@ -4455,7 +4455,7 @@ class PlayState extends MusicBeatState
 				if (Math.isNaN(flashduration)) flashduration = 1;
 				
 				FlxG.camera.flash(FlxColor.WHITE, flashduration);
-				camHUD.flash(FlxColor.WHITE, flashduration);}
+				camHUD.flash(FlxColor.WHITE, flashduration);}	
 			case 'Do Camera rotate':
 				if (ClientPrefs.sourceEvents){
 				//Some Shaggy mod code because I have no fkin' idea what I'm doing :skull
@@ -4466,6 +4466,14 @@ class PlayState extends MusicBeatState
 				if (ClientPrefs.sourceEvents){
 				rotCam = false;
 				camera.angle = 0;}
+			case 'Set Camera speed':
+				if (ClientPrefs.sourceEvents){
+					var camSpeed:Float = 1.5;
+					if (value1 != null) camSpeed = Std.parseFloat(value1);
+					if (Math.isNaN(camSpeed)) camSpeed = 1.5;
+					if (camSpeed < 0) camSpeed = 0;
+						cameraSpeed = camSpeed;
+				}
 			case 'Do CamHud rotate':
 				if (ClientPrefs.sourceEvents){
 				//Some Shaggy mod code because I have no fkin' idea what I'm doing :skull
