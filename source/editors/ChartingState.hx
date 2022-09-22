@@ -93,7 +93,7 @@ class ChartingState extends MusicBeatState
 		['Spawn Tankmen', "Spawns tankmen (1500ms early)"],
 		['Set Camera Zoom', "Sets the default camera zoom. It's\nlike \"Add Camera Zoom\" but it doesn't zoom back.\nValue 1: Camera Zoom (Default: Based on map)\nValue 2: Tween Duration (Default: 0.5)"],
 		['Set CamHUD Zoom', "Sets the default hud zoom. It's\nlike \"Add Camera Zoom\" but it doesn't zoom back.\nValue 1: HUD Zoom (Default: 1)\nValue 2: Tween Duration (Default: 0.5)"],
-		['Set Camera Speed', "Sets how fast the camera moves.\nValue 1: The speed (Default: 1.5)"],
+		['Set Camera Speed', "Sets how fast the camera moves.\nValue 1: The speed (Default: 0.5)"],
 		['Flash camera', "Flashes the camera white\nValue 1: Duration (Default: 1)"],
 		['Do Camera rotate',"Value 1: Speed\nValue 2: Angle"],
 		['Stop Camera rotate',"No values needed"],

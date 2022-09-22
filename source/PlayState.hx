@@ -231,7 +231,7 @@ class PlayState extends MusicBeatState
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
 	public var camOther:FlxCamera;
-	public var cameraSpeed:Float = 1.5;
+	public var cameraSpeed:Float = 0.5;
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
@@ -4468,9 +4468,9 @@ class PlayState extends MusicBeatState
 				camera.angle = 0;}
 			case 'Set Camera speed':
 				if (ClientPrefs.sourceEvents){
-					var camSpeed:Float = 1.5;
+					var camSpeed:Float = 0.5;
 					if (value1 != null) camSpeed = Std.parseFloat(value1);
-					if (Math.isNaN(camSpeed)) camSpeed = 1.5;
+					if (Math.isNaN(camSpeed)) camSpeed = 0.5;
 					if (camSpeed < 0) camSpeed = 0;
 						cameraSpeed = camSpeed;
 				}
