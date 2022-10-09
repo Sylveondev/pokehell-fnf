@@ -53,7 +53,7 @@ jobs:
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
-        run: haxelib run lime build Project-dev.xml linux --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build Project-dev.xml linux -debug --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -95,7 +95,7 @@ jobs:
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
-        run: haxelib run lime build Project-dev.xml windows --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build Project-dev.xml windows -debug --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -152,7 +152,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -final
+        run: haxelib run lime build android -final -debug
 
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4
