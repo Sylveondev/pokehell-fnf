@@ -9,14 +9,14 @@ class DiscordClient
 {
 	public function new()
 	{
-		trace("Discord Client starting...");
+		trace("Starting Discord playing status");
 		DiscordRpc.start({
 			clientID: "960624710784274444",
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected
 		});
-		trace("Discord Client started.");
+		trace("Started Discord playing status");
 
 		while (true)
 		{
@@ -39,7 +39,7 @@ class DiscordClient
 			details: "In the Menus",
 			state: null,
 			largeImageKey: 'icon',
-			largeImageText: "Pokehell | Psych Engine"
+			largeImageText: "Pokehell | Sally Engine"
 		});
 	}
 
@@ -59,7 +59,7 @@ class DiscordClient
 		{
 			new DiscordClient();
 		});
-		trace("Discord Client initialized");
+		trace("Epic playing status now less go!");
 	}
 
 	public static function changePresence(details:String, state:Null<String>, ?smallImageKey : String, ?hasStartTimestamp : Bool, ?endTimestamp: Float)
@@ -75,7 +75,7 @@ class DiscordClient
 			details: details,
 			state: state,
 			largeImageKey: 'icon',
-			largeImageText: "Mod: " + MainMenuState.pokehellVersion + " | Engine: " + MainMenuState.psychEngineVersion,
+			largeImageText: "Mod: " + MainMenuState.pokehellVersion + " | Sally Engine: " + MainMenuState.sallyEngineVersion,
 			smallImageKey : smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
 			startTimestamp : Std.int(startTimestamp / 1000),

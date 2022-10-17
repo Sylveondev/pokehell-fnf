@@ -119,7 +119,7 @@ class ResultsState extends MusicBeatState
 	}
 
     function calculateRating(){
-        daScore = Math.floor(PlayState.ratingPercentStatic * 100);
+        daScore = (PlayState.usedPractice ? 0 : Math.floor(PlayState.ratingPercentStatic * 100));
 
         new FlxTimer().start(0.75, function(tmr:FlxTimer)
             {
@@ -199,7 +199,7 @@ class ResultsState extends MusicBeatState
         if (lerpScore > daScore && daScore > -1){
             lerpScore -= 1;
         }
-        realscoretxt.text = 'Accuracy: ' + lerpScore +"%";
+        realscoretxt.text = 'Accuracy: ' + lerpScore +"%"+(PlayState.usedPractice ? '\nCheats used':'');
         realscoretxt.screenCenter(X);
         if (Math.abs(lerpScore - daScore) <= 10)
 			lerpScore = daScore;

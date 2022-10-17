@@ -37,6 +37,7 @@ typedef SwagSong =
 	var fontColor:String;
 	var hideGF:Bool;
 	var disableChartEditor:Bool;
+	var soundPrefix:Null<String>;
 }
 
 class Song
@@ -62,6 +63,7 @@ class Song
 	public var fontColor:String = '0xFFF5AA42';
 	public var hideGF:Bool = false;
 	public var disableChartEditor:Bool = false;
+	public var soundPrefix:Null<String> = '';
 
 	public function new(song, notes, bpm)
 	{

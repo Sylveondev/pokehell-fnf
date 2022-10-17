@@ -20,7 +20,7 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Toggle Practice Mode', 'Botplay', 'Exit to menu'];
+	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Toggle NoDeath', 'Toggle Botplay', #if desktop 'Toggle Fullscreen',#end 'Exit to menu'];
 
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
@@ -35,8 +35,28 @@ class PauseSubState extends MusicBeatSubstate
 	{
 		super();
 
-		if (WeekData.getCurrentWeek().pokehellWeek == false)
-			menuItemsOG.insert(2, 'Change Difficulty');
+		var daweek = WeekData.getCurrentWeek();
+
+		if (daweek != null){
+			if (daweek.pokehellWeek == false)
+				menuItemsOG.insert(2, 'Change Difficulty');
+		}
+
+		trace('Disable botplay is '+PlayState.SONG.noBotplay);
+		trace('Disable nodeath is '+PlayState.SONG.noPractice);
+
+
+		if (PlayState.isStoryMode){
+			menuItemsOG.insert(2, 'Restart with Dialogue');
+		}
+
+		if (PlayState.SONG.noBotplay){
+			menuItemsOG.remove('Toggle Botplay');
+		}
+
+		if (PlayState.SONG.noPractice){
+			menuItemsOG.remove('Toggle NoDeath');
+		}
 
 		menuItems = menuItemsOG;
 
@@ -78,13 +98,13 @@ class PauseSubState extends MusicBeatSubstate
 			blueballedTxt = new FlxText(20, 15 + 32, 0, "", 32);
 		else
 			blueballedTxt = new FlxText(20, 15 + 64, 0, "", 32);
-		blueballedTxt.text = "Blueballed: " + PlayState.deathCounter;
+		blueballedTxt.text = "Fainted: " + PlayState.deathCounter;
 		blueballedTxt.scrollFactor.set();
 		blueballedTxt.setFormat(Paths.font("righteous.ttf"), 32);
 		blueballedTxt.updateHitbox();
 		add(blueballedTxt);
 
-		practiceText = new FlxText(20, 15 + 101, 0, "PRACTICE MODE", 32);
+		practiceText = new FlxText(20, 15 + 101, 0, "NODEATH", 32);
 		practiceText.scrollFactor.set();
 		practiceText.setFormat(Paths.font("righteous.ttf"), 32);
 		practiceText.x = FlxG.width - (practiceText.width + 20);
@@ -174,7 +194,7 @@ class PauseSubState extends MusicBeatSubstate
 				case 'Change Difficulty':
 					menuItems = difficultyChoices;
 					regenMenu();
-				case 'Toggle Practice Mode':
+				case 'Toggle NoDeath':
 				#if debug
 					PlayState.practiceMode = !PlayState.practiceMode;
 					PlayState.usedPractice = true;
@@ -198,7 +218,12 @@ class PauseSubState extends MusicBeatSubstate
 					CustomFadeTransition.nextCamera = transCamera;
 					MusicBeatState.resetState();
 					FlxG.sound.music.volume = 0;
-				case 'Botplay':
+				case "Restart with Dialogue":
+					PlayState.seenCutscene = false;
+					CustomFadeTransition.nextCamera = transCamera;
+					MusicBeatState.resetState();
+					FlxG.sound.music.volume = 0;
+				case 'Toggle Botplay':
 					#if debug
 					PlayState.cpuControlled = !PlayState.cpuControlled;
 					PlayState.usedPractice = true;
@@ -218,6 +243,8 @@ class PauseSubState extends MusicBeatSubstate
 						botplayText.visible = PlayState.cpuControlled;
 					}
 					#end
+				case "Toggle Fullscreen":
+					FlxG.fullscreen = !FlxG.fullscreen;
 				case "Exit to menu":
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;

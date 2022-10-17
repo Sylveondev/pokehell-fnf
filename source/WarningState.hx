@@ -60,6 +60,15 @@ class WarningState extends MusicBeatState
 					}
 				});
 			}
+		#if mobile
+			for (touch in FlxG.touches.list)
+			{
+				if (touch.justPressed)
+				{
+					pressedEnter = true;
+				}
+			}
+		#end
 		}
 		super.update(elapsed);
 	}

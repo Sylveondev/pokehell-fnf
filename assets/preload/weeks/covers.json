@@ -2,7 +2,9 @@
 	"songs": [
 		["triple-trouble", "eeeee", [255,255,255]],
 		["algebra", "seth3d", [255,255,255]],
-		["ferocious", "zane", [255,255,255]]
+		["ferocious", "zane", [255,255,255]],
+		["a-scary-night-song", "glitch", [50, 10, 10]],
+		["red-2", "bambi", [255,255,255]]
 	],
 
 	"weekCharacters": [

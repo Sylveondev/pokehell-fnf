@@ -16,6 +16,7 @@ import openfl.Lib;
 
 #if openfl
 import openfl.system.System;
+import openfl.Lib;
 #end
 
 /**
@@ -114,5 +115,48 @@ class FPS extends TextField
 		}
 
 		cacheCount = currentCount;
+	}
+}
+
+class EngVer extends TextField
+{
+	/**
+		The current frame rate, expressed using frames-per-second
+	**/
+	public var currentFPS(default, null):Int;
+
+	@:noCompletion private var cacheCount:Int;
+	@:noCompletion private var currentTime:Float;
+	@:noCompletion private var times:Array<Float>;
+
+	public var memPeak:Float = 0;
+
+	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
+	{
+		super();
+
+		this.x = x;
+		this.y = y;
+
+		currentFPS = 0;
+		memPeak = 0;
+		selectable = false;
+		mouseEnabled = false;
+		defaultTextFormat = new TextFormat('Righteous', 24, color);
+		autoSize = LEFT;
+		multiline = true;
+		text = "Sally Engine "+MainMenuState.sallyEngineVersion;
+
+		cacheCount = 0;
+		currentTime = 0;
+		times = [];
+	}
+
+	// Event Handlers
+	@:noCompletion
+	private #if !flash override #end function __enterFrame(deltaTime:Float):Void
+	{
+		this.x = Lib.application.window.width - 180;
+		
 	}
 }

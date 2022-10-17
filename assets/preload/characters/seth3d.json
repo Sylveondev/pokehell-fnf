@@ -5,73 +5,63 @@
 				0,
 				0
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"loop": false,
+			"name": "idle0"
 		},
 		{
 			"offsets": [
-				20,
-				0
+				81,
+				-1
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"loop": false,
+			"name": "left0"
 		},
 		{
 			"offsets": [
-				0,
+				-23,
 				0
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"loop": false,
+			"name": "down0"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				-8,
+				30
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"loop": false,
+			"name": "up0"
 		},
 		{
 			"offsets": [
-				0,
+				-6,
 				0
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
 			"loop": false,
-			"fps": 24,
-			"anim": "finger",
-			"indices": [],
-			"name": "finger"
+			"name": "right0"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/seth3d",
+	"isPlayable": false,
 	"position": [
 		0,
-		400
+		350
 	],
 	"healthicon": "seth3d",
 	"flip_x": false,
@@ -81,8 +71,8 @@
 		255
 	],
 	"camera_position": [
-		-90,
-		-600
+		-190,
+		-150
 	],
 	"sing_duration": 4,
 	"scale": 1.8

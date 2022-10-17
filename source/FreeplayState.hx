@@ -1,5 +1,6 @@
 package;
 
+import ChangePlayerSubstate.ChangePlayerSubState;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -41,6 +42,8 @@ class FreeplayState extends MusicBeatState
 
 	var rotCamHudInd:Int = 0;
 
+	public static var activeButtons:Bool;
+
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
 
@@ -53,6 +56,9 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		activeButtons = false;
+		Conductor.changeBPM(120);
+		
 		#if MODS_ALLOWED
 		Paths.destroyLoadedImages();
 		#end
@@ -104,7 +110,7 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
+			var songText:Alphabet = new Alphabet(0, (70 * i) + 30,songs[i].songName, true, false);
 			songText.isMenuItem = true;
 			songText.targetY = i;
 			grpSongs.add(songText);
@@ -165,15 +171,24 @@ class FreeplayState extends MusicBeatState
 		textBG.alpha = 0.6;
 		add(textBG);
 		#if PRELOAD_ALL
-		var leText:String = "Press SPACE to listen to this Song / Press RESET to Reset your Score and Accuracy.";
+		var leText:String = "Press TAB to change selected player / Press SPACE to listen to this Song / Press RESET to Reset your Score and Accuracy.";
 		#else
-		var leText:String = "Press RESET to Reset your Score and Accuracy.";
+		var leText:String = "Press TAB to change selected player / Press RESET to Reset your Score and Accuracy.";
 		#end
 		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, 18);
 		text.setFormat(Paths.font("righteous.ttf"), 18, FlxColor.WHITE, RIGHT);
 		text.scrollFactor.set();
 		add(text);
 		super.create();
+	}
+
+	override function beatHit()
+	{
+		super.beatHit();
+
+		for (i in 0...iconArray.length) {
+			iconArray[i].scale.set(1.2, 0.8);
+		}
 	}
 
 	override function closeSubState() {
@@ -208,6 +223,9 @@ class FreeplayState extends MusicBeatState
 	{
 		rotCamHudInd ++;
 		for (i in 0...iconArray.length) {
+			var mult:Float = FlxMath.lerp(1, iconArray[i].scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconArray[i].scale.set(mult, mult);
+
 			iconArray[i].angle = Math.sin(rotCamHudInd / 100 * 1) * 15;
 		}
 		if (FlxG.sound.music.volume < 0.7)
@@ -254,7 +272,13 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new MainMenuState());
+			MusicBeatState.switchState(new FreeplaySelectState());
+		}
+
+		if (FlxG.keys.justPressed.TAB||FlxG.keys.justPressed.C){
+			activeButtons = false;
+			openSubState(new ChangePlayerSubState(0,0));
+			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
 
 		#if PRELOAD_ALL
@@ -320,6 +344,7 @@ class FreeplayState extends MusicBeatState
 		}
 		else if(controls.RESET)
 		{
+			activeButtons = false;
 			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}

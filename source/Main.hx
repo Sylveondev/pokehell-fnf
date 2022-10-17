@@ -10,6 +10,17 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
+import openfl.events.Event;
+import openfl.events.UncaughtErrorEvent;
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+import sys.io.Process;
+#end
+import haxe.CallStack.StackItem;
+import haxe.CallStack;
+import haxe.io.Path;
+import lime.app.Application;
 
 
 class Main extends Sprite
@@ -19,9 +30,10 @@ class Main extends Sprite
 	var initialState:Class<FlxState> = TitleState; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var framerate:Int = 60; // How many frames per second the game should run at.
-	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
+	var skipSplash:Bool = false; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 	public static var fpsVar:FPS;
+	public static var engVar:EngVer;
 	public static var drums:Bool = false;
 	public static var menuBad:Bool = false;
 	public static var menuMusPlay:Bool = false;
@@ -72,6 +84,9 @@ class Main extends Sprite
 	{
 		super();
 
+		#if desktop Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash); #end
+
+
 		if (stage != null)
 		{
 			init();
@@ -91,7 +106,7 @@ class Main extends Sprite
 
 		setupGame();
 	}
-
+	
 	private function setupGame():Void
 	{
 		var stageWidth:Int = Lib.current.stage.stageWidth;
@@ -114,9 +129,12 @@ class Main extends Sprite
 
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
+		engVar = new EngVer(1170, 3, 0xFFFFFF);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
 		addChild(fpsVar);
+		addChild(engVar);
+
 		if(fpsVar != null) {
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
@@ -127,4 +145,47 @@ class Main extends Sprite
 		FlxG.mouse.visible = false;
 		#end
 	}
+
+	#if desktop
+	function onCrash(e:UncaughtErrorEvent):Void
+	{
+		var errMsg:String = "";
+		var errDiag:String = "";
+		var path:String;
+		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+		var dateNow:String = Date.now().toString();
+
+		dateNow = StringTools.replace(dateNow, " ", "_");
+		dateNow = StringTools.replace(dateNow, ":", "'");
+
+		path = "crash/" + "SE_" + dateNow + ".txt";
+
+		errMsg += "\nA fatal error occured: \"" + e.error + "\"\nSally Engine has crashed due to some uncaught error. Bring this to SylveonDev's attention.\n\n";
+
+		errMsg += "--- Begin crash dump ---\n";
+		for (stackItem in callStack)
+		{
+			switch (stackItem)
+			{
+				case FilePos(s, file, line, column):
+					errMsg += file + " (line " + line + ")\n";
+				default:
+					Sys.println(stackItem);
+			}
+		}
+		errMsg += "--- End crash dump ---";
+
+		if (!FileSystem.exists("crash/"))
+			FileSystem.createDirectory("crash/");
+
+		File.saveContent(path, errMsg + "\n");
+
+		Sys.println(errMsg);
+		Sys.println("Crash dump saved in " + Path.normalize(path));
+
+		Application.current.window.alert(errMsg, "Seriously?!");
+
+		Sys.exit(1);
+	}
+	#end
 }
