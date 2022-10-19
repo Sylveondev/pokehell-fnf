@@ -798,6 +798,13 @@ class PlayState extends MusicBeatState
 				
 				add(bg);
 
+			case 'pringles': //Bonus song
+				
+				var bg:BGSprite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
+				bg.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), 0xFF363A40);
+				
+				add(bg);
+
 			case 'road':
 				//This makes things look like Vee Funkin.
 				//This is exclusive to the Bling Blunkin song only.
@@ -3020,11 +3027,12 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
-			case 'white-center':
+			case 'white-center'|'pringles':
 				dad.x = boyfriend.x;
 				dad.y = boyfriend.y;
-				boyfriend.visible = false;
+				dad.visible = false;
 				gf.visible = false;
+				iconP2.visible = false;
 			case 'blank':
 				if (SONG.song.toLowerCase() == 'forgotten'){
 				gf.visible = false;}
