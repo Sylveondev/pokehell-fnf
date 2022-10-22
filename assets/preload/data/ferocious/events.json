@@ -1,7 +1,7 @@
 {
 	"song": {
-		"speed": 2,
-		"stage": "blank",
+		"speed": 3.5,
+		"stage": "ferocious",
 		"player1": "riolubf3d",
 		"player2": "zane",
 		"player3": "bf-car",
@@ -5493,6 +5493,27 @@
 						"Change Character",
 						"dad",
 						"zaneMadCenter"
+					],
+					[
+						719551.40429958,
+						-1,
+						"Set Camera Speed",
+						"100",
+						""
+					],
+					[
+						719560.506241328,
+						-1,
+						"Set Camera Zoom",
+						"1.8",
+						"0.1"
+					],
+					[
+						719569.608183075,
+						-1,
+						"Flash camera",
+						"0.5",
+						"3"
 					]
 				],
 				"bpm": 0,
@@ -6077,8 +6098,47 @@
 						"Change Character",
 						"dad",
 						"zaneMad"
+					],
+					[
+						794114.511095696,
+						-1,
+						"Set Camera Zoom",
+						"1",
+						"3"
+					],
+					[
+						794123.613037443,
+						-1,
+						"Set Camera Speed",
+						"0.5",
+						"3"
+					],
+					[
+						794132.714979191,
+						-1,
+						"Flash camera",
+						"0.5",
+						"3"
 					]
 				],
+				"bpm": 0,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"bpm": 0,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
 				"bpm": 0,
 				"changeBPM": false,
 				"mustHitSection": false
@@ -7223,7 +7283,7 @@
 		"validScore": false,
 		"timebarColor": [
 			"0xFF915D0F",
-			"0xFFFFA621"
+			"0xFFF5AA42"
 		],
 		"fontColor": "0xFFF5AA42",
 		"bpm": 206,
@@ -7233,6 +7293,7 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "Ferocious",
-		"hideGF": false
+		"hideGF": true,
+		"soundPrefix": ""
 	}
 }

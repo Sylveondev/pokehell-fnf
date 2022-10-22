@@ -494,7 +494,10 @@ class TitleState extends MusicBeatState
 		{
 			var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
 			money.screenCenter(X);
-			money.y += (i * 60) + 200 + offset;
+			money.y = 800;
+			money.alpha = 0;
+			FlxTween.tween(money,{alpha: 1, y:(i * 60) + 200 + offset},0.3,{ease:FlxEase.circOut});
+			//money.y += (i * 60) + 200 + offset;
 			credGroup.add(money);
 			textGroup.add(money);
 		}
@@ -505,7 +508,9 @@ class TitleState extends MusicBeatState
 		if(textGroup != null) {
 			var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
 			coolText.screenCenter(X);
-			coolText.y += (textGroup.length * 60) + 200 + offset;
+			coolText.alpha = 0;
+			FlxTween.tween(coolText,{alpha: 1, y:(textGroup.length * 60) + 200 + offset},0.3,{ease:FlxEase.circOut});
+			//coolText.y += (textGroup.length * 60) + 200 + offset;
 			credGroup.add(coolText);
 			textGroup.add(coolText);
 		}
@@ -622,20 +627,32 @@ class TitleState extends MusicBeatState
 				// credTextShit.text += '\nlmao';
 				case 20:
 					deleteCoolText();
+					canzoom = false;
 				// credTextShit.visible = false;
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
 				case 21:
-					addMoreText('The');
+					addMoreText('The', 50);
+				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.3, {ease: FlxEase.circOut});
+				FlxTween.tween(FlxG.camera, {angle: 8}, 0.3, {ease: FlxEase.circOut});
+
+					
 				// credTextShit.visible = true;
 				case 22:
-					addMoreText('Pokehell');
+					addMoreText('Pokehell', 50);
+					FlxTween.tween(FlxG.camera, {zoom: 2}, 0.3, {ease: FlxEase.circOut});
+					FlxTween.tween(FlxG.camera, {angle: -8}, 0.3, {ease: FlxEase.circOut});
 				// credTextShit.text += '\nNight';
 				case 23:
-					addMoreText('Mod'); // credTextShit.text += '\nFunkin';
+					addMoreText('Mod', 50); // credTextShit.text += '\nFunkin';
+					FlxTween.tween(FlxG.camera, {zoom: 3}, 0.3, {ease: FlxEase.circOut});
+					FlxTween.tween(FlxG.camera, {angle: 8}, 0.3, {ease: FlxEase.circOut});
 				case 24:
+					FlxTween.tween(FlxG.camera, {zoom: 1}, 0.3, {ease: FlxEase.quadInOut});
+					FlxTween.tween(FlxG.camera, {angle: 0}, 0.3, {ease: FlxEase.quadInOut});
 					deleteCoolText();
 				case 25:
+					canzoom = true;
 					skipIntro();
 			}
 		}

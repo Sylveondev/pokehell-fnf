@@ -3047,13 +3047,27 @@ class PlayState extends MusicBeatState
 						boyfriend.shader = new YoshiBlammedShader(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]);
 						bfCar.shader = new YoshiBlammedShader(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]);
 						
-						blingSky.visible = false;
-						blingGreen.visible = false;
-						road.visible = false;
+						remove(blingSky);
+						blingSky = new BGSprite('roadSkyAlt', 0, 0, 0, 0);
+						add(blingSky);
+						blingGreen.color = 0x0000000;
+						
 						if (!ClientPrefs.lowQuality){
-						mountains.visible = false;
-						trees.visible = false;}
+						remove(mountains);
+						mountains = new FlxBackdrop(Paths.image('roadMountainsAlt'), 0, 0, true, false);
+						add(mountains);
+						remove(trees);
+						trees = new FlxBackdrop(Paths.image('roadTreesAlt'), 0, 250, true, false);
+						add(trees);
+						}
+						remove(road);
+						road = new FlxBackdrop(Paths.image('roadGrassAlt'), 50, 0, true, false);
+						add(road);
 
+						remove(boyfriend);
+						add(boyfriend);
+						remove(dad);
+						add(dad);
 					}
 					else if (curBeat > 812 && curBeat < 908){
 						cast(dad.shader, YoshiBlammedShader);
@@ -3067,12 +3081,27 @@ class PlayState extends MusicBeatState
 						dad.shader = null;
 						bfCar.shader = null;
 						
-						blingSky.visible = true;
-						blingGreen.visible = true;
-						road.visible = true;
+						remove(blingSky);
+						blingSky = new BGSprite('roadSky', 0, 0, 0, 0);
+						add(blingSky);
+						blingGreen.color = 0xFF55CC3D;
+						
 						if (!ClientPrefs.lowQuality){
-						mountains.visible = true;
-						trees.visible = true;}
+						remove(mountains);
+						mountains = new FlxBackdrop(Paths.image('roadMountains'), 0, 0, true, false);
+						add(mountains);
+						remove(trees);
+						trees = new FlxBackdrop(Paths.image('roadTrees'), 0, 250, true, false);
+						add(trees);
+						}
+						remove(road);
+						road = new FlxBackdrop(Paths.image('roadGrass'), 50, 0, true, false);
+						add(road);
+						
+						remove(boyfriend);
+						add(boyfriend);
+						remove(dad);
+						add(dad);
 					}
 				}
 			case 'trippy':
