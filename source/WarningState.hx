@@ -36,9 +36,9 @@ class WarningState extends MusicBeatState
 			#else
 			"Hey, thanks for "+
             #if !html5 "downloading the mod!"+ #else "playing the mod online!" + #end
-            "\n\nNobody records any footage on Youtube, so thanks for giving us a chance.\nBefore you continue, heads up that this mod contains some language that isn't suitable to younger audiences.\nAlso this mod has screen shaking that may trigger some users.\nYou can't disable these so be careful."+
-            #if html5 "Also, this mod isn't very stable on html5 so consider downloading on gamebanana."+ #end
-            "\nAlso remember to have fun playing <3 -The devs of pokehell\n\n(Press Enter to continue)"#end,
+            "\n\nNobody barely records any gameplay footage on Youtube, so I'm glad you're here.\n"+
+            #if html5 "Also, this mod isn't fully compatible with html5 so consider downloading on gamebanana."+ #end
+            "\nReport any bugs you see and remember to have fun playing <3 -The devs of pokehell\n\n(Press Enter to continue)"#end,
 			32);
 		warnText.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		warnText.screenCenter();

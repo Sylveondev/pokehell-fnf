@@ -829,18 +829,37 @@ class PlayState extends MusicBeatState
 					];
 				}
 
+				var bg:BGSprite = new BGSprite('roadSkyAlt', 0, 0, 0, 0);
+				bg.setGraphicSize(Std.int(bg.width * 2));
+				add(bg);
+
 				var bg:BGSprite = new BGSprite('roadSky', 0, 0, 0, 0);
 				bg.setGraphicSize(Std.int(bg.width * 2));
 				add(bg);
 				blingSky = bg;
 
 				if (!ClientPrefs.lowQuality){
+					mountains = new FlxBackdrop(Paths.image('roadMountainsAlt'), 0, 0, true, false);
+					mountains.velocity.set(100, 0);
+					mountains.updateHitbox();
+					mountains.scrollFactor.set(0.2, 0.2);
+					mountains.antialiasing = ClientPrefs.globalAntialiasing;
+					add(mountains);
+
 					mountains = new FlxBackdrop(Paths.image('roadMountains'), 0, 0, true, false);
 					mountains.velocity.set(100, 0);
 					mountains.updateHitbox();
 					mountains.scrollFactor.set(0.2, 0.2);
 					mountains.antialiasing = ClientPrefs.globalAntialiasing;
 					add(mountains);
+
+					trees = new FlxBackdrop(Paths.image('roadTreesAlt'), 0, 250, true, false);
+					trees.velocity.set(200, 0);
+					trees.updateHitbox();
+					trees.setGraphicSize(Std.int(trees.width * 1.25));
+					trees.scrollFactor.set(0.7, 0.7);
+					trees.antialiasing = ClientPrefs.globalAntialiasing;
+					add(trees);
 
 					trees = new FlxBackdrop(Paths.image('roadTrees'), 0, 250, true, false);
 					trees.velocity.set(200, 0);
@@ -857,6 +876,14 @@ class PlayState extends MusicBeatState
 				bg.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), 0xFF55CC3D);
 				add(bg);
 				blingGreen = bg;
+
+				road = new FlxBackdrop(Paths.image('roadGrassAlt'), 50, 0, true, false);
+				road.velocity.set(500, 0);
+				road.updateHitbox();
+				road.scrollFactor.set(1, 1);
+				road.setGraphicSize(Std.int(road.width * 1.25));
+				road.antialiasing = ClientPrefs.globalAntialiasing;
+				add(road);
 
 				road = new FlxBackdrop(Paths.image('roadGrass'), 50, 0, true, false);
 				road.velocity.set(500, 0);
@@ -3047,27 +3074,15 @@ class PlayState extends MusicBeatState
 						boyfriend.shader = new YoshiBlammedShader(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]);
 						bfCar.shader = new YoshiBlammedShader(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]);
 						
-						remove(blingSky);
-						blingSky = new BGSprite('roadSkyAlt', 0, 0, 0, 0);
-						add(blingSky);
+						blingSky.visible = false;
+						blingGreen.visible = false;
+						road.visible = false;
 						blingGreen.color = 0x0000000;
 						
 						if (!ClientPrefs.lowQuality){
-						remove(mountains);
-						mountains = new FlxBackdrop(Paths.image('roadMountainsAlt'), 0, 0, true, false);
-						add(mountains);
-						remove(trees);
-						trees = new FlxBackdrop(Paths.image('roadTreesAlt'), 0, 250, true, false);
-						add(trees);
+							mountains.visible = false;
+							trees.visible = false;
 						}
-						remove(road);
-						road = new FlxBackdrop(Paths.image('roadGrassAlt'), 50, 0, true, false);
-						add(road);
-
-						remove(boyfriend);
-						add(boyfriend);
-						remove(dad);
-						add(dad);
 					}
 					else if (curBeat > 812 && curBeat < 908){
 						cast(dad.shader, YoshiBlammedShader);
@@ -3081,27 +3096,14 @@ class PlayState extends MusicBeatState
 						dad.shader = null;
 						bfCar.shader = null;
 						
-						remove(blingSky);
-						blingSky = new BGSprite('roadSky', 0, 0, 0, 0);
-						add(blingSky);
+						blingSky.visible = true;
+						blingGreen.visible = true;
+						road.visible = true;
 						blingGreen.color = 0xFF55CC3D;
 						
 						if (!ClientPrefs.lowQuality){
-						remove(mountains);
-						mountains = new FlxBackdrop(Paths.image('roadMountains'), 0, 0, true, false);
-						add(mountains);
-						remove(trees);
-						trees = new FlxBackdrop(Paths.image('roadTrees'), 0, 250, true, false);
-						add(trees);
-						}
-						remove(road);
-						road = new FlxBackdrop(Paths.image('roadGrass'), 50, 0, true, false);
-						add(road);
-						
-						remove(boyfriend);
-						add(boyfriend);
-						remove(dad);
-						add(dad);
+							mountains.visible = true;
+							trees.visible = true;}
 					}
 				}
 			case 'trippy':

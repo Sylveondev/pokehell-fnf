@@ -36,6 +36,8 @@ class TitleState extends MusicBeatState
 	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
 	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
 
+	static var loadingShown:Bool = false;
+
 	static var initialized:Bool = false;
 
 	var blackScreen:FlxSprite;
@@ -131,6 +133,7 @@ class TitleState extends MusicBeatState
 		}
 
 		FlxG.mouse.visible = false;
+		
 		#if FREEPLAY
 		MusicBeatState.switchState(new FreeplayState());
 		#elseif CHARTING
