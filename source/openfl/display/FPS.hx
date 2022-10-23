@@ -57,6 +57,7 @@ class FPS extends TextField
 		autoSize = LEFT;
 		multiline = true;
 		text = "FPS: ";
+		alpha = 0.5;
 
 		cacheCount = 0;
 		currentTime = 0;
@@ -146,6 +147,7 @@ class EngVer extends TextField
 		autoSize = LEFT;
 		multiline = true;
 		text = "Sally Engine "+MainMenuState.sallyEngineVersion;
+		alpha = 0.5;
 
 		cacheCount = 0;
 		currentTime = 0;

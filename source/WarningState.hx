@@ -60,15 +60,23 @@ class WarningState extends MusicBeatState
 					}
 				});
 			}
-		#if mobile
-			for (touch in FlxG.touches.list)
-			{
-				if (touch.justPressed)
+			#if mobile
+				for (touch in FlxG.touches.list)
 				{
-					pressedEnter = true;
+					if (touch.justPressed)
+					{
+						leftState = true;
+						FlxG.sound.play(Paths.sound('scrollMenu'));
+						FlxTween.tween(FlxG.camera, {zoom: 0.2}, 1, {ease: FlxEase.quadIn,startDelay: .5});
+						FlxTween.tween(warnText, {alpha: 0}, 1, {
+							onComplete: function (twn:FlxTween) {
+								MusicBeatState.switchState(new MainMenuState());
+							}
+						});
+					}
 				}
-			}
-		#end
+			#end
+		
 		}
 		super.update(elapsed);
 	}

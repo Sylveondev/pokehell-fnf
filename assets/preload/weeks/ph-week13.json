@@ -1,0 +1,58 @@
+{
+	"storyName": "Zeraora",
+	"hideFreeplay": false,
+	"weekBackground": "bonus",
+	"freeplayColor": [
+		60,
+		60,
+		60
+	],
+	"weekBefore": "ph-week12",
+	"startUnlocked": true,
+	"pokehellWeek": true,
+	"hideStoryMode": false,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"songs": [
+		[
+			"Shocking",
+			"zeraora",
+			[
+				225,
+				225,
+				0
+			]
+		],
+		[
+			"Lighting",
+			"zeraora",
+			[
+				225,
+				225,
+				0
+			]
+		],
+		[
+			"Disco",
+			"zeraora",
+			[
+				225,
+				225,
+				0
+			]
+		],
+		[
+			"Raging-storm",
+			"zeraora",
+			[
+				225,
+				225,
+				0
+			]
+		]
+	],
+	"weekName": "week12"
+}

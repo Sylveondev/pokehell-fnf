@@ -1,0 +1,20 @@
+{
+	"songs": [
+		["Memz 2", "memzeveryone", [118, 201, 223]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "The last song",
+	"weekBefore": "ph-week13",
+	"weekName": "Week 14",
+	"startUnlocked": true,
+	"pokehellWeek": true,
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

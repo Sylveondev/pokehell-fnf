@@ -805,6 +805,12 @@ class PlayState extends MusicBeatState
 				
 				add(bg);
 
+			case 'memz':
+
+				var bg:BGSprite = new BGSprite('memz', -600, -200, 1, 1);
+				bg.setGraphicSize(Std.int(bg.width * 2));
+				add(bg);
+
 			case 'road':
 				//This makes things look like Vee Funkin.
 				//This is exclusive to the Bling Blunkin song only.

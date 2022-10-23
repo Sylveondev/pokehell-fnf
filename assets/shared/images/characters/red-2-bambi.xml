@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="red-2-bambi.png"><SubTexture name="red-2-bambi down0000" x="0" y="1819" width="524" height="386" frameX="0" frameY="0" frameWidth="524" frameHeight="386" />
+<SubTexture name="red-2-bambi down0001" x="1675" y="523" width="524" height="476" frameX="0" frameY="0" frameWidth="524" frameHeight="476" />
+<SubTexture name="red-2-bambi up0000" x="0" y="0" width="561" height="689" frameX="0" frameY="0" frameWidth="561" frameHeight="689" />
+<SubTexture name="red-2-bambi up0001" x="561" y="0" width="516" height="638" frameX="0" frameY="0" frameWidth="516" frameHeight="638" />
+<SubTexture name="red-2-bambi right0000" x="1336" y="1298" width="612" height="397" frameX="0" frameY="0" frameWidth="612" frameHeight="397" />
+<SubTexture name="red-2-bambi right0001" x="1675" y="0" width="592" height="523" frameX="0" frameY="0" frameWidth="592" frameHeight="523" />
+<SubTexture name="red-2-bambi left0000" x="0" y="689" width="584" height="609" frameX="0" frameY="0" frameWidth="584" frameHeight="609" />
+<SubTexture name="red-2-bambi left0001" x="1077" y="0" width="598" height="610" frameX="0" frameY="0" frameWidth="598" frameHeight="610" />
+<SubTexture name="red-2-bambi idle0000" x="644" y="1298" width="692" height="511" frameX="0" frameY="0" frameWidth="692" frameHeight="511" />
+<SubTexture name="red-2-bambi idle0001" x="0" y="1298" width="644" height="521" frameX="0" frameY="0" frameWidth="644" frameHeight="521" />
+<SubTexture name="red-2-bambi idle0002" x="1110" y="689" width="531" height="533" frameX="0" frameY="0" frameWidth="531" frameHeight="533" />
+<SubTexture name="red-2-bambi idle0003" x="584" y="689" width="526" height="542" frameX="0" frameY="0" frameWidth="526" frameHeight="542" />
+</TextureAtlas>
