@@ -771,8 +771,8 @@ class PlayState extends MusicBeatState
 					boxBG = new BGSprite('box', -600, -200, 1, 1);
 				add(boxBG);
 
-			case 'forest': //Week 10: Leafeon
-				if (SONG.song.toLowerCase() == 'unwanted-guest'){
+			case 'forest'|'forest-dark': //Week 10: Leafeon
+				if (SONG.song.toLowerCase() == 'a-scary-night-song' || SONG.song.toLowerCase() == 'unwanted-guest' || curStage == "forest-dark"){
 					boxBG = new BGSprite('forestdark', -600, -200, 1, 1);
 				}else
 					boxBG = new BGSprite('forest', -600, -200, 1, 1);
