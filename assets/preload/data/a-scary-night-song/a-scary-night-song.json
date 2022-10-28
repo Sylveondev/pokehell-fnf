@@ -1,14 +1,22 @@
 {
 	"song": {
-		"player1": "bf",
+		"player1": "eivee-bf",
 		"soundPrefix": "",
-		"hideGF": false,
+		"hideGF": true,
 		"forceGhostingOff": false,
 		"notes": [
 			{
 				"typeOfSection": 0,
 				"lengthInSteps": 16,
-				"sectionNotes": [],
+				"sectionNotes": [
+					[
+						0,
+						-1,
+						"Do note move",
+						"5",
+						"100"
+					]
+				],
 				"mustHitSection": false
 			},
 			{
@@ -114,6 +122,13 @@
 						15172.4137931034,
 						1,
 						0
+					],
+					[
+						14712.6436781609,
+						-1,
+						"Do CamHud rotate",
+						"5",
+						"10"
 					]
 				],
 				"mustHitSection": false
@@ -3840,28 +3855,64 @@
 			},
 			{
 				"lengthInSteps": 16,
-				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
+				"altAnim": false,
 				"bpm": 150,
 				"changeBPM": false,
 				"mustHitSection": true
 			},
 			{
 				"lengthInSteps": 16,
-				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
+				"altAnim": false,
 				"bpm": 230,
 				"changeBPM": false,
 				"mustHitSection": true
 			},
 			{
 				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"altAnim": false,
+				"bpm": 250,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"altAnim": false,
+				"bpm": 324,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"altAnim": false,
+				"bpm": 261,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 261
+			},
+			{
+				"lengthInSteps": 16,
 				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"bpm": 250,
+				"bpm": 261,
 				"changeBPM": false,
 				"mustHitSection": true
 			},
@@ -3870,7 +3921,25 @@
 				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"bpm": 324,
+				"bpm": 261,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"bpm": 261,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"bpm": 261,
 				"changeBPM": false,
 				"mustHitSection": true
 			},
@@ -3884,7 +3953,7 @@
 				"mustHitSection": true
 			}
 		],
-		"player2": "leafeon",
+		"player2": "eivee-glitch",
 		"mania": 3,
 		"player3": "bf-car",
 		"disableChartEditor": false,

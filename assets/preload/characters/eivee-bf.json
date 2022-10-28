@@ -1,0 +1,210 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-5,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "bf eevee idle"
+		},
+		{
+			"offsets": [
+				15,
+				-7
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "bf eevee missleft"
+		},
+		{
+			"offsets": [
+				-2,
+				3
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "bf eevee missdown"
+		},
+		{
+			"offsets": [
+				8,
+				-13
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "bf eevee missup"
+		},
+		{
+			"offsets": [
+				7,
+				6
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "bf eevee missright"
+		},
+		{
+			"offsets": [
+				-1,
+				-8
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "hey",
+			"indices": [],
+			"name": "bf eevee hey"
+		},
+		{
+			"offsets": [
+				5,
+				7
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "hurt",
+			"indices": [],
+			"name": "bf eevee hurt"
+		},
+		{
+			"offsets": [
+				-9,
+				1
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "dodge",
+			"indices": [],
+			"name": "bf eevee dodge"
+		},
+		{
+			"offsets": [
+				-103,
+				16
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "attack",
+			"indices": [],
+			"name": "bf eevee attack"
+		},
+		{
+			"offsets": [
+				10,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "pre-attack",
+			"indices": [],
+			"name": "bf eevee pre-attack"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				14,
+				11
+			],
+			"anim": "deathLoop",
+			"fps": 24,
+			"name": "bf eevee dead loop",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				14,
+				11
+			],
+			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "bf eevee dead ended",
+			"indices": []
+		},
+		{
+			"offsets": [
+				14,
+				11
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "firstDeath",
+			"indices": [],
+			"name": "bf eevee dead started"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				14,
+				-6
+			],
+			"anim": "singLEFT",
+			"fps": 16,
+			"name": "bf eevee left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-1,
+				2
+			],
+			"anim": "singDOWN",
+			"fps": 16,
+			"name": "bf eevee down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				9,
+				-12
+			],
+			"anim": "singUP",
+			"fps": 16,
+			"name": "bf eevee up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				14,
+				6
+			],
+			"anim": "singRIGHT",
+			"fps": 16,
+			"name": "bf eevee right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bf eevee",
+	"position": [
+		0,
+		130
+	],
+	"healthicon": "bf-eevee",
+	"flip_x": true,
+	"healthbar_colors": [
+		49,
+		176,
+		209
+	],
+	"camera_position": [
+		0,
+		60
+	],
+	"sing_duration": 4,
+	"scale": 1
+}
