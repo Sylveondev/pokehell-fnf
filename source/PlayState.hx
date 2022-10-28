@@ -1517,7 +1517,7 @@ class PlayState extends MusicBeatState
 			'Song Score: '+ songScore +
 			'\nCurrent Combo: '+ combo +
 			'\nHighest combo: '+ highestcombo +
-			'\n------\nAwesomes: '+ awesomes +
+			'\nAwesomes: '+ awesomes +
 			'\nNices: '+ sicks +
 			'\nCools: ' + goods +
 			'\nBruhs: ' + bads +
@@ -3290,6 +3290,8 @@ class PlayState extends MusicBeatState
 				boyfriendIdleTime = 0;
 			}
 		}
+
+		if (songMisses >= 100) health = -1;
 
 		super.update(elapsed);
 
