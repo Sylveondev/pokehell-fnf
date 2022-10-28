@@ -1,5 +1,5 @@
-![](https://static.wikia.nocookie.net/fridaynightfunking/images/0/0b/Pokehell-1.2-logo.png/revision/latest?cb=20220613213102)
-##### Looking for a different edition of Pokehell?
+![](https://github.com/Sylveondev/pokehell-fnf/blob/main/docs/img/Pokehell-logo.png?raw=true)
+##### Experimental engines of pokehell coming soon:
 [Forever Edition](https://github.com/Sylveondev/pokehell-fnf/tree/forever)<br>
 [Kade Edition](https://github.com/Sylveondev/pokehell-fnf/tree/kade)
 ## Pokehell - Psych Edition
