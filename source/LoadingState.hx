@@ -122,7 +122,7 @@ class LoadingState extends MusicBeatState
 				{trace('Failed to load '+path); fails++;}
 
 			#else 
-				Assets.loadSound(path).onComplete(function (_) { trace("Success!"); callback(); }).onError(function(err){ trace("Failed to load sound: "+ path+"\nReason:"+err); fails++; });
+				Assets.loadSound(path).onComplete(function (_) { trace("Success!"); callback(); }).onError(function(err){ trace("Failed to load sound: "+ path+" -- Reason:"+err); fails++; callback(); });
 			#end
 		}
 	}
@@ -137,7 +137,7 @@ class LoadingState extends MusicBeatState
 
 			var callback = callbacks.add("library:" + library);
 			trace('Adding callback "library:'+ library +'"');
-			Assets.loadLibrary(library).onComplete(function (_) { trace("Success!"); callback(); }).onError(function(err){ trace("Failed to load library: "+ library+"\nReason:"+err); fails++; });
+			Assets.loadLibrary(library).onComplete(function (_) { trace("Success!"); callback(); }).onError(function(err){ trace("Failed to load library: "+ library+" -- Reason:"+err); fails++; callback(); });
 		}
 	}
 	
@@ -162,8 +162,8 @@ class LoadingState extends MusicBeatState
 			loadShit.screenCenter(X);
 			loadBar.scale.x += 0.25 * (targetShit);
 		}else{
-			loadShit.text = 'Loading... '+FlxMath.roundDecimal(targetShit*100,0)+'% complete - Loading stopped!';
-			loadShit.color = FlxColor.RED;
+			loadShit.text = 'Preparing to load...';
+			loadShit.color = FlxColor.GRAY;
 		}
 
 	}
