@@ -1,79 +1,80 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-3,
 				5
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "hey",
-			"indices": [],
-			"name": "BF HEY"
+			"fps": 24,
+			"name": "BF HEY",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				15,
 				18
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "hurt",
-			"indices": [],
-			"name": "BF hit"
+			"fps": 24,
+			"name": "BF hit",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [
 				-4,
 				0
 			],
-			"loop": true,
-			"fps": 24,
 			"anim": "scared",
-			"indices": [],
-			"name": "BF idle shaking"
+			"fps": 24,
+			"name": "BF idle shaking",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-10,
 				-16
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "dodge",
-			"indices": [],
-			"name": "boyfriend dodge"
+			"fps": 24,
+			"name": "boyfriend dodge",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				294,
 				267
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "attack",
-			"indices": [],
-			"name": "boyfriend attack"
+			"fps": 24,
+			"name": "boyfriend attack",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-40,
 				-40
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "pre-attack",
-			"indices": [],
-			"name": "bf pre attack"
+			"fps": 24,
+			"name": "bf pre attack",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "danceLeft",
+			"fps": 24,
+			"name": "Eevee Idle",
 			"indices": [
 				0,
 				1,
@@ -90,17 +91,17 @@
 				12,
 				13,
 				14
-			],
-			"name": "Eevee Idle"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "danceRight",
+			"fps": 24,
+			"name": "Eevee Idle",
 			"indices": [
 				15,
 				16,
@@ -113,157 +114,160 @@
 				23,
 				24,
 				25
-			],
-			"name": "Eevee Idle"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
-				27,
+				-15,
 				7
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Eevee Left"
+			"fps": 24,
+			"name": "Eevee Left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-38,
 				-13
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Eevee Right"
+			"fps": 24,
+			"name": "Eevee Right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				-26,
+				4,
 				52
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Eevee Up"
+			"fps": 24,
+			"name": "Eevee Up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				102,
+				-38,
 				-113
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Eevee Down"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				17,
-				-1
-			],
-			"anim": "singLEFTmiss",
 			"fps": 24,
-			"name": "Eevee MissLeft",
+			"name": "Eevee Down",
 			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
-				95,
+				-20,
+				7
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "Eevee MissLeft"
+		},
+		{
+			"offsets": [
+				-25,
 				-149
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "Eevee MissDown",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-36,
-				37
-			],
-			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "Eevee MissUp",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-24,
-				-18
-			],
-			"anim": "singRIGHTmiss",
-			"fps": 24,
-			"name": "Eevee MissRight",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-5,
-				14
-			],
-			"anim": "Eevee Waiting",
-			"fps": 24,
-			"name": "Eevee Waiting",
-			"indices": []
-		},
-		{
-			"offsets": [
-				28,
-				1
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "Eevee Pose",
 			"indices": [],
-			"name": "Eevee Pose"
+			"name": "Eevee MissDown"
+		},
+		{
+			"offsets": [
+				-3,
+				35
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "Eevee MissUp"
+		},
+		{
+			"offsets": [
+				-37,
+				-13
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "Eevee MissRight"
+		},
+		{
+			"offsets": [
+				-17,
+				13
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "Eevee Waiting",
+			"indices": [],
+			"name": "Eevee Waiting"
 		},
 		{
 			"loop": false,
+			"offsets": [
+				-15,
+				0
+			],
+			"anim": "Eevee Pose",
+			"fps": 24,
+			"name": "Eevee Pose",
+			"indices": []
+		},
+		{
 			"offsets": [
 				243,
 				70
 			],
-			"anim": "firstDeath",
+			"loop": false,
 			"fps": 24,
-			"name": "Eevee go poof",
-			"indices": []
+			"anim": "firstDeath",
+			"indices": [],
+			"name": "Eevee go poof"
 		},
 		{
-			"loop": true,
 			"offsets": [
 				247,
 				-456
 			],
-			"anim": "deathLoop",
+			"loop": true,
 			"fps": 24,
-			"name": "Eevee Dead Loop",
-			"indices": []
+			"anim": "deathLoop",
+			"indices": [],
+			"name": "Eevee Dead Loop"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				298,
 				0
 			],
-			"anim": "deathConfirm",
+			"loop": false,
 			"fps": 24,
-			"name": "Eevee Retry",
-			"indices": []
+			"anim": "deathConfirm",
+			"indices": [],
+			"name": "Eevee Retry"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Eevee Idle",
 			"indices": [
 				0,
 				1,
@@ -280,20 +284,17 @@
 				12,
 				13,
 				14
-			],
-			"fps": 24,
-			"anim": "idle",
-			"loop": false,
-			"name": "Eevee Idle"
+			]
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/vee",
+	"isPlayable": false,
 	"position": [
 		0,
 		200
 	],
-	"healthicon": "Vee",
+	"healthicon": "vee",
 	"flip_x": true,
 	"healthbar_colors": [
 		202,
@@ -301,8 +302,8 @@
 		67
 	],
 	"camera_position": [
-		20,
-		200
+		120,
+		320
 	],
 	"sing_duration": 4,
 	"scale": 1

@@ -395,7 +395,7 @@ class ChartingState extends MusicBeatState
 		var tab_group_cust = new FlxUI(null, UIconf_box);
 		tab_group_cust.name = "Customize";
 
-		var colorsText:FlxText = new FlxText(10, 10, 0, 'Note that the colors must be hex values, otherwise it will fail.\nIf it is to fail, a failsafe is in place to prevent the game from crashing.', 8);
+		var colorsText:FlxText = new FlxText(10, 10, 0, 'Note that the colors must be hex values, otherwise it will fail. If it is to fail, a failsafe is\nin place to prevent the game from crashing. Also for html5 builds, for your sounds to work, you must convert the sound to the mp3 format.', 8);
 		tab_group_cust.add(colorsText);
 		fontColorInputText = new FlxUIInputText(10, 50, 150, _song.fontColor, 8);
 		blockPressWhileTypingOn.push(fontColorInputText);
@@ -405,12 +405,12 @@ class ChartingState extends MusicBeatState
 		timebarColorInputText = new FlxUIInputText(10, fontColorInputText.y + 30, 150, _song.timebarColor[0], 8);
 		blockPressWhileTypingOn.push(timebarColorInputText);
 		tab_group_cust.add(timebarColorInputText);
-		tab_group_cust.add(new FlxText(timebarColorInputText.x, timebarColorInputText.y - 15, 0, 'Timebar fill color:'));
+		tab_group_cust.add(new FlxText(timebarColorInputText.x, timebarColorInputText.y - 15, 0, 'Timebar color A:'));
 		
 		timebarColorInputAltText = new FlxUIInputText(170, fontColorInputText.y + 30, 150, _song.timebarColor[1], 8);
 		blockPressWhileTypingOn.push(timebarColorInputAltText);
 		tab_group_cust.add(timebarColorInputAltText);
-		tab_group_cust.add(new FlxText(timebarColorInputAltText.x, timebarColorInputAltText.y - 15, 0, 'Timebar empty color:'));
+		tab_group_cust.add(new FlxText(timebarColorInputAltText.x, timebarColorInputAltText.y - 15, 0, 'Timebar color B:'));
 
 		soundPrefixInputText = new FlxUIInputText(10, timebarColorInputText.y + 30, 150, _song.soundPrefix, 8);
 		blockPressWhileTypingOn.push(soundPrefixInputText);
@@ -421,7 +421,27 @@ class ChartingState extends MusicBeatState
 			{
 				CoolUtil.browserLoad('https://g.co/kgs/hQbExi');
 			});
+		
 		tab_group_cust.add(colorPicker);
+
+		var resetColors:FlxButton = new FlxButton(colorPicker.width + 25, soundPrefixInputText.y + 30, "Default colors", function()
+			{
+				fontColorInputText.text = "0xFFF5AA42";
+				_song.fontColor = "0xFFF5AA42";
+				timebarColorInputText.text = "0xFF915D0F";
+				_song.timebarColor[0] = "0xFF915D0F";
+				timebarColorInputAltText.text = "0xFFFFA621";
+				_song.timebarColor[1] = "0xFFFFA621";
+			});
+		
+		tab_group_cust.add(resetColors);
+
+		var convertio:FlxButton = new FlxButton(resetColors.width + 25, soundPrefixInputText.y + 30, "convertio.co", function()
+			{
+				CoolUtil.browserLoad('https://convertio.co');
+			});
+		
+		tab_group_cust.add(convertio);
 		
 
 		

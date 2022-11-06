@@ -631,6 +631,10 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('mountains', -600, -200, 1, 1);
 				add(bg);
 
+			case 'lightning': //Week 6: Potassium
+				var bg:BGSprite = new BGSprite('lightning', -600, -200, 1, 1);
+				add(bg);
+
 			case 'rematch': //Week 11: Floombo's rematch week
 				//Yessss. The background
 				rematch = new BGSprite('rematch', -1000, -550, 1, 1);
@@ -1432,15 +1436,31 @@ class PlayState extends MusicBeatState
 		//Only if you have low quality off.
 		//Yeah I know I'm using tweens, cry about it.
 		if (!ClientPrefs.lowQuality){
-			if (SONG.player2 == 'polyeon'){
-				if (curStage == 'playstation'){
-					dad.x += 100;
-					dad.y += 25;
-				}
-				FlxTween.tween(dad, {y: dad.y - 400}, 2, {ease: FlxEase.quadInOut,type:PINGPONG});
+			switch (SONG.player2){
+				case 'polyeon'|'pulpeon':
+					if (curStage == 'playstation'){
+						dad.x += 100;
+						dad.y += 25;
+					}
+					FlxTween.tween(dad, {y: dad.y - 400}, 2, {ease: FlxEase.quadInOut,type:PINGPONG});
+				case 'flareon':
+					FlxTween.tween(dad, {y: dad.y - 150}, 1, {ease: FlxEase.quadInOut,type:PINGPONG});
+				case 'eivee-glitch':
+					FlxTween.tween(dad, {y: dad.y - 200}, 5, {ease: FlxEase.quadInOut,type:PINGPONG});
+
 			}
-			if (SONG.player2 == 'flareon'){
-				FlxTween.tween(dad, {y: dad.y - 150}, 1, {ease: FlxEase.quadInOut,type:PINGPONG});
+			switch (SONG.player1){
+				case 'polyeon'|'pulpeon':
+					if (curStage == 'playstation'){
+						boyfriend.x += 100;
+						boyfriend.y += 25;
+					}
+					FlxTween.tween(boyfriend, {y: boyfriend.y - 400}, 2, {ease: FlxEase.quadInOut,type:PINGPONG});
+				case 'flareon':
+					FlxTween.tween(boyfriend, {y: boyfriend.y - 150}, 1, {ease: FlxEase.quadInOut,type:PINGPONG});
+				case 'eivee-glitch':
+					FlxTween.tween(boyfriend, {y: boyfriend.y - 200}, 5, {ease: FlxEase.quadInOut,type:PINGPONG});
+
 			}
 		}
 
@@ -1531,7 +1551,8 @@ class PlayState extends MusicBeatState
 		scoretable.visible = ClientPrefs.doScoretable;
 		add(scoretable);
 
-		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 20, 400, "", 32);
+		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 449, 20, 601, "", 32);
+		timeTxt.screenCenter(X);
 		timeTxt.setFormat(Paths.font("righteous.ttf"), 32, uiColor, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		timeTxt.scrollFactor.set();
 		timeTxt.alpha = 0;
@@ -1592,7 +1613,7 @@ class PlayState extends MusicBeatState
 		add(writerbg);
 		add(writertxt);
 
-		timeBarBG = new AttachedSprite('timeBar','normal','shared',true);
+		timeBarBG = new AttachedSprite('timeBar');
 		timeBarBG.x = timeTxt.x;
 		timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
 		timeBarBG.scrollFactor.set();
@@ -1601,13 +1622,14 @@ class PlayState extends MusicBeatState
 		timeBarBG.color = uiColor;
 		timeBarBG.xAdd = -4;
 		timeBarBG.yAdd = -4;
-		if (ClientPrefs.classicHUD) add(timeBarBG);
 
 		//This is probably really stupid.
 		//Hopefully this doesn't crash this bitch.
 		var timebarColor:Array<String> = ['0xFF915D0F', '0xFFFFA621'];
 		if (SONG.timebarColor.length == 2){
-			timebarColor = SONG.timebarColor;
+			if (SONG.timebarColor[0] != null) timebarColor[0] = SONG.timebarColor[0];
+			if (SONG.timebarColor[1] != null) timebarColor[1] = SONG.timebarColor[1];
+			//timebarColor = SONG.timebarColor;
 		}
 
 		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
@@ -1617,7 +1639,6 @@ class PlayState extends MusicBeatState
 		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
 		timeBar.alpha = 0;
 		timeBar.visible = !ClientPrefs.hideTime;
-		if (ClientPrefs.classicHUD) add(timeBar);
 		timeBarBG.sprTracker = timeBar;
 
 		timeBarColor = new FlxSprite(timeBarBG.x + 4, timeBarBG.y + 4).loadGraphic(Paths.image('timebarColor'));
@@ -1647,6 +1668,8 @@ class PlayState extends MusicBeatState
 		timeBarOverlay.cameras = [camHUD];
 		//add(timeBarOverlay); 
 		if(ClientPrefs.downScroll) timeBarOverlay.y = 0.953 * FlxG.height;
+		add(timeBar);
+		add(timeBarBG);
 		add(timeTxt);
 
 
@@ -3310,7 +3333,7 @@ class PlayState extends MusicBeatState
 		scoretable.text = 'Song Score: '+ songScore +
 		'\nCurrent Combo: '+ combo +
 		'\nHighest combo: '+ highestcombo +
-		'\n------\nAwesomes: '+ awesomes +
+		'\nAwesomes: '+ awesomes +
 		'\nNices: '+ sicks +
 		'\nCools: ' + goods +
 		'\nBruhs: ' + bads +
@@ -3484,7 +3507,7 @@ class PlayState extends MusicBeatState
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
 
-		var multAngle:Float = FlxMath.lerp(1, timeBarBG.angle, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		var multAngle:Float = FlxMath.lerp(1, scoreTxt.angle, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
 		scoreTxt.angle = multAngle;
 		timeBarBG.angle = multAngle;
 		timeBarOverlay.angle = multAngle;
@@ -3552,7 +3575,7 @@ class PlayState extends MusicBeatState
 					var secondsTotal:Int = Math.floor((songLength - curTime) / 1000);
 					if(secondsTotal < 0) secondsTotal = 0;
 
-					timeTxt.text = "- " +SONG.song + " - " + FlxStringUtil.formatTime(secondsTotal, false)+" -";
+					timeTxt.text = (!ClientPrefs.classicHUD ?  "- " +SONG.song + " - " + FlxStringUtil.formatTime(secondsTotal, false)+" -" : FlxStringUtil.formatTime(secondsTotal, false));
 				}
 			}
 
@@ -3839,7 +3862,7 @@ class PlayState extends MusicBeatState
 
 				if (doKill)
 				{
-					if (daNote.mustPress && !cpuControlled &&!daNote.ignoreNote && !endingSong && (daNote.tooLate || !daNote.wasGoodHit)) {
+					if (daNote.mustPress && !cpuControlled &&!daNote.ignoreNote &&!daNote.isSustainNote && !endingSong && (daNote.tooLate || !daNote.wasGoodHit)) {
 						noteMiss(daNote);
 					}
 
@@ -6008,16 +6031,16 @@ class PlayState extends MusicBeatState
 
 		curBeat % (gfSpeed * 2) == 0 ? {
 			scoreTxt.angle = 8;
-			timeBarBG.angle = 8;
-			timeBarOverlay.angle = 8;
+			//timeBarBG.angle = 8;
+			//timeBarOverlay.angle = 8;
 			timeTxt.angle = 8;
-			timeBar.angle = 8;
+			//timeBar.angle = 8;
 		} : {
 			scoreTxt.angle = -8;
-			timeBarBG.angle = -8;
-			timeBarOverlay.angle = -8;
+			//timeBarBG.angle = -8;
+			//timeBarOverlay.angle = -8;
 			timeTxt.angle = -8;
-			timeBar.angle = -8;
+			//timeBar.angle = -8;
 		}
 
 		if (curBeat % gfSpeed == 0 && !gf.stunned && gf.animation.curAnim.name != null && !gf.animation.curAnim.name.startsWith("sing"))
@@ -6066,6 +6089,62 @@ class PlayState extends MusicBeatState
 					if (SONG.song.toLowerCase() == 'bling-blunkin'){
 						
 				}}
+			case 'forest':
+				if (ClientPrefs.sourceModcharts){
+					if (SONG.song.toLowerCase() == 'a-scary-night-song'){
+						if (curBeat == 192){
+							coBfTrail = new FlxTrail(boyfriend, null, 16, 6, 0.6, 0.2); //nice
+							coBfTrail.visible = false;
+							insert(members.indexOf(boyfriendGroup) - 1, coBfTrail);
+							var dargb = FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]);
+							dargb.saturation = 1;
+							coBfTrail.color = dargb;
+
+							coDadTrail = new FlxTrail(dad, null, 16, 6, 0.6, 0.2); //nice
+							coDadTrail.visible = false;
+							insert(members.indexOf(dadGroup) - 1, coDadTrail);
+							var dargb = FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]);
+							dargb.saturation = 1;
+							coDadTrail.color = dargb;
+
+							coBfTrail.visible = true;
+							coDadTrail.visible = true;
+						}
+						if (curBeat == 256){
+							coBfTrail.visible = false;
+							coDadTrail.visible = false;
+
+							coBfTrail.destroy();
+							coDadTrail.destroy();
+						}
+
+						if (curBeat == 384){
+							coBfTrail = new FlxTrail(boyfriend, null, 16, 6, 0.6, 0.2); //nice
+							coBfTrail.visible = false;
+							insert(members.indexOf(boyfriendGroup) - 1, coBfTrail);
+							var dargb = FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]);
+							dargb.saturation = 1;
+							coBfTrail.color = dargb;
+
+							coDadTrail = new FlxTrail(dad, null, 16, 6, 0.6, 0.2); //nice
+							coDadTrail.visible = false;
+							insert(members.indexOf(dadGroup) - 1, coDadTrail);
+							var dargb = FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]);
+							dargb.saturation = 1;
+							coDadTrail.color = dargb;
+
+							coBfTrail.visible = true;
+							coDadTrail.visible = true;
+						}
+						if (curBeat == 512){
+							coBfTrail.visible = false;
+							coDadTrail.visible = false;
+
+							coBfTrail.destroy();
+							coDadTrail.destroy();
+						}
+					}
+				}
 			case 'box':
 				if (ClientPrefs.sourceModcharts){
 				if (SONG.song.toLowerCase() == 'crossover'){

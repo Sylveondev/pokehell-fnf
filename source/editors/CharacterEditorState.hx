@@ -119,10 +119,7 @@ class CharacterEditorState extends MusicBeatState
 
 		loadChar(!daAnim.startsWith('bf'), false);
 
-		healthBarBG = new FlxSprite(30, FlxG.height - 75).loadGraphic(Paths.image('healthBar'));
-		healthBarBG.frames = Paths.getSparrowAtlas('healthBar', 'shared');
-		healthBarBG.animation.addByPrefix('idle', 'normal', 12, true);
-		healthBarBG.animation.play('idle');
+		healthBarBG = new FlxSprite(30, FlxG.height - 75).loadGraphic(Paths.image('editorhealthBar'));
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
 		healthBarBG.cameras = [camHUD];
@@ -392,6 +389,7 @@ class CharacterEditorState extends MusicBeatState
 	}
 	
 	var imageInputText:FlxUIInputText;
+
 	var healthIconInputText:FlxUIInputText;
 
 	var singDurationStepper:FlxUINumericStepper;
@@ -421,6 +419,17 @@ class CharacterEditorState extends MusicBeatState
 				char.playAnim(char.animation.curAnim.name, true);
 			}
 		});
+
+		var decideIconColor:FlxButton = new FlxButton(reloadImage.x, reloadImage.y + 30, "Get Icon Color", function()
+			{
+				var coolColor = FlxColor.fromInt(CoolUtil.dominantColor(leHealthIcon));
+				healthColorStepperR.value = coolColor.red;
+				healthColorStepperG.value = coolColor.green;
+				healthColorStepperB.value = coolColor.blue;
+				getEvent(FlxUINumericStepper.CHANGE_EVENT, healthColorStepperR, null);
+				getEvent(FlxUINumericStepper.CHANGE_EVENT, healthColorStepperG, null);
+				getEvent(FlxUINumericStepper.CHANGE_EVENT, healthColorStepperB, null);
+			});
 
 		healthIconInputText = new FlxUIInputText(15, imageInputText.y + 35, 75, leHealthIcon.getCharacter(), 8);
 
@@ -472,6 +481,7 @@ class CharacterEditorState extends MusicBeatState
 		tab_group.add(new FlxText(healthColorStepperR.x, healthColorStepperR.y - 18, 0, 'Health bar R/G/B:'));
 		tab_group.add(imageInputText);
 		tab_group.add(reloadImage);
+		tab_group.add(decideIconColor);
 		tab_group.add(healthIconInputText);
 		tab_group.add(singDurationStepper);
 		tab_group.add(scaleStepper);
