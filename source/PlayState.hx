@@ -166,6 +166,14 @@ class PlayState extends MusicBeatState
 	public var fakegf:Null<Character>;
 	public var boyfriend:Boyfriend;
 
+	public var player2:Null<Character>;
+	public var player3:Null<Character>;
+	public var player4:Null<Character>;
+	public var player5:Null<Character>;
+	public var player6:Null<Character>;
+	public var player7:Null<Character>;
+	public var player8:Null<Character>;
+
 	public var notes:FlxTypedGroup<Note>;
 	public var unspawnNotes:Array<Note> = [];
 	public var eventNotes:Array<Dynamic> = [];
@@ -280,6 +288,7 @@ class PlayState extends MusicBeatState
 	var mountains:FlxBackdrop;
 	var trees:FlxBackdrop;
 
+	var stageBackgrounds:FlxTypedGroup<BGSprite>;
 
 	var rematch:BGSprite;
 	var rematchVignette:BGSprite;
@@ -810,10 +819,37 @@ class PlayState extends MusicBeatState
 				add(bg);
 
 			case 'memz':
-
 				var bg:BGSprite = new BGSprite('memz', -600, -200, 1, 1);
-				bg.setGraphicSize(Std.int(bg.width * 2));
 				add(bg);
+
+				stageBackgrounds = new FlxTypedGroup<BGSprite>();
+				add(stageBackgrounds);
+
+				var dabg:BGSprite = new BGSprite('box-alt', -600, -200, 1, 1);
+				dabg.visible = false;
+				stageBackgrounds.add(dabg);
+				var dabg:BGSprite = new BGSprite('stage2', -600, -200, 1, 1);
+				dabg.visible = false;
+				stageBackgrounds.add(dabg);
+				var dabg:BGSprite = new BGSprite('rasda', -600, -200, 1, 1);
+				dabg.visible = false;
+				stageBackgrounds.add(dabg);
+				var dabg:BGSprite = new BGSprite('vee-forest', -600, -200, 1, 1);
+				dabg.visible = false;
+				stageBackgrounds.add(dabg);
+				var dabg:BGSprite = new BGSprite('lightning', -600, -200, 1, 1);
+				dabg.visible = false;
+				stageBackgrounds.add(dabg);
+				var dabg:BGSprite = new BGSprite('red2', -600, -200, 1, 1);
+				dabg.visible = false;
+				stageBackgrounds.add(dabg);
+				var dabg:BGSprite = new BGSprite('rematch', -600, -200, 1, 1);
+				dabg.visible = false;
+				stageBackgrounds.add(dabg);
+				var dabg:BGSprite = new BGSprite('house', -600, -200, 1, 1);
+				dabg.visible = false;
+				stageBackgrounds.add(dabg);
+
 
 			case 'road':
 				//This makes things look like Vee Funkin.
@@ -3083,6 +3119,65 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
+			case 'memz':
+				if (SONG.song.toLowerCase() == 'memz-2' && ClientPrefs.sourceModcharts){
+					if (curBeat < 0){
+						dad.visible = false;
+						iconP2.visible = false;
+						camGame.alpha = 0;
+					}
+					if (curBeat == 64){
+						FlxTween.tween(camGame,{alpha: 1}, 3, {ease: FlxEase.linear});
+					}
+					if (curBeat == 128){
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						dad.visible = true;
+						iconP2.visible = true;
+						stageBackgrounds.members[0].visible = true;
+					}
+					if (curBeat == 704){
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						stageBackgrounds.members[0].visible = false;
+						stageBackgrounds.members[1].visible = true;
+					}
+					if (curBeat == 1408){
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						stageBackgrounds.members[1].visible = false;
+						stageBackgrounds.members[2].visible = true;
+					}
+					if (curBeat == 1856){
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						stageBackgrounds.members[2].visible = false;
+						stageBackgrounds.members[3].visible = true;
+					}
+					if (curBeat == 2560){
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						stageBackgrounds.members[3].visible = false;
+						stageBackgrounds.members[4].visible = true;
+					}
+					if (curBeat == 3008){
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						stageBackgrounds.members[4].visible = false;
+						stageBackgrounds.members[5].visible = true;
+					}
+					if (curBeat == 3552){
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						stageBackgrounds.members[5].visible = false;
+						stageBackgrounds.members[6].visible = true;
+					}
+					if (curBeat == 4160){
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						stageBackgrounds.members[6].visible = false;
+						stageBackgrounds.members[7].visible = true;
+					}
+					if (curBeat == 4488){
+						FlxG.camera.flash(FlxColor.WHITE, 1);
+						stageBackgrounds.members[7].visible = false;
+					}
+					if (curBeat == 4736){
+						
+					}
+				}
 			case 'white-center'|'pringles':
 				dad.x = boyfriend.x;
 				dad.y = boyfriend.y;
@@ -3096,7 +3191,7 @@ class PlayState extends MusicBeatState
 				gf.visible = false;
 				boyfriend.visible = false;
 			case 'road':
-				if (SONG.song.toLowerCase() == 'bling-blunkin'){
+				if (SONG.song.toLowerCase() == 'bling-blunkin' && ClientPrefs.sourceModcharts){
 					if (curBeat == 812){
 						FlxG.camera.flash(FlxColor.WHITE, 1);
 						dad.shader = new YoshiBlammedShader(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]);
@@ -4395,9 +4490,21 @@ class PlayState extends MusicBeatState
 			case 'Change Character':
 				var charType:Int = 0;
 				switch(value1) {
-					case 'gf' | 'girlfriend':
+					case '3':
+						charType = 3;
+					case '4':
+						charType = 3;
+					case '5':
+						charType = 3;
+					case '6':
+						charType = 3;
+					case '7':
+						charType = 3;
+					case '8':
+						charType = 3;
+					case 'gf' | 'girlfriend'|'2':
 						charType = 2;
-					case 'dad' | 'opponent':
+					case 'dad' | 'opponent'|'1':
 						charType = 1;
 					default:
 						charType = Std.parseInt(value1);
@@ -4422,7 +4529,74 @@ class PlayState extends MusicBeatState
 						}
 
 					case 1:
-						if(dad.curCharacter != value2) {
+						if (value2 == 'everyone-memz2' && SONG.song.toLowerCase() == 'memz-2'){
+							if(!dadMap.exists('renderite')) {
+								addCharacterToList('renderite', charType);
+							}
+							dad.visible = false;
+							dad = dadMap.get('renderite');
+
+							if(!dadMap.exists('player')) {
+								addCharacterToList('player', charType);
+							}
+							player2 = dadMap.get('player');
+
+							if(!dadMap.exists('quem')) {
+								addCharacterToList('quem', charType);
+							}
+							player3 = dadMap.get('quem');
+
+							if(!dadMap.exists('vee')) {
+								addCharacterToList('vee', charType);
+							}
+							player4 = dadMap.get('vee');
+
+							if(!dadMap.exists('zeraora')) {
+								addCharacterToList('zeraora', charType);
+							}
+							player5 = dadMap.get('zeraora');
+
+							if(!dadMap.exists('redBambi')) {
+								addCharacterToList('redBambi', charType);
+							}
+							player6 = dadMap.get('redBambi');
+
+							if(!dadMap.exists('sallyFloombo')) {
+								addCharacterToList('sallyFloombo', charType);
+							}
+							player7 = dadMap.get('sallyFloombo');
+
+							if(!dadMap.exists('silyvon')) {
+								addCharacterToList('silyvon', charType);
+							}
+							player8 = dadMap.get('silyvon');
+
+							add(player2);
+							player2.x = dad.x + FlxG.random.int(-400,400);
+							player2.y = dad.y + FlxG.random.int(-400,400);
+							add(player3);
+							player3.x = dad.x + FlxG.random.int(-400,400);
+							player3.y = dad.y + FlxG.random.int(-400,400);
+							add(player4);
+							player4.x = dad.x + FlxG.random.int(-400,400);
+							player4.y = dad.y + FlxG.random.int(-400,400);
+							add(player5);
+							player5.x = dad.x + FlxG.random.int(-400,400);
+							player5.y = dad.y + FlxG.random.int(-400,400);
+							add(player6);
+							player6.x = dad.x + FlxG.random.int(-400,400);
+							player6.y = dad.y + FlxG.random.int(-400,400);
+							add(player7);
+							player7.x = dad.x + FlxG.random.int(-400,400);
+							player7.y = dad.y + FlxG.random.int(-400,400);
+							add(player8);
+							player8.x = dad.x + FlxG.random.int(-400,400);
+							player8.y = dad.y + FlxG.random.int(-400,400);
+							
+							iconP2.changeIcon('memzeveryone');
+							reloadHealthBarColors();
+						}
+						else if(dad.curCharacter != value2) {
 							if(!dadMap.exists(value2)) {
 								addCharacterToList(value2, charType);
 							}

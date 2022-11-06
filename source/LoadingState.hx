@@ -162,7 +162,7 @@ class LoadingState extends MusicBeatState
 			loadShit.screenCenter(X);
 			loadBar.scale.x += 0.25 * (targetShit);
 		}else{
-			loadShit.text = 'Preparing to load...';
+			loadShit.text = 'Preparing to load the song. Please wait...';
 			loadShit.color = FlxColor.GRAY;
 		}
 
