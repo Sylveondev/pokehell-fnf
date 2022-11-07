@@ -1474,22 +1474,22 @@ class PlayState extends MusicBeatState
 			player2 = new Character(0, 0, 'player');
 			startCharacterPos(player2, true);
 			dadGroup.add(player2);
-			player3 = new Character(0, 0, 'quem');
+			player3 = new Character(0, 0, 'sillyvon');
 			startCharacterPos(player3, true);
 			dadGroup.add(player3);
-			player4 = new Character(0, 0, 'vee');
+			player4 = new Character(0, 0, 'redBambi');
 			startCharacterPos(player4, true);
 			dadGroup.add(player4);
 			player5 = new Character(0, 0, 'zeraora');
 			startCharacterPos(player5, true);
 			dadGroup.add(player5);
-			player6 = new Character(0, 0, 'redBambi');
+			player6 = new Character(0, 0, 'vee');
 			startCharacterPos(player6, true);
 			dadGroup.add(player6);
 			player7 = new Character(0, 0, 'sallyFloombo');
 			startCharacterPos(player7, true);
 			dadGroup.add(player7);
-			player8 = new Character(0, 0, 'silyvon');
+			player8 = new Character(0, 0, 'quem');
 			startCharacterPos(player8, true);
 			dadGroup.add(player8);
 
