@@ -64,6 +64,8 @@ class ChartingState extends MusicBeatState
 		'AntiMiss Note',
 		'Sylveon Note',
 		'GF Sing',
+		'Memz',
+		'Memz Alt',
 		'No Animation'
 	];
 	private var noteTypeIntMap:Map<Int, String> = new Map<Int, String>();

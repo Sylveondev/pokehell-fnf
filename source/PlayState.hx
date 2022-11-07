@@ -1464,9 +1464,58 @@ class PlayState extends MusicBeatState
 			gf.x -= 100;
 		}
 
+		
+
 		dad = new Character(0, 0, SONG.player2);
 		startCharacterPos(dad, true);
 		dadGroup.add(dad);
+
+		if (SONG.song.toLowerCase() == 'memz-2'){
+			player2 = new Character(0, 0, 'player');
+			startCharacterPos(player2, true);
+			dadGroup.add(player2);
+			player3 = new Character(0, 0, 'quem');
+			startCharacterPos(player3, true);
+			dadGroup.add(player3);
+			player4 = new Character(0, 0, 'vee');
+			startCharacterPos(player4, true);
+			dadGroup.add(player4);
+			player5 = new Character(0, 0, 'zeraora');
+			startCharacterPos(player5, true);
+			dadGroup.add(player5);
+			player6 = new Character(0, 0, 'redBambi');
+			startCharacterPos(player6, true);
+			dadGroup.add(player6);
+			player7 = new Character(0, 0, 'sallyFloombo');
+			startCharacterPos(player7, true);
+			dadGroup.add(player7);
+			player8 = new Character(0, 0, 'silyvon');
+			startCharacterPos(player8, true);
+			dadGroup.add(player8);
+
+			player2.x = dad.x + FlxG.random.int(-250,250);
+			player2.y = dad.y + FlxG.random.int(-250,250);
+			player3.x = dad.x + FlxG.random.int(-250,250);
+			player3.y = dad.y + FlxG.random.int(-250,250);
+			player4.x = dad.x + FlxG.random.int(-250,250);
+			player4.y = dad.y + FlxG.random.int(-250,250);
+			player5.x = dad.x + FlxG.random.int(-250,250);
+			player5.y = dad.y + FlxG.random.int(-250,250);
+			player6.x = dad.x + FlxG.random.int(-250,250);
+			player6.y = dad.y + FlxG.random.int(-250,250);
+			player7.x = dad.x + FlxG.random.int(-250,250);
+			player7.y = dad.y + FlxG.random.int(-250,250);
+			player8.x = dad.x + FlxG.random.int(-250,250);
+			player8.y = dad.y + FlxG.random.int(-250,250);
+
+			player2.visible = true;
+			player3.visible = true;
+			player4.visible = true;
+			player5.visible = true;
+			player6.visible = true;
+			player7.visible = true;
+			player8.visible = true;
+		}
 
 		//Makes Flareon and polyeon go up and down.
 		//Only if you have low quality off.
@@ -2393,11 +2442,31 @@ class PlayState extends MusicBeatState
 					if (dad.animation.curAnim != null && !dad.animation.curAnim.name.startsWith('sing') && !dad.stunned)
 					{
 						dad.dance();
+
+						if (SONG.song.toLowerCase() == 'memz-2'){
+							player2.dance();
+							player3.dance();
+							player4.dance();
+							player5.dance();
+							player6.dance();
+							player7.dance();
+							player8.dance();
+						}
 					}
 				}
 				else if(dad.danceIdle && dad.animation.curAnim != null && !dad.stunned && !dad.curCharacter.startsWith('gf') && !dad.animation.curAnim.name.startsWith("sing"))
 				{
 					dad.dance();
+
+					if (SONG.song.toLowerCase() == 'memz-2'){
+						player2.dance();
+						player3.dance();
+						player4.dance();
+						player5.dance();
+						player6.dance();
+						player7.dance();
+						player8.dance();
+					}
 				}
 
 				var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
@@ -3175,6 +3244,17 @@ class PlayState extends MusicBeatState
 						stageBackgrounds.members[7].visible = false;
 					}
 					if (curBeat == 4736){
+						triggerEventNote('Change Character', 'dad', 'renderite');
+
+						player2.visible = true;
+						player3.visible = true;
+						player4.visible = true;
+						player5.visible = true;
+						player6.visible = true;
+						player7.visible = true;
+						player8.visible = true;
+
+						iconP2.changeIcon('memzeveryone');
 						
 					}
 				}
@@ -3859,6 +3939,39 @@ class PlayState extends MusicBeatState
 						dad.playAnim('hey', true);
 						dad.specialAnim = true;
 						dad.heyTimer = 0.6;
+					}else if (daNote.noteType == 'Memz'){
+						var animToPlay:String = '';
+						animToPlay = 'sing' + Main.charDir[Main.gfxHud[mania][Std.int(Math.abs(daNote.noteData))]];
+						if(daNote.noteType == 'GF Sing') {
+							gf.playAnim(animToPlay, true);
+							gf.holdTimer = 0;
+						} else {
+							dad.playAnim(animToPlay, true);
+							dad.holdTimer = 0;
+							player2.playAnim(animToPlay, true);
+							player2.holdTimer = 0;
+							player3.playAnim(animToPlay, true);
+							player3.holdTimer = 0;
+							player4.playAnim(animToPlay, true);
+							player4.holdTimer = 0;
+						}
+					}else if (daNote.noteType == 'Memz Alt'){
+						var animToPlay:String = '';
+						animToPlay = 'sing' + Main.charDir[Main.gfxHud[mania][Std.int(Math.abs(daNote.noteData))]];
+						if(daNote.noteType == 'GF Sing') {
+							gf.playAnim(animToPlay, true);
+							gf.holdTimer = 0;
+						} else {
+							player5.playAnim(animToPlay, true);
+							player5.holdTimer = 0;
+							player6.playAnim(animToPlay, true);
+							player6.holdTimer = 0;
+							player7.playAnim(animToPlay, true);
+							player7.holdTimer = 0;
+							player8.playAnim(animToPlay, true);
+							player8.holdTimer = 0;
+						}
+					
 					} else if(!daNote.noAnimation) {
 						var altAnim:String = "";
 
@@ -4530,7 +4643,7 @@ class PlayState extends MusicBeatState
 
 					case 1:
 						if (value2 == 'everyone-memz2' && SONG.song.toLowerCase() == 'memz-2'){
-							if(!dadMap.exists('renderite')) {
+							/*if(!dadMap.exists('renderite')) {
 								addCharacterToList('renderite', charType);
 							}
 							dad.visible = false;
@@ -4572,27 +4685,27 @@ class PlayState extends MusicBeatState
 							player8 = dadMap.get('silyvon');
 
 							add(player2);
-							player2.x = dad.x + FlxG.random.int(-400,400);
-							player2.y = dad.y + FlxG.random.int(-400,400);
+							player2.x = dad.x + FlxG.random.int(-250,250);
+							player2.y = dad.y + FlxG.random.int(-250,250);
 							add(player3);
-							player3.x = dad.x + FlxG.random.int(-400,400);
-							player3.y = dad.y + FlxG.random.int(-400,400);
+							player3.x = dad.x + FlxG.random.int(-250,250);
+							player3.y = dad.y + FlxG.random.int(-250,250);
 							add(player4);
-							player4.x = dad.x + FlxG.random.int(-400,400);
-							player4.y = dad.y + FlxG.random.int(-400,400);
+							player4.x = dad.x + FlxG.random.int(-250,250);
+							player4.y = dad.y + FlxG.random.int(-250,250);
 							add(player5);
-							player5.x = dad.x + FlxG.random.int(-400,400);
-							player5.y = dad.y + FlxG.random.int(-400,400);
+							player5.x = dad.x + FlxG.random.int(-250,250);
+							player5.y = dad.y + FlxG.random.int(-250,250);
 							add(player6);
-							player6.x = dad.x + FlxG.random.int(-400,400);
-							player6.y = dad.y + FlxG.random.int(-400,400);
+							player6.x = dad.x + FlxG.random.int(-250,250);
+							player6.y = dad.y + FlxG.random.int(-250,250);
 							add(player7);
-							player7.x = dad.x + FlxG.random.int(-400,400);
-							player7.y = dad.y + FlxG.random.int(-400,400);
+							player7.x = dad.x + FlxG.random.int(-250,250);
+							player7.y = dad.y + FlxG.random.int(-250,250);
 							add(player8);
-							player8.x = dad.x + FlxG.random.int(-400,400);
-							player8.y = dad.y + FlxG.random.int(-400,400);
-							
+							player8.x = dad.x + FlxG.random.int(-250,250);
+							player8.y = dad.y + FlxG.random.int(-250,250);
+							*/
 							iconP2.changeIcon('memzeveryone');
 							reloadHealthBarColors();
 						}
