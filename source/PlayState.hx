@@ -1442,7 +1442,7 @@ class PlayState extends MusicBeatState
 			fakegf.y += 5;
 			fakegf.scrollFactor.set(0.95, 0.95);
 			gfGroup.add(fakegf);
-		}if (SONG.song.toLowerCase() == 'easedrop'){
+		}if (SONG.song.toLowerCase() == 'easedrop'||SONG.song.toLowerCase() == 'vomit'){
 			fakegf = new Character(0, 0, 'gf');
 			startCharacterPos(fakegf);
 			fakegf.y -= 10;
@@ -1474,7 +1474,7 @@ class PlayState extends MusicBeatState
 			player2 = new Character(0, 0, 'player');
 			startCharacterPos(player2, true);
 			dadGroup.add(player2);
-			player3 = new Character(0, 0, 'sillyvon');
+			player3 = new Character(0, 0, 'silyvon');
 			startCharacterPos(player3, true);
 			dadGroup.add(player3);
 			player4 = new Character(0, 0, 'redBambi');
@@ -1494,19 +1494,19 @@ class PlayState extends MusicBeatState
 			dadGroup.add(player8);
 
 			player2.x = dad.x + FlxG.random.int(-250,250);
-			player2.y = dad.y + FlxG.random.int(-250,250);
+			player2.y = dad.y + FlxG.random.int(-50,50);
 			player3.x = dad.x + FlxG.random.int(-250,250);
-			player3.y = dad.y + FlxG.random.int(-250,250);
+			player3.y = dad.y + FlxG.random.int(-50,50);
 			player4.x = dad.x + FlxG.random.int(-250,250);
-			player4.y = dad.y + FlxG.random.int(-250,250);
+			player4.y = dad.y + FlxG.random.int(-50,50);
 			player5.x = dad.x + FlxG.random.int(-250,250);
-			player5.y = dad.y + FlxG.random.int(-250,250);
+			player5.y = dad.y + FlxG.random.int(-50,50);
 			player6.x = dad.x + FlxG.random.int(-250,250);
-			player6.y = dad.y + FlxG.random.int(-250,250);
+			player6.y = dad.y + FlxG.random.int(-50,50);
 			player7.x = dad.x + FlxG.random.int(-250,250);
-			player7.y = dad.y + FlxG.random.int(-250,250);
+			player7.y = dad.y + FlxG.random.int(-50,50);
 			player8.x = dad.x + FlxG.random.int(-250,250);
-			player8.y = dad.y + FlxG.random.int(-250,250);
+			player8.y = dad.y + FlxG.random.int(-50,50);
 
 			player2.visible = true;
 			player3.visible = true;

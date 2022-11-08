@@ -10818,8 +10818,24 @@
 						"Change Character",
 						"dad",
 						"everyone-memz2"
+					],
+					[
+						1183962.5,
+						-1,
+						"Change Character",
+						"dad",
+						"renderite"
 					]
 				],
+				"bpm": 0,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
 				"bpm": 0,
 				"changeBPM": false,
 				"mustHitSection": false
