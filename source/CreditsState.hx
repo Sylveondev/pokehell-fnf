@@ -75,7 +75,7 @@ class CreditsState extends MusicBeatState
 		['Pokehell Contributors'],
 		['Your name here..',		'ifunny',		'Anyone can contribute to the mod with their content. You can submit your content for the mod in our discord server. See you there!',					'https://discord.gg/efE9c9AkWy',	'0xFFEDB96F'],
 		['Floombo',		'floombo',		'Composer for rematch week.',					'https://www.youtube.com/c/Floombo',	'0xFF505050'],
-		['Levii',		'levii',		'Remastered bf and sally\'s icons.',					'https://youtube.com/channel/UC4vcPy8RNCjtRGGrmAcK8Mg',	'0xFFFFC079'],
+		['LeviXD',		'levi',		'Remastered bf and sally\'s icons.',					'https://github.com/LEVIXDDLMAO',	'0xFF000000'],
 		['SlimSlam',		'mai',		'Created the eeveelution squad week.',					'https://www.youtube.com/channel/UCvEubu0Jnl4RXm_K8fBMsZA',	'0xFFFFDD33'],
 		['DerpManZero',		'derpy',		'Remastered bf.',					'https://www.youtube.com/channel/UC4eVH3-p_QxvxtjcvB1gafQ',	'0xFFBBBBBB'],
 		['Mewo',		'fuck',		'Improved SylveonDev\'s remastered sprites.',					'https://google.com',	'0xFFFFFFFF'],
