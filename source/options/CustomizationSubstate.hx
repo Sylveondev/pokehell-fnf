@@ -424,7 +424,7 @@ class CustomizationSubstate extends MusicBeatSubstate
 			case 'Source events':
 				daText = "If unchecked, disables all of pokehell's events. You little cry baby..\nThis leaves in psych's built in events and lua events.";
 			case 'Use ogg files':
-				daText = "If checked, ogg files will be used, otherwise use mp3 files.\nDisabled by default for html5 users.\n!!DON'T TOUCH THIS UNLESS YOU KNOW WHAT YOU'RE DOING!!";
+				daText = "If checked, ogg files will be used, otherwise use mp3 files.\nYou need to restart for the settings to take effect.\n!!DON'T TOUCH THIS UNLESS YOU KNOW WHAT YOU'RE DOING!!";
 		}
 		descText.text = daText;
 
