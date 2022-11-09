@@ -60,7 +60,14 @@ class StartState extends MusicBeatState
 			{
 				if (touch.justPressed)
 				{
-					pressedEnter = true;
+					leftState = true;
+					FlxG.sound.play(Paths.sound('scrollMenu'));
+					FlxTween.tween(FlxG.camera, {zoom: 0.2}, 1, {ease: FlxEase.quadIn,startDelay: .5});
+					FlxTween.tween(warnText, {alpha: 0}, 1, {
+						onComplete: function (twn:FlxTween) {
+							MusicBeatState.switchState(new TitleState());
+						}
+					});
 				}
 			}
 		#end
