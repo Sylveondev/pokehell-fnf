@@ -4728,10 +4728,10 @@
 				"mustHitSection": true
 			}
 		],
-		"player2": "pico",
+		"player2": "flareon",
 		"gfVersion": "gf",
 		"events": [],
-		"player3": null,
+		"player3": "gf",
 		"song": "Flaming",
 		"arrowSkin": "",
 		"needsVoices": true,
