@@ -19,7 +19,11 @@ using StringTools;
 
 class Paths
 {
-	inline public static var SOUND_EXT = (ClientPrefs.useOgg ? 'ogg' : 'mp3');
+        (ClientPrefs.useOgg ? 
+	inline public static var SOUND_EXT = 'ogg';
+        :
+        inline public static var SOUND_EXT = 'mp3';
+        )
 	inline public static var VIDEO_EXT = "mp4";
 	
 	#if MODS_ALLOWED
