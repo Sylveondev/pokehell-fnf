@@ -13547,14 +13547,31 @@
 				"bpm": 240,
 				"changeBPM": false,
 				"mustHitSection": true
+			},
+			{
+				"lengthInSteps": 16,
+				"bpm": 240,
+				"changeBPM": false,
+				"mustHitSection": true,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"altAnim": false
 			}
 		],
-		"player2": "mom-car",
+		"player2": "flareon",
 		"player3": "gf-car",
-		"song": "Milf",
+		"song": "Burned",
 		"needsVoices": true,
 		"validScore": true,
 		"bpm": 240,
-		"speed": 3
+		"speed": 3,
+		"mania": 3,
+		"timebarColor": [
+			"0xFF915D0F",
+			""
+		],
+		"soundPrefix": "",
+		"fontColor": "",
+		"stage": "hell"
 	}
 }
