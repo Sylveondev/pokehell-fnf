@@ -13556,10 +13556,19 @@
 				"sectionNotes": [],
 				"typeOfSection": 0,
 				"altAnim": false
+			},
+			{
+				"lengthInSteps": 16,
+				"bpm": 240,
+				"changeBPM": false,
+				"mustHitSection": true,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"altAnim": false
 			}
 		],
 		"player2": "flareon",
-		"player3": "gf-car",
+		"player3": "gf",
 		"song": "Burned",
 		"needsVoices": true,
 		"validScore": true,
@@ -13568,10 +13577,16 @@
 		"mania": 3,
 		"timebarColor": [
 			"0xFF915D0F",
-			""
+			"0xFFF5AA42"
 		],
 		"soundPrefix": "",
-		"fontColor": "",
-		"stage": "hell"
+		"fontColor": "0xFFF5AA42",
+		"stage": "hell",
+		"noBotplay": false,
+		"noPractice": false,
+		"forceMiddlescroll": false,
+		"forceGhostingOff": false,
+		"hideGF": false,
+		"disableChartEditor": false
 	}
 }

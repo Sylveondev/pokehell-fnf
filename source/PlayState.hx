@@ -1508,13 +1508,13 @@ class PlayState extends MusicBeatState
 			player8.x = dad.x + FlxG.random.int(-250,250);
 			player8.y = dad.y + FlxG.random.int(-50,50);
 
-			player2.visible = true;
-			player3.visible = true;
-			player4.visible = true;
-			player5.visible = true;
-			player6.visible = true;
-			player7.visible = true;
-			player8.visible = true;
+			player2.visible = false;
+			player3.visible = false;
+			player4.visible = false;
+			player5.visible = false;
+			player6.visible = false;
+			player7.visible = false;
+			player8.visible = false;
 		}
 
 		//Makes Flareon and polyeon go up and down.
@@ -1712,8 +1712,8 @@ class PlayState extends MusicBeatState
 		//Hopefully this doesn't crash this bitch.
 		var timebarColor:Array<String> = ['0xFF915D0F', '0xFFFFA621'];
 		if (SONG.timebarColor.length == 2){
-			if (SONG.timebarColor[0] != null) timebarColor[0] = SONG.timebarColor[0];
-			if (SONG.timebarColor[1] != null) timebarColor[1] = SONG.timebarColor[1];
+			if (SONG.timebarColor[0] != "") timebarColor[0] = SONG.timebarColor[0];
+			if (SONG.timebarColor[1] != "") timebarColor[1] = SONG.timebarColor[1];
 			//timebarColor = SONG.timebarColor;
 		}
 
@@ -6345,9 +6345,29 @@ class PlayState extends MusicBeatState
 			if (dad.animation.curAnim.name != null && !dad.animation.curAnim.name.startsWith("sing") && !dad.stunned)
 			{
 				dad.dance();
+
+				if (SONG.song.toLowerCase() == 'memz-2'){
+							player2.dance();
+							player3.dance();
+							player4.dance();
+							player5.dance();
+							player6.dance();
+							player7.dance();
+							player8.dance();
+						}
 			}
 		} else if(dad.danceIdle && dad.animation.curAnim.name != null && !dad.curCharacter.startsWith('gf') && !dad.animation.curAnim.name.startsWith("sing") && !dad.stunned) {
 			dad.dance();
+
+			if (SONG.song.toLowerCase() == 'memz-2'){
+							player2.dance();
+							player3.dance();
+							player4.dance();
+							player5.dance();
+							player6.dance();
+							player7.dance();
+							player8.dance();
+						}
 		}
 
 		switch (curStage)

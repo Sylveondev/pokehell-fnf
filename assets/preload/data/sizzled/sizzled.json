@@ -5,7 +5,15 @@
 		"player2": "vaporeon",
 		"notes": [
 			{
-				"sectionNotes": [],
+				"sectionNotes": [
+					[
+						0,
+						-1,
+						"Default CamHUD Zoom",
+						"-1",
+						"0.0001"
+					]
+				],
 				"lengthInSteps": 16,
 				"typeOfSection": 0,
 				"mustHitSection": true
@@ -35,7 +43,15 @@
 				"mustHitSection": true
 			},
 			{
-				"sectionNotes": [],
+				"sectionNotes": [
+					[
+						8000,
+						-1,
+						"Default Camera Zoom",
+						"1.25",
+						"2"
+					]
+				],
 				"lengthInSteps": 16,
 				"typeOfSection": 0,
 				"mustHitSection": false
@@ -53,7 +69,15 @@
 				"mustHitSection": false
 			},
 			{
-				"sectionNotes": [],
+				"sectionNotes": [
+					[
+						12000,
+						-1,
+						"Default Camera Zoom",
+						"1",
+						"0.5"
+					]
+				],
 				"lengthInSteps": 16,
 				"typeOfSection": 0,
 				"mustHitSection": true
@@ -95,6 +119,20 @@
 						16250,
 						3,
 						0
+					],
+					[
+						16000,
+						-1,
+						"Default CamHUD Zoom",
+						"1.15",
+						"0.0001"
+					],
+					[
+						16025,
+						-1,
+						"Default CamHUD Zoom",
+						"1",
+						"2"
 					]
 				],
 				"lengthInSteps": 16,
@@ -565,6 +603,11 @@
 						37750,
 						2,
 						0
+					],
+					[
+						36000,
+						6,
+						250
 					]
 				],
 				"lengthInSteps": 16,
@@ -659,6 +702,11 @@
 						41750,
 						2,
 						0
+					],
+					[
+						40000,
+						6,
+						250
 					]
 				],
 				"lengthInSteps": 16,
@@ -753,6 +801,11 @@
 						45750,
 						2,
 						0
+					],
+					[
+						44000,
+						4,
+						250
 					]
 				],
 				"lengthInSteps": 16,
@@ -827,6 +880,18 @@
 						49000,
 						2,
 						687.5
+					],
+					[
+						48000,
+						4,
+						250
+					],
+					[
+						48000,
+						-1,
+						"Set Camera Zoom",
+						"2",
+						"2"
 					]
 				],
 				"lengthInSteps": 16,
@@ -1023,6 +1088,13 @@
 						64250,
 						3,
 						0
+					],
+					[
+						64000,
+						-1,
+						"Set Camera Zoom",
+						"1",
+						"0.5"
 					]
 				],
 				"lengthInSteps": 16,
@@ -1403,6 +1475,13 @@
 						81625,
 						3,
 						0
+					],
+					[
+						80000,
+						-1,
+						"Set Camera Zoom",
+						"1.5",
+						"2"
 					]
 				],
 				"lengthInSteps": 16,
@@ -1783,6 +1862,13 @@
 						97000,
 						1,
 						0
+					],
+					[
+						96000,
+						-1,
+						"Set Camera Zoom",
+						"1",
+						"2"
 					]
 				],
 				"lengthInSteps": 16,
@@ -2108,6 +2194,20 @@
 						112000,
 						1,
 						0
+					],
+					[
+						112000,
+						-1,
+						"Default Camera Zoom",
+						"0.75",
+						""
+					],
+					[
+						112025,
+						-1,
+						"Set Camera Zoom",
+						"0.8",
+						"2"
 					]
 				],
 				"lengthInSteps": 16,
@@ -2852,6 +2952,20 @@
 						128031.25,
 						1,
 						0
+					],
+					[
+						128000,
+						-1,
+						"Default Camera Zoom",
+						"2",
+						"0.5"
+					],
+					[
+						128025,
+						-1,
+						"Default CamHUD Zoom",
+						"1.25",
+						"20"
 					]
 				],
 				"lengthInSteps": 16,
@@ -3047,6 +3161,20 @@
 						130031.25,
 						1,
 						0
+					],
+					[
+						130000,
+						-1,
+						"Default Camera Zoom",
+						"3",
+						"0.5"
+					],
+					[
+						130025,
+						-1,
+						"Default CamHUD Zoom",
+						"1.5",
+						"20"
 					]
 				],
 				"lengthInSteps": 16,
@@ -3242,6 +3370,20 @@
 						132031.25,
 						1,
 						0
+					],
+					[
+						132000,
+						-1,
+						"Default Camera Zoom",
+						"4",
+						"0.5"
+					],
+					[
+						132025,
+						-1,
+						"Default CamHUD Zoom",
+						"1.75",
+						"20"
 					]
 				],
 				"lengthInSteps": 16,
@@ -3292,6 +3434,20 @@
 						135750,
 						2,
 						0
+					],
+					[
+						134025,
+						-1,
+						"Default CamHUD Zoom",
+						"1",
+						""
+					],
+					[
+						134000,
+						-1,
+						"Default Camera Zoom",
+						"1",
+						"8"
 					]
 				],
 				"lengthInSteps": 16,
@@ -3482,6 +3638,15 @@
 				"bpm": 120,
 				"changeBPM": false,
 				"mustHitSection": true
+			},
+			{
+				"lengthInSteps": 16,
+				"bpm": 120,
+				"changeBPM": false,
+				"mustHitSection": true,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"altAnim": false
 			}
 		],
 		"player3": "gf",
@@ -3492,6 +3657,18 @@
 		"sections": 0,
 		"needsVoices": true,
 		"speed": 2.3,
-		"bpm": 120
+		"bpm": 120,
+		"timebarColor": [
+			"0xFF915D0F",
+			""
+		],
+		"noBotplay": false,
+		"noPractice": false,
+		"forceMiddlescroll": false,
+		"forceGhostingOff": false,
+		"hideGF": false,
+		"disableChartEditor": false,
+		"soundPrefix": "",
+		"fontColor": ""
 	}
 }
