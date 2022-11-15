@@ -1559,6 +1559,9 @@ class PlayState extends MusicBeatState
 			gf.visible = false;
 			camHUD.visible = false;
 		}
+		if (SONG.song.toLowerCase() == 'distasteful'){
+			boyfriend.visible = false;
+		}
 		if (SONG.song.toLowerCase() == 'bling-blunkin'){
 			boyfriend.y -= 50;
 			boyfriend.x += 200;

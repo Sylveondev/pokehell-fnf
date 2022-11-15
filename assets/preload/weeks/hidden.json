@@ -24,7 +24,9 @@
 		["pringles", "sillyvon", [255, 225, 255]],
 		["unwanted-guest", "eeeee", [25, 88, 25]],
 		["Spoopy", "leafeon", [0, 0, 0]],
-		["Caution", "umbreon", [73, 73, 73]],
+		["distasteful", "mistake", [255, 225, 255]],
+		["friends-forever", "espy", [255, 225, 255]],
+["Caution", "umbreon", [73, 73, 73]],
 		["Danger", "umbreon", [73, 73, 73]]
 	],
 	"hideStoryMode": true,
@@ -32,17 +34,13 @@
 	"weekName": "Hidden",
 	"to-be-added": [
 		["evzero-effort", "zeroeffort", [255, 225, 0]],
-		["friends-forever", "espy", [255, 225, 255]],
 		["crossover-2", "theautistic1", [194, 143, 92]],
 		["slimshady", "quem", [255, 225, 255]],
 		["sytrus", "flstudio", [255, 225, 255]],
-		["distasteful", "mistake", [255, 225, 255]],
-		["revolutionary", "burt", [255, 225, 255]]
+		["burt", "burt", [255, 225, 255]]
 	],
         "to-be-deleted":[
                 ["old-unchartable", "system86", [255, 225, 0]],
-                ["gentex-commander-3", "potassium", [255, 225, 225]],
-                ["Caution", "umbreon", [73, 73, 73]],
-		["Danger", "umbreon", [73, 73, 73]]
-        ]
+                ["gentex-commander-3", "potassium", [255, 225, 225]]
+		]
 }
