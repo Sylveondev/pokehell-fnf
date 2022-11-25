@@ -33,7 +33,7 @@ class StartState extends MusicBeatState
         FlxTween.tween(bg, {alpha: 1}, 15, {startDelay: 3});*/
 
 		warnText = new FlxText(0, 0, FlxG.width,
-			"Warning:\nThis mod contains some loud sounds, spam,\nprobably flashing lights, some swearing,\nand a whole lot of awesomeness.\nThere are unfinished content in the build\nas well.\nThey will be finished on 1.3.1.\nReport the bugs on the discord. Enjoy this epic game.\n\nYou have been warned,\n(Press Enter to continue)",
+			"Warning:\nThis mod contains some loud sounds, spam,\nprobably flashing lights, some swearing,\nand a whole lot of awesomeness.\n\nYou have been warned,\n(Press Enter to continue)",
 			32);
 		warnText.setFormat(Paths.font("righteous.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		warnText.screenCenter();

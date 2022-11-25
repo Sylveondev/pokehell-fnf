@@ -199,7 +199,7 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-		Conductor.changeBPM(120);
+		Conductor.changeBPM(130);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
