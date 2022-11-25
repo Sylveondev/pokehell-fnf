@@ -33,15 +33,17 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
+          haxelib --never install flixel 4.11.0
           haxelib install hxcpp > /dev/null
           haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel
+          haxelib --never install flixel 4.11.0
           haxelib run lime setup flixel
           haxelib run lime setup
-          haxelib install flixel-tools
-          haxelib install flixel-ui
-          haxelib install flixel-addons
+          haxelib install flixel-tools 1.5.1
+          haxelib install flixel-ui 2.4.0
+          haxelib remove flixel-addons
+          haxelib install flixel-addons 2.11.0
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install linc_luajit
@@ -49,11 +51,12 @@ jobs:
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib install hxcpp-debug-server
-          haxelib list
+      - name: List packages
+        run: haxelib list
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
-        run: haxelib run lime build Project-dev.xml linux -debug --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build Project.xml linux --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -74,15 +77,17 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup C:/haxelib
+          haxelib --never install flixel 4.11.0
           haxelib install hxcpp > nul
           haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel
+          haxelib --never install flixel 4.11.0
           haxelib run lime setup flixel
           haxelib run lime setup
-          haxelib install flixel-tools
-          haxelib install flixel-ui
-          haxelib install flixel-addons
+          haxelib install flixel-tools 1.5.1
+          haxelib install flixel-ui 2.4.0
+          haxelib remove flixel-addons
+          haxelib install flixel-addons 2.11.0
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install linc_luajit
@@ -95,7 +100,7 @@ jobs:
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
-        run: haxelib run lime build Project-dev.xml windows -debug --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build Project.xml windows --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -131,16 +136,19 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
+          haxelib --never install flixel 4.11.0
           haxelib install hxcpp > /dev/null
           haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel
+          haxelib --never install flixel 4.11.0
           haxelib run lime setup flixel
-          haxelib install flixel-tools
-          haxelib install flixel-ui
-          haxelib install flixel-addons
+          haxelib run lime setup
+          haxelib install flixel-tools 1.5.1
+          haxelib install flixel-ui 2.4.0
+          haxelib install linc_luajit
+          haxelib remove flixel-addons
+          haxelib install flixel-addons 2.11.0
           haxelib list
-
       - name: Setup Lime
         run: |
           haxelib run lime setup -alias -y
@@ -152,7 +160,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -final -debug
+        run: haxelib run lime build android -debug
 
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4
