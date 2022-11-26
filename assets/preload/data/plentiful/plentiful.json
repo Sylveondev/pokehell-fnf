@@ -1,10 +1,7 @@
 {
 	"song": {
 		"player1": "bf",
-<<<<<<< HEAD
-=======
 		"soundPrefix": "",
->>>>>>> 69f932567df14cec44f6348fe19ffe90a750a8cf
 		"notes": [
 			{
 				"typeOfSection": 0,
@@ -13556,11 +13553,8 @@
 				"mustHitSection": true
 			}
 		],
-<<<<<<< HEAD
 		"player2": "sallyLol",
-=======
 		"player2": "funnier",
->>>>>>> 69f932567df14cec44f6348fe19ffe90a750a8cf
 		"forceGhostingOff": false,
 		"hideGF": false,
 		"mania": 3,

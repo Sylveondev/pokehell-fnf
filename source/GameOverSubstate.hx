@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxObject;
+import flixel.text.FlxText;
 import flixel.FlxSubState;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
@@ -17,6 +18,8 @@ class GameOverSubstate extends MusicBeatSubstate
 	var camFollowPos:FlxObject;
 	var updateCamera:Bool = false;
 
+	var deadText:FlxText;
+
 	var stageSuffix:String = "";
 
 	var lePlayState:PlayState;
@@ -25,6 +28,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	public static var deathSoundName:String = 'fnf_loss_sfx';
 	public static var loopSoundName:String = 'gameOver';
 	public static var endSoundName:String = 'gameOverEnd';
+	public static var deathReason = 'Hello. You are dead.';
 
 	public static function resetVariables() {
 		characterName = 'bf';
@@ -47,6 +51,12 @@ class GameOverSubstate extends MusicBeatSubstate
 			case 'bf':
 				//characterName = 'RIPEEVEELOL';
 				deathSoundName = 'fnf_loss_sfx';
+			case 'RIPEEVEELOL':
+				characterName = 'RIPEEVEELOL';
+				deathSoundName = 'fnf_loss_sfx';
+			case 'sallyFloombo':
+				characterName = 'sallyFloombo';
+				deathSoundName = 'vineboom';
 			default:
 				characterName = 'RIPBFLOL';
 				deathSoundName = 'fnf_loss_sfx_bf';
@@ -55,7 +65,15 @@ class GameOverSubstate extends MusicBeatSubstate
 		bf = new Boyfriend(x, y, characterName);
 		add(bf);
 
+		FlxG.camera.flash(1,FlxColor.WHITE);
+
 		camFollow = new FlxPoint(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y);
+
+		deadText = new FlxText(bf.getGraphicMidpoint().x, bf.y + 10, 1024,deathReason,32);
+		deadText.setFormat(Paths.font('righteous.ttf'), 32, FlxColor.WHITE, LEFT);
+		deadText.alpha = 0;
+		FlxTween.tween(deadText,{alpha: 1}, 2, {startDelay: 2});
+		add(deadText);
 
 		FlxG.sound.play(Paths.sound(deathSoundName));
 		Conductor.changeBPM(100);

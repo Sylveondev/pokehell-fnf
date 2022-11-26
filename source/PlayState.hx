@@ -3492,7 +3492,10 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (songMisses >= 100) health = -1;
+		if (songMisses >= 100) {
+			GameOverSubstate.deathReason = 'Died by reaching 100 misses.';
+			health = -1;
+		}
 
 		super.update(elapsed);
 
@@ -3772,6 +3775,7 @@ class PlayState extends MusicBeatState
 		// RESET = Quick Game Over Screen
 		if (controls.RESET && !inCutscene && !endingSong)
 		{
+			GameOverSubstate.deathReason = 'You reset yourself.';
 			health = 0;
 			trace("RESET = True");
 		}
@@ -5663,6 +5667,7 @@ class PlayState extends MusicBeatState
 
 	function ghostMiss(statement:Bool = false, direction:Int = 0, ?ghostMiss:Bool = false) {
 		if (statement) {
+			GameOverSubstate.deathReason = 'Died by missing notes.';
 			noteMissPress(direction, ghostMiss);
 			callOnLuas('noteMissPress', [direction]);
 		}
@@ -5672,6 +5677,7 @@ class PlayState extends MusicBeatState
 		{
 			if (!boyfriend.stunned)
 			{
+				GameOverSubstate.deathReason = 'Died by missing notes.';
 				health -= 0.04;
 				if (combo > 5 && gf.animOffsets.exists('sad'))		//pico never sad when bf miss so fuck yea
 				{
@@ -5703,6 +5709,7 @@ class PlayState extends MusicBeatState
 				if (daNote.noteType == 'GF Sing') {
 					gf.playAnim('sing' + Main.charDir[Main.gfxHud[mania][daNote.noteData]] + 'miss', true);
 				} else if (daNote.noteType == 'AntiMiss Note') {
+					GameOverSubstate.deathReason = "Died by missing an antimiss note.";
 					health = 0;
 				}else {
 					var daAlt = '';
@@ -5772,6 +5779,7 @@ class PlayState extends MusicBeatState
 					case 'Kill Note' | 'Sylveon Note':
 						if(!boyfriend.stunned)
 						{
+							GameOverSubstate.deathReason = 'Died by hitting a kill note.';
 							health = 0;
 							note.wasGoodHit = true;
 						}
