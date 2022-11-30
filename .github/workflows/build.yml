@@ -61,7 +61,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: linuxBuild
-          path: 'export/debug/linux/bin' 
+          path: 'export/release/linux/bin' 
   
   buildWindows:
     runs-on: windows-latest
@@ -105,7 +105,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: windowsBuild
-          path: export/debug/windows/bin
+          path: export/release/windows/bin
           
   buildAndroid:
       runs-on: ubuntu-latest
