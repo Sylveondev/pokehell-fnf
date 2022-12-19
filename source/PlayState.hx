@@ -1508,13 +1508,13 @@ class PlayState extends MusicBeatState
 			player8.x = dad.x + FlxG.random.int(-250,250);
 			player8.y = dad.y + FlxG.random.int(-50,50);
 
-			player2.visible = true;
-			player3.visible = true;
-			player4.visible = true;
-			player5.visible = true;
-			player6.visible = true;
-			player7.visible = true;
-			player8.visible = true;
+			player2.visible = false;
+			player3.visible = false;
+			player4.visible = false;
+			player5.visible = false;
+			player6.visible = false;
+			player7.visible = false;
+			player8.visible = false;
 		}
 
 		//Makes Flareon and polyeon go up and down.
@@ -1558,6 +1558,9 @@ class PlayState extends MusicBeatState
 			boyfriend.visible = false;
 			gf.visible = false;
 			camHUD.visible = false;
+		}
+		if (SONG.song.toLowerCase() == 'distasteful'){
+			boyfriend.visible = false;
 		}
 		if (SONG.song.toLowerCase() == 'bling-blunkin'){
 			boyfriend.y -= 50;
@@ -1712,8 +1715,8 @@ class PlayState extends MusicBeatState
 		//Hopefully this doesn't crash this bitch.
 		var timebarColor:Array<String> = ['0xFF915D0F', '0xFFFFA621'];
 		if (SONG.timebarColor.length == 2){
-			if (SONG.timebarColor[0] != null) timebarColor[0] = SONG.timebarColor[0];
-			if (SONG.timebarColor[1] != null) timebarColor[1] = SONG.timebarColor[1];
+			if (SONG.timebarColor[0] != "") timebarColor[0] = SONG.timebarColor[0];
+			if (SONG.timebarColor[1] != "") timebarColor[1] = SONG.timebarColor[1];
 			//timebarColor = SONG.timebarColor;
 		}
 
@@ -3489,7 +3492,10 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (songMisses >= 100) health = -1;
+		if (songMisses >= 100) {
+			GameOverSubstate.deathReason = 'Died by reaching 100 misses.';
+			health = -1;
+		}
 
 		super.update(elapsed);
 
@@ -3769,6 +3775,7 @@ class PlayState extends MusicBeatState
 		// RESET = Quick Game Over Screen
 		if (controls.RESET && !inCutscene && !endingSong)
 		{
+			GameOverSubstate.deathReason = 'You reset yourself.';
 			health = 0;
 			trace("RESET = True");
 		}
@@ -5660,6 +5667,7 @@ class PlayState extends MusicBeatState
 
 	function ghostMiss(statement:Bool = false, direction:Int = 0, ?ghostMiss:Bool = false) {
 		if (statement) {
+			GameOverSubstate.deathReason = 'Died by missing notes.';
 			noteMissPress(direction, ghostMiss);
 			callOnLuas('noteMissPress', [direction]);
 		}
@@ -5669,6 +5677,7 @@ class PlayState extends MusicBeatState
 		{
 			if (!boyfriend.stunned)
 			{
+				GameOverSubstate.deathReason = 'Died by missing notes.';
 				health -= 0.04;
 				if (combo > 5 && gf.animOffsets.exists('sad'))		//pico never sad when bf miss so fuck yea
 				{
@@ -5700,6 +5709,7 @@ class PlayState extends MusicBeatState
 				if (daNote.noteType == 'GF Sing') {
 					gf.playAnim('sing' + Main.charDir[Main.gfxHud[mania][daNote.noteData]] + 'miss', true);
 				} else if (daNote.noteType == 'AntiMiss Note') {
+					GameOverSubstate.deathReason = "Died by missing an antimiss note.";
 					health = 0;
 				}else {
 					var daAlt = '';
@@ -5769,6 +5779,7 @@ class PlayState extends MusicBeatState
 					case 'Kill Note' | 'Sylveon Note':
 						if(!boyfriend.stunned)
 						{
+							GameOverSubstate.deathReason = 'Died by hitting a kill note.';
 							health = 0;
 							note.wasGoodHit = true;
 						}
@@ -6345,9 +6356,29 @@ class PlayState extends MusicBeatState
 			if (dad.animation.curAnim.name != null && !dad.animation.curAnim.name.startsWith("sing") && !dad.stunned)
 			{
 				dad.dance();
+
+				if (SONG.song.toLowerCase() == 'memz-2'){
+							player2.dance();
+							player3.dance();
+							player4.dance();
+							player5.dance();
+							player6.dance();
+							player7.dance();
+							player8.dance();
+						}
 			}
 		} else if(dad.danceIdle && dad.animation.curAnim.name != null && !dad.curCharacter.startsWith('gf') && !dad.animation.curAnim.name.startsWith("sing") && !dad.stunned) {
 			dad.dance();
+
+			if (SONG.song.toLowerCase() == 'memz-2'){
+							player2.dance();
+							player3.dance();
+							player4.dance();
+							player5.dance();
+							player6.dance();
+							player7.dance();
+							player8.dance();
+						}
 		}
 
 		switch (curStage)

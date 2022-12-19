@@ -35,7 +35,8 @@ class CustomizationSubstate extends MusicBeatSubstate
 		'GAMEPLAY',
 		'INTERFACE',
 		'MISC',
-		'MECHANICS'
+		'MECHANICS',
+		'EXPERIMEMENTAL'
 	];
 	static var noCheckbox:Array<String> = [
 		'Framerate',
@@ -63,7 +64,9 @@ class CustomizationSubstate extends MusicBeatSubstate
 		'Scroll speed',
 		'MECHANICS',
 		'Source modcharts',
-		'Source events'
+		'Source events',
+		'EXPERIMEMENTAL',
+		'Use ogg files'
 	];
 
 	private var grpOptions:FlxTypedGroup<Alphabet>;
@@ -287,6 +290,9 @@ class CustomizationSubstate extends MusicBeatSubstate
 
 					case 'Source events':
 						ClientPrefs.sourceEvents = !ClientPrefs.sourceEvents;
+					
+					case 'Use ogg files':
+						ClientPrefs.useOgg = !ClientPrefs.useOgg;
 				}
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				reloadValues();
@@ -417,6 +423,8 @@ class CustomizationSubstate extends MusicBeatSubstate
 				daText = "If unchecked, disables Pokehell's built-in modcharts and mechanics.\nNote that this does not disable pokehell's lua modcharts!\nYou just suck at pokehell if you disable this.";
 			case 'Source events':
 				daText = "If unchecked, disables all of pokehell's events. You little cry baby..\nThis leaves in psych's built in events and lua events.";
+			case 'Use ogg files':
+				daText = "If checked, ogg files will be used, otherwise use mp3 files.\nYou need to restart for the settings to take effect.\n!!DON'T TOUCH THIS UNLESS YOU KNOW WHAT YOU'RE DOING!!";
 		}
 		descText.text = daText;
 
@@ -526,6 +534,8 @@ class CustomizationSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.sourceModcharts;
 					case 'Source events':
 						daValue = ClientPrefs.sourceEvents;
+					case 'Use ogg files':
+						daValue = ClientPrefs.useOgg;
 				}
 				checkbox.daValue = daValue;
 			}

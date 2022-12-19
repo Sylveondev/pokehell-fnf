@@ -5,7 +5,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': Pokehell" file="Pokehell" packageName="com.sylveondev.pokehell" package="com.sylveondev.pokehell" main="Main" version="1.2.2" company="SylveonDev" />
+	<app title="Friday Night Funkin': Pokehell" file="Pokehell" packageName="com.sylveondev.pokehell" package="com.sylveondev.pokehell" main="Main" version="1.3" company="SylveonDev" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -30,7 +30,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false"/>
 
 	<!--Switch-specific-->
 	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
@@ -44,12 +44,12 @@
 
 	<classpath name="source" />
 
-	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
-	<assets path="assets/preload" rename="assets" exclude="*.mp3"  unless="web"/>
+	<assets path="assets/preload" rename="assets"/>
+	<assets path="assets/preload" rename="assets"/>
 	
 	<!-- PSYCH ENGINE CUSTOMIZATION -->
 	<define name="MODS_ALLOWED" if="desktop" />
-	<define name="LUA_ALLOWED" if="windows" />
+	<define name="LUA_ALLOWED" if="desktop" />
 	<define name="ACHIEVEMENTS_ALLOWED" />
 	<define name="VIDEOS_ALLOWED" if="web || windows" unless="32bits"/>
 

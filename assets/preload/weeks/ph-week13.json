@@ -25,7 +25,12 @@
 				225,
 				0
 			]
-		],
+		]
+
+	],
+	"weekName": "week12",
+	"readd-later":
+	[
 		[
 			"Lighting",
 			"zeraora",
@@ -53,6 +58,5 @@
 				0
 			]
 		]
-	],
-	"weekName": "week12"
+	]
 }

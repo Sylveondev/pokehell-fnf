@@ -16,7 +16,7 @@ class ClientPrefs {
 	public static var noteSplashes:Bool = true;
 	public static var noteSounds:Bool = false;
 	public static var lowQuality:Bool = false;
-	public static var framerate:Int = #if (html5 || mobile) 60 #else 120 #end;
+	public static var framerate:Int = 60;
 	public static var doArtistinfo:Bool = true;
 	public static var doScoretable:Bool = true;
 	public static var dohealthrot:Bool = true;
@@ -31,6 +31,7 @@ class ClientPrefs {
 	public static var classicHUD:Bool = false;
 	public static var sourceModcharts:Bool = true;
 	public static var sourceEvents:Bool = true;
+	public static var useOgg:Bool = #if html5 false #else true #end;
 	public static var healthrot:Int = 32;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
@@ -152,6 +153,7 @@ class ClientPrefs {
 		FlxG.save.data.classicHUD = classicHUD;
 		FlxG.save.data.sourceModcharts = sourceModcharts;
 		FlxG.save.data.sourceEvents = sourceEvents;
+		FlxG.save.data.useOgg = useOgg;
 		FlxG.save.data.healthrot = healthrot;
 		FlxG.save.data.cursing = cursing;
 		FlxG.save.data.violence = violence;
@@ -256,6 +258,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.sourceEvents != null){
 			sourceEvents = FlxG.save.data.sourceEvents;
+		}
+		if(FlxG.save.data.useOgg != null){
+			useOgg = FlxG.save.data.useOgg;
 		}
 		if(FlxG.save.data.scrollspeed != null){
 			scrollspeed = FlxG.save.data.scrollspeed;

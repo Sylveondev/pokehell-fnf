@@ -25,13 +25,13 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var sallyEngineVersion:String = 'A1'; //This is also used for Discord RPC
+	public static var sallyEngineVersion:String = 'B1'; //This is also used for Discord RPC
 	public static var psychEngineVersion:String = '0.4.2'; //This is also used for Discord RPC
 	
 	public static var gitCommit:String = '';
 	public static var isGitRelease:Bool = false;
 	
-	public static var pokehellVersion:String = #if DEVBUILD 'pre-1.3' #else '1.3' #end; //This is also used for Discord RPC
+	public static var pokehellVersion:String = #if DEVBUILD 'pre-1.3.1' #else '1.3.1' #end; //This is also used for Discord RPC
 
 	public static var curSelected:Int = 0;
 
@@ -166,6 +166,11 @@ class MainMenuState extends MusicBeatState
 				ClientPrefs.saveSettings();
 			}
 		}
+		#end
+
+		#if mobileC
+		addVirtualPad(UP_DOWN, A_B_C);
+		addVirtualPad(UP_DOWN, A_B);
 		#end
 
 		super.create();

@@ -46,9 +46,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Anti-Aliasing',
 		'Persistent Cached Data',
 		'Optimization',
-		#if !html5
 		'Framerate', //Apparently 120FPS isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
-		#end
 		'GAMEPLAY',
 		'Downscroll',
 		'Middlescroll',
@@ -325,7 +323,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		var daText:String = '';
 		switch(options[curSelected]) {
 			case 'Framerate':
-				daText = "Pretty self explanatory, isn't it?\nDefault value is 60.";
+				daText = "Pretty self explanatory, isn't it?\nDefault value is 60." #if html5 +"\nHtml5 only: Don't set above 60 if you know what's good for you." #end;
 			case 'Do HealthIcon rotation':
 				daText = "Disabling this will use the classic health icon animation (bumping)";
 			case 'HealthIcon rotation':

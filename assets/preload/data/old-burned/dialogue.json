@@ -1,0 +1,102 @@
+{
+	"dialogue": [
+		{
+			"expression": "talk",
+			"text": "You are foolish!",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "talk",
+			"text": "Putting your life in danger just for three songs!",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "talk",
+			"text": "Idiots like you don't deserve to be in what's left of the world of pokemon!",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "talk",
+			"text": "You think you're some hot shit? Well guess what buddy!",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "talk",
+			"text": "I have one trick up my sleeve, and it'll make the rest of your week a living hell for you!",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "talk",
+			"text": "You know what?",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "normal",
+			"text": "Congratulations, you're life is cut short.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "confused",
+			"text": "Looks like I'm gonna die.. again.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "gf"
+		},
+		{
+			"expression": "talk",
+			"text": "Don't worry, gf. I can take him on.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "talk",
+			"text": "Hahahahahaha!",
+			"boxState": "angry",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "talk",
+			"text": "You're forgetting rule 4029081 of the fnf modding guide.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "talk",
+			"text": "The final songs are always overcharted.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		},
+		{
+			"expression": "sobbing",
+			"text": "What? No way! That's totally unfair!",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "eevee"
+		},
+		{
+			"expression": "talk",
+			"text": "It's over. You lose.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "flareon"
+		}
+	]
+}
