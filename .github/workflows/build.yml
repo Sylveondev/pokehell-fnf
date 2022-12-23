@@ -60,7 +60,7 @@ jobs:
         run: |
           haxelib run lime build Project.xml linux --app-version="4.0.0-${{ github.run_id}}"
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-          echo Build for echo ${{ outputs.sha_short }} completed.
+          echo Build for echo ${{ steps.build.outputs.sha_short }} completed.
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -108,7 +108,7 @@ jobs:
         run: |
           haxelib run lime build Project.xml windows --app-version="4.0.0-${{ github.run_id}}"
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-          echo Build for echo ${{ outputs.sha_short }} completed.
+          echo Build for echo ${{ steps.build.outputs.sha_short }} completed.
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
