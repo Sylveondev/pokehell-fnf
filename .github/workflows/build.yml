@@ -107,7 +107,7 @@ jobs:
         id: build
         run: |
           haxelib run lime build Project.xml windows --app-version="4.0.0-${{ github.run_id}}"
-          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
           echo Build for echo ${{ sha_short }} completed.
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
