@@ -48,14 +48,46 @@ function onBeatHit()
         resetNotePos()
     elseif curBeat == 224 then
         bumpnotex = true
-    else]]if curBeat == 256 then
+    else]]if curBeat == 160 then
         spin = true
+        bumpgui = true
         bumpnoteangle = true
+    elseif curBeat == 288 then
+        spin = false
+        bumpgui = false
+        bumpnoteangle = false
+
+        noteTweenX('A',0 , defaultNotePos[0 + 1][1], 2, 'quadInOut');
+        noteTweenX('B',1 , defaultNotePos[1 + 1][1], 2, 'quadInOut');
+        noteTweenX('C',2 , defaultNotePos[2 + 1][1], 2, 'quadInOut');
+        noteTweenX('D',3 , defaultNotePos[3 + 1][1], 2, 'quadInOut');
+        noteTweenX('E',4 , defaultNotePos[4 + 1][1], 2, 'quadInOut');
+        noteTweenX('F',5 , defaultNotePos[5 + 1][1], 2, 'quadInOut');
+        noteTweenX('G',6 , defaultNotePos[6 + 1][1], 2, 'quadInOut');
+        noteTweenX('H',7 , defaultNotePos[7 + 1][1], 2, 'quadInOut');
+
+        noteTweenY('A',0 , defaultNotePos[0 + 1][2], 2, 'quadInOut');
+        noteTweenY('B',1 , defaultNotePos[1 + 1][2], 2, 'quadInOut');
+        noteTweenY('C',2 , defaultNotePos[2 + 1][2], 2, 'quadInOut');
+        noteTweenY('D',3 , defaultNotePos[3 + 1][2], 2, 'quadInOut');
+        noteTweenY('E',4 , defaultNotePos[4 + 1][2], 2, 'quadInOut');
+        noteTweenY('F',5 , defaultNotePos[5 + 1][2], 2, 'quadInOut');
+        noteTweenY('G',6 , defaultNotePos[6 + 1][2], 2, 'quadInOut');
+        noteTweenY('H',7 , defaultNotePos[7 + 1][2], 2, 'quadInOut');
+
+        noteTweenAngle('A',0 , 0, 2, 'quadInOut');
+        noteTweenAngle('B',1 , 0, 2, 'quadInOut');
+        noteTweenAngle('C',2 , 0, 2, 'quadInOut');
+        noteTweenAngle('D',3 , 0, 2, 'quadInOut');
+        noteTweenAngle('E',4 , 0, 2, 'quadInOut');
+        noteTweenAngle('F',5 , 0, 2, 'quadInOut');
+        noteTweenAngle('G',6 , 0, 2, 'quadInOut');
+        noteTweenAngle('H',7 , 0, 2, 'quadInOut');
     end
 
     if bumpgui == true then
-        setProperty('camHUD.angle',invert * 10)
-        doTweenAngle('turn', 'camHUD', 0, stepCrochet*0.003, 'quadOut')
+        setProperty('camGame.zoom',getProperty('camGame.zoom')+0.25)
+        setProperty('camHUD.zoom',getProperty('camHUD.zoom')+0.1)
     end
 
     --Complicated thingy because enabling both would break for some reason
@@ -160,17 +192,15 @@ function onUpdate(elapsed)
         end
     end
 
-    if currentBeat >= 64 and currentBeat < 96 then
+    if (currentBeat >= 64 and currentBeat < 96) or (currentBeat >= 128 and currentBeat < 160) or (currentBeat >= 320 and currentBeat < 352) then
         if spinlength < 32 then spinlength = spinlength + 0.5 end
         for i = 0,7 do
             setPropertyFromGroup('strumLineNotes', i, 'x', defaultNotePos[i + 1][1] + spinlength * math.sin((rawBeat + i*0.25) * math.pi))
         end
-    elseif currentBeat >= 96 and currentBeat < 110 then
-        if spinlength > 0 then spinlength = spinlength - 0.5 end
+    elseif spinlength > 0 then
+        spinlength = spinlength - 0.5
         for i = 0,7 do
             setPropertyFromGroup('strumLineNotes', i, 'x', defaultNotePos[i + 1][1] + spinlength * math.sin((rawBeat + i*0.25) * math.pi))
         end
-    elseif currentBeat == 110 then
-        resetNotePos()
     end
 end
