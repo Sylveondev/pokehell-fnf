@@ -5667,7 +5667,7 @@ class PlayState extends MusicBeatState
 
 	function ghostMiss(statement:Bool = false, direction:Int = 0, ?ghostMiss:Bool = false) {
 		if (statement) {
-			GameOverSubstate.deathReason = 'Died by missing notes.';
+			GameOverSubstate.deathReason = 'Died by spamming.';
 			noteMissPress(direction, ghostMiss);
 			callOnLuas('noteMissPress', [direction]);
 		}
