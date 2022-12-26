@@ -1766,7 +1766,7 @@ class PlayState extends MusicBeatState
 		msTimeTxt = new FlxText(0, 0, 400, "", 32);
 		msTimeTxt.setFormat(Paths.font('righteous.ttf'), 32, uiColor, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		msTimeTxt.scrollFactor.set();
-		msTimeTxt.alpha = 0;
+		msTimeTxt.alpha = 1;
 		msTimeTxt.visible = true;
 		msTimeTxt.borderSize = 2;
 		add(msTimeTxt);
@@ -2440,18 +2440,13 @@ class PlayState extends MusicBeatState
 
 			var swagCounter:Int = 0;
 
-			if (ClientPrefs.downScroll) {
-					msTimeTxt.x = playerStrums.members[1].x-100;
-					msTimeTxt.y = playerStrums.members[1].y+100;
-				} else {
-					msTimeTxt.x = playerStrums.members[1].x-100;
-					msTimeTxt.y = playerStrums.members[1].y-50;
-				}
+			msTimeTxt.x = playerStrums.members[1].x-100;
+			msTimeTxt.y = playerStrums.members[1].y-50;
 
-				if (ClientPrefs.middleScroll) {
-					msTimeTxt.x = playerStrums.members[0].x-250;
-					msTimeTxt.y = playerStrums.members[1].y+30;
-				}
+			if (ClientPrefs.middleScroll) {
+				msTimeTxt.x = playerStrums.members[0].x-250;
+				msTimeTxt.y = playerStrums.members[1].y+30;
+			}
 
 			startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 			{
