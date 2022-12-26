@@ -1,5 +1,5 @@
 name: Help me!
-description: If you need help using the engine.
+description: If you need help with the mod, skill issue isn't something we can fix
 labels: [help wanted]
 body:
   - type: textarea
