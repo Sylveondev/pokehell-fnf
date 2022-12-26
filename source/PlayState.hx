@@ -317,6 +317,9 @@ class PlayState extends MusicBeatState
 	var ranking:String = 'N/A';
 	public static var soundPrefix:Null<String> = '';
 
+	var msTimeTxt:FlxText;
+	var msTimeTxtTween:FlxTween;
+
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
 	public static var seenCutscene:Bool = false;
@@ -1760,6 +1763,13 @@ class PlayState extends MusicBeatState
 		add(timeBarBG);
 		add(timeTxt);
 
+		msTimeTxt = new FlxText(0, 0, 400, "", 32);
+		msTimeTxt.setFormat(Paths.font('righteous.ttf'), 32, uiColor, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		msTimeTxt.scrollFactor.set();
+		msTimeTxt.alpha = 0;
+		msTimeTxt.visible = true;
+		msTimeTxt.borderSize = 2;
+		add(msTimeTxt);
 
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
@@ -1940,6 +1950,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		botplayTxt.cameras = [camOther];
 		timeBar.cameras = [camHUD];
+		msTimeTxt.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
@@ -2428,6 +2439,19 @@ class PlayState extends MusicBeatState
 			setOnLuas('startedCountdown', true);
 
 			var swagCounter:Int = 0;
+
+			if (ClientPrefs.downScroll) {
+					msTimeTxt.x = playerStrums.members[1].x-100;
+					msTimeTxt.y = playerStrums.members[1].y+100;
+				} else {
+					msTimeTxt.x = playerStrums.members[1].x-100;
+					msTimeTxt.y = playerStrums.members[1].y-50;
+				}
+
+				if (ClientPrefs.middleScroll) {
+					msTimeTxt.x = playerStrums.members[0].x-250;
+					msTimeTxt.y = playerStrums.members[1].y+30;
+				}
 
 			startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 			{
@@ -3273,6 +3297,10 @@ class PlayState extends MusicBeatState
 			case 'cursedhouse':
 				gf.visible = false;
 				boyfriend.visible = false;
+			case 'ally':
+				if (SONG.song.toLowerCase() == 'headache' && ClientPrefs.sourceModcharts){
+					
+				}
 			case 'road':
 				if (SONG.song.toLowerCase() == 'bling-blunkin' && ClientPrefs.sourceModcharts){
 					if (curBeat == 812){
@@ -5246,6 +5274,14 @@ class PlayState extends MusicBeatState
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + 8);
 		allNotesMs += noteDiff;
 		averageMs = allNotesMs/songHits;
+		msTimeTxt.alpha = 1;
+		msTimeTxt.text =Std.string(Math.round(noteDiff)) + "ms";
+		if (msTimeTxtTween != null){
+			msTimeTxtTween.cancel(); msTimeTxtTween.destroy(); // top 10 awesome code
+		}
+		msTimeTxtTween = FlxTween.tween(msTimeTxt, {alpha: 0}, 0.25, {
+			onComplete: function(tw:FlxTween) {msTimeTxtTween = null;}, startDelay: 0.7
+		});
 		//trace(noteDiff, ' ' + Math.abs(note.strumTime - Conductor.songPosition));
 
 		// boyfriend.playAnim('hey');

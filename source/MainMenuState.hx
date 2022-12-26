@@ -31,7 +31,7 @@ class MainMenuState extends MusicBeatState
 	public static var gitCommit:String = '';
 	public static var isGitRelease:Bool = false;
 	
-	public static var pokehellVersion:String = #if DEVBUILD 'pre-1.3.1' #else '1.3.1' #end; //This is also used for Discord RPC
+	public static var pokehellVersion:String = #if DEVBUILD 'pre-1.4' #else '1.4' #end; //This is also used for Discord RPC
 
 	public static var curSelected:Int = 0;
 
