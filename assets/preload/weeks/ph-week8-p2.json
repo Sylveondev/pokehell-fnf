@@ -18,7 +18,8 @@
 		["speeding", "speedy", [255, 225, 0]],
 		["darkglow", "black", [50, 50, 50]],
 		["magical", "pearl", [255, 255, 255]],
-		["diamonds", "crystal", [255, 255, 255]]
+		["diamonds", "crystal", [255, 255, 255]],
+		["fluffy", "fluffy", [255, 255, 255]]
 	],
 	"hideStoryMode": false,
 	"weekBefore": "ph-week8",
