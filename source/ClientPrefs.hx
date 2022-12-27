@@ -32,6 +32,8 @@ class ClientPrefs {
 	public static var sourceModcharts:Bool = true;
 	public static var sourceEvents:Bool = true;
 	public static var useOgg:Bool = #if html5 false #else true #end;
+	public static var maxmisslimit:Bool = true;
+	public static var lockrating:Bool = false;
 	public static var healthrot:Int = 32;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
@@ -155,6 +157,8 @@ class ClientPrefs {
 		FlxG.save.data.sourceEvents = sourceEvents;
 		FlxG.save.data.useOgg = useOgg;
 		FlxG.save.data.healthrot = healthrot;
+		FlxG.save.data.maxmisslimit = maxmisslimit;
+		FlxG.save.data.lockrating = lockrating;
 		FlxG.save.data.cursing = cursing;
 		FlxG.save.data.violence = violence;
 		FlxG.save.data.camZooms = camZooms;
@@ -261,6 +265,12 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.useOgg != null){
 			useOgg = FlxG.save.data.useOgg;
+		}
+		if(FlxG.save.data.maxmisslimit != null){
+			maxmisslimit = FlxG.save.data.maxmisslimit;
+		}
+		if(FlxG.save.data.lockrating != null){
+			lockrating = FlxG.save.data.lockrating;
 		}
 		if(FlxG.save.data.scrollspeed != null){
 			scrollspeed = FlxG.save.data.scrollspeed;

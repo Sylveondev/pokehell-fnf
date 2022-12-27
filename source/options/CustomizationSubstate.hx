@@ -59,6 +59,8 @@ class CustomizationSubstate extends MusicBeatSubstate
 		'MISC',
 		'Do Character bumpin',
 		'Move Camera on note hit',
+		'Max miss limit',
+		'Lock rating to HUD',
 		'Enable Anti spam',
 		'Override scroll speed',
 		'Scroll speed',
@@ -267,6 +269,13 @@ class CustomizationSubstate extends MusicBeatSubstate
 					case 'Move Camera on note hit':
 						ClientPrefs.cameraMoveOnNotes = !ClientPrefs.cameraMoveOnNotes;
 					
+					case 'Max miss limit':
+						ClientPrefs.maxmisslimit = !ClientPrefs.maxmisslimit
+						;
+
+					case 'Lock rating to HUD':
+						ClientPrefs.lockrating = !ClientPrefs.lockrating;
+					
 					case 'Enable Anti spam':
 						ClientPrefs.antispam = !ClientPrefs.antispam;
 
@@ -371,6 +380,10 @@ class CustomizationSubstate extends MusicBeatSubstate
 				daText = "If checked, the players will bump on a beat hit and on a note hit.";
 			case 'Move Camera on note hit':
 				daText = "If checked, the camera will move on a note hit, no need to edit the xml file.";
+			case 'Max miss limit':
+				daText = "If unchecked, you won't die from reaching 100 misses.";
+			case 'Lock rating to HUD':
+				daText = "If checked, locks the rating to the hud.";
 			case 'Enable Anti spam':
 				daText = "If unchecked, you will not be pentalized for spamming. Also making you a certified pussy.";
 			case 'Override scroll speed':
@@ -520,6 +533,10 @@ class CustomizationSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.dobumpin;
 					case 'Move Camera on note hit':
 						daValue = ClientPrefs.cameraMoveOnNotes;
+					case 'Max miss limit':
+						daValue = ClientPrefs.maxmisslimit;
+					case 'Lock rating to HUD':
+						daValue = ClientPrefs.lockrating;
 					case 'Enable Anti spam':
 						daValue = ClientPrefs.antispam;
 					case 'Artist information':

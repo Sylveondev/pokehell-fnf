@@ -617,7 +617,7 @@ class PlayState extends MusicBeatState
 				add(bg);
 
 			case 'creepyhouse': //Secret Week 1: Denis
-				var bg:BGSprite = new BGSprite('cursedHouse', -400, -180, 0.8, 0.8);
+				var bg:BGSprite = new BGSprite('cursedHouse', -600, -180, 0.8, 0.8);
 				add(bg);
 			
 			case 'sytrus': //Secret Week 1: Denis
@@ -1765,7 +1765,7 @@ class PlayState extends MusicBeatState
 
 		msTimeTxt = new FlxText(0, 0, 400, "", 32);
 		msTimeTxt.setFormat(Paths.font('righteous.ttf'), 32, uiColor, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		msTimeTxt.scrollFactor.set();
+		msTimeTxt.scrollFactor.set(1, 1);
 		msTimeTxt.alpha = 1;
 		msTimeTxt.visible = true;
 		msTimeTxt.borderSize = 2;
@@ -1950,7 +1950,6 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		botplayTxt.cameras = [camOther];
 		timeBar.cameras = [camHUD];
-		msTimeTxt.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
@@ -2440,13 +2439,6 @@ class PlayState extends MusicBeatState
 
 			var swagCounter:Int = 0;
 
-			msTimeTxt.x = playerStrums.members[1].x-100;
-			msTimeTxt.y = playerStrums.members[1].y-50;
-
-			if (ClientPrefs.middleScroll) {
-				msTimeTxt.x = playerStrums.members[0].x-250;
-				msTimeTxt.y = playerStrums.members[1].y+30;
-			}
 
 			startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 			{
@@ -5290,6 +5282,7 @@ class PlayState extends MusicBeatState
 		//
 		var daRating:String;
 		var rating:FlxSprite = new FlxSprite();
+		rating.cameras = [(ClientPrefs.lockrating ? camHUD : camGame)];
 		var score:Int = 350;
 
 		if (!ClientPrefs.newInput){
@@ -5412,9 +5405,14 @@ class PlayState extends MusicBeatState
 		comboSpr.acceleration.y = 600;
 		comboSpr.velocity.y -= 150;
 		comboSpr.visible = !ClientPrefs.hideHud;
+		comboSpr.cameras = [(ClientPrefs.lockrating ? camHUD : camGame)];
+
+		msTimeTxt.x = comboSpr.x+100;
+		msTimeTxt.y = comboSpr.y-50;
+		msTimeTxt.cameras = [(ClientPrefs.lockrating ? camHUD : camGame)];
 
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
-		//add(comboSpr);
+		add(comboSpr);
 		add(rating);
 
 		if (!PlayState.isPixelStage)
@@ -5449,6 +5447,7 @@ class PlayState extends MusicBeatState
 			numScore.screenCenter();
 			numScore.x = coolText.x + (43 * daLoop) - 90;
 			numScore.y += 80;
+			numScore.cameras = [(ClientPrefs.lockrating ? camHUD : camGame)];
 
 			if (!PlayState.isPixelStage)
 			{
