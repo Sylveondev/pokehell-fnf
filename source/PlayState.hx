@@ -200,6 +200,7 @@ class PlayState extends MusicBeatState
 	public var combo:Int = 0;
 	public var highestcombo:Int = 0;
 
+	public var perfects:Int = 0;
 	public var awesomes:Int = 0;
 	public var sicks:Int = 0;
 	public var goods:Int = 0;
@@ -1628,6 +1629,7 @@ class PlayState extends MusicBeatState
 			'Song Score: '+ songScore +
 			'\nCurrent Combo: '+ combo +
 			'\nHighest combo: '+ highestcombo +
+			'\nPerfects: '+ perfects +
 			'\nAwesomes: '+ awesomes +
 			'\nNices: '+ sicks +
 			'\nCools: ' + goods +
@@ -3529,6 +3531,7 @@ class PlayState extends MusicBeatState
 		scoretable.text = 'Song Score: '+ songScore +
 		'\nCurrent Combo: '+ combo +
 		'\nHighest combo: '+ highestcombo +
+		'\nPerfects: '+ perfects +
 		'\nAwesomes: '+ awesomes +
 		'\nNices: '+ sicks +
 		'\nCools: ' + goods +
@@ -5283,12 +5286,12 @@ class PlayState extends MusicBeatState
 		var daRating:String;
 		var rating:FlxSprite = new FlxSprite();
 		rating.cameras = [(ClientPrefs.lockrating ? camHUD : camGame)];
-		var score:Int = 350;
+		var score:Int = 450;
 
 		if (!ClientPrefs.newInput){
 		
 
-		daRating = "awesome";
+		daRating = "perfect";
 
 		if (noteDiff > Conductor.safeZoneOffset * 0.75)
 		{
@@ -5315,11 +5318,18 @@ class PlayState extends MusicBeatState
 			score = 350;
 			sicks++;
 		}
-
-		if(daRating == 'awesome')
+		else if (noteDiff > Conductor.safeZoneOffset * 0.05)
 		{
 			spawnNoteSplashOnNote(note);
+			daRating = 'awesome';
+			score = 400;
 			awesomes++;
+		}
+
+		if(daRating == 'perfect')
+		{
+			spawnNoteSplashOnNote(note);
+			perfects++;
 		}
 		}else{
 			daRating = Conductor.judgeNote(note, noteDiff);
@@ -5347,11 +5357,18 @@ class PlayState extends MusicBeatState
 					score = 350;
 					sicks++;
 				}
-		
-				if(daRating == 'awesome')
+				else if (daRating == 'awesome')
 				{
 					spawnNoteSplashOnNote(note);
+					daRating = 'awesome';
+					score = 400;
 					awesomes++;
+				}
+		
+				if(daRating == 'perfect')
+				{
+					spawnNoteSplashOnNote(note);
+					perfects++;
 				}
 		}
 
@@ -6813,7 +6830,7 @@ class PlayState extends MusicBeatState
 			}
 
 			ratingFC = "";
-			if (awesomes > 0) ratingFC = "AFC"; //You'll never get an AFC on a song but you could try anyway
+			if (awesomes > 0 || perfects > 0) ratingFC = "AFC"; //You'll never get an AFC on a song but you could try anyway
 			if (sicks > 0) ratingFC = "SFC";
 			if (goods > 0) ratingFC = "GFC";
 			if (bads > 0 || shits > 0) ratingFC = "FC";
