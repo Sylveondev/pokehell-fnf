@@ -617,6 +617,10 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('greenally', -600, -200, 1, 1);
 				add(bg);
 
+			case 'espybg': //Week 1: Vaporeon
+				var bg:BGSprite = new BGSprite('espybg', -600, -200, 1, 1);
+				add(bg);
+
 			case 'creepyhouse': //Secret Week 1: Denis
 				var bg:BGSprite = new BGSprite('cursedHouse', -600, -180, 0.8, 0.8);
 				add(bg);
@@ -5318,7 +5322,7 @@ class PlayState extends MusicBeatState
 			score = 350;
 			sicks++;
 		}
-		else if (noteDiff > Conductor.safeZoneOffset * 0.05)
+		else if (noteDiff > Conductor.safeZoneOffset * 0.10)
 		{
 			spawnNoteSplashOnNote(note);
 			daRating = 'awesome';
