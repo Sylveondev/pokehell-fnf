@@ -57,9 +57,6 @@ import flixel.addons.display.FlxBackdrop;
 import shaders.*;
 import openfl.filters.ShaderFilter;
 
-import openfl.Lib.application;
-
-
 #if sys
 import sys.FileSystem;
 #end
@@ -109,29 +106,16 @@ class PlayState extends MusicBeatState
 		"Why botplay"
 	];
 	
-	#if (haxe >= "4.0.0")
 	public var modchartTweens:Map<String, FlxTween> = new Map();
 	public var modchartSprites:Map<String, ModchartSprite> = new Map();
 	public var modchartTimers:Map<String, FlxTimer> = new Map();
 	public var modchartSounds:Map<String, FlxSound> = new Map();
-	#else
-	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
-	public var modchartSprites:Map<String, ModchartSprite> = new Map<String, Dynamic>();
-	public var modchartTimers:Map<String, FlxTimer> = new Map<String, FlxTimer>();
-	public var modchartSounds:Map<String, FlxSound> = new Map<String, FlxSound>();
-	#end
 
 	//event variables
 	private var isCameraOnForcedPos:Bool = false;
-	#if (haxe >= "4.0.0")
 	public var boyfriendMap:Map<String, Boyfriend> = new Map();
 	public var dadMap:Map<String, Character> = new Map();
 	public var gfMap:Map<String, Character> = new Map();
-	#else
-	public var boyfriendMap:Map<String, Boyfriend> = new Map<String, Boyfriend>();
-	public var dadMap:Map<String, Character> = new Map<String, Character>();
-	public var gfMap:Map<String, Character> = new Map<String, Character>();
-	#end
 
 	public var BF_X:Float = 770;
 	public var BF_Y:Float = 100;
