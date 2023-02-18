@@ -128,9 +128,9 @@ class WeekData {
 						
 						#if MODS_ALLOWED
 						if (leType == 'default'){
-						if(j >= originalLength) {
-							weekFile.folder = directories[j].substring(Paths.mods().length, directories[j].length-1);
-						}
+							if(j >= originalLength) {
+								weekFile.folder = directories[j].substring(Paths.mods().length, directories[j].length-1);
+							}
 						}
 						#end
 
@@ -145,31 +145,32 @@ class WeekData {
 
 		#if MODS_ALLOWED
 		if (leType == 'default'){
-		for (i in 0...directories.length) {
-			var directory:String = directories[i] + 'weeks/';
-			if(FileSystem.exists(directory)) {
-				for (file in FileSystem.readDirectory(directory)) {
-					var path = haxe.io.Path.join([directory, file]);
-					if (!sys.FileSystem.isDirectory(path) && file.endsWith('.json')) {
-						var weekToCheck:String = file.substr(0, file.length - 5);
-						if(!weeksLoaded.exists(weekToCheck)) {
-							var week:WeekFile = getWeekFile(path);
-							if(week != null) {
-								var weekFile:WeekData = new WeekData(week);
-								if(i >= originalLength) {
-									weekFile.folder = directories[i].substring(Paths.mods().length, directories[i].length-1);
-								}
+			for (i in 0...directories.length) {
+				var directory:String = directories[i] + 'weeks/';
+				if(FileSystem.exists(directory)) {
+					for (file in FileSystem.readDirectory(directory)) {
+						var path = haxe.io.Path.join([directory, file]);
+						if (!sys.FileSystem.isDirectory(path) && file.endsWith('.json')) {
+							var weekToCheck:String = file.substr(0, file.length - 5);
+							if(!weeksLoaded.exists(weekToCheck)) {
+								var week:WeekFile = getWeekFile(path);
+								if(week != null) {
+									var weekFile:WeekData = new WeekData(week);
+									if(i >= originalLength) {
+										weekFile.folder = directories[i].substring(Paths.mods().length, directories[i].length-1);
+									}
 
-								if((isStoryMode && !weekFile.hideStoryMode) || (!isStoryMode && !weekFile.hideFreeplay)) {
-									weeksLoaded.set(weekToCheck, weekFile);
-									weeksList.push(weekToCheck);
+									if((isStoryMode && !weekFile.hideStoryMode) || (!isStoryMode && !weekFile.hideFreeplay)) {
+										weeksLoaded.set(weekToCheck, weekFile);
+										weeksList.push(weekToCheck);
+									}
 								}
 							}
 						}
 					}
 				}
 			}
-		}}
+		}
 		#end
 	}
 

@@ -165,27 +165,30 @@ class Main extends Sprite
 		#end
 
 		#if html5
-		FlxG.autoPause = false;
-		FlxG.mouse.visible = false;
+		FlxG.autoPause = FlxG.mouse.visible = false;
 		#end
 
 		FlxG.signals.preStateSwitch.add(() -> {
-			FlxG.bitmap.dumpCache();
-			FlxG.sound.destroy();
+			if (ClientPrefs.optimization) {
+				FlxG.bitmap.dumpCache();
+				FlxG.sound.destroy();
 
-			#if cpp
-			cpp.vm.Gc.enable(true);
-			#else
-			openfl.system.System.gc();
-			#end
+				#if cpp
+				cpp.vm.Gc.enable(true);
+				#else
+				openfl.system.System.gc();
+				#end
+			}
 		});
 
 		FlxG.signals.postStateSwitch.add(() -> {
-			#if cpp
-			cpp.vm.Gc.enable(false);
-			#else
-			openfl.system.System.gc();
-			#end
+			if (ClientPrefs.optimization) {
+				#if cpp
+				cpp.vm.Gc.enable(false);
+				#else
+				openfl.system.System.gc();
+				#end
+			}
 		});
 	}
 }

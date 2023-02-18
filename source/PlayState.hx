@@ -5478,13 +5478,8 @@ class PlayState extends MusicBeatState
 
 			daLoop++;
 		}
-		/* 
-			trace(combo);
-			trace(seperatedScore);
-		 */
 
 		coolText.text = Std.string(seperatedScore);
-		// add(coolText);
 
 		FlxTween.tween(rating, {alpha: 0}, 0.2, {
 			startDelay: Conductor.crochet * 0.001
@@ -5504,196 +5499,196 @@ class PlayState extends MusicBeatState
 
 	
 	private function keyShit():Void
+	{
+		var oneHold = [controls.B5];
+		var onePress = [controls.B5_P];
+		var oneRelease = [controls.B5_R];
+
+		var twoHold = [controls.NOTE_LEFT, controls.NOTE_RIGHT];
+		var twoPress = [controls.NOTE_LEFT_P, controls.NOTE_RIGHT_P];
+		var twoRelease = [controls.NOTE_LEFT_R, controls.NOTE_LEFT_R];
+
+		var threeHold = [controls.A3, controls.A4, controls.A5];
+		var threePress = [controls.A3_P, controls.A4_P, controls.A5_P];
+		var threeRelease = [controls.A3_R, controls.A4_R, controls.A5_R];
+
+		var fourHold = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.NOTE_UP, controls.NOTE_RIGHT];
+		var fourPress = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
+		var fourRelease = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
+
+		var fiveHold = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.B5, controls.NOTE_UP, controls.NOTE_RIGHT];
+		var fivePress = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.B5_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
+		var fiveRelease = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.B5_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
+
+		var sixHold = [controls.A1, controls.A2, controls.A3, controls.A5, controls.A6, controls.A7];
+		var sixPress = [controls.A1_P, controls.A2_P, controls.A3_P, controls.A5_P, controls.A6_P, controls.A7_P];
+		var sixRelease = [controls.A1_R, controls.A2_R, controls.A3_R, controls.A5_R, controls.A6_R, controls.A7_R];
+
+		var sevenHold = [controls.A1, controls.A2, controls.A3, controls.A4, controls.A5, controls.A6, controls.A7];
+		var sevenPress = [controls.A1_P, controls.A2_P, controls.A3_P, controls.A4_P, controls.A5_P, controls.A6_P, controls.A7_P];
+		var sevenRelease = [controls.A1_R, controls.A2_R, controls.A3_R, controls.A4_R, controls.A5_R, controls.A6_R, controls.A7_R];
+
+		var eightHold = [controls.B1, controls.B2, controls.B3, controls.B4, controls.B6, controls.B7, controls.B8, controls.B9];
+		var eightPress = [controls.B1_P, controls.B2_P, controls.B3_P, controls.B4_P, controls.B6_P, controls.B7_P, controls.B8_P, controls.B9_P];
+		var eightRelease = [controls.B1_R, controls.B2_R, controls.B3_R, controls.B4_R, controls.B6_R, controls.B7_R, controls.B8_R, controls.B9_R];
+
+		var nineHold = [controls.B1, controls.B2, controls.B3, controls.B4, controls.B5, controls.B6, controls.B7, controls.B8, controls.B9];
+		var ninePress = [controls.B1_P, controls.B2_P, controls.B3_P, controls.B4_P, controls.B5_P, controls.B6_P, controls.B7_P, controls.B8_P, controls.B9_P];
+		var nineRelease = [controls.B1_R, controls.B2_R, controls.B3_R, controls.B4_R, controls.B5_R, controls.B6_R, controls.B7_R, controls.B8_R, controls.B9_R];
+
+		var controlArray:Array<Bool> = fourPress;
+		var controlReleaseArray:Array<Bool> = fourRelease;
+		var controlHoldArray:Array<Bool> = fourHold;
+
+		switch (mania)
 		{
-			var oneHold = [controls.B5];
-			var onePress = [controls.B5_P];
-			var oneRelease = [controls.B5_R];
+			case 0:
+				controlArray = onePress;
+				controlReleaseArray = oneRelease;
+				controlHoldArray = oneHold;
+			case 1:
+				controlArray = twoPress;
+				controlReleaseArray = twoRelease;
+				controlHoldArray = twoHold;
+			case 2:
+				controlArray = threePress;
+				controlReleaseArray = threeRelease;
+				controlHoldArray = threeHold;
+			case 3:
+				controlArray = fourPress;
+				controlReleaseArray = fourRelease;
+				controlHoldArray = fourHold;
+			case 4:
+				controlArray = fivePress;
+				controlReleaseArray = fiveRelease;
+				controlHoldArray = fiveHold;
+			case 5:
+				controlArray = sixPress;
+				controlReleaseArray = sixRelease;
+				controlHoldArray = sixHold;
+			case 6:
+				controlArray = sevenPress;
+				controlReleaseArray = sevenRelease;
+				controlHoldArray = sevenHold;
+			case 7:
+				controlArray = eightPress;
+				controlReleaseArray = eightRelease;
+				controlHoldArray = eightHold;
+			case 8:
+				controlArray = ninePress;
+				controlReleaseArray = nineRelease;
+				controlHoldArray = nineHold;
+		}
 
-			var twoHold = [controls.NOTE_LEFT, controls.NOTE_RIGHT];
-			var twoPress = [controls.NOTE_LEFT_P, controls.NOTE_RIGHT_P];
-			var twoRelease = [controls.NOTE_LEFT_R, controls.NOTE_LEFT_R];
+		var anyH = false;
+		var anyP = false;
+		var anyR = false;
+		for (i in 0...controlArray.length)
+		{
+			if (controlHoldArray[i])
+				anyH = true;
+			if (controlArray[i])
+				anyP = true;
+			if (controlReleaseArray[i])
+				anyR = true;
+		}
 
-			var threeHold = [controls.A3, controls.A4, controls.A5];
-			var threePress = [controls.A3_P, controls.A4_P, controls.A5_P];
-			var threeRelease = [controls.A3_R, controls.A4_R, controls.A5_R];
+		for (i in 0...controlArray.length) {
+			FlxG.watch.addQuick('key ' + i + ' pressed = ', controlArray[i]);
+		}
 
-			var fourHold = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.NOTE_UP, controls.NOTE_RIGHT];
-			var fourPress = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
-			var fourRelease = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
-
-			var fiveHold = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.B5, controls.NOTE_UP, controls.NOTE_RIGHT];
-			var fivePress = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.B5_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
-			var fiveRelease = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.B5_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
-	
-			var sixHold = [controls.A1, controls.A2, controls.A3, controls.A5, controls.A6, controls.A7];
-			var sixPress = [controls.A1_P, controls.A2_P, controls.A3_P, controls.A5_P, controls.A6_P, controls.A7_P];
-			var sixRelease = [controls.A1_R, controls.A2_R, controls.A3_R, controls.A5_R, controls.A6_R, controls.A7_R];
-	
-			var sevenHold = [controls.A1, controls.A2, controls.A3, controls.A4, controls.A5, controls.A6, controls.A7];
-			var sevenPress = [controls.A1_P, controls.A2_P, controls.A3_P, controls.A4_P, controls.A5_P, controls.A6_P, controls.A7_P];
-			var sevenRelease = [controls.A1_R, controls.A2_R, controls.A3_R, controls.A4_R, controls.A5_R, controls.A6_R, controls.A7_R];
-
-			var eightHold = [controls.B1, controls.B2, controls.B3, controls.B4, controls.B6, controls.B7, controls.B8, controls.B9];
-			var eightPress = [controls.B1_P, controls.B2_P, controls.B3_P, controls.B4_P, controls.B6_P, controls.B7_P, controls.B8_P, controls.B9_P];
-			var eightRelease = [controls.B1_R, controls.B2_R, controls.B3_R, controls.B4_R, controls.B6_R, controls.B7_R, controls.B8_R, controls.B9_R];
-	
-			var nineHold = [controls.B1, controls.B2, controls.B3, controls.B4, controls.B5, controls.B6, controls.B7, controls.B8, controls.B9];
-			var ninePress = [controls.B1_P, controls.B2_P, controls.B3_P, controls.B4_P, controls.B5_P, controls.B6_P, controls.B7_P, controls.B8_P, controls.B9_P];
-			var nineRelease = [controls.B1_R, controls.B2_R, controls.B3_R, controls.B4_R, controls.B5_R, controls.B6_R, controls.B7_R, controls.B8_R, controls.B9_R];
-
-			var controlArray:Array<Bool> = fourPress;
-			var controlReleaseArray:Array<Bool> = fourRelease;
-			var controlHoldArray:Array<Bool> = fourHold;
-	
-			switch (mania)
-			{
-				case 0:
-					controlArray = onePress;
-					controlReleaseArray = oneRelease;
-					controlHoldArray = oneHold;
-				case 1:
-					controlArray = twoPress;
-					controlReleaseArray = twoRelease;
-					controlHoldArray = twoHold;
-				case 2:
-					controlArray = threePress;
-					controlReleaseArray = threeRelease;
-					controlHoldArray = threeHold;
-				case 3:
-					controlArray = fourPress;
-					controlReleaseArray = fourRelease;
-					controlHoldArray = fourHold;
-				case 4:
-					controlArray = fivePress;
-					controlReleaseArray = fiveRelease;
-					controlHoldArray = fiveHold;
-				case 5:
-					controlArray = sixPress;
-					controlReleaseArray = sixRelease;
-					controlHoldArray = sixHold;
-				case 6:
-					controlArray = sevenPress;
-					controlReleaseArray = sevenRelease;
-					controlHoldArray = sevenHold;
-				case 7:
-					controlArray = eightPress;
-					controlReleaseArray = eightRelease;
-					controlHoldArray = eightHold;
-				case 8:
-					controlArray = ninePress;
-					controlReleaseArray = nineRelease;
-					controlHoldArray = nineHold;
-			}
-	
-			var anyH = false;
-			var anyP = false;
-			var anyR = false;
-			for (i in 0...controlArray.length)
-			{
-				if (controlHoldArray[i])
-					anyH = true;
-				if (controlArray[i])
-					anyP = true;
-				if (controlReleaseArray[i])
-					anyR = true;
-			}
-
-			for (i in 0...controlArray.length) {
-				FlxG.watch.addQuick('key ' + i + ' pressed = ', controlArray[i]);
-			}
-	
-			// FlxG.watch.addQuick('asdfa', upP);
-			if (!boyfriend.stunned && generatedMusic)		//turned back onto this - tposejank
-				{	//might enable thropies again (why the fuck do i say it like the old ps3 times wow)
-					// rewritten inputs???
-					notes.forEachAlive(function(daNote:Note)
-					{
-						// hold note functions
-						if (daNote.isSustainNote && controlHoldArray[daNote.noteData] && daNote.canBeHit 
-						&& daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit) {
-							goodNoteHit(daNote);
-						}
-					});
-		
-					if ((controlHoldArray.contains(true) || controlArray.contains(true)) && !endingSong) {
-						var canMiss:Bool = (!ClientPrefs.ghostTapping);
-						if (controlArray.contains(true)) {
-							for (i in 0...controlArray.length) {
-								// heavily based on my own code LOL if it aint broke dont fix it
-								var pressNotes:Array<Note> = [];
-								var notesDatas:Array<Int> = [];
-								var notesStopped:Bool = false;
-		
-								var sortedNotesList:Array<Note> = [];
-								notes.forEachAlive(function(daNote:Note)
-								{
-									if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate 
-									&& !daNote.wasGoodHit && daNote.noteData == i) {
-										sortedNotesList.push(daNote);
-										notesDatas.push(daNote.noteData);
-										canMiss = true;
-									}
-								});
-								sortedNotesList.sort((a, b) -> Std.int(a.strumTime - b.strumTime));
-		
-								if (sortedNotesList.length > 0) {
-									for (epicNote in sortedNotesList)
-									{
-										for (doubleNote in pressNotes) {
-											if (Math.abs(doubleNote.strumTime - epicNote.strumTime) < 10) {
-												doubleNote.kill();
-												notes.remove(doubleNote, true);
-												doubleNote.destroy();
-											} else
-												notesStopped = true;
-										}
-											
-										// eee jack detection before was not super good
-										if (controlArray[epicNote.noteData] && !notesStopped) {
-											goodNoteHit(epicNote);
-											pressNotes.push(epicNote);
-										}
-		
-									}
-								}
-								else if (canMiss && !ClientPrefs.ghostTapping) 
-									ghostMiss(controlArray[i], i, true);
-								else if (canMiss && ClientPrefs.antispam) 
-									ghostMiss(controlArray[i], i, true);
-		
-								// I dunno what you need this for but here you go
-								//									- Shubs
-		
-								// Shubs, this is for the "Just the Two of Us" achievement lol
-								//									- Shadow Mario
-								if (!keysPressed[i] && controlArray[i]) 
-									keysPressed[i] = true;
-							}
-						}
-		
-						#if ACHIEVEMENTS_ALLOWED
-						var achieve:String = checkForAchievement(['oversinging']);
-						if (achieve != null) {
-							startAchievement(achieve);
-						}
-						#end
-					} else if (boyfriend.holdTimer > Conductor.stepCrochet * 0.001 * boyfriend.singDuration && boyfriend.animation.curAnim.name.startsWith('sing')
-					&& !boyfriend.animation.curAnim.name.endsWith('miss'))
-						boyfriend.dance();
-				}
-		
-				playerStrums.forEach(function(spr:StrumNote)
+		// FlxG.watch.addQuick('asdfa', upP);
+		if (!boyfriend.stunned && generatedMusic)		//turned back onto this - tposejank
+			{	//might enable thropies again (why the fuck do i say it like the old ps3 times wow)
+				// rewritten inputs???
+				notes.forEachAlive(function(daNote:Note)
 				{
-					if(controlArray[spr.ID] && spr.animation.curAnim.name != 'confirm') {
-						spr.playAnim('pressed');
-						spr.resetAnim = 0;
-					}
-					if(controlReleaseArray[spr.ID]) {
-						spr.playAnim('static');
-						spr.resetAnim = 0;
+					// hold note functions
+					if (daNote.isSustainNote && controlHoldArray[daNote.noteData] && daNote.canBeHit 
+					&& daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit) {
+						goodNoteHit(daNote);
 					}
 				});
+	
+				if ((controlHoldArray.contains(true) || controlArray.contains(true)) && !endingSong) {
+					var canMiss:Bool = (!ClientPrefs.ghostTapping);
+					if (controlArray.contains(true)) {
+						for (i in 0...controlArray.length) {
+							// heavily based on my own code LOL if it aint broke dont fix it
+							var pressNotes:Array<Note> = [];
+							var notesDatas:Array<Int> = [];
+							var notesStopped:Bool = false;
+	
+							var sortedNotesList:Array<Note> = [];
+							notes.forEachAlive(function(daNote:Note)
+							{
+								if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate 
+								&& !daNote.wasGoodHit && daNote.noteData == i) {
+									sortedNotesList.push(daNote);
+									notesDatas.push(daNote.noteData);
+									canMiss = true;
+								}
+							});
+							sortedNotesList.sort((a, b) -> Std.int(a.strumTime - b.strumTime));
+	
+							if (sortedNotesList.length > 0) {
+								for (epicNote in sortedNotesList)
+								{
+									for (doubleNote in pressNotes) {
+										if (Math.abs(doubleNote.strumTime - epicNote.strumTime) < 10) {
+											doubleNote.kill();
+											notes.remove(doubleNote, true);
+											doubleNote.destroy();
+										} else
+											notesStopped = true;
+									}
+										
+									// eee jack detection before was not super good
+									if (controlArray[epicNote.noteData] && !notesStopped) {
+										goodNoteHit(epicNote);
+										pressNotes.push(epicNote);
+									}
+	
+								}
+							}
+							else if (canMiss && !ClientPrefs.ghostTapping) 
+								ghostMiss(controlArray[i], i, true);
+							else if (canMiss && ClientPrefs.antispam) 
+								ghostMiss(controlArray[i], i, true);
+	
+							// I dunno what you need this for but here you go
+							//									- Shubs
+	
+							// Shubs, this is for the "Just the Two of Us" achievement lol
+							//									- Shadow Mario
+							if (!keysPressed[i] && controlArray[i]) 
+								keysPressed[i] = true;
+						}
+					}
+	
+					#if ACHIEVEMENTS_ALLOWED
+					var achieve:String = checkForAchievement(['oversinging']);
+					if (achieve != null) {
+						startAchievement(achieve);
+					}
+					#end
+				} else if (boyfriend.holdTimer > Conductor.stepCrochet * 0.001 * boyfriend.singDuration && boyfriend.animation.curAnim.name.startsWith('sing')
+				&& !boyfriend.animation.curAnim.name.endsWith('miss'))
+					boyfriend.dance();
 			}
+	
+			playerStrums.forEach(function(spr:StrumNote)
+			{
+				if(controlArray[spr.ID] && spr.animation.curAnim.name != 'confirm') {
+					spr.playAnim('pressed');
+					spr.resetAnim = 0;
+				}
+				if(controlReleaseArray[spr.ID]) {
+					spr.playAnim('static');
+					spr.resetAnim = 0;
+				}
+			});
+		}
 
 	function ghostMiss(statement:Bool = false, direction:Int = 0, ?ghostMiss:Bool = false) {
 		if (statement) {

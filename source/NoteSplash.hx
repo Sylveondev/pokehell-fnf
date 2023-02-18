@@ -15,16 +15,10 @@ class NoteSplash extends FlxSprite
 	public static var swidths:Array<Float> = [141, 124, 116, 108, 102, 93, 85, 77, 71];
 	public static var posRest:Array<Int> = [0, 0, 0, 0, 25, 35, 50, 60, 70];
 
-	var ogW:Float;
-	var ogH:Float;
-
 	var mania:Int;
 
 	public function new(x:Float = 0, y:Float = 0, noteData:Int = 0, inTester:Bool = false) {
 		super(x, y);
-
-		ogW = width;
-		ogH = height;
 
 		if (inTester) {
 			mania = EditorPlayState.daMania;
@@ -42,18 +36,13 @@ class NoteSplash extends FlxSprite
 			animation.addByPrefix(Main.gfxLetter[i], 'note splash ' + Main.gfxLetter[i], 24, false);
 		}
 
-		//alpha = 0.6;
-
-		ogW = width;
-		ogH = height;
-
 		if (inTester) {
 			mania = EditorPlayState.daMania;
 		} else {
 			mania = PlayState.SONG.mania;
 		}
 
-		setGraphicSize(Std.int(ogW * scales[PlayState.SONG.mania]), Std.int(ogH * scales[PlayState.SONG.mania]));
+		setGraphicSize(Std.int(width * scales[PlayState.SONG.mania]), Std.int(height * scales[PlayState.SONG.mania]));
 
 		animation.play(ClientPrefs.noteOrder[Main.gfxIndex[mania][noteData]]);
 

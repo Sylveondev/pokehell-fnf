@@ -31,6 +31,7 @@
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
 	<set name="BUILD_DIR" value="export/release" unless="debug || dev" />
 	<set name="BUILD_DIR" value="export/32bit" if="32bits" />
+	<set name="BUILD_DIR" value="export/32bit debug" if="32bits &lt; debug" />
 
 	<classpath name="source" />
 
@@ -42,9 +43,6 @@
 	<define name="LUA_ALLOWED" if="desktop" />
 	<define name="ACHIEVEMENTS_ALLOWED" />
 	<define name="VIDEOS_ALLOWED" if="web || windows" unless="32bits"/>
-
-	<!-- DONT ENABLE THIS -->
-	<define name="CHECK_FOR_UPDATES" if="desktop officialBuild"/>
 
 	<!-- <define name="PRELOAD_ALL" /> -->
 	<!-- <define name="PRELOAD_ALL" unless="web" /> -->
