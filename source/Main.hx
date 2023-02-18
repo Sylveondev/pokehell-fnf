@@ -34,10 +34,6 @@ class Main extends Sprite
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 	public static var fpsVar:FPS;
 	public static var engVar:EngVer;
-	public static var drums:Bool = false;
-	public static var menuBad:Bool = false;
-	public static var menuMusPlay:Bool = false;
-	public static var skipDes:Bool = false;
 	public static var ammo:Array<Int> = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 	public static var gfxIndex:Array<Dynamic> = [
 		[4],
@@ -84,17 +80,49 @@ class Main extends Sprite
 	{
 		super();
 
-		#if desktop Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash); #end
-
+		#if desktop 
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, function(e){
+			var errMsg:String = "";
+			var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+			var dateNow:String = Date.now().toString();
+			final path:String = "crash/" + "SE_" + dateNow + ".txt";
+	
+			dateNow = StringTools.replace(dateNow, " ", "_");
+			dateNow = StringTools.replace(dateNow, ":", "'");
+	
+			errMsg += "\nA fatal error occured: \"" + e.error + "\"\nSally Engine has crashed due to some uncaught error. Bring this to SylveonDev's attention.\n\n";
+	
+			errMsg += "--- Begin crash dump ---\n";
+			for (stackItem in callStack)
+			{
+				switch (stackItem)
+				{
+					case FilePos(s, file, line, column):
+						errMsg += file + " (line " + line + ")\n";
+					default:
+						Sys.println(stackItem);
+				}
+			}
+			errMsg += "--- End crash dump ---";
+	
+			if (!FileSystem.exists("crash/"))
+				FileSystem.createDirectory("crash/");
+	
+			File.saveContent(path, errMsg + "\n");
+	
+			Sys.println(errMsg);
+			Sys.println("Crash dump saved in " + Path.normalize(path));
+	
+			Application.current.window.alert(errMsg, "Seriously?!");
+	
+			Sys.exit(1);
+		}); 
+		#end
 
 		if (stage != null)
-		{
 			init();
-		}
 		else
-		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
-		}
 	}
 
 	private function init(?E:Event):Void
@@ -121,11 +149,7 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 
-		#if !debug
-		initialState = StartState;
-		#end
-
-		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
+		addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen));
 
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
@@ -144,48 +168,24 @@ class Main extends Sprite
 		FlxG.autoPause = false;
 		FlxG.mouse.visible = false;
 		#end
+
+		FlxG.signals.preStateSwitch.add(() -> {
+			FlxG.bitmap.dumpCache();
+			FlxG.sound.destroy();
+
+			#if cpp
+			cpp.vm.Gc.enable(true);
+			#else
+			openfl.system.System.gc();
+			#end
+		});
+
+		FlxG.signals.postStateSwitch.add(() -> {
+			#if cpp
+			cpp.vm.Gc.enable(false);
+			#else
+			openfl.system.System.gc();
+			#end
+		});
 	}
-
-	#if desktop
-	function onCrash(e:UncaughtErrorEvent):Void
-	{
-		var errMsg:String = "";
-		var errDiag:String = "";
-		var path:String;
-		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
-		var dateNow:String = Date.now().toString();
-
-		dateNow = StringTools.replace(dateNow, " ", "_");
-		dateNow = StringTools.replace(dateNow, ":", "'");
-
-		path = "crash/" + "SE_" + dateNow + ".txt";
-
-		errMsg += "\nA fatal error occured: \"" + e.error + "\"\nSally Engine has crashed due to some uncaught error. Bring this to SylveonDev's attention.\n\n";
-
-		errMsg += "--- Begin crash dump ---\n";
-		for (stackItem in callStack)
-		{
-			switch (stackItem)
-			{
-				case FilePos(s, file, line, column):
-					errMsg += file + " (line " + line + ")\n";
-				default:
-					Sys.println(stackItem);
-			}
-		}
-		errMsg += "--- End crash dump ---";
-
-		if (!FileSystem.exists("crash/"))
-			FileSystem.createDirectory("crash/");
-
-		File.saveContent(path, errMsg + "\n");
-
-		Sys.println(errMsg);
-		Sys.println("Crash dump saved in " + Path.normalize(path));
-
-		Application.current.window.alert(errMsg, "Seriously?!");
-
-		Sys.exit(1);
-	}
-	#end
 }

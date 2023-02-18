@@ -138,8 +138,6 @@ class PlayState extends MusicBeatState
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 
-	var newManiaVal:Int;
-
 	public static var mania:Null<Int> = 3;
 	public static var uiColor:Null<FlxColor> = FlxColor.fromString('0xFFF5AA42');
 
@@ -347,8 +345,6 @@ class PlayState extends MusicBeatState
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
 
-	public static var changedMania:Bool = false;
-
 	public var inCutscene:Bool = false;
 	var songLength:Float = 0;
 	var kadeEngineWatermark:FlxText;
@@ -387,18 +383,13 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-
 		//Screw this garbage line.
 		//I'm gonna play quem now because epic
 		instance = this;
 
 		//Initialize unused variables
-		if (SONG.noBotplay != false && SONG.noBotplay != true) SONG.noBotplay = false;
-		if (SONG.noPractice != false && SONG.noPractice != true) SONG.noPractice = false;
-		if (SONG.forceMiddlescroll != false && SONG.forceMiddlescroll != true) SONG.forceMiddlescroll = false;
-		if (SONG.forceGhostingOff != false && SONG.forceGhostingOff != true) SONG.forceGhostingOff = false;
-		if (SONG.hideGF != false && SONG.hideGF != true) SONG.hideGF = false;
-		if (SONG.disableChartEditor != false && SONG.disableChartEditor != true) SONG.disableChartEditor = false;
+		for (e in [SONG.noBotplay, SONG.noPractice, SONG.forceMiddlescroll, SONG.forceGhostingOff, SONG.hideGF, SONG.disableChartEditor])
+			if (e != false && e != true) e = false;
 		
 		uiColor = FlxColor.fromString('0xFFF5AA42');
 		if (SONG.fontColor != null) uiColor = FlxColor.fromString(SONG.fontColor);
@@ -422,14 +413,13 @@ class PlayState extends MusicBeatState
 			['Perfect!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
 		];
 
-
 		unsupportedText = new FlxText(-100, FlxG.width * 0.25, 1000, "This chart may not be compatible with pokehell.\nFix this by pressing 7 and change mania to 3.", 32);
 		unsupportedText.setFormat(Paths.font("righteous.ttf"), 32, uiColor, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		unsupportedText.screenCenter(X);
 		unsupportedText.scrollFactor.set();
 		unsupportedText.borderSize = 2;
 		if (SONG.mania < 0){
-			
+			// was there supposed to be something here??
 		}
 
 		#if MODS_ALLOWED
@@ -443,12 +433,10 @@ class PlayState extends MusicBeatState
 		trace('Loaded song. Mania: '+SONG.mania);
 
 		mania = SONG.mania;
-		
-		
 
 		if (mania < 0 || mania == null){
 			mania = 3;
-			add(unsupportedText);
+			new FlxTimer().start(2, (tmr) -> FlxTween.tween(unsupportedText, {alpha: 0}, 1));
 		}
 		trace('Mania is '+mania);
 
@@ -460,7 +448,6 @@ class PlayState extends MusicBeatState
 		swayNotes = false;
 
 		practiceMode = false;
-		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camOther = new FlxCamera();
@@ -473,15 +460,12 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
 		FlxG.cameras.add(camOther);
-		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
+		grpNoteSplashes = new FlxTypedGroup<NoteSplash>(8); // limit it to 8 for optimization reasons
 
 		FlxCamera.defaultCameras = [camGame];
-		CustomFadeTransition.nextCamera = camOther;
-		//FlxG.cameras.setDefaultDrawTarget(camGame, true);
-		
+		CustomFadeTransition.nextCamera = camOther;		
 
-		persistentUpdate = true;
-		persistentDraw = true;
+		persistentUpdate = persistentDraw = true;
 
 		if (SONG == null)
 			SONG = Song.loadFromJson('tutorial');
@@ -735,14 +719,22 @@ class PlayState extends MusicBeatState
 				add(bg);
 
 				if (!ClientPrefs.lowQuality){
+					#if (flixel_addons < "3.0.0")
 					var road = new FlxBackdrop(Paths.image('OldSally16'), 0, 0, true, true);
+					#else
+					var road = new FlxBackdrop(Paths.image('OldSally16'), XY);
+					#end
 					road.velocity.set(100, 100);
 					road.updateHitbox();
 					road.scrollFactor.set(0.5, 0.5);
 					road.antialiasing = ClientPrefs.globalAntialiasing;
 					add(road);
 
+					#if (flixel_addons < "3.0.0")
 					var road = new FlxBackdrop(Paths.image('OldSally4'), 0, 0, true, true);
+					#else
+					var road = new FlxBackdrop(Paths.image('OldSally4'), XY);
+					#end
 					road.velocity.set(50, 50);
 					road.updateHitbox();
 					road.scrollFactor.set(0.75, 0.75);
@@ -750,7 +742,11 @@ class PlayState extends MusicBeatState
 					add(road);
 				}
 
+				#if (flixel_addons < "3.0.0")
 				var road = new FlxBackdrop(Paths.image('OldSally'), 0, 0, true, true);
+				#else
+				var road = new FlxBackdrop(Paths.image('OldSally'), XY);
+				#end
 				road.velocity.set(25, 25);
 				road.updateHitbox();
 				road.scrollFactor.set(1, 1);
@@ -877,21 +873,33 @@ class PlayState extends MusicBeatState
 				blingSky = bg;
 
 				if (!ClientPrefs.lowQuality){
+					#if (flixel_addons < "3.0.0")
 					mountains = new FlxBackdrop(Paths.image('roadMountainsAlt'), 0, 0, true, false);
+					#else
+					mountains = new FlxBackdrop(Paths.image('roadMountainsAlt'), X);
+					#end
 					mountains.velocity.set(100, 0);
 					mountains.updateHitbox();
 					mountains.scrollFactor.set(0.2, 0.2);
 					mountains.antialiasing = ClientPrefs.globalAntialiasing;
 					add(mountains);
 
+					#if (flixel_addons < "3.0.0")
 					mountains = new FlxBackdrop(Paths.image('roadMountains'), 0, 0, true, false);
+					#else
+					mountains = new FlxBackdrop(Paths.image('roadMountains'), X);
+					#end
 					mountains.velocity.set(100, 0);
 					mountains.updateHitbox();
 					mountains.scrollFactor.set(0.2, 0.2);
 					mountains.antialiasing = ClientPrefs.globalAntialiasing;
 					add(mountains);
 
+					#if (flixel_addons < "3.0.0")
 					trees = new FlxBackdrop(Paths.image('roadTreesAlt'), 0, 250, true, false);
+					#else
+					trees = new FlxBackdrop(Paths.image('roadTreesAlt'), X);
+					#end
 					trees.velocity.set(200, 0);
 					trees.updateHitbox();
 					trees.setGraphicSize(Std.int(trees.width * 1.25));
@@ -899,15 +907,17 @@ class PlayState extends MusicBeatState
 					trees.antialiasing = ClientPrefs.globalAntialiasing;
 					add(trees);
 
+					#if (flixel_addons < "3.0.0")
 					trees = new FlxBackdrop(Paths.image('roadTrees'), 0, 250, true, false);
+					#else
+					trees = new FlxBackdrop(Paths.image('roadTrees'), X);
+					#end
 					trees.velocity.set(200, 0);
 					trees.updateHitbox();
 					trees.setGraphicSize(Std.int(trees.width * 1.25));
 					trees.scrollFactor.set(0.7, 0.7);
 					trees.antialiasing = ClientPrefs.globalAntialiasing;
 					add(trees);
-
-					
 				}
 
 				var bg:BGSprite = new BGSprite(null, -FlxG.width, 100 + 720, 1, 1);
@@ -915,7 +925,11 @@ class PlayState extends MusicBeatState
 				add(bg);
 				blingGreen = bg;
 
+				#if (flixel_addons < "3.0.0")
 				road = new FlxBackdrop(Paths.image('roadGrassAlt'), 50, 0, true, false);
+				#else
+				road = new FlxBackdrop(Paths.image('roadGrassAlt'), X);
+				#end
 				road.velocity.set(500, 0);
 				road.updateHitbox();
 				road.scrollFactor.set(1, 1);
@@ -923,7 +937,11 @@ class PlayState extends MusicBeatState
 				road.antialiasing = ClientPrefs.globalAntialiasing;
 				add(road);
 
+				#if (flixel_addons < "3.0.0")
 				road = new FlxBackdrop(Paths.image('roadGrass'), 50, 0, true, false);
+				#else
+				road = new FlxBackdrop(Paths.image('roadGrass'), X);
+				#end
 				road.velocity.set(500, 0);
 				road.updateHitbox();
 				road.scrollFactor.set(1, 1);
@@ -936,7 +954,11 @@ class PlayState extends MusicBeatState
 				add(bg);
 				
 				if (!ClientPrefs.lowQuality){
+					#if (flixel_addons < "3.0.0")
 					var road = new FlxBackdrop(Paths.image('playstationbuttons'), 0, 0, true, true);
+					#else
+					var road = new FlxBackdrop(Paths.image('playstationbuttons'), XY);
+					#end
 					road.velocity.set(150, 50);
 					road.updateHitbox();
 					road.scrollFactor.set(0.2, 0.2);
@@ -1449,14 +1471,10 @@ class PlayState extends MusicBeatState
 		gfGroup.add(gf);
 		
 		if (SONG.hideGF == true || SONG.song.toLowerCase() == 'crossover') gf.visible = false;
-
-		
 	
 		if (gfVersion == 'pico-speaker') {
 			gf.x -= 100;
 		}
-
-		
 
 		dad = new Character(0, 0, SONG.player2);
 		startCharacterPos(dad, true);
@@ -5138,7 +5156,6 @@ class PlayState extends MusicBeatState
 					unloadAssets();
 					MusicBeatState.switchState(new ResultsState());
 
-					// if ()
 					if(!usedPractice) {
 						StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 
@@ -5260,9 +5277,6 @@ class PlayState extends MusicBeatState
 		msTimeTxtTween = FlxTween.tween(msTimeTxt, {alpha: 0}, 0.25, {
 			onComplete: function(tw:FlxTween) {msTimeTxtTween = null;}, startDelay: 0.7
 		});
-		//trace(noteDiff, ' ' + Math.abs(note.strumTime - Conductor.songPosition));
-
-		// boyfriend.playAnim('hey');
 		vocals.volume = 1;
 
 		var placement:String = Std.string(combo);
@@ -6849,19 +6863,19 @@ class PlayState extends MusicBeatState
 	}
 
 	public function changeMania(value:Int, player = 0)
-		{
-			if (value < 9) {
-				opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
-				opponentStrums.clear();
-				SONG.mania = value;
-				mania = value;
-				generateStaticArrows(0, true);
-				playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
-				playerStrums.clear();
-				generateStaticArrows(1, true);
-				callOnLuas('onChangeMania', [value]);
-			}
-		}
+	{
+		if (value > 9 || value < 0 || Math.isNaN(value)) return;
+
+		opponentStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+		opponentStrums.clear();
+		SONG.mania = value;
+		mania = value;
+		generateStaticArrows(0, true);
+		playerStrums.forEach(function(spr:StrumNote) { FlxTween.tween(spr, {alpha: 0}, 1); });
+		playerStrums.clear();
+		generateStaticArrows(1, true);
+		callOnLuas('onChangeMania', [value]);
+	}
 
 	#if ACHIEVEMENTS_ALLOWED
 	private function checkForAchievement(achievesToCheck:Array<String>):String {
@@ -6945,20 +6959,20 @@ class PlayState extends MusicBeatState
 	#end
 
 	override function add(Object:FlxBasic):FlxBasic
-		{
-			trackedAssets.insert(trackedAssets.length, Object);
-			return super.add(Object);
+	{
+		trackedAssets.insert(trackedAssets.length, Object);
+		return super.add(Object);
+	}
+
+	function unloadAssets():Void
+	{
+		if (ClientPrefs.optimization) {
+			for (asset in trackedAssets)
+				{
+					remove(asset);
+				}
 		}
-	
-		function unloadAssets():Void
-		{
-			if (ClientPrefs.optimization) {
-				for (asset in trackedAssets)
-					{
-						remove(asset);
-					}
-			}
-		}
+	}
 
 	var curLight:Int = 0;
 	var curLightEvent:Int = 0;
