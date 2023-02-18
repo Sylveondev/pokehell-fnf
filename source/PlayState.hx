@@ -5275,15 +5275,13 @@ class PlayState extends MusicBeatState
 		var coolText:FlxText = new FlxText(0, 0, 0, placement, 32);
 		coolText.screenCenter();
 		coolText.x = FlxG.width * 0.55;
-		//
+
 		var daRating:String;
 		var rating:FlxSprite = new FlxSprite();
 		rating.cameras = [(ClientPrefs.lockrating ? camHUD : camGame)];
 		var score:Int = 450;
 
 		if (!ClientPrefs.newInput){
-		
-
 		daRating = "perfect";
 
 		if (noteDiff > Conductor.safeZoneOffset * 0.75)
@@ -5382,14 +5380,6 @@ class PlayState extends MusicBeatState
 				}
 			});*/
 		}
-
-		/* if (combo > 60)
-				daRating = 'sick';
-			else if (combo > 12)
-				daRating = 'good'
-			else if (combo > 4)
-				daRating = 'bad';
-		 */
 
 		var pixelShitPart1:String = "";
 		var pixelShitPart2:String = '';
