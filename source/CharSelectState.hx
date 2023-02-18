@@ -102,7 +102,6 @@ class CharSelectState extends MusicBeatState
 
     function changeSelection(Number:Int)
     {
-        
         index += Number;
 
         if (index < 0) index = 0;
