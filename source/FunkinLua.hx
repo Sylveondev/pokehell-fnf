@@ -63,11 +63,7 @@ class FunkinLua {
 		scriptName = script;
 		trace('Lua file loaded succesfully:' + script);
 
-		#if (haxe >= "4.0.0")
 		accessedProps = new Map();
-		#else
-		accessedProps = new Map<String, Dynamic>();
-		#end
 
 		var curState:Dynamic = FlxG.state;
 		lePlayState = curState;
