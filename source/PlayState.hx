@@ -418,9 +418,6 @@ class PlayState extends MusicBeatState
 		unsupportedText.screenCenter(X);
 		unsupportedText.scrollFactor.set();
 		unsupportedText.borderSize = 2;
-		if (SONG.mania < 0){
-			// was there supposed to be something here??
-		}
 
 		#if MODS_ALLOWED
 		Paths.destroyLoadedImages(resetSpriteCache);

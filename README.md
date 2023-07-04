@@ -1,3 +1,5 @@
+# NOTE : This is the old repository, see: https://github.com/Sylveondev/fnf-pokehellrewritten for the newer and rewritten source.
+
 ![](https://github.com/Sylveondev/pokehell-fnf/blob/main/docs/img/Pokehell-logo.png?raw=true)
 ##### Experimental engines of pokehell coming soon:
 [Forever Edition](https://github.com/Sylveondev/pokehell-fnf/tree/forever)<br>
