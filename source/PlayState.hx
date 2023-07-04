@@ -381,6 +381,24 @@ class PlayState extends MusicBeatState
 	public var coBfTrail:FlxTrail;
 	public var coDadTrail:FlxTrail;
 
+	/*
+ 	⣀⣠⣤⣤⣤⣤⢤⣤⣄⣀⣀⣀⣀⡀⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+	⠄⠉⠹⣾⣿⣛⣿⣿⣞⣿⣛⣺⣻⢾⣾⣿⣿⣿⣶⣶⣶⣄⡀⠄⠄⠄
+	⠄⠄⠠⣿⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣿⣿⣿⣿⣿⣿⣆⠄⠄
+	⠄⠄⠘⠛⠛⠛⠛⠋⠿⣷⣿⣿⡿⣿⢿⠟⠟⠟⠻⠻⣿⣿⣿⣿⡀⠄
+	⠄⢀⠄⠄⠄⠄⠄⠄⠄⠄⢛⣿⣁⠄⠄⠒⠂⠄⠄⣀⣰⣿⣿⣿⣿⡀
+	⠄⠉⠛⠺⢶⣷⡶⠃⠄⠄⠨⣿⣿⡇⠄⡺⣾⣾⣾⣿⣿⣿⣿⣽⣿⣿
+	⠄⠄⠄⠄⠄⠛⠁⠄⠄⠄⢀⣿⣿⣧⡀⠄⠹⣿⣿⣿⣿⣿⡿⣿⣻⣿
+	⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠉⠛⠟⠇⢀⢰⣿⣿⣿⣏⠉⢿⣽⢿⡏
+	⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠⠤⣤⣴⣾⣿⣿⣾⣿⣿⣦⠄⢹⡿⠄
+	⠄⠄⠄⠄⠄⠄⠄⠄⠒⣳⣶⣤⣤⣄⣀⣀⡈⣀⢁⢁⢁⣈⣄⢐⠃⠄
+	⠄⠄⠄⠄⠄⠄⠄⠄⠄⣰⣿⣛⣻⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡯⠄⠄
+	⠄⠄⠄⠄⠄⠄⠄⠄⠄⣬⣽⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠄⠄
+	⠄⠄⠄⠄⠄⠄⠄⠄⠄⢘⣿⣿⣻⣛⣿⡿⣟⣻⣿⣿⣿⣿⡟⠄⠄⠄
+	⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠛⢛⢿⣿⣿⣿⣿⣿⣿⣷⡿⠁⠄⠄⠄
+	⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠉⠉⠉⠉⠈⠄⠄⠄⠄⠄⠄ 
+	*/
+
 	override public function create()
 	{
 		//Screw this garbage line.
@@ -6950,3 +6968,87 @@ class PlayState extends MusicBeatState
 	var curLight:Int = 0;
 	var curLightEvent:Int = 0;
 }
+// since this is the old repo, here's a secret sylveon :-)
+/*                                           .:r:                                                                                                        
+                                         c2r:LL                                                                                                       
+                                        2v..,.2:  :rc7iH.                                                                                             
+                                       U:.,,.:LB77;:..,X                                                                                              
+                                      2i...,1PJ:..,..,X                                                                                               
+                                     ;s  :L5r. ..,. ,L                                                                                                
+                                   7rJ ,Lv:  .,.,.,wH,::rJJvr                                                                                         
+                                  p:g:7E7:::,..,.:c5;:::,,,:;X,                                                                                       
+                                 1L r6Grrrrr7r: ... ..,.,..:c7                                                                                        
+                                 G;Kw;,:;i7scLJr,,......:7sL,                                                                                         
+                                ,BZr;r7r;:;cUJw2;::,:;vUs:                                                                                            
+                                H7    .;7r;:sUJS;,r227:                                ,;vv7vv72,                                                     
+                              .1.       :7;:7JUpa2g                                .:rJ7r::,,,.r7                                                     
+                             :L          r:,Lg61r:1                             ,7s7;:,,,,,:,:.5.                                                     
+                            ;7           :vZUi:,::D:                          iJL;,,,,:,:,:,,.si                                                      
+                           is           :QQB:,:;::Z;                       :cJr:,:,,,,,,,:,,.7J                                                       
+                          ,a          :BBK1B7:;;i:K,                     :Usr:;::::,,,,,:,,,7S                                                        
+                          X         rHrRpU1BL::;;:K,                   :JU;;;;;;;;;;:::;:;:sa                                                         
+                         r;       :gS:.gP2wQ1.::;:P                   Jwr:;:;:::i;rir;i;;:sJ                                                          
+                         S       sg;:;,QXUJM2,;;:;2       .         :67;;;:,:rUr:;;i;r;;:HR                                                           
+                         E      cB::::,QX2wRE;cv7L7     sr;Lr      La;;::,7KgOBL:;i;;::;GwX                         ..;irs.                           
+                         U;    .SKv:::.BXUJRa;7c7E:   ,H,   2J    2w:;:,7DMG2DE,:;;;::L6iJ:                      :vJs7;:.X                            
+                          H    Jr7M.;::gP11RUi777D   :6      5r  Sc:;.rZMHUwEQ::;:;:7a2:X:                   .v2Ji:....:J.                            
+                           K:  p..Br:;iHg2JB7r7rUB,  g        2:Sr::,2M62a2OM:,;;;:sa;7p.                 ,1RQ6J;:.,.,.HL;;;;                         
+                            ;v::. rZ,77LBJKQ;r7;Br7aB.       .,B7:,:DOa251RZ:,;;;;;:rSs                :UKasLLUSaU;.,,. .,;7P                         
+                              .:;;:gL77;OpDX:7;ZZ..aK      .;: Za:rBp552aQU,:;;;:;rUw.               ;cJr;ir:::s1wr..:;7rr:.                          
+                               ssrLvRLr;rBB;7r7M,..O       ::,.:O7BSU1wGB7:i77c7Jsr.               7s,     .7;::crr;7r:                               
+                               :H;::LZaJ:1w;r7DHvscD      .:,,. RB2HpBBBJJU1L7r;sL.              rr,        .7:,7as:                                  
+                                :X;..,;5Sirv7rr ,:UQ      :::,, BBgOSc;.,.        p            rv.           rJJv.                                    
+                                  XPi:::;rr;:..,.. 6      :7;;:.rL,.  .,:,        p          rs,            ,O7                                       
+                                pS777::::::...:,,,.J:     .7;:7r,.::;;r7i        a:        ;c,            ,;:                                         
+                                 :rE;7Lsr;;Lsr.,::::M.     ,vUDO,;;rrvc;        7c      .77,            .wQi                                          
+                                  ;PSr       r2r::;:rpX1L72c7:;P;7vv7:.        Lr     :v7.            .UHr:G.                                         
+                                 .B7   ;vJ2.   X7;;;::;s5pUHJ7;p ,.          :i    :rr:             ::;M:;;rX                                         
+                                 Q7  ,6Jr;;g    R;;;;rU7:   .rwM          ,JEL::;rr:.             :i;  S:;;:Z:                                        
+                                .X  ;R::;  .P   :6:;2a    ,    BR,:,:::7L2v7ii:.               ,rr,   :S:;;;vS                                        
+                                w,  g:;;;   B    PrXr  .s5PpJ  ;O ,,UMH;. ..                ,;r:      Jc;;;;;p                                        
+                                Z  ,D.:::  :B    SB,  LH  ::Gr  E     :L1J;.           .,:r7:.        p;;;;;:E                                        
+                               ,U   M;  ..:pa    r;  ;B   ;:;E  Z        .:;rc7;7r7r;r;::.           :U:;;;;;O                                        
+                               :7    XJ7isa;         RS  :r;;B  a                                    S;;;i;;;H                                        
+                                X     .::.      rL   ,p ,::,Zr .K             .                     cs;;;;;:17                                        
+                                :1                    7J;:;S;  :7        ,;7;r:::;::,              :P;;;;;;:g.                                        
+                                  s;.;:     7r.   .:r:, ;:,    H.      :c;.         .:r.          ;S;;;;;;;rp                                         
+                                   :D::sv     .7Ssr:. rc     ;s,    .rr,          .. ..r7        Jw;:;;;;;:Z.                                         
+                                   v.   :Pv   r1;      P  ,rs:    .r7.       .7cv;r;;;;,rP;    :p7::;::::,J:                                          
+                                   p    ,,5a.UL.,,     B;7:     .7r        :cwUJr:  ...;;:67  JO7ri;:;;7cHD                                           
+                                   1    r, ;B; :rr    .B:     .77        ,1;     :w;.,:::,.DDaw7v7LJHPZPSPB.                                          
+                                   2    77:,:::rcr    U:7,  .77.        r7         Jw::,:sHKs77c72aX1LrLHX                                            
+                                   ;7   .L7;;:r7s    ,S .sGvr         :2; .:;:;;;:, BHLHPScr77v7vsvrLUHU:                                             
+                                    r,    :rQX:;    :B7vr:,         .J5:,,,,.  .....;gMGrir7rrr7sUXZS;                                                
+                                    vgi    g:7H    UU             ;w1.                 rgg2JSaGgci:                                                   
+                                  .S, :v;vw. .iK771L:;:,..  .,:7LJr.                     Xgr;i;E                                                      
+                                 ,X    ;G;    ..::    ,:rri;7i;,.                         ,Er,:s:                                                     
+                                .w    ;:;.                                     ,;           Q7:iU                                                     
+                                6     M 7r                                    .a             B;,R                                                     
+                               1:    7c ;1          .:                        O.             ,B7B;                                                    
+                               U     a. .Z          a,                       rJ               PQ6J                                                    
+                              ;s     1   P:.:.     ,Z                        a.                BBH                                                    
+                              r7     P,  rr.;O;..  G.                                          ,BK                                                    
+                              .p     1H;  J  :X;..7P            .....,...... ,                  BU                                                    
+                               J,    :5,1:pr ..,r.G            1:.,,::;::,,..;w                  s                                                    
+                                H,    P, .:B....,EK           PL:7vL7Lr7QSU17.rR,                J,                                                   
+                                 U;    O:::rg .. 5,          BZ::.      :J .:..7PL:               p                                                   
+                                  :L;.  sr;:JZ ..M         :6:           :6: ..  :swr,            J:                                                  
+                                    ,:7:,:;r;Kp wv        1H              .Hs.,,::::rBJ::         .S                                                  
+                                         .,:7rOsO        OQ;                cD7:;;;;:77 ,vc:       K                                                  
+                                               5a       Qw,P                  wSi:;;;:K    Lp      w:                                                 
+                                               w      .R7::E                   ,Hv:;;:2v    K:     2                                                  
+                                              :r     ,Q;::i2                     X::;,Ev    c     ;7                                                  
+                                             .U     :B::::U:                     X,,,7P     s     X                                                   
+                                    :DsJUc77LB:    .B::::i1                     ER.vPB,    ,7   7B                                                    
+                                     SJ:,:::ZB    :B;::.:B.                    .BZHKgw     p1 L267                                                    
+                                      .s2;,rBcr 77BwLrrUMB.                    KSLs2Q      pSJ7;p                                                     
+                                     ,:LKr.D7;p7:QJ;rSBQLQ                    7MLJsB.     cU:;:P,                                                     
+                                  :KJ7r:,.pS,::.MBEUBOJrSO                   :BsJLB;     .P:;:sU                                                      
+                                  .5wSsLrGX:;;,pQ7 ,E7csRr                  Lg21JQa     iHi;;;Z                                                       
+                                        HJ.:;:1w  :GJLsEB                  BBBRpg2    ;JL.:::X:                                                       
+                                      :r. .::cZ   BBBEQO                   raEL:     iQ2,r1:HG                                                        
+                                     BP.;;,:UG     rr,                                5p7Q2r;                                                         
+                                     MaZRLLas                                                                                                         
+                                       :;.                                                                                                            
+
+*/
