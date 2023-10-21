@@ -30,7 +30,7 @@ using StringTools;
 // TO DO: Redo the menu creation system for not being as dumb
 class FreeplaySelectState extends MusicBeatState
 {
-	var options:Array<String> = ['story', 'extras', 'covers' #if MODS_ALLOWED , 'mods' #end];
+	var options:Array<String> = ['story', 'extras' #if MODS_ALLOWED , 'mods' #end];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
