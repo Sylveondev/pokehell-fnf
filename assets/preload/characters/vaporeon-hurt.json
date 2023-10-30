@@ -1,99 +1,100 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				-20
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "idle",
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				-24
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				3,
+				-20
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				18,
+				-9
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-7,
+				-20
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right0",
 			"indices": []
 		},
 		{
 			"offsets": [
-				36,
-				-20
+				0,
+				-24
 			],
 			"loop": false,
-			"fps": 24,
-			"anim": "faint",
-			"indices": [],
-			"name": "fainting"
-		},
-		{
-			"offsets": [
-				0,
-				-87
-			],
-			"indices": [],
 			"fps": 24,
 			"anim": "headache",
+			"indices": [],
+			"name": "high"
+		},
+		{
 			"loop": false,
-			"name": "headache"
+			"offsets": [
+				54,
+				-20
+			],
+			"anim": "faint",
+			"fps": 24,
+			"name": "faint0",
+			"indices": []
 		},
 		{
 			"offsets": [
-				0,
-				-170
+				54,
+				-20
 			],
 			"indices": [],
 			"fps": 24,
-			"anim": "faintLoop",
-			"loop": true,
+			"anim": "idle-alt",
+			"loop": false,
 			"name": "faintLoop"
-		},
-		{
-			"offsets": [
-				-1,
-				-70
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "down0"
-		},
-		{
-			"offsets": [
-				19,
-				-20
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
-			"loop": false,
-			"name": "left0"
-		},
-		{
-			"offsets": [
-				-1,
-				-8
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
-			"loop": false,
-			"name": "up0"
-		},
-		{
-			"offsets": [
-				-4,
-				-20
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right0"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/vaporeon2",
+	"isPlayable": true,
 	"position": [
 		0,
-		290
+		300
 	],
 	"healthicon": "vaporeon",
 	"flip_x": false,
@@ -107,5 +108,5 @@
 		100
 	],
 	"sing_duration": 4,
-	"scale": 1.05
+	"scale": 1.25
 }

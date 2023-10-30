@@ -919,6 +919,13 @@
 						"Play Animation",
 						"faint",
 						"dad"
+					],
+					[
+						172392.857142857,
+						-1,
+						"Alt Idle Animation",
+						"dad",
+						"-alt"
 					]
 				],
 				"bpm": 0,
@@ -929,15 +936,16 @@
 				"lengthInSteps": 16,
 				"altAnim": false,
 				"typeOfSection": 0,
-				"sectionNotes": [
-					[
-						174214.285714286,
-						-1,
-						"Play Animation",
-						"faintLoop",
-						"dad"
-					]
-				],
+				"sectionNotes": [],
+				"bpm": 0,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
 				"bpm": 0,
 				"changeBPM": false,
 				"mustHitSection": false
@@ -954,7 +962,6 @@
 		],
 		"splashSkin": null,
 		"forceMiddlescroll": false,
-		"validScore": false,
 		"timebarColor": [
 			"0xFF1A3B75",
 			"0xFF55A1C2"
