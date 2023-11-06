@@ -1553,7 +1553,7 @@ class PlayState extends MusicBeatState
 						dad.y += 25;
 					}
 					FlxTween.tween(dad, {y: dad.y - 400}, 2, {ease: FlxEase.quadInOut,type:PINGPONG});
-				case 'flareon':
+				case 'flareon2':
 					FlxTween.tween(dad, {y: dad.y - 150}, 1, {ease: FlxEase.quadInOut,type:PINGPONG});
 				case 'eivee-glitch':
 					FlxTween.tween(dad, {y: dad.y - 200}, 5, {ease: FlxEase.quadInOut,type:PINGPONG});
@@ -3530,7 +3530,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (songMisses >= 100) {
+		if (songMisses >= 100 && ClientPrefs.maxmisslimit) {
 			GameOverSubstate.deathReason = 'Died by reaching 100 misses.';
 			health = -1;
 		}

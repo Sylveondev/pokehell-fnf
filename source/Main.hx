@@ -153,7 +153,7 @@ class Main extends Sprite
 
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
-		engVar = new EngVer(1170, 3, 0xFFFFFF);
+		engVar = new EngVer(1070, 3, 0xFFFFFF);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
 		addChild(fpsVar);

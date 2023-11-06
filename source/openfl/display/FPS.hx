@@ -146,7 +146,7 @@ class EngVer extends TextField
 		defaultTextFormat = new TextFormat('Righteous', 24, color);
 		autoSize = LEFT;
 		multiline = true;
-		text = "Sally Engine "+MainMenuState.sallyEngineVersion;
+		text = "Psych Engine "+MainMenuState.psychEngineVersion;
 		alpha = 0.5;
 
 		cacheCount = 0;
@@ -158,7 +158,7 @@ class EngVer extends TextField
 	@:noCompletion
 	private #if !flash override #end function __enterFrame(deltaTime:Float):Void
 	{
-		this.x = Lib.application.window.width - 180;
+		this.x = Lib.application.window.width - 220;
 		
 	}
 }

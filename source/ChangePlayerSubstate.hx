@@ -22,8 +22,8 @@ class ChangePlayerSubState extends MusicBeatSubstate
 
     
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['---[ Misc ]---','based on chart','---[ Playable ]---','sally', 'sally - old', 'sally - floombo', 'sally - vee funkin', 'bf - derpmanzero', 'riolu bf', 'bf - old', 'bf - og fnf', '---[ Story ]---', 'vaporeon', 'jolteon', 'flareon', 'umbreon', 'glaceon', 'sylveon', 'sillyvon', 'potassium', 'sunshine', 'speedy', 'black', 'espeon', 'leafeon', 'eeeee based', 'polyeon', 'espurr'];
-    var iconItems:Array<String> = ['','face','','bf','bf-kindaold','bf','bf','realbf','riolubf3d','realbf','realbf','','vaporeon', 'jolteon', 'flareon', 'umbreon', 'glaceon', 'sylveon', 'sillyvon', 'potassium', 'sunshine', 'speedy', 'black', 'espeon', 'leafeon', 'eeeee', 'polyeon', 'espurr'];
+	var menuItemsOG:Array<String> = ['based on chart','sally', 'sally - old', 'sally - floombo', 'sally - vee funkin', 'bf - derpmanzero', 'riolu bf', 'bf - old', 'bf - og fnf'];
+    var iconItems:Array<String> = ['face','bf','bf-kindaold','bf','bf','realbf','riolubf3d','realbf','realbf'];
 	var curSelected:Int = 0;
 
 	public static var transCamera:FlxCamera;
@@ -144,86 +144,6 @@ class ChangePlayerSubState extends MusicBeatSubstate
                         FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
                         close();
 
-					case "vaporeon":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "vaporeon";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-                    case "jolteon":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "jolteon";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-                    case "flareon":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "flareon";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-                    case "umbreon":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "umbreon";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-					case "glaceon":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "glaceon";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-                    case "sylveon":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "sylveon";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-					case "sillyvon":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "silyvon";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-                    case "potassium":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "potassium";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-                    case "sunshine":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "sunshine";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-                    case "speedy":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "speedy";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-					case "black":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "black";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-                    case "espeon":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "espeon";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-					case "leafeon":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "leafeon";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-					case "eeeee based":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "eeeee";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-					case "polyeon":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "polyeon";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
-					case "espurr":
-                        PlayState.freeplayChar = true;
-                        PlayState.selectedBF = "espurr";
-                        FlxG.sound.play(Paths.sound('confirmMenu'), 0.4);
-                        close();
                 }
             }
         }

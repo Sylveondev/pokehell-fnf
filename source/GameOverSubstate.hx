@@ -48,7 +48,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		Conductor.songPosition = 0;
 
 		switch(PlayState.SONG.player1){
-			case 'bf':
+			case 'bf'|'cursedSally':
 				//characterName = 'RIPEEVEELOL';
 				deathSoundName = 'fnf_loss_sfx';
 			case 'RIPEEVEELOL':

@@ -136,7 +136,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - #if !DEVBUILD 44 #else 64 #end, 0, "Psych Engine " + psychEngineVersion +" - " + sallyEngineVersion + " Sally Engine", 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - #if !DEVBUILD 44 #else 64 #end, 0, "Psych Engine " + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat(Paths.font("righteous.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);

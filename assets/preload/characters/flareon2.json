@@ -13,8 +13,8 @@
 		},
 		{
 			"offsets": [
-				-25,
-				-66
+				40,
+				-70
 			],
 			"loop": false,
 			"fps": 24,
@@ -24,8 +24,8 @@
 		},
 		{
 			"offsets": [
-				89,
-				-6
+				250,
+				-10
 			],
 			"loop": false,
 			"fps": 24,
@@ -35,8 +35,8 @@
 		},
 		{
 			"offsets": [
-				4,
-				10
+				74,
+				16
 			],
 			"loop": false,
 			"fps": 24,
@@ -46,8 +46,8 @@
 		},
 		{
 			"offsets": [
-				-24,
-				-22
+				-91,
+				-10
 			],
 			"loop": false,
 			"fps": 24,
@@ -57,11 +57,11 @@
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/flareon",
+	"image": "characters/flareon2",
 	"isPlayable": false,
 	"position": [
 		60,
-		220
+		50
 	],
 	"healthicon": "flareon",
 	"flip_x": false,
