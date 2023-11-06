@@ -57,7 +57,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Hide Song Length',
 		'Flashing Lights',
 		'Move Window',
-		'Camera Zooms'
+		'Camera Zooms',
+		'Debugging'
 		/*
 		'Do HealthIcon rotation',
 		'HealthIcon rotation'
@@ -245,6 +246,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 
 					case 'Camera Zooms':
 						ClientPrefs.camZooms = !ClientPrefs.camZooms;
+					
+					case 'Debugging':
+						ClientPrefs.debugging = !ClientPrefs.debugging;
 
 					case 'Hide HUD':
 						ClientPrefs.hideHud = !ClientPrefs.hideHud;
@@ -356,6 +360,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "Uncheck this to disable the window moving.";
 			case 'Camera Zooms':
 				daText = "If unchecked, the camera won't zoom in on a beat hit.";
+			case 'Debugging':
+				daText = "If checked, enables additional tools for debugging.\nThis does not affect the chart/character editors.";
 			case 'Hide HUD':
 				daText = "If checked, hides most HUD elements.";
 			case 'Hide Song Length':
@@ -441,6 +447,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.violence;
 					case 'Camera Zooms':
 						daValue = ClientPrefs.camZooms;
+					case 'Debugging':
+						daValue = ClientPrefs.debugging;
 					case 'Hide HUD':
 						daValue = ClientPrefs.hideHud;
 					case 'Persistent Cached Data':

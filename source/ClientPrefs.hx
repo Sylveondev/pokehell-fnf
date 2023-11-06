@@ -35,6 +35,7 @@ class ClientPrefs {
 	public static var maxmisslimit:Bool = true;
 	public static var lockrating:Bool = false;
 	public static var healthrot:Int = 32;
+	public static var debugging:Bool = false;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
@@ -159,6 +160,7 @@ class ClientPrefs {
 		FlxG.save.data.healthrot = healthrot;
 		FlxG.save.data.maxmisslimit = maxmisslimit;
 		FlxG.save.data.lockrating = lockrating;
+		FlxG.save.data.debugging = debugging;
 		FlxG.save.data.cursing = cursing;
 		FlxG.save.data.violence = violence;
 		FlxG.save.data.camZooms = camZooms;
@@ -283,6 +285,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.doScoretable != null) {
 			doScoretable = FlxG.save.data.doScoretable;
+		}
+		if(FlxG.save.data.debugging != null) {
+			debugging = FlxG.save.data.debugging;
 		}
 		/*if(FlxG.save.data.cursing != null) {
 			cursing = FlxG.save.data.cursing;

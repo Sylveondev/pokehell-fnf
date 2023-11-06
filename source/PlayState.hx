@@ -4147,7 +4147,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 		
-		#if debug
+		if (ClientPrefs.debugging){
 		if(!endingSong && !startingSong) {
 			if (FlxG.keys.justPressed.ONE) {
 				KillNotes();
@@ -4194,7 +4194,7 @@ class PlayState extends MusicBeatState
 		setOnLuas('cameraY', camFollowPos.y);
 		setOnLuas('botPlay', PlayState.cpuControlled);
 		callOnLuas('onUpdatePost', [elapsed]);
-		#end
+		}
 	}
 
 	var isDead:Bool = false;
