@@ -1367,13 +1367,13 @@ class PlayState extends MusicBeatState
 					add(tank3);
 		}
 
-		if (curStage == 'trippy' && !ClientPrefs.lowQuality){
-			var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
-			testshader.waveAmplitude = 0.1;
-			testshader.waveFrequency = 5;
-			testshader.waveSpeed = 2;
-			trippyBG.shader = testshader.shader;
-		}
+		//if (curStage == 'trippy' && !ClientPrefs.lowQuality){
+		//	var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
+		//	testshader.waveAmplitude = 0.1;
+		//	testshader.waveFrequency = 5;
+		//	testshader.waveSpeed = 2;
+		//	trippyBG.shader = testshader.shader;
+		//}
 
 		if(isPixelStage) {
 			introSoundsSuffix = '-pixel';
@@ -2150,14 +2150,14 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == 'stress')
 			GameOverSubstate.characterName = 'bf-holding-gf-dead';
 
-		if (curStage == 'trippy' && !ClientPrefs.lowQuality){
-				var evilTrail = new FlxTrail(boyfriend, null, 4, 24, 0.3, 0.069); //nice
-				insert(members.indexOf(boyfriendGroup) - 1, evilTrail);
-				var evilTrail = new FlxTrail(gf, null, 4, 24, 0.3, 0.069); //nice
-				insert(members.indexOf(gfGroup) - 1, evilTrail);
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
-				insert(members.indexOf(dadGroup) - 1, evilTrail);
-		}
+		//if (curStage == 'trippy' && !ClientPrefs.lowQuality){
+		//		var evilTrail = new FlxTrail(boyfriend, null, 4, 24, 0.3, 0.069); //nice
+		//		insert(members.indexOf(boyfriendGroup) - 1, evilTrail);
+		//		var evilTrail = new FlxTrail(gf, null, 4, 24, 0.3, 0.069); //nice
+		//		insert(members.indexOf(gfGroup) - 1, evilTrail);
+		//		var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+		//		insert(members.indexOf(dadGroup) - 1, evilTrail);
+		//}
 		if (SONG.song.toLowerCase() == 'crossover'){
 			
 		}

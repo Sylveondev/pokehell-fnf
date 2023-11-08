@@ -1,6 +1,6 @@
 function onEvent(name, value1, value2)
    if name == 'imageflash' then
-		makeLuaSprite('image', value1, 990, 540);
+		makeLuaSprite('image', value1, 0, 0);
 		addLuaSprite('image', true);
 		doTweenColor('hello', 'image', 'FFFFFFFF', 0.1, 'quartIn');
 		setObjectCamera('image', 'other');
