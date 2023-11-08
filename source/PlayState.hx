@@ -3353,13 +3353,13 @@ class PlayState extends MusicBeatState
 				}
 			case 'trippy':
 				if (!ClientPrefs.lowQuality){
-					var shad = cast(trippyBG.shader, Shaders.GlitchShader);
-					shad.uTime.value[0] += elapsed;
+					//var shad = cast(trippyBG.shader, Shaders.GlitchShader);
+					//shad.uTime.value[0] += elapsed;
 
 					stageInd ++;
-					trippyBG.angle = Math.sin(stageInd / 100 * bfangspd) * 15;
-					trippyBG.x = -600 + Math.sin(stageInd / 100 * stageSpd) * 100;
-					trippyBG.y = -200 +Math.sin(stageInd / 100 * stageSpd) * 100;
+					trippyBG.angle = Math.sin(stageInd / 100 * bfangspd) * 5;
+					trippyBG.x = -600 + Math.sin(stageInd / 100 * stageSpd) * 50;
+					trippyBG.y = -200 +Math.sin(stageInd / 100 * stageSpd) * 50;
 
 					bfind ++;
 					boyfriend.angle = Math.sin(bfind / 100 * bfangspd) * bfangr;
@@ -3728,11 +3728,13 @@ class PlayState extends MusicBeatState
 		iconP2.updateHitbox();
 
 		var multAngle:Float = FlxMath.lerp(1, scoreTxt.angle, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
-		scoreTxt.angle = multAngle;
-		timeBarBG.angle = multAngle;
-		timeBarOverlay.angle = multAngle;
-		timeTxt.angle = multAngle;
-		timeBar.angle = multAngle;
+		if (!ClientPrefs.classicHUD){
+			scoreTxt.angle = multAngle;
+			timeBarBG.angle = multAngle;
+			timeBarOverlay.angle = multAngle;
+			timeTxt.angle = multAngle;
+			timeBar.angle = multAngle;
+		}
 
 		if (health > 2)
 			health = 2;
@@ -6367,18 +6369,20 @@ class PlayState extends MusicBeatState
 			iconP2.updateHitbox();
 		}
 
-		curBeat % (gfSpeed * 2) == 0 ? {
-			scoreTxt.angle = 8;
-			//timeBarBG.angle = 8;
-			//timeBarOverlay.angle = 8;
-			timeTxt.angle = 8;
-			//timeBar.angle = 8;
-		} : {
-			scoreTxt.angle = -8;
-			//timeBarBG.angle = -8;
-			//timeBarOverlay.angle = -8;
-			timeTxt.angle = -8;
-			//timeBar.angle = -8;
+		if (!ClientPrefs.classicHUD){
+			curBeat % (gfSpeed * 2) == 0 ? {
+				scoreTxt.angle = 8;
+				//timeBarBG.angle = 8;
+				//timeBarOverlay.angle = 8;
+				timeTxt.angle = 8;
+				//timeBar.angle = 8;
+			} : {
+				scoreTxt.angle = -8;
+				//timeBarBG.angle = -8;
+				//timeBarOverlay.angle = -8;
+				timeTxt.angle = -8;
+				//timeBar.angle = -8;
+			}
 		}
 
 		if (curBeat % gfSpeed == 0 && !gf.stunned && gf.animation.curAnim.name != null && !gf.animation.curAnim.name.startsWith("sing"))
