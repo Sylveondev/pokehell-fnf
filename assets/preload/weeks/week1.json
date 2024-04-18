@@ -1,22 +1,22 @@
 {
 	"songs": [
-		["Bopeebo", "dad", [146, 113, 253]],
-		["Fresh", "dad", [146, 113, 253]],
-		["Dad Battle", "dad", [146, 113, 253]]
+		["Smoking", "vaporeon", [118, 201, 223]],
+		["Headache", "vaporeon", [118, 201, 223]],
+		["Smoked-out", "vaporeon", [118, 201, 223]]
 	],
 
 	"weekCharacters": [
-		"dad",
+		"",
 		"bf",
 		"gf"
 	],
 	"weekBackground": "stage",
 
-	"storyName": "Daddy Dearest",
+	"storyName": "In the allyway",
 	"weekBefore": "tutorial",
 	"weekName": "Week 1",
 	"startUnlocked": true,
-
+	"pokehellWeek": true,
 	"hideStoryMode": false,
 	"hideFreeplay": false
 }

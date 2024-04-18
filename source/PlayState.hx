@@ -72,13 +72,17 @@ import sys.io.File;
 #end
 
 #if VIDEOS_ALLOWED
-import vlc.MP4Handler;
+#if (hxCodec >= "3.0.0") import hxcodec.flixel.FlxVideo as VideoHandler;
+#elseif (hxCodec >= "2.6.1") import hxcodec.VideoHandler as VideoHandler;
+#elseif (hxCodec == "2.6.0") import VideoHandler;
+#else import vlc.MP4Handler as VideoHandler; #end
 #end
 
 using StringTools;
 
 class PlayState extends MusicBeatState
 {
+	public var iconrot = 1;
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
@@ -224,6 +228,8 @@ class PlayState extends MusicBeatState
 	var dadbattleBlack:BGSprite;
 	var dadbattleLight:BGSprite;
 	var dadbattleSmokes:FlxSpriteGroup;
+
+	var alleyDumpster:BGSprite;
 
 	var halloweenBG:BGSprite;
 	var halloweenWhite:BGSprite;
@@ -396,6 +402,8 @@ class PlayState extends MusicBeatState
 		camHUD.bgColor.alpha = 0;
 		camOther.bgColor.alpha = 0;
 
+		iconrot = 1;
+
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
 		FlxG.cameras.add(camOther, false);
@@ -510,31 +518,63 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'stage': //Week 1
-				var bg:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
+				var bg:BGSprite = new BGSprite('stages/stage/stageback', -600, -200, 0.9, 0.9);
 				add(bg);
 
-				var stageFront:BGSprite = new BGSprite('stagefront', -650, 600, 0.9, 0.9);
+				var stageFront:BGSprite = new BGSprite('stages/stage/stagefront', -650, 600, 0.9, 0.9);
 				stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 				stageFront.updateHitbox();
 				add(stageFront);
 				if(!ClientPrefs.lowQuality) {
-					var stageLight:BGSprite = new BGSprite('stage_light', -125, -100, 0.9, 0.9);
+					var stageLight:BGSprite = new BGSprite('stages/stage/stage_light', -125, -100, 0.9, 0.9);
 					stageLight.setGraphicSize(Std.int(stageLight.width * 1.1));
 					stageLight.updateHitbox();
 					add(stageLight);
-					var stageLight:BGSprite = new BGSprite('stage_light', 1225, -100, 0.9, 0.9);
+					var stageLight:BGSprite = new BGSprite('stages/stage/stage_light', 1225, -100, 0.9, 0.9);
 					stageLight.setGraphicSize(Std.int(stageLight.width * 1.1));
 					stageLight.updateHitbox();
 					stageLight.flipX = true;
 					add(stageLight);
 
-					var stageCurtains:BGSprite = new BGSprite('stagecurtains', -500, -300, 1.3, 1.3);
+					var stageCurtains:BGSprite = new BGSprite('stages/stage/stagecurtains', -500, -300, 1.3, 1.3);
 					stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
 					stageCurtains.updateHitbox();
 					add(stageCurtains);
 				}
 				dadbattleSmokes = new FlxSpriteGroup(); //troll'd
+			
+			case 'ally':
+				var bg:BGSprite = new BGSprite('stages/alley/AlleyBG', -100, 0, 0, 0);
+				add(bg);
+				var ground:BGSprite = new BGSprite('stages/alley/AlleyGround', -1900, 600, 1, 1);
+				ground.scale.set(3, 3);
+				ground.updateHitbox();
+				add(ground);
+				var building:BGSprite = new BGSprite('stages/alley/AlleyBuilding', -420, -420, 1, 1);
+				building.scale.set(1.8, 1.8);
+				building.updateHitbox();
+				add(building);
+				alleyDumpster = new BGSprite('stages/alley/AlleyDumpster', -400, 600, 1, 1);
+				alleyDumpster.scale.set(2, 2);
+				alleyDumpster.updateHitbox();
+			
+			case 'stageb':
+				var bg:BGSprite = new BGSprite('stages/stageB/StageBBG', -110, -100, 0, 0);
+				add(bg);
+				var ground:BGSprite = new BGSprite('stages/stageB/StageBGround', -450, 750, 1, 1);
+				ground.scale.set(1.5, 1.5);
+				ground.updateHitbox();
+				add(ground);
+				var building:BGSprite = new BGSprite('stages/stageB/StageBProps', -60, 326, 1, 1);
+				building.scale.set(1.8, 1.8);
+				building.updateHitbox();
+				add(building);
 
+
+
+			//--------------------------
+			//Other fnf stuff below here
+			//--------------------------
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
 					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
@@ -854,6 +894,8 @@ class PlayState extends MusicBeatState
 
 		switch(curStage)
 		{
+			case 'ally':
+				add(alleyDumpster);
 			case 'spooky':
 				add(halloweenWhite);
 			case 'tank':
@@ -1617,13 +1659,25 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		var video:MP4Handler = new MP4Handler();
-		video.playVideo(filepath);
-		video.finishCallback = function()
-		{
-			startAndEnd();
-			return;
-		}
+		var video:VideoHandler = new VideoHandler();
+		#if (hxCodec >= "3.0.0")
+			// Recent versions
+			video.play(filepath);
+			video.onEndReached.add(function()
+			{
+				video.dispose();
+				startAndEnd();
+				return;
+			}, true);
+			#else
+			// Older versions
+			video.playVideo(filepath);
+			video.finishCallback = function()
+			{
+				startAndEnd();
+				return;
+			}
+			#end
 		#else
 		FlxG.log.warn('Platform not supported!');
 		startAndEnd();
@@ -3048,31 +3102,69 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
-		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
-		iconP1.scale.set(mult, mult);
-		iconP1.updateHitbox();
-
-		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
-		iconP2.scale.set(mult, mult);
-		iconP2.updateHitbox();
-
+		iconrot = iconrot * -1;
+		//invert = invert * -1;
 		var iconOffset:Int = 26;
+
+		if (ClientPrefs.dohealthrot){
+			var multX:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			var multY:Float = FlxMath.lerp(1, iconP1.scale.y, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			var multAngle:Float = FlxMath.lerp(1, iconP1.angle, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconP1.scale.set(multX, multY);
+			iconP1.angle = multAngle;
+			iconP1.updateHitbox();
+	
+			var multX:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			var multY:Float = FlxMath.lerp(1, iconP2.scale.y, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			var multAngle:Float = FlxMath.lerp(1, iconP2.angle, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconP2.scale.set(multX, multY);
+			iconP2.angle = multAngle;
+			iconP2.updateHitbox();
+		}else{
+			var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconP1.scale.set(mult, mult);
+			iconP1.updateHitbox();
+	
+			var mult:Float = FlxMath.lerp(1, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			iconP2.scale.set(mult, mult);
+			iconP2.updateHitbox();
+	
+			//Old version of the icon bumpin'
+
+			//iconP1.setGraphicSize(Std.int(iconP1.width + 30));
+			//iconP2.setGraphicSize(Std.int(iconP2.width + 30));
+		}
+
+		
 
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		
+		var multAngle:Float = FlxMath.lerp(1, scoreTxt.angle, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		scoreTxt.angle = multAngle;
+		timeBarBG.angle = multAngle;
+		//timeBarOverlay.angle = multAngle;
+		timeTxt.angle = multAngle;
+		timeBar.angle = multAngle;
+		
 
 		if (health > 2)
 			health = 2;
 
-		if (healthBar.percent < 20)
+		if (healthBar.percent < 20){
 			iconP1.animation.curAnim.curFrame = 1;
-		else
-			iconP1.animation.curAnim.curFrame = 0;
-
-		if (healthBar.percent > 80)
+		
+			if (iconP2.animation.curAnim.numFrames == 3) 
+				iconP2.animation.curAnim.curFrame = 2;
+		}else if (healthBar.percent > 80){
 			iconP2.animation.curAnim.curFrame = 1;
-		else
+		
+			if (iconP1.animation.curAnim.numFrames == 3) 
+				iconP1.animation.curAnim.curFrame = 2;
+		}else{
 			iconP2.animation.curAnim.curFrame = 0;
+			iconP1.animation.curAnim.curFrame = 0;
+		}
 
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
 			persistentUpdate = false;
@@ -5030,11 +5122,42 @@ class PlayState extends MusicBeatState
 			notes.sort(FlxSort.byY, ClientPrefs.downScroll ? FlxSort.ASCENDING : FlxSort.DESCENDING);
 		}
 
-		iconP1.scale.set(1.2, 1.2);
-		iconP2.scale.set(1.2, 1.2);
+		if (ClientPrefs.dohealthrot){
+			curBeat % (gfSpeed * 2) == 0 ? {
+				iconP1.angle = ClientPrefs.healthrot;
+				iconP2.angle = -ClientPrefs.healthrot;
+				iconP1.scale.set(1, 2);
+				iconP2.scale.set(2, 1);
+			} : {
+				iconP1.angle = -ClientPrefs.healthrot;
+				iconP2.angle = ClientPrefs.healthrot;
+				iconP1.scale.set(2, 1);
+				iconP2.scale.set(1, 2);
+			}
+			
+			iconP1.updateHitbox();
+			iconP2.updateHitbox();
+		}else{
+			iconP1.scale.set(1.2, 1.2);
+			iconP2.scale.set(1.2, 1.2);
+			iconP1.updateHitbox();
+			iconP2.updateHitbox();
+		}
 
-		iconP1.updateHitbox();
-		iconP2.updateHitbox();
+		curBeat % (gfSpeed * 2) == 0 ? {
+			scoreTxt.angle = 8;
+			//timeBarBG.angle = 8;
+			//timeBarOverlay.angle = 8;
+			timeTxt.angle = 8;
+			//timeBar.angle = 8;
+		} : {
+			scoreTxt.angle = -8;
+			//timeBarBG.angle = -8;
+			//timeBarOverlay.angle = -8;
+			timeTxt.angle = -8;
+			//timeBar.angle = -8;
+		}
+		
 
 		if (gf != null && curBeat % Math.round(gfSpeed * gf.danceEveryNumBeats) == 0 && gf.animation.curAnim != null && !gf.animation.curAnim.name.startsWith("sing") && !gf.stunned)
 		{

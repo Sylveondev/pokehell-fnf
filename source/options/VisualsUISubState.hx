@@ -124,6 +124,20 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
+		var option:Option = new Option('Icon Rotation',
+			"If checked, the health icons will rotate. Otherwose, it'll stay still. Disable if you're not cool smh.",
+			'dohealthrot',
+			'bool',
+			true);
+		addOption(option);
+
+		var option:Option = new Option('Icon Rotation Amount',
+			"How much the icons should rotate. Default is 32.",
+			'healthrot',
+			'int',
+			true);
+		addOption(option);
+
 		super();
 	}
 

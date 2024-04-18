@@ -1,192 +1,69 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "BF idle dance"
+			"fps": 12,
+			"name": "pokeHell BF idle",
+			"indices": []
 		},
 		{
-			"offsets": [
-				12,
-				-6
-			],
 			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "BF NOTE LEFT0"
-		},
-		{
-			"offsets": [
-				-10,
-				-50
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "BF NOTE DOWN0"
-		},
-		{
-			"offsets": [
-				-29,
-				27
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "BF NOTE UP0"
-		},
-		{
-			"offsets": [
-				-38,
-				-7
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "BF NOTE RIGHT0"
-		},
-		{
-			"offsets": [
-				12,
-				24
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "BF NOTE LEFT MISS"
-		},
-		{
-			"offsets": [
-				-11,
-				-19
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "BF NOTE DOWN MISS"
-		},
-		{
-			"offsets": [
-				-29,
-				27
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUPmiss",
-			"indices": [],
-			"name": "BF NOTE UP MISS"
-		},
-		{
-			"offsets": [
-				-30,
-				21
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "BF NOTE RIGHT MISS"
-		},
-		{
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [
-				10,
-				11,
-				12,
-				13
-			],
-			"fps": 24,
-			"anim": "idle-loop",
-			"loop": true,
-			"name": "BF idle dance"
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "pokeHell BF left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				12,
-				-6
+				0,
+				0
 			],
-			"indices": [
-				12,
-				13,
-				14,
-				15
-			],
-			"fps": 24,
-			"anim": "singLEFT-loop",
-			"loop": true,
-			"name": "BF NOTE LEFT0"
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "pokeHell BF right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				-38,
-				-7
+				0,
+				0
 			],
-			"indices": [
-				58,
-				59,
-				60,
-				61
-			],
-			"fps": 24,
-			"anim": "singRIGHT-loop",
-			"loop": true,
-			"name": "BF NOTE RIGHT0"
+			"anim": "singUP",
+			"fps": 12,
+			"name": "pokeHell BF up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				-29,
-				27
+				0,
+				0
 			],
-			"indices": [
-				11,
-				12,
-				13,
-				14
-			],
-			"fps": 24,
-			"anim": "singUP-loop",
-			"loop": true,
-			"name": "BF NOTE UP0"
-		},
-		{
-			"offsets": [
-				-10,
-				-50
-			],
-			"indices": [
-				26,
-				27,
-				28,
-				29
-			],
-			"fps": 24,
-			"anim": "singDOWN-loop",
-			"loop": true,
-			"name": "BF NOTE DOWN0"
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "pokeHell BF down",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/bfCar",
+	"image": "characters/pokeHell BF",
+	"isPlayable": true,
 	"position": [
-		0,
-		350
+		-120,
+		100
 	],
-	"healthicon": "bf",
+	"healthicon": "realbf",
 	"flip_x": true,
 	"healthbar_colors": [
 		49,
@@ -194,9 +71,9 @@
 		209
 	],
 	"camera_position": [
-		0,
-		0
+		-240,
+		240
 	],
 	"sing_duration": 4,
-	"scale": 1
+	"scale": 0.5
 }

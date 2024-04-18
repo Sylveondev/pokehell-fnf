@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-40,
+				-70
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-96,
+				-83
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-85,
+				-36
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-45,
+				-85
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				1,
+				-69
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left0",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/jolteon",
+	"isPlayable": false,
+	"position": [
+		0,
+		180
+	],
+	"healthicon": "jolteon",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		234,
+		73
+	],
+	"camera_position": [
+		-5,
+		120
+	],
+	"sing_duration": 4,
+	"scale": 1.05
+}
