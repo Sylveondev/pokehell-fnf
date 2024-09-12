@@ -61,7 +61,7 @@ jobs:
           git show-ref
           git push origin master -f
       - name: Publish Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: htmlBuild
           path: 'export/release/html5/bin' 
