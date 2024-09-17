@@ -13,7 +13,7 @@ jobs:
   
   buildHtml:
     # The type of runner that the job will run on
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -27,7 +27,7 @@ jobs:
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
-          haxelib install hxcpp > /dev/null
+          haxelib install hxcpp > /dev/null --quiet
           haxelib install lime
           haxelib install openfl
           haxelib --never install flixel
