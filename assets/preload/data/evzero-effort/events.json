@@ -1435,6 +1435,6 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "evzero-effort",
-		"hideGF": false
+		"hideGF": true
 	}
 }

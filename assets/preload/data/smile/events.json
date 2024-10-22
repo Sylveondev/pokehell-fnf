@@ -2607,6 +2607,6 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "smile",
-		"hideGF": false
+		"hideGF": true
 	}
 }

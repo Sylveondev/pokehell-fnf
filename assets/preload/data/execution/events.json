@@ -807,6 +807,6 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "execution",
-		"hideGF": false
+		"hideGF": true
 	}
 }

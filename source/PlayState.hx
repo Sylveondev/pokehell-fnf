@@ -226,6 +226,8 @@ class PlayState extends MusicBeatState
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
+
+	var alleyDumpster:BGSprite;
 	
 	var halloweenBG:BGSprite;
 	var halloweenWhite:BGSprite;
@@ -593,8 +595,19 @@ class PlayState extends MusicBeatState
 				}
 			
 			case 'ally': //Week 1: Vaporeon
-				var bg:BGSprite = new BGSprite('ally', -600, -200, 1, 1);
+				var bg:BGSprite = new BGSprite('stages/alley/AlleyBG', -100, 0, 0, 0);
 				add(bg);
+				var ground:BGSprite = new BGSprite('stages/alley/AlleyGround', -1900, 600, 1, 1);
+				ground.scale.set(3, 3);
+				ground.updateHitbox();
+				add(ground);
+				var building:BGSprite = new BGSprite('stages/alley/AlleyBuilding', -420, -420, 1, 1);
+				building.scale.set(1.8, 1.8);
+				building.updateHitbox();
+				add(building);
+				alleyDumpster = new BGSprite('stages/alley/AlleyDumpster', -400, 600, 1, 1);
+				alleyDumpster.scale.set(2, 2);
+				alleyDumpster.updateHitbox();
 
 			case 'greenally': //Secret Week 1: Denis
 				var bg:BGSprite = new BGSprite('greenally', -600, -200, 1, 1);
@@ -612,8 +625,16 @@ class PlayState extends MusicBeatState
 				trippyBG = new BGSprite('SytrusStage', -100, -50, 0, 0, ['animated'], false, 12);
 				add(trippyBG);
 			case 'stage2': //Week 2: Jolteon
-				var bg:BGSprite = new BGSprite('stage2', -600, -200, 1, 1);
+				var bg:BGSprite = new BGSprite('stages/stageB/StageBBG', -110, -100, 0, 0);
 				add(bg);
+				var ground:BGSprite = new BGSprite('stages/stageB/StageBGround', -450, 750, 1, 1);
+				ground.scale.set(1.5, 1.5);
+				ground.updateHitbox();
+				add(ground);
+				var building:BGSprite = new BGSprite('stages/stageB/StageBProps', -60, 326, 1, 1);
+				building.scale.set(1.8, 1.8);
+				building.updateHitbox();
+				add(building);
 
 			case 'hell': //Week 3: Flareon
 				var bg:BGSprite = new BGSprite('hell', -600, -200, 1, 1);
@@ -3634,48 +3655,49 @@ class PlayState extends MusicBeatState
 			unless you're in the song. Don't worry guys. This isn't a
 			bug. It's supposed to be like that.
 			*/
-			#if !debug
-			if (curSong.toLowerCase() == 'headache'){
-				var poop:String = Highscore.formatSong('denis', 1);
-				PlayState.SONG = Song.loadFromJson(poop, curSong.toLowerCase());
-				PlayState.isStoryMode = false;
-				PlayState.storyDifficulty = 1;
+			if (!ClientPrefs.debugging) {
+				if (curSong.toLowerCase() == 'headache'){
+					var poop:String = Highscore.formatSong('denis', 1);
+					PlayState.SONG = Song.loadFromJson(poop, curSong.toLowerCase());
+					PlayState.isStoryMode = false;
+					PlayState.storyDifficulty = 1;
 
-				PlayState.storyWeek = 1;
-				trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
+					PlayState.storyWeek = 1;
+					trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
 
-				unloadAssets();
-				if (FlxG.sound.music != null)
-					FlxG.sound.music.stop();
-				LoadingState.loadAndSwitchState(new PlayState());
-			}else if (curSong.toLowerCase() == 'mansion'||curSong.toLowerCase() == 'banger'||curSong.toLowerCase() == 'fair'){
-				var pee:String = FlxG.random.bool(5) ? 'treacherous':'raging';
-				var poop:String = Highscore.formatSong(pee, 1);
-				PlayState.SONG = Song.loadFromJson(poop, pee);
-				PlayState.isStoryMode = false;
-				PlayState.storyDifficulty = 1;
-				
-				PlayState.storyWeek = 12;
-				trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
+					unloadAssets();
+					if (FlxG.sound.music != null)
+						FlxG.sound.music.stop();
+					LoadingState.loadAndSwitchState(new PlayState());
+				}else if (curSong.toLowerCase() == 'mansion'||curSong.toLowerCase() == 'banger'||curSong.toLowerCase() == 'fair'){
+					var pee:String = FlxG.random.bool(5) ? 'treacherous':'raging';
+					var poop:String = Highscore.formatSong(pee, 1);
+					PlayState.SONG = Song.loadFromJson(poop, pee);
+					PlayState.isStoryMode = false;
+					PlayState.storyDifficulty = 1;
+					
+					PlayState.storyWeek = 12;
+					trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
 
-				unloadAssets();
-				if (FlxG.sound.music != null)
-					FlxG.sound.music.stop();
-				LoadingState.loadAndSwitchState(new PlayState());
-			}else{#end
-				trace('Chart editor disabled is '+SONG.disableChartEditor);
-				if (SONG.disableChartEditor != true){
-				persistentUpdate = false;
-				paused = true;
-				cancelFadeTween();
-				CustomFadeTransition.nextCamera = camOther;
-				MusicBeatState.switchState(new ChartingState());
+					unloadAssets();
+					if (FlxG.sound.music != null)
+						FlxG.sound.music.stop();
+					LoadingState.loadAndSwitchState(new PlayState());
+				}else{
+					trace('Chart editor disabled is '+SONG.disableChartEditor);
+					if (SONG.disableChartEditor != true){
+					persistentUpdate = false;
+					paused = true;
+					cancelFadeTween();
+					CustomFadeTransition.nextCamera = camOther;
+					MusicBeatState.switchState(new ChartingState());
 
-				#if desktop
-				DiscordClient.changePresence("Chart Editor", null, null, true);
-				#end
+					#if desktop
+					DiscordClient.changePresence("Chart Editor", null, null, true);
+					#end
+					}
 				}
-			#if !debug } #end
+			}
 		}
 
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);

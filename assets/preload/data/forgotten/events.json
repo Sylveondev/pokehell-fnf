@@ -1180,6 +1180,6 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "Forgotten",
-		"hideGF": false
+		"hideGF": true
 	}
 }

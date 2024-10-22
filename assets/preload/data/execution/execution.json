@@ -2697,7 +2697,7 @@
 			}
 		],
 		"forceGhostingOff": true,
-		"hideGF": false,
+		"hideGF": true,
 		"player3": "gf",
 		"mania": 3,
 		"disableChartEditor": false,

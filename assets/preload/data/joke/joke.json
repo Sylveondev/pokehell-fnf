@@ -5783,7 +5783,7 @@
 		],
 		"player2": "silyvon",
 		"forceGhostingOff": false,
-		"hideGF": false,
+		"hideGF": true,
 		"soundPrefix": "",
 		"mania": 3,
 		"player3": "gf",

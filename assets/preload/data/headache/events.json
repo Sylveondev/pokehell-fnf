@@ -974,7 +974,7 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "Headache",
-		"hideGF": false,
+		"hideGF": true,
 		"soundPrefix": ""
 	}
 }

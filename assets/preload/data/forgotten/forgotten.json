@@ -5920,7 +5920,7 @@
 		],
 		"player2": "umbreon",
 		"forceGhostingOff": false,
-		"hideGF": false,
+		"hideGF": true,
 		"mania": 3,
 		"player3": "gf",
 		"disableChartEditor": false,

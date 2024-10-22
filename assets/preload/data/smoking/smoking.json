@@ -5657,7 +5657,7 @@
 		],
 		"player2": "vaporeon",
 		"forceGhostingOff": false,
-		"hideGF": false,
+		"hideGF": true,
 		"soundPrefix": "",
 		"mania": 3,
 		"player3": null,

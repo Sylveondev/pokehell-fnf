@@ -1396,7 +1396,7 @@
 			"#bf4300"
 		],
 		"fontColor": "#bf4300",
-		"hideGF": false,
+		"hideGF": true,
 		"disableChartEditor": false,
 		"soundPrefix": ""
 	}

@@ -14,8 +14,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-90,
-				-40
+				-97,
+				-39
 			],
 			"anim": "cold",
 			"fps": 24,
@@ -59,8 +59,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-120,
-				-40
+				-145,
+				-37
 			],
 			"anim": "singLEFT",
 			"fps": 24,
@@ -70,7 +70,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				-130,
+				-151,
 				-40
 			],
 			"anim": "singRIGHT",
@@ -81,8 +81,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-80,
-				-80
+				-99,
+				-78
 			],
 			"anim": "singDOWN",
 			"fps": 24,
@@ -92,8 +92,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-98,
-				-10
+				-105,
+				-4
 			],
 			"anim": "singUP",
 			"fps": 24,
@@ -103,9 +103,10 @@
 	],
 	"no_antialiasing": false,
 	"image": "characters/glaceon",
+	"isPlayable": false,
 	"position": [
 		-100,
-		300
+		320
 	],
 	"healthicon": "glaceon",
 	"flip_x": false,
@@ -119,5 +120,5 @@
 		60
 	],
 	"sing_duration": 4,
-	"scale": 1.4
+	"scale": 1.6
 }

@@ -3759,7 +3759,7 @@
 		"noPractice": false,
 		"forceMiddlescroll": false,
 		"forceGhostingOff": false,
-		"hideGF": false,
+		"hideGF": true,
 		"disableChartEditor": false,
 		"soundPrefix": "",
 		"fontColor": ""

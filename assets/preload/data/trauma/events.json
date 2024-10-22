@@ -670,7 +670,7 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "Trauma",
-		"hideGF": false,
+		"hideGF": true,
 		"soundPrefix": ""
 	}
 }

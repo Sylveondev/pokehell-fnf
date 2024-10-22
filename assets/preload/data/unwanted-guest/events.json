@@ -916,6 +916,6 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "unwanted-guest",
-		"hideGF": false
+		"hideGF": true
 	}
 }

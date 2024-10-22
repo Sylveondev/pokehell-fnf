@@ -1051,7 +1051,7 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "Smoking",
-		"hideGF": false,
+		"hideGF": true,
 		"soundPrefix": ""
 	}
 }

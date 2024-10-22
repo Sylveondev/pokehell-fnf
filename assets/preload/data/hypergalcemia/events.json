@@ -774,6 +774,6 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "hypergalcemia",
-		"hideGF": false
+		"hideGF": true
 	}
 }

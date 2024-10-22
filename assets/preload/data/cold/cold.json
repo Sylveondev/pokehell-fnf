@@ -1,7 +1,7 @@
 {
 	"song": {
 		"player1": "bf",
-		"hideGF": false,
+		"hideGF": true,
 		"forceGhostingOff": false,
 		"player2": "glaceon",
 		"notes": [

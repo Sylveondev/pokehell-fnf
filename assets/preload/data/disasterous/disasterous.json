@@ -2,7 +2,7 @@
 	"song": {
 		"player1": "bf-car",
 		"soundPrefix": "",
-		"hideGF": false,
+		"hideGF": true,
 		"forceGhostingOff": true,
 		"player2": "system86",
 		"notes": [

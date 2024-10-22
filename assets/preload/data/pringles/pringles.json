@@ -2,7 +2,7 @@
 	"song": {
 		"player1": "pringles",
 		"soundPrefix": "",
-		"hideGF": false,
+		"hideGF": true,
 		"forceGhostingOff": false,
 		"player2": "silyvon",
 		"notes": [

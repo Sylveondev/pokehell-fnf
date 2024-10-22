@@ -13556,7 +13556,7 @@
 		"player2": "sallyLol",
 		"player2": "funnier",
 		"forceGhostingOff": false,
-		"hideGF": false,
+		"hideGF": true,
 		"mania": 3,
 		"player3": "gf-sitting-on-sally",
 		"disableChartEditor": false,

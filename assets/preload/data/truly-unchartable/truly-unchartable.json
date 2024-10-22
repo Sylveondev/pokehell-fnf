@@ -1,7 +1,7 @@
 {
 	"song": {
 		"player1": "bf-car",
-		"hideGF": false,
+		"hideGF": true,
 		"forceGhostingOff": false,
 		"soundPrefix": "",
 		"notes": [

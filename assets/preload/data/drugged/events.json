@@ -1538,6 +1538,6 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "drugged",
-		"hideGF": false
+		"hideGF": true
 	}
 }

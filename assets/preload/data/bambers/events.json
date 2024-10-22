@@ -2070,7 +2070,7 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "bambers",
-		"hideGF": false,
+		"hideGF": true,
 		"soundPrefix": ""
 	}
 }

@@ -1057,7 +1057,7 @@
 		"needsVoices": true,
 		"disableChartEditor": false,
 		"song": "spoopy",
-		"hideGF": false,
+		"hideGF": true,
 		"soundPrefix": ""
 	}
 }
