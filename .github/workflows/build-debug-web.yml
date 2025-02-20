@@ -26,7 +26,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
-          haxelib setup C:/haxelib
+          mkdir C:\haxelib
+          haxelib setup C:\haxelib
           haxelib install hxcpp > nul
           haxelib --never install flixel 4.11.0
           haxelib install lime
