@@ -13,7 +13,7 @@ jobs:
   
   buildHtml:
     # The type of runner that the job will run on
-    runs-on: windows-latest
+    runs-on: ubuntu-20.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,25 +26,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
-          mkdir C:\haxelib
-          haxelib setup C:\haxelib
-          haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp 4.3.73
-          haxelib git flixel https://github.com/HaxeFlixel/flixel 4.11.0
-          haxelib git lime https://github.com/openfl/lime 8.2.2
-          haxelib git openfl https://github.com/openfl/openfl
-          haxelib run lime setup flixel
-          haxelib run lime setup
-          haxelib git flixel-tools https://github.com/HaxeFlixel/flixel-tools 1.5.1
-          haxelib git flixel-ui https://github.com/HaxeFlixel/flixel-ui 2.4.0
-          haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons 2.11.0
-          haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons 2.11.0
-          haxelib git tjson https://github.com/JWambaugh/TJSON
-          haxelib git hxjsonast https://github.com/nadako/hxjsonast
-          haxelib git linc_luajit https://github.com/AndreiRudenko/linc_luajit
-          haxelib git hscript https://github.com/HaxeFoundation/hscript
-          haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-          haxelib git hxcpp-debug-server https://github.com/vshaxe/hxcpp-debugger
+          haxelib setup ~/haxelib
+          haxelib install hxcpp > /dev/null --quiet
+          haxelib install hmm --quiet
+          haxelib run hmm install
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
