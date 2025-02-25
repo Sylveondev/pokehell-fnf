@@ -13,7 +13,7 @@ jobs:
   
   buildHtml:
     # The type of runner that the job will run on
-    runs-on: ubuntu-20.04
+    runs-on: windows-2019
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,8 +26,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
-          haxelib setup ~/haxelib
-          haxelib install hxcpp > /dev/null --quiet
+          haxelib setup c:/haxelib
+          haxelib install hxcpp > nul --quiet
           haxelib install hmm --quiet
           haxelib run hmm install
       - name: Create Version Tag
